@@ -1,0 +1,18 @@
+.App__inner {
+  grid-area: gc;
+  // display: grid;
+  // grid-template-areas: 's m';
+  // grid-template-columns: 3fr 10fr;
+  display: flex;
+  // justify-content: space-between;
+}
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+    'h h'
+    'gc gc'
+    'f f';
+  grid-template-rows: 60px 1fr 60px;
+}
