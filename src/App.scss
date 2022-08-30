@@ -1,10 +1,12 @@
-.App__inner {
+@import './vars.scss';
+
+.App__container {
   grid-area: gc;
-  // display: grid;
-  // grid-template-areas: 's m';
-  // grid-template-columns: 3fr 10fr;
-  display: flex;
-  // justify-content: space-between;
+  display: grid;
+  grid-template-areas: 's m';
+  grid-template-columns: 2.8fr 9.2fr;
+  width: $container;
+  padding: 0 !important;
 }
 
 .App {
@@ -12,7 +14,12 @@
   display: grid;
   grid-template-areas:
     'h h'
-    'gc gc'
-    'f f';
-  grid-template-rows: 60px 1fr 60px;
+    'gc gc';
+  grid-template-rows: 10% 1fr;
+}
+
+@media (max-width: 1250px) {
+  .App__container {
+    width: 100%;
+  }
 }

@@ -1,3 +1,6 @@
+@import '../../vars.scss';
+
 .sidebar {
   grid-area: s;
+  background-color: $color2;
 }

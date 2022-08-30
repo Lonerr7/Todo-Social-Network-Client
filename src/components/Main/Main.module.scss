@@ -1,3 +1,6 @@
+@import '../../vars.scss';
+
 .main {
   grid-area: m;
+  background-color: $color4;
 }

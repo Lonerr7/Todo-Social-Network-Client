@@ -1,11 +1,24 @@
+import Container from '../common/Container/Container';
+import Logo from '../common/Logo/Logo';
 import s from './Header.module.scss';
 
-type HeaderProps = {
-  children: React.ReactNode | React.ReactNode[];
-};
+const Header: React.FC = () => {
+  const isAuth = false;
 
-const Header: React.FC<HeaderProps> = ({ children }) => {
-  return <header className={s.header}>{children}</header>;
+  return (
+    <header className={s.header}>
+      <Container classProp={s.header__container}>
+        <div className={s.header__inner}>
+          <Logo />
+          {!isAuth ? (
+            <a className={s.header__register} href="#ds">
+              Sign up
+            </a>
+          ) : null}
+        </div>
+      </Container>
+    </header>
+  );
 };
 
 export default Header;
