@@ -4,9 +4,7 @@
   grid-area: gc;
   display: grid;
   grid-template-areas: 's m';
-  grid-template-columns: 2.8fr 9.2fr;
-  width: $container;
-  padding: 0 !important;
+  grid-template-columns: 2fr 10fr;
 }
 
 .App {
