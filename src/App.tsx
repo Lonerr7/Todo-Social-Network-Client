@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Sidebar from './components/Sidebar/Sidebar';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 const App: React.FC = () => {
   const isAuth = true;
@@ -12,10 +13,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Routes>
-        <Route
-          path="/register"
-          element={<div className="App">REGISTER FORM</div>}
-        />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<div className="App">LOGIN FORM</div>} />
         <Route
           path="/"
