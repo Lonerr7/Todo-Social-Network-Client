@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import s from './Sidebar.module.scss';
 
 const Sidebar: React.FC = () => {
@@ -8,8 +9,12 @@ const Sidebar: React.FC = () => {
       {!isAuth ? (
         <>
           <div className={s.sidebar__quickLogin}>
-            <button className={s.sidebar__btn}>Log In</button>
-            <button className={s.sidebar__btn}>Sign Up</button>
+            <NavLink to="/login" className={s.sidebar__link}>
+              Log In
+            </NavLink>
+            <NavLink to="/register" className={s.sidebar__link}>
+              Sign Up
+            </NavLink>
           </div>
           <p className={s.sidebar__credits}>
             Made by:{' '}

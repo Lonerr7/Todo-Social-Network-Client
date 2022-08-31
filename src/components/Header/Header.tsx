@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import Container from '../common/Container/Container';
 import Logo from '../common/Logo/Logo';
 import s from './Header.module.scss';
@@ -11,9 +12,9 @@ const Header: React.FC = () => {
         <div className={s.header__inner}>
           <Logo />
           {!isAuth ? (
-            <a className={s.header__register} href="#ds">
+            <NavLink to="/register" className={s.header__register}>
               Sign up
-            </a>
+            </NavLink>
           ) : null}
         </div>
       </Container>
