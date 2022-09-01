@@ -1,11 +1,17 @@
 import s from './Logo.module.scss';
 import logo from '../../../assets/images/logo.png';
 
-const Logo: React.FC = () => {
+type LogoProps = {
+  styleClass?: string;
+  overallClass?: string;
+};
+
+const Logo: React.FC<LogoProps> = ({ styleClass, overallClass }) => {
   return (
-    <a className={s.logo} href="#d">
+    // eslint-disable-next-line
+    <a className={`${s.logo} ${overallClass}`} href="">
       <img className={s.logo__img} src={logo} alt="logo" />
-      <span className={s.logo__text}>Todo Social</span>
+      <span className={`${s.logo__text} ${styleClass}`}>Todo Social</span>
     </a>
   );
 };

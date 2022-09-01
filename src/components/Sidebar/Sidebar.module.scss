@@ -19,17 +19,9 @@
   }
 
   &__link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 180px;
-    height: 40px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    @extend %btn-small;
     background-color: $color4;
-    font-size: 18px;
-
-    transition: all 0.3s;
+    margin-bottom: 15px;
 
     &:hover {
       background-color: #d7e4d7;

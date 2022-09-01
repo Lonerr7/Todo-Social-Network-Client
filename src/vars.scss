@@ -31,3 +31,18 @@ $color2: #457b9d;
 $color3: #a8dadc;
 $color4: #f1faee;
 $color5: #1d3557;
+
+// tempaltes
+
+%btn-small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 40px;
+
+  border-radius: 5px;
+  font-size: 18px;
+  transition: all 0.3s;
+  font-family: $ff2;
+}

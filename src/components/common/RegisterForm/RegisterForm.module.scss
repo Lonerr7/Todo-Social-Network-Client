@@ -1,0 +1,36 @@
+@import '../../../vars.scss';
+
+.registerForm {
+  width: 25%;
+
+  &__formControl {
+    position: relative;
+    padding-bottom: 25px;
+  }
+
+  &__formInput {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+  }
+
+  &__errorMsg {
+    color: $color1;
+  }
+
+  &__btn {
+    @extend %btn-small;
+    background-color: $color3;
+    width: 100%;
+    font-size: 24px;
+    height: auto;
+    padding: 10px 0;
+    margin-bottom: 0;
+
+    &:hover {
+      background-color: #d7e4d7;
+    }
+  }
+}
