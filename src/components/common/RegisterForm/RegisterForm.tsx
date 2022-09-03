@@ -3,12 +3,14 @@ import * as yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import TextError from '../TextError/TextError';
 import { RegisterFormInitialValues } from '../../../types/FormikTypes';
+import { useAppDispatch } from '../../../hooks/hooks';
+import { signUserUp } from '../../../redux/authSlice';
 
 const initialValues = {
-  email: '',
-  nickname: '',
-  password: '',
-  passwordConfirm: '',
+  email: 'dasd@gmail.com',
+  nickname: 'dasdadsd',
+  password: '12345678',
+  passwordConfirm: '12345678',
   // photo: req.body.photo,
 } as RegisterFormInitialValues;
 
@@ -28,11 +30,13 @@ const validationSchema = yup.object({
     .required('Please, confirm your password!'),
 });
 
-const onSubmit = (values: RegisterFormInitialValues) => {
-  console.log(values);
-};
-
 const RegisterForm: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (values: RegisterFormInitialValues) => {
+    dispatch(signUserUp(values));
+  };
+
   return (
     <Formik
       initialValues={initialValues}
