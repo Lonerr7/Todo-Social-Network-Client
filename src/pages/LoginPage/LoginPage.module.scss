@@ -1,6 +1,6 @@
-@import '../../vars.scss';
+@import '../../vars';
 
-.register {
+.loginPage {
   @extend %page;
 
   &__title {
@@ -8,7 +8,7 @@
   }
 }
 
-.logoRegister {
+.logoLogin {
   margin-bottom: 30px;
 
   &__text {

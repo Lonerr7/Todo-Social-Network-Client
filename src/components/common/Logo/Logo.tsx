@@ -1,5 +1,6 @@
 import s from './Logo.module.scss';
 import logo from '../../../assets/images/logo.png';
+import { NavLink } from 'react-router-dom';
 
 type LogoProps = {
   styleClass?: string;
@@ -8,11 +9,10 @@ type LogoProps = {
 
 const Logo: React.FC<LogoProps> = ({ styleClass, overallClass }) => {
   return (
-    // eslint-disable-next-line
-    <a className={`${s.logo} ${overallClass}`} href="">
+    <NavLink className={`${s.logo} ${overallClass}`} to="/">
       <img className={s.logo__img} src={logo} alt="logo" />
       <span className={`${s.logo__text} ${styleClass}`}>Todo Social</span>
-    </a>
+    </NavLink>
   );
 };
 

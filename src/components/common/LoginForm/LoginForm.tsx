@@ -1,23 +1,20 @@
-import s from './RegisterForm.module.scss';
-import * as yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as yup from 'yup';
+import { LoginFormInitialValues } from '../../../types/FormikTypes';
 import TextError from '../TextError/TextError';
-import { RegisterFormInitialValues } from '../../../types/FormikTypes';
+import s from './LoginForm.module.scss';
 
 const initialValues = {
   email: '',
-  nickname: '',
   password: '',
   passwordConfirm: '',
-  // photo: req.body.photo,
-} as RegisterFormInitialValues;
+} as LoginFormInitialValues;
 
 const validationSchema = yup.object({
   email: yup
     .string()
     .email('Enter a valid email')
     .required('Please, enter an email'),
-  nickname: yup.string().required('Please, enter a nickname'),
   password: yup
     .string()
     .required('Please, enter your password')
@@ -28,22 +25,22 @@ const validationSchema = yup.object({
     .required('Please, confirm your password!'),
 });
 
-const onSubmit = (values: RegisterFormInitialValues) => {
+const onSubmit = (values: LoginFormInitialValues) => {
   console.log(values);
 };
 
-const RegisterForm: React.FC = () => {
+const LoginForm: React.FC = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
       onSubmit={onSubmit}
+      validationSchema={validationSchema}
     >
-      <Form className={s.registerForm}>
-        <div className={s.registerForm__formControl}>
+      <Form className={s.loginForm}>
+        <div className={s.loginForm__formControl}>
           <label htmlFor="email" />
           <Field
-            className={s.registerForm__formInput}
+            className={s.loginForm__formInput}
             name="email"
             id="email"
             type="text"
@@ -53,23 +50,11 @@ const RegisterForm: React.FC = () => {
             {(err) => <TextError>{err}</TextError>}
           </ErrorMessage>
         </div>
-        <div className={s.registerForm__formControl}>
-          <label htmlFor="nickname" />
-          <Field
-            className={s.registerForm__formInput}
-            name="nickname"
-            id="nickname"
-            type="text"
-            placeholder="Nickname"
-          />
-          <ErrorMessage name="nickname">
-            {(err) => <TextError>{err}</TextError>}
-          </ErrorMessage>
-        </div>
-        <div className={s.registerForm__formControl}>
+
+        <div className={s.loginForm__formControl}>
           <label htmlFor="password" />
           <Field
-            className={s.registerForm__formInput}
+            className={s.loginForm__formInput}
             name="password"
             id="password"
             type="password"
@@ -79,10 +64,11 @@ const RegisterForm: React.FC = () => {
             {(err) => <TextError>{err}</TextError>}
           </ErrorMessage>
         </div>
-        <div className={s.registerForm__formControl}>
+
+        <div className={s.loginForm__formControl}>
           <label htmlFor="passwordConfirm" />
           <Field
-            className={s.registerForm__formInput}
+            className={s.loginForm__formInput}
             name="passwordConfirm"
             id="passwordConfirm"
             type="password"
@@ -93,12 +79,12 @@ const RegisterForm: React.FC = () => {
           </ErrorMessage>
         </div>
 
-        <button className={s.registerForm__btn} type="submit">
-          Sign Up
+        <button className={s.loginForm__btn} type="submit">
+          Log In
         </button>
       </Form>
     </Formik>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
