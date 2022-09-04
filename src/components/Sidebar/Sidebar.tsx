@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../hooks/hooks';
 import s from './Sidebar.module.scss';
 
 const Sidebar: React.FC = () => {
-  const isAuth = false;
+  const user = useAppSelector((state) => state.auth.user);
 
   return (
     <div className={s.sidebar}>
-      {!isAuth ? (
+      {!user ? (
         <>
           <div className={s.sidebar__quickLogin}>
             <NavLink to="/login" className={s.sidebar__link}>
@@ -28,7 +29,9 @@ const Sidebar: React.FC = () => {
             </a>
           </p>
         </>
-      ) : null}
+      ) : (
+        <p>{user.nickname}</p>
+      )}
     </div>
   );
 };

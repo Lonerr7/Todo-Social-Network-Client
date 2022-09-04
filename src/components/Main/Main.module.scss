@@ -3,4 +3,10 @@
 .main {
   grid-area: m;
   background-color: $color4;
+  font-family: $ff2;
+  font-size: 24px;
+}
+
+.container {
+  max-width: 1030px;
 }

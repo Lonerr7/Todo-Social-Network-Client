@@ -3,7 +3,6 @@ export type User = {
   nickname: string;
   role: string;
   id: string;
-  token: string;
 };
 
 export type AuthState = {

@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import GoBack from '../../components/common/GoBack/GoBack';
 import LoginForm from '../../components/common/LoginForm/LoginForm';
 import Logo from '../../components/common/Logo/Logo';
@@ -8,6 +9,8 @@ import s from './LoginPage.module.scss';
 
 const LoginPage: React.FC = () => {
   const { errorMsg, isFetching, user } = useAppSelector((state) => state.auth);
+
+  if (user) return <Navigate to="/" />;
 
   return (
     <div className={s.loginPage}>
