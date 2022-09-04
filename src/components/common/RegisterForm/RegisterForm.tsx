@@ -1,7 +1,6 @@
 import s from './RegisterForm.module.scss';
 import * as yup from 'yup';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import TextError from '../TextError/TextError';
+import { Form, Formik } from 'formik';
 import { RegisterFormInitialValues } from '../../../types/FormikTypes';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { signUserUp } from '../../../redux/authSlice';

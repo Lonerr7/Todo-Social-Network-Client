@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { LoginFormInitialValues } from '../../../types/FormikTypes';
+import FormControl from '../FormControl/FormControl';
 import TextError from '../TextError/TextError';
 import s from './LoginForm.module.scss';
 
@@ -37,47 +38,27 @@ const LoginForm: React.FC = () => {
       validationSchema={validationSchema}
     >
       <Form className={s.loginForm}>
-        <div className={s.loginForm__formControl}>
-          <label htmlFor="email" />
-          <Field
-            className={s.loginForm__formInput}
-            name="email"
-            id="email"
-            type="text"
-            placeholder="Email"
-          />
-          <ErrorMessage name="email">
-            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
-          </ErrorMessage>
-        </div>
-
-        <div className={s.loginForm__formControl}>
-          <label htmlFor="password" />
-          <Field
-            className={s.loginForm__formInput}
-            name="password"
-            id="password"
-            type="password"
-            placeholder="Password"
-          />
-          <ErrorMessage name="password">
-            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
-          </ErrorMessage>
-        </div>
-
-        <div className={s.loginForm__formControl}>
-          <label htmlFor="passwordConfirm" />
-          <Field
-            className={s.loginForm__formInput}
-            name="passwordConfirm"
-            id="passwordConfirm"
-            type="password"
-            placeholder="Password confirmation"
-          />
-          <ErrorMessage name="passwordConfirm">
-            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
-          </ErrorMessage>
-        </div>
+        <FormControl
+          customClass={s.loginForm__formControl}
+          field="email"
+          placeholder="Email"
+          inputClass={s.loginForm__formInput}
+          type="text"
+        />
+        <FormControl
+          customClass={s.loginForm__formControl}
+          field="password"
+          placeholder="Password"
+          inputClass={s.loginForm__formInput}
+          type="password"
+        />
+        <FormControl
+          customClass={s.loginForm__formControl}
+          field="passwordConfirm"
+          placeholder="Password confirmation"
+          inputClass={s.loginForm__formInput}
+          type="password"
+        />
 
         <button className={s.loginForm__btn} type="submit">
           Log In
