@@ -5,6 +5,7 @@ import TextError from '../TextError/TextError';
 import { RegisterFormInitialValues } from '../../../types/FormikTypes';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { signUserUp } from '../../../redux/authSlice';
+import FormControl from '../FormControl/FormControl';
 
 const initialValues = {
   email: 'dasd@gmail.com',
@@ -44,58 +45,34 @@ const RegisterForm: React.FC = () => {
       onSubmit={onSubmit}
     >
       <Form className={s.registerForm}>
-        <div className={s.registerForm__formControl}>
-          <label htmlFor="email" />
-          <Field
-            className={s.registerForm__formInput}
-            name="email"
-            id="email"
-            type="text"
-            placeholder="Email"
-          />
-          <ErrorMessage name="email">
-            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
-          </ErrorMessage>
-        </div>
-        <div className={s.registerForm__formControl}>
-          <label htmlFor="nickname" />
-          <Field
-            className={s.registerForm__formInput}
-            name="nickname"
-            id="nickname"
-            type="text"
-            placeholder="Nickname"
-          />
-          <ErrorMessage name="nickname">
-            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
-          </ErrorMessage>
-        </div>
-        <div className={s.registerForm__formControl}>
-          <label htmlFor="password" />
-          <Field
-            className={s.registerForm__formInput}
-            name="password"
-            id="password"
-            type="password"
-            placeholder="Password"
-          />
-          <ErrorMessage name="password">
-            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
-          </ErrorMessage>
-        </div>
-        <div className={s.registerForm__formControl}>
-          <label htmlFor="passwordConfirm" />
-          <Field
-            className={s.registerForm__formInput}
-            name="passwordConfirm"
-            id="passwordConfirm"
-            type="password"
-            placeholder="Password confirmation"
-          />
-          <ErrorMessage name="passwordConfirm">
-            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
-          </ErrorMessage>
-        </div>
+        <FormControl
+          customClass={s.registerForm__formControl}
+          field="email"
+          placeholder="Email"
+          inputClass={s.registerForm__formInput}
+          type="text"
+        />
+        <FormControl
+          customClass={s.registerForm__formControl}
+          field="nickname"
+          placeholder="Nickname"
+          inputClass={s.registerForm__formInput}
+          type="text"
+        />
+        <FormControl
+          customClass={s.registerForm__formControl}
+          field="password"
+          placeholder="Password"
+          inputClass={s.registerForm__formInput}
+          type="password"
+        />
+        <FormControl
+          customClass={s.registerForm__formControl}
+          field="passwordConfirm"
+          placeholder="Password confirmation"
+          inputClass={s.registerForm__formInput}
+          type="password"
+        />
 
         <button className={s.registerForm__btn} type="submit">
           Sign Up
