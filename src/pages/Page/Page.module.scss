@@ -1,0 +1,33 @@
+@import '../../vars';
+
+.page {
+  @extend %page;
+  position: relative;
+
+  &__title {
+    @extend %formpage-title;
+  }
+}
+
+.logo {
+  margin-bottom: 30px;
+
+  &__text {
+    color: $color3;
+    font-size: 34px;
+  }
+}
+
+.preloader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 33px;
+  margin: 0 auto;
+}
+
+.textError {
+  bottom: 70px;
+  font-weight: 700;
+  font-size: 18px;
+}

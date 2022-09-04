@@ -47,7 +47,11 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    clearErrorMsg: (state) => {
+      state.errorMsg = '';
+    },
+  },
   extraReducers: {
     [signUserUp.pending.type]: (state) => {
       state.isFetching = true;
@@ -77,5 +81,5 @@ const authSlice = createSlice({
   },
 });
 
-export const {} = authSlice.actions;
+export const { clearErrorMsg } = authSlice.actions;
 export default authSlice.reducer;

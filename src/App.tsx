@@ -5,17 +5,22 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Sidebar from './components/Sidebar/Sidebar';
 import { Route, Routes } from 'react-router-dom';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import Page from './pages/Page/Page';
+import RegisterForm from './components/common/RegisterForm/RegisterForm';
+import LoginForm from './components/common/LoginForm/LoginForm';
 
 const App: React.FC = () => {
-  // const isAuth = false;
-
   return (
     <div className="App">
       <Routes>
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/register"
+          element={<Page form={<RegisterForm />} title="Sign Up" />}
+        />
+        <Route
+          path="/login"
+          element={<Page form={<LoginForm />} title="Log in" />}
+        />
         <Route
           path="/"
           element={

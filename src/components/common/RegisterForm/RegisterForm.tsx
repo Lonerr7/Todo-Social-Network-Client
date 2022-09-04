@@ -7,10 +7,10 @@ import { signUserUp } from '../../../redux/authSlice';
 import FormControl from '../FormControl/FormControl';
 
 const initialValues = {
-  email: 'dasd@gmail.com',
-  nickname: 'dasdadsd',
-  password: '12345678',
-  passwordConfirm: '12345678',
+  email: 'newuser@gmail.com',
+  nickname: 'New User',
+  password: 'gZ929ufnAdsa9',
+  passwordConfirm: 'gZ929ufnAdsa9',
   // photo: req.body.photo,
 } as RegisterFormInitialValues;
 

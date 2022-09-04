@@ -7,9 +7,9 @@ import FormControl from '../FormControl/FormControl';
 import s from './LoginForm.module.scss';
 
 const initialValues = {
-  email: 'dasd@gmail.com',
-  password: '12345678',
-  passwordConfirm: '12345678',
+  email: 'newuser@gmail.com',
+  password: 'gZ929ufnAdsa9',
+  passwordConfirm: 'gZ929ufnAdsa9',
 } as LoginFormInitialValues;
 
 const validationSchema = yup.object({
