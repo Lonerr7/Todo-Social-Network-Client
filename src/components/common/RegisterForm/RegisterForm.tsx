@@ -54,7 +54,7 @@ const RegisterForm: React.FC = () => {
             placeholder="Email"
           />
           <ErrorMessage name="email">
-            {(err) => <TextError>{err}</TextError>}
+            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
           </ErrorMessage>
         </div>
         <div className={s.registerForm__formControl}>
@@ -67,7 +67,7 @@ const RegisterForm: React.FC = () => {
             placeholder="Nickname"
           />
           <ErrorMessage name="nickname">
-            {(err) => <TextError>{err}</TextError>}
+            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
           </ErrorMessage>
         </div>
         <div className={s.registerForm__formControl}>
@@ -80,7 +80,7 @@ const RegisterForm: React.FC = () => {
             placeholder="Password"
           />
           <ErrorMessage name="password">
-            {(err) => <TextError>{err}</TextError>}
+            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
           </ErrorMessage>
         </div>
         <div className={s.registerForm__formControl}>
@@ -93,7 +93,7 @@ const RegisterForm: React.FC = () => {
             placeholder="Password confirmation"
           />
           <ErrorMessage name="passwordConfirm">
-            {(err) => <TextError>{err}</TextError>}
+            {(err) => <TextError customClass={s.textError}>{err}</TextError>}
           </ErrorMessage>
         </div>
 

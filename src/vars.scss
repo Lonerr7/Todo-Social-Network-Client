@@ -83,8 +83,13 @@ $color5: #1d3557;
 
 %formpage-title {
   font-family: $ff2;
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 30px;
-    color: $color5;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: $color5;
+}
+
+%text-error {
+  left: 10px;
+  bottom: 10px;
 }

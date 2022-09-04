@@ -2,6 +2,8 @@
 
 .register {
   @extend %page;
+  position: relative;
+  padding-bottom: 50px;
 
   &__title {
     @extend %formpage-title;
@@ -15,4 +17,18 @@
     color: $color3;
     font-size: 34px;
   }
+}
+
+.preloader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 33px;
+  margin: 0 auto;
+}
+
+.textError {
+  bottom: 70px;
+  font-weight: 700;
+  font-size: 18px;
 }

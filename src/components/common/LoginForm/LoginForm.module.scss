@@ -23,3 +23,7 @@
     }
   }
 }
+
+.textError {
+  @extend %text-error;
+}

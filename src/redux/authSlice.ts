@@ -32,6 +32,7 @@ const authSlice = createSlice({
   extraReducers: {
     [signUserUp.pending.type]: (state) => {
       state.isFetching = true;
+      state.errorMsg = '';
     },
     [signUserUp.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
@@ -40,6 +41,7 @@ const authSlice = createSlice({
     },
     [signUserUp.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errorMsg = action.payload;
+      state.isFetching = false;
     },
   },
 });
