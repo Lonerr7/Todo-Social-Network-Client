@@ -1,5 +1,6 @@
-import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
+import Credits from '../common/Credits/Credits';
+import QuckLogin from './QuckLogin/QuckLogin';
 import s from './Sidebar.module.scss';
 
 const Sidebar: React.FC = () => {
@@ -7,31 +8,8 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className={s.sidebar}>
-      {!user ? (
-        <>
-          <div className={s.sidebar__quickLogin}>
-            <NavLink to="/login" className={s.sidebar__link}>
-              Log In
-            </NavLink>
-            <NavLink to="/register" className={s.sidebar__link}>
-              Sign Up
-            </NavLink>
-          </div>
-          <p className={s.sidebar__credits}>
-            Made by:{' '}
-            <a
-              target="_blank"
-              rel="noreferrer"
-              className={s.sidebar__creditLink}
-              href="https://github.com/Lonerr7"
-            >
-              nic3guy
-            </a>
-          </p>
-        </>
-      ) : (
-        <p>{user.nickname}</p>
-      )}
+      {!user ? <QuckLogin /> : <p>{user.nickname}</p>}
+      <Credits />
     </div>
   );
 };

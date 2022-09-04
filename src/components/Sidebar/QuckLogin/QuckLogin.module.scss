@@ -1,0 +1,22 @@
+@import '../../../vars';
+
+.quickLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  &__link {
+    @extend %btn-small;
+    background-color: $color4;
+    margin-bottom: 15px;
+
+    &:hover {
+      background-color: #d7e4d7;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
