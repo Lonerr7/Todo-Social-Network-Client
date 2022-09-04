@@ -1,14 +1,15 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import * as yup from 'yup';
+import { useAppDispatch } from '../../../hooks/hooks';
+import { logUserIn } from '../../../redux/authSlice';
 import { LoginFormInitialValues } from '../../../types/FormikTypes';
 import FormControl from '../FormControl/FormControl';
-import TextError from '../TextError/TextError';
 import s from './LoginForm.module.scss';
 
 const initialValues = {
-  email: '',
-  password: '',
-  passwordConfirm: '',
+  email: 'dasd@gmail.com',
+  password: '12345678',
+  passwordConfirm: '12345678',
 } as LoginFormInitialValues;
 
 const validationSchema = yup.object({
@@ -26,11 +27,13 @@ const validationSchema = yup.object({
     .required('Please, confirm your password!'),
 });
 
-const onSubmit = (values: LoginFormInitialValues) => {
-  console.log(values);
-};
-
 const LoginForm: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (values: LoginFormInitialValues) => {
+    dispatch(logUserIn(values));
+  };
+
   return (
     <Formik
       initialValues={initialValues}
