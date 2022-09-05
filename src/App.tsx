@@ -33,6 +33,7 @@ const App: React.FC = () => {
             </>
           }
         />
+        <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     </div>
   );

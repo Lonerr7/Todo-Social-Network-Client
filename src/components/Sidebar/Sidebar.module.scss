@@ -1,13 +1,14 @@
 @import '../../vars.scss';
 
 .sidebar {
+  width: 256px;
   font-size: 18px;
   grid-area: s;
   background-color: $color2;
-  padding: 40px 20px;
+  padding: 40px 0;
   font-family: $ff2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
 }

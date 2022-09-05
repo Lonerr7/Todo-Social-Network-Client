@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../hooks/hooks';
 import Credits from '../common/Credits/Credits';
+import Menu from './Menu/Menu';
 import QuckLogin from './QuckLogin/QuckLogin';
 import s from './Sidebar.module.scss';
 
@@ -8,7 +9,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className={s.sidebar}>
-      {!user ? <QuckLogin /> : <p>{user.nickname}</p>}
+      {!user ? <QuckLogin /> : <Menu />}
       <Credits />
     </div>
   );
