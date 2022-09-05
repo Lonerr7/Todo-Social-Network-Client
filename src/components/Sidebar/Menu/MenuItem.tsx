@@ -7,6 +7,7 @@ type MenuItemProps = {
   setActiveNum: React.Dispatch<React.SetStateAction<number>>;
   icon: React.ReactNode;
   text: string;
+  urlPath: string;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -15,6 +16,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   neededNum,
   setActiveNum,
   text,
+  urlPath,
 }) => {
   return (
     <li
@@ -24,7 +26,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
     >
       <NavLink
         className={s.menu__link}
-        to="/"
+        to={urlPath}
         onClick={() => setActiveNum(neededNum)}
       >
         {icon}

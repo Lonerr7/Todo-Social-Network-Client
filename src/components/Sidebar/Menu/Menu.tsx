@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import s from './Menu.module.scss';
 import { MdOutlineContactPage } from 'react-icons/md';
 import { FaUserFriends } from 'react-icons/fa';
@@ -20,6 +19,7 @@ const Menu: React.FC = () => {
           setActiveNum={setActiveNum}
           neededNum={1}
           icon={<MdOutlineContactPage className={s.menu__icon} size={24} />}
+          urlPath="/"
         />
         <MenuItem
           text="Friends"
@@ -27,6 +27,7 @@ const Menu: React.FC = () => {
           setActiveNum={setActiveNum}
           neededNum={2}
           icon={<FaUserFriends className={s.menu__icon} size={24} />}
+          urlPath="/friends"
         />
         <MenuItem
           text="Messages"
@@ -34,6 +35,7 @@ const Menu: React.FC = () => {
           setActiveNum={setActiveNum}
           neededNum={3}
           icon={<TiMessages className={s.menu__icon} size={24} />}
+          urlPath="/messages"
         />
         <MenuItem
           text="My Todos"
@@ -41,6 +43,7 @@ const Menu: React.FC = () => {
           setActiveNum={setActiveNum}
           neededNum={4}
           icon={<RiTodoFill className={s.menu__icon} size={24} />}
+          urlPath="/todos"
         />
         <MenuItem
           text="Settings"
@@ -48,6 +51,7 @@ const Menu: React.FC = () => {
           setActiveNum={setActiveNum}
           neededNum={5}
           icon={<IoSettingsOutline className={s.menu__icon} size={24} />}
+          urlPath="/settings"
         />
       </ul>
     </nav>

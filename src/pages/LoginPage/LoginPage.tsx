@@ -10,7 +10,7 @@ import s from './LoginPage.module.scss';
 const LoginPage: React.FC = () => {
   const { errorMsg, isFetching, user } = useAppSelector((state) => state.auth);
 
-  if (user) return <Navigate to="/" />;
+  if (user) return <Navigate to="/user/1" />;
 
   return (
     <div className={s.loginPage}>
