@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { authAPI } from '../api/authAPI';
+import { authAPI } from '../api/api';
 import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
@@ -11,6 +11,11 @@ export const signUserUp = createAsyncThunk(
   async (userData: RegisterFormInitialValues, { rejectWithValue }) => {
     try {
       const response = await authAPI.signUp(userData);
+
+      // save jwt to localstorage
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
 
       console.log(response.data);
 
@@ -28,9 +33,30 @@ export const logUserIn = createAsyncThunk(
     try {
       const response = await authAPI.logIn(userData);
 
+      // save jwt to localstorage
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
+
       console.log(response.data);
 
       return response.data.data.user;
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const getMe = createAsyncThunk(
+  'auth/getMe',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await authAPI.getMe();
+
+      console.log(response.data);
+
+      return response.data.data.data;
     } catch (error: any) {
       console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
@@ -77,6 +103,13 @@ const authSlice = createSlice({
     [logUserIn.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errorMsg = action.payload;
       state.isFetching = false;
+    },
+    [getMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.user = action.payload;
+      state.isFetching = false;
+    },
+    [getMe.rejected.type]: (state, action: PayloadAction<User>) => {
+      // !
     },
   },
 });
