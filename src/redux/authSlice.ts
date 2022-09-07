@@ -64,6 +64,14 @@ export const getMe = createAsyncThunk(
   }
 );
 
+export const logOut = createAsyncThunk(
+  'auth/logOut',
+  async (_, { dispatch }) => {
+    localStorage.removeItem('token');
+    dispatch(getMe());
+  }
+);
+
 const initialState: AuthState = {
   user: null,
   isFetching: false,
@@ -109,7 +117,7 @@ const authSlice = createSlice({
       state.isFetching = false;
     },
     [getMe.rejected.type]: (state, action: PayloadAction<User>) => {
-      // !
+      state.user = null;
     },
   },
 });

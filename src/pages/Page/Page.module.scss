@@ -3,6 +3,7 @@
 .page {
   @extend %page;
   position: relative;
+  overflow: auto;
 
   &__title {
     @extend %formpage-title;

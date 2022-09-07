@@ -3,6 +3,7 @@
 .header {
   grid-area: h;
   background-color: $color1;
+  color: $color4;
 
   &__inner {
     height: 100%;
@@ -26,5 +27,16 @@
       text-decoration: none;
       transform: scale(1.1);
     }
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+  }
+
+  &__user {
+    font-size: 18px;
   }
 }

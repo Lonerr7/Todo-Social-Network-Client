@@ -1,0 +1,15 @@
+@import '../../../vars';
+
+.nav {
+  width: 60px;
+
+  &__icon {
+    color: $color4;
+    transition: all 0.3s;
+    margin-top: 4px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
