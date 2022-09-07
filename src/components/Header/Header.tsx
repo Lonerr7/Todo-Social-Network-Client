@@ -3,7 +3,7 @@ import { useAppSelector } from '../../hooks/hooks';
 import Container from '../common/Container/Container';
 import Logo from '../common/Logo/Logo';
 import s from './Header.module.scss';
-import HeaderNav from './HeaderNav/HeaderNav';
+import HeaderControls from './HeaderControls';
 
 const Header: React.FC = () => {
   const user = useAppSelector((state) => state.auth.user);
@@ -18,10 +18,7 @@ const Header: React.FC = () => {
               Sign up
             </NavLink>
           ) : (
-            <div className={s.header__box}>
-              <p className={s.header__user}>Hello, {user.nickname}</p>
-              <HeaderNav />
-            </div>
+            <HeaderControls user={user} />
           )}
         </div>
       </Container>

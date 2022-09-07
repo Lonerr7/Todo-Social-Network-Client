@@ -2,8 +2,11 @@
 
 .page {
   @extend %page;
-  position: relative;
-  overflow: auto;
+  // overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   &__title {
     @extend %formpage-title;

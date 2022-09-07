@@ -29,7 +29,7 @@
     }
   }
 
-  &__box {
+  &__controls {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,5 +38,16 @@
 
   &__user {
     font-size: 18px;
+  }
+
+  &__userLink {
+    color: black;
+    display: inline-block;
+    font-weight: 500;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
