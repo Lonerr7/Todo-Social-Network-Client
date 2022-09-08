@@ -8,11 +8,12 @@
 
   &__link {
     @extend %btn-small;
-    background-color: $color4;
+    background-color: $color1;
+    color: $color5;
     margin-bottom: 15px;
 
     &:hover {
-      background-color: #d7e4d7;
+      background-color: $color2;
     }
 
     &:last-child {

@@ -1,10 +1,10 @@
+import s from './LoginForm.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { logUserIn } from '../../../redux/authSlice';
 import { LoginFormInitialValues } from '../../../types/FormikTypes';
 import FormControl from '../FormControl/FormControl';
-import s from './LoginForm.module.scss';
 
 const initialValues = {
   email: 'newuser@gmail.com',

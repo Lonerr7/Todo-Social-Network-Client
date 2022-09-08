@@ -26,17 +26,26 @@ $ff2: 'Asap Condensed', sans-serif;
 // $color4: #f4a261;
 // $color5: #e76f51;
 
-$color1: #e63946;
-$color2: #457b9d;
-$color3: #a8dadc;
-$color4: #f1faee;
-$color5: #1d3557;
+// $color1: #e63946;
+// $color2: #457b9d;
+// $color3: #a8dadc;
+// $color4: #f1faee;
+// $color5: #1d3557;
 
-// $color1: #ffbe0b;
-// $color2: #fb5607;
-// $color3: #ff006e;
-// $color4: #8338ec;
-// $color5: #3a86ff;
+// $color1: #00a6fb;
+// $color2: #0582ca;
+// $color3: #006494;
+// $color4: #003554;
+// $color5: #051923;
+
+$color1: rgb(40, 41, 97);
+$color2: rgb(74, 76, 127);
+$color3: rgb(255, 255, 255);
+$color4: rgb(250, 250, 250);
+$color5: rgb(240, 240, 240);
+$color6: rgb(231, 231, 231);
+$color7: rgb(24, 24, 24);
+$color8: rgb(220, 220, 220);
 
 // tempaltes
 
@@ -61,7 +70,7 @@ $color5: #1d3557;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $color2;
+  background-color: $color1;
 }
 
 %form-control {
@@ -75,11 +84,12 @@ $color5: #1d3557;
   font-size: 16px;
   border-radius: 7px;
   margin-bottom: 10px;
+  background-color: $color8;
 }
 
 %form-btn {
   @extend %btn-small;
-  background-color: $color3;
+  background-color: $color6;
   width: 100%;
   font-size: 24px;
   height: auto;

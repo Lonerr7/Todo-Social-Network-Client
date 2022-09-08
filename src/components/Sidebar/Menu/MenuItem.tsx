@@ -28,7 +28,11 @@ const MenuItem: React.FC<MenuItemProps> = ({
       }
     >
       <NavLink
-        className={s.menu__link}
+        className={
+          activeNum === neededNum
+            ? `${s.menu__link} ${s.active_link}`
+            : s.menu__link
+        }
         to={urlPath}
         onClick={() => dispatch(setActiveMenuNum(neededNum))}
       >
