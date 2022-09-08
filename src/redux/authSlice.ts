@@ -75,6 +75,7 @@ export const logOut = createAsyncThunk(
 const initialState: AuthState = {
   user: null,
   isFetching: false,
+  isGetMeFetching: false,
   errorMsg: '',
 };
 
@@ -112,12 +113,16 @@ const authSlice = createSlice({
       state.errorMsg = action.payload;
       state.isFetching = false;
     },
+    [getMe.pending.type]: (state) => {
+      state.isGetMeFetching = true;
+    },
     [getMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
-      state.isFetching = false;
+      state.isGetMeFetching = false;
     },
-    [getMe.rejected.type]: (state, action: PayloadAction<User>) => {
+    [getMe.rejected.type]: (state) => {
       state.user = null;
+      state.isGetMeFetching = false;
     },
   },
 });

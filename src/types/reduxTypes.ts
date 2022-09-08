@@ -8,5 +8,6 @@ export type User = {
 export type AuthState = {
   user: User | null;
   isFetching: boolean;
+  isGetMeFetching: boolean;
   errorMsg: string;
 };

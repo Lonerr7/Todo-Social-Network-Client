@@ -1,6 +1,3 @@
-import Header from '../Header/Header';
-import Main from '../Main/Main';
-import Sidebar from '../Sidebar/Sidebar';
 import { Route, Routes } from 'react-router-dom';
 import Page from '../../pages/Page/Page';
 import RegisterForm from '../common/RegisterForm/RegisterForm';
@@ -10,8 +7,9 @@ import FriendsPage from '../../pages/FriendsPage/FriendsPage';
 import MessagesPage from '../../pages/MessagesPage/MessagesPage';
 import TodosPage from '../../pages/TodosPage/TodosPage';
 import SettingsPage from '../../pages/SettingsPage/SettingsPage';
+import Layout from '../Layout/Layout';
 
-const AppRouter = () => {
+const AppRouter: React.FC = () => {
   return (
     <Routes>
       <Route
@@ -22,18 +20,7 @@ const AppRouter = () => {
         path="/login"
         element={<Page form={<LoginForm />} title="Log in" />}
       />
-      <Route
-        path="/"
-        element={
-          <>
-            <Header />
-            <div className="App__container">
-              <Sidebar />
-              <Main />
-            </div>
-          </>
-        }
-      >
+      <Route path="/" element={<Layout />}>
         <Route index element={<UserPage />} />
         <Route path="friends" element={<FriendsPage />} />
         <Route path="messages" element={<MessagesPage />} />
