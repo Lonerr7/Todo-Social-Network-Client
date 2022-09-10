@@ -4,9 +4,20 @@ import { FaUserFriends } from 'react-icons/fa';
 import { TiMessages } from 'react-icons/ti';
 import { RiTodoFill } from 'react-icons/ri';
 import { IoSettingsOutline } from 'react-icons/io5';
-import MenuItem from './MenuItem';
+import MenuItem from '../../common/MenuItem/MenuItem';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../../hooks/hooks';
+import { setActiveMenuNum } from '../../../redux/appSlice';
 
 const Menu: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const isCurrentMenuNum = localStorage.getItem('activeMenuNum');
+    const currentMenuNum = isCurrentMenuNum ? +isCurrentMenuNum : 1;
+    dispatch(setActiveMenuNum(currentMenuNum));
+  }, []);
+
   return (
     <nav className={s.menu}>
       <ul className={s.menu__list}>

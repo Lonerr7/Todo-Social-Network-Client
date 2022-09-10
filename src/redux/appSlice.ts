@@ -10,6 +10,7 @@ const appSlice = createSlice({
   reducers: {
     setActiveMenuNum: (state, action: PayloadAction<number>) => {
       state.activeMenuNum = action.payload;
+      localStorage.setItem('activeMenuNum', action.payload.toString());
     },
   },
 });
