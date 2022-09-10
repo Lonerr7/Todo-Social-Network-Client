@@ -21,18 +21,21 @@ const Menu: React.FC = () => {
           neededNum={2}
           icon={<FaUserFriends className={s.menu__icon} size={24} />}
           urlPath="/friends"
+          itemsCount={25}
         />
         <MenuItem
           text="Messages"
           neededNum={3}
           icon={<TiMessages className={s.menu__icon} size={24} />}
           urlPath="/messages"
+          itemsCount={123}
         />
         <MenuItem
           text="My Todos"
           neededNum={4}
           icon={<RiTodoFill className={s.menu__icon} size={24} />}
           urlPath="/todos"
+          itemsCount={1}
         />
         <MenuItem
           text="Settings"

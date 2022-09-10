@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { setActiveMenuNum } from '../../../redux/appSlice';
+import ItemsCounter from '../../common/ItemsCounter/ItemsCounter';
 import s from './Menu.module.scss';
 
 type MenuItemProps = {
@@ -8,6 +9,7 @@ type MenuItemProps = {
   icon: React.ReactNode;
   text: string;
   urlPath: string;
+  itemsCount?: number;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -15,6 +17,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   neededNum,
   text,
   urlPath,
+  itemsCount,
 }) => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);
   const dispatch = useAppDispatch();
@@ -43,6 +46,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         ></span>
         {icon}
         {text}
+        {itemsCount ? <ItemsCounter quantity={itemsCount} /> : null}
       </NavLink>
     </li>
   );
