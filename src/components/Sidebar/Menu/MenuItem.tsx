@@ -5,7 +5,6 @@ import s from './Menu.module.scss';
 
 type MenuItemProps = {
   neededNum: number;
-  setActiveNum?: (newActiveNum: number) => void;
   icon: React.ReactNode;
   text: string;
   urlPath: string;
@@ -14,7 +13,6 @@ type MenuItemProps = {
 const MenuItem: React.FC<MenuItemProps> = ({
   icon,
   neededNum,
-  setActiveNum,
   text,
   urlPath,
 }) => {
@@ -36,6 +34,13 @@ const MenuItem: React.FC<MenuItemProps> = ({
         to={urlPath}
         onClick={() => dispatch(setActiveMenuNum(neededNum))}
       >
+        <span
+          className={
+            activeNum === neededNum
+              ? `${s.menu__itemline} ${s.activeLine}`
+              : s.menu__itemline
+          }
+        ></span>
         {icon}
         {text}
       </NavLink>
