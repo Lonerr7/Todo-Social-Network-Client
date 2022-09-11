@@ -27,6 +27,7 @@ const AppRouter: React.FC = () => {
         <Route path="todos" element={<TodosPage />} />
         <Route path="settings" element={<SettingsPage />}>
           <Route index element={<div>General</div>} />
+          <Route path="security" element={<div>Security</div>} />
         </Route>
       </Route>
       <Route path="*" element={<div>Not Found</div>} />

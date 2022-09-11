@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { setActiveMenuNum } from '../../../redux/appSlice';
 import ItemsCounter from '../ItemsCounter/ItemsCounter';
 import s from './MenuItem.module.scss';
 
 type MenuItemProps = {
+  activeNum: number;
   neededNum: number;
+  setActiveNum: (neededNum: number) => void;
   icon?: React.ReactNode;
   text: string;
   urlPath: string;
@@ -15,6 +15,7 @@ type MenuItemProps = {
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
+  activeNum,
   icon,
   neededNum,
   text,
@@ -22,10 +23,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
   itemsCount,
   activeBgColor,
   customClass,
+  setActiveNum,
 }) => {
-  const activeNum = useAppSelector((state) => state.app.activeMenuNum);
-  const dispatch = useAppDispatch();
-
   return (
     <li
       className={
@@ -46,7 +45,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             : s.menuItem__link
         }
         to={urlPath}
-        onClick={() => dispatch(setActiveMenuNum(neededNum))}
+        onClick={() => setActiveNum(neededNum)}
       >
         <span
           className={

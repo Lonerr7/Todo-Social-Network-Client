@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
+import { activeLsNumbers } from '../types/appTypes';
 import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
@@ -68,6 +69,10 @@ export const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { dispatch }) => {
     localStorage.removeItem('token');
+    // removing active menu numbers from ls
+    localStorage.removeItem(activeLsNumbers.MENU_NUM);
+    localStorage.removeItem(activeLsNumbers.SETTINGS_NUM);
+    
     dispatch(getMe());
   }
 );
