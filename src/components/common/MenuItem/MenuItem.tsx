@@ -10,6 +10,8 @@ type MenuItemProps = {
   text: string;
   urlPath: string;
   itemsCount?: number;
+  activeBgColor?: string;
+  customClass?: string;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -18,6 +20,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
   text,
   urlPath,
   itemsCount,
+  activeBgColor,
+  customClass,
 }) => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);
   const dispatch = useAppDispatch();
@@ -25,7 +29,14 @@ const MenuItem: React.FC<MenuItemProps> = ({
   return (
     <li
       className={
-        activeNum === neededNum ? `${s.menuItem} ${s.active}` : s.menuItem
+        activeNum === neededNum
+          ? `${s.menuItem} ${s.active} ${customClass}`
+          : `${s.menuItem} ${customClass}`
+      }
+      style={
+        activeBgColor && activeNum === neededNum
+          ? { backgroundColor: activeBgColor }
+          : {}
       }
     >
       <NavLink

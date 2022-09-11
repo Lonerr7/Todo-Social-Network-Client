@@ -2,4 +2,9 @@
 
 .settings {
   @extend %main-inner;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
 }

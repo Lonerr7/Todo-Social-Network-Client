@@ -1,4 +1,16 @@
+@import '../../../vars';
+
 .settingsNav {
   width: 20%;
   margin-left: auto;
+  background-color: $color5;
+  border-radius: 5px;
+}
+
+.item_border_first {
+  border-top-right-radius: 5px;
+}
+
+.item_border_last {
+  border-bottom-right-radius: 5px;
 }

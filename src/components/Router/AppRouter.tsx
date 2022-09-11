@@ -25,7 +25,9 @@ const AppRouter: React.FC = () => {
         <Route path="friends" element={<FriendsPage />} />
         <Route path="messages" element={<MessagesPage />} />
         <Route path="todos" element={<TodosPage />} />
-        <Route path="settings" element={<SettingsPage />} />
+        <Route path="settings" element={<SettingsPage />}>
+          <Route index element={<div>General</div>} />
+        </Route>
       </Route>
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>

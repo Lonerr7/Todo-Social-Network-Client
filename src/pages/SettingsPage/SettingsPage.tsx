@@ -1,10 +1,14 @@
+import { Outlet } from 'react-router-dom';
 import SettingsNav from '../../components/Settings/SettingsNav/SettingsNav';
 import s from './SettingsPage.module.scss';
 
 const SettingsPage: React.FC = () => {
   return (
     <div className={s.settings}>
-      <SettingsNav />
+      <div className={s.settings__inner}>
+        <Outlet />
+        <SettingsNav />
+      </div>
     </div>
   );
 };
