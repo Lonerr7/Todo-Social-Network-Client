@@ -5,6 +5,7 @@ import { AuthState, User } from '../types/reduxTypes';
 import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
+  UpdateUserFromInitialValues,
 } from '../types/FormikTypes';
 
 export const signUserUp = createAsyncThunk(
@@ -67,7 +68,7 @@ export const getMe = createAsyncThunk(
 
 export const updateMe = createAsyncThunk(
   'auth/updateMe',
-  async (newUserData: any, { rejectWithValue }) => {
+  async (newUserData: UpdateUserFromInitialValues, { rejectWithValue }) => {
     try {
       const response = await authAPI.updateMe(newUserData);
 
@@ -99,6 +100,7 @@ const initialState: AuthState = {
   isGetMeFetching: false,
   isUserUpdateFetching: false,
   errorMsg: '',
+  
 };
 
 const authSlice = createSlice({
