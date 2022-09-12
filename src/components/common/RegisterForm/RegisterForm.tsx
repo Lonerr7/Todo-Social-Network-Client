@@ -11,7 +11,6 @@ const initialValues = {
   nickname: 'New User',
   password: 'gZ929ufnAdsa9',
   passwordConfirm: 'gZ929ufnAdsa9',
-  // photo: req.body.photo,
 } as RegisterFormInitialValues;
 
 const validationSchema = yup.object({

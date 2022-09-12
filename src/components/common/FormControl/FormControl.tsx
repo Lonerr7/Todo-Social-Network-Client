@@ -8,6 +8,8 @@ type FormControlProps = {
   placeholder: string;
   inputClass: string;
   type: 'text' | 'password';
+  label?: string;
+  labelClass?: string;
 };
 
 const FormControl: React.FC<FormControlProps> = ({
@@ -16,10 +18,14 @@ const FormControl: React.FC<FormControlProps> = ({
   placeholder,
   inputClass,
   type,
+  label,
+  labelClass,
 }) => {
   return (
     <div className={customClass}>
-      <label htmlFor={field} />
+      <label className={`${s.label} ${labelClass}`} htmlFor={field}>
+        {label}
+      </label>
       <Field
         className={inputClass}
         name={field}

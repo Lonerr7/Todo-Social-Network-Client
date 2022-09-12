@@ -3,6 +3,7 @@ export type User = {
   nickname: string;
   role: string;
   id: string;
+  bio?: string;
 };
 
 export type AuthState = {
@@ -10,4 +11,5 @@ export type AuthState = {
   isFetching: boolean;
   isGetMeFetching: boolean;
   errorMsg: string;
+  isUserUpdateFetching: boolean;
 };

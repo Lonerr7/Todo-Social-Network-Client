@@ -7,11 +7,11 @@ const Main: React.FC = () => {
   const user = useAppSelector((state) => state.auth.user);
 
   return (
-    <div className={s.main}>
+    <main className={s.main}>
       <Container classProp={s.container}>
         {user ? <Outlet /> : 'Welcome!'}
       </Container>
-    </div>
+    </main>
   );
 };
 

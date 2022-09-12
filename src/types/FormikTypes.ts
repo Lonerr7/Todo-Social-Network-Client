@@ -10,3 +10,10 @@ export type LoginFormInitialValues = {
   password: string;
   passwordConfirm: string;
 };
+
+export type UpdateUserFromInitialValues = {
+  nickname: string;
+  firstName: string;
+  lastName: string;
+  bio: string;
+};

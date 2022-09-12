@@ -20,10 +20,8 @@ const Menu: React.FC = () => {
   };
 
   useEffect(() => {
-    // const isCurrentMenuNum = localStorage.getItem('activeMenuNum');
-    // const currentMenuNum = isCurrentMenuNum ? +isCurrentMenuNum : 1;
-    // dispatch(setActiveMenuNum(currentMenuNum));
     getSetCurrentNumFromLS(activeLsNumbers.MENU_NUM, setActiveMenuNumber);
+    // eslint-disable-next-line
   }, []);
 
   return (

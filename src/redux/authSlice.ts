@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
 import { activeLsNumbers } from '../types/appTypes';
+import { AuthState, User } from '../types/reduxTypes';
 import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
 } from '../types/FormikTypes';
-import { AuthState, User } from '../types/reduxTypes';
 
 export const signUserUp = createAsyncThunk(
   'auth/signUserUp',
@@ -65,6 +65,22 @@ export const getMe = createAsyncThunk(
   }
 );
 
+export const updateMe = createAsyncThunk(
+  'auth/updateMe',
+  async (newUserData: any, { rejectWithValue }) => {
+    try {
+      const response = await authAPI.updateMe(newUserData);
+
+      console.log(response);
+
+      return response.data.data.user;
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 export const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { dispatch }) => {
@@ -72,7 +88,7 @@ export const logOut = createAsyncThunk(
     // removing active menu numbers from ls
     localStorage.removeItem(activeLsNumbers.MENU_NUM);
     localStorage.removeItem(activeLsNumbers.SETTINGS_NUM);
-    
+
     dispatch(getMe());
   }
 );
@@ -81,6 +97,7 @@ const initialState: AuthState = {
   user: null,
   isFetching: false,
   isGetMeFetching: false,
+  isUserUpdateFetching: false,
   errorMsg: '',
 };
 
@@ -128,6 +145,18 @@ const authSlice = createSlice({
     [getMe.rejected.type]: (state) => {
       state.user = null;
       state.isGetMeFetching = false;
+    },
+    [updateMe.pending.type]: (state) => {
+      state.isUserUpdateFetching = true;
+      state.errorMsg = '';
+    },
+    [updateMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.isUserUpdateFetching = false;
+      state.user = action.payload;
+    },
+    [updateMe.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isUserUpdateFetching = false;
+      state.errorMsg = action.payload;
     },
   },
 });

@@ -24,7 +24,7 @@ const SettingsNav: React.FC = () => {
   }, []);
 
   return (
-    <div className={s.settingsNav}>
+    <nav className={s.settingsNav}>
       <ul className={s.settingsNav__list}>
         <MenuItem
           activeNum={activeNum}
@@ -45,7 +45,7 @@ const SettingsNav: React.FC = () => {
           setActiveNum={setActiveNum}
         />
       </ul>
-    </div>
+    </nav>
   );
 };
 

@@ -25,4 +25,7 @@ export const authAPI = {
   getMe: async () => {
     return await axiosInstance.get('/users/me');
   },
+  updateMe: async (newUserData: any) => {
+    return await axiosInstance.patch('/users/updateMe', newUserData);
+  },
 };

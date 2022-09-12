@@ -8,6 +8,7 @@ import MessagesPage from '../../pages/MessagesPage/MessagesPage';
 import TodosPage from '../../pages/TodosPage/TodosPage';
 import SettingsPage from '../../pages/SettingsPage/SettingsPage';
 import Layout from '../Layout/Layout';
+import GeneralSettings from '../Settings/GeneralSettings/GeneralSettings';
 
 const AppRouter: React.FC = () => {
   return (
@@ -26,7 +27,7 @@ const AppRouter: React.FC = () => {
         <Route path="messages" element={<MessagesPage />} />
         <Route path="todos" element={<TodosPage />} />
         <Route path="settings" element={<SettingsPage />}>
-          <Route index element={<div>General</div>} />
+          <Route index element={<GeneralSettings />} />
           <Route path="security" element={<div>Security</div>} />
         </Route>
       </Route>

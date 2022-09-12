@@ -1,0 +1,21 @@
+@import '../../../../vars';
+
+.form {
+  &__label {
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: $color7;
+  }
+
+  &__control {
+    @extend %form-control;
+  }
+
+  &__input {
+    @extend %form-input;
+    width: 354px;
+    padding: 10px;
+    color: $color10;
+    background-color: $color6;
+  }
+}
