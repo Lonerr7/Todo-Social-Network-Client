@@ -49,6 +49,8 @@ const RegisterForm: React.FC = () => {
           placeholder="Email"
           inputClass={s.registerForm__formInput}
           type="text"
+          label="Email"
+          labelClass={s.registerForm__label}
         />
         <FormControl
           customClass={s.registerForm__formControl}
@@ -56,6 +58,26 @@ const RegisterForm: React.FC = () => {
           placeholder="Nickname"
           inputClass={s.registerForm__formInput}
           type="text"
+          label="Nickname"
+          labelClass={s.registerForm__label}
+        />
+        <FormControl
+          customClass={s.registerForm__formControl}
+          field="firstName"
+          placeholder="First Name"
+          inputClass={s.registerForm__formInput}
+          type="text"
+          label="First Name"
+          labelClass={s.registerForm__label}
+        />
+        <FormControl
+          customClass={s.registerForm__formControl}
+          field="lastName"
+          placeholder="Last Name"
+          inputClass={s.registerForm__formInput}
+          type="text"
+          label="Last Name"
+          labelClass={s.registerForm__label}
         />
         <FormControl
           customClass={s.registerForm__formControl}
@@ -63,6 +85,8 @@ const RegisterForm: React.FC = () => {
           placeholder="Password"
           inputClass={s.registerForm__formInput}
           type="password"
+          label="Password"
+          labelClass={s.registerForm__label}
         />
         <FormControl
           customClass={s.registerForm__formControl}
@@ -70,6 +94,8 @@ const RegisterForm: React.FC = () => {
           placeholder="Password confirmation"
           inputClass={s.registerForm__formInput}
           type="password"
+          label="Password Confirmation"
+          labelClass={s.registerForm__label}
         />
 
         <button className={s.registerForm__btn} type="submit">

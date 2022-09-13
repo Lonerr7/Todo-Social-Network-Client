@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import Page from '../../pages/Page/Page';
 import RegisterForm from '../common/RegisterForm/RegisterForm';
 import LoginForm from '../common/LoginForm/LoginForm';
 import UserPage from '../../pages/UserPage/UserPage';
@@ -9,17 +8,18 @@ import TodosPage from '../../pages/TodosPage/TodosPage';
 import SettingsPage from '../../pages/SettingsPage/SettingsPage';
 import Layout from '../Layout/Layout';
 import GeneralSettings from '../Settings/GeneralSettings/GeneralSettings';
+import PageContainer from '../../pages/Page/PageContainer';
 
 const AppRouter: React.FC = () => {
   return (
     <Routes>
       <Route
         path="/register"
-        element={<Page form={<RegisterForm />} title="Sign Up" />}
+        element={<PageContainer form={<RegisterForm />} title="Sign Up" />}
       />
       <Route
         path="/login"
-        element={<Page form={<LoginForm />} title="Log in" />}
+        element={<PageContainer form={<LoginForm />} title="Log in" />}
       />
       <Route path="/" element={<Layout />}>
         <Route index element={<UserPage />} />

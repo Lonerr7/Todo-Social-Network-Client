@@ -2,21 +2,14 @@ import './reset.scss';
 import './fonts.scss';
 import './App.scss';
 import AppRouter from './components/Router/AppRouter';
-import { getMe } from './redux/authSlice';
-import { useEffect } from 'react';
-import { useAppDispatch } from './hooks/hooks';
 
-const App: React.FC = () => {
-  const dispatch = useAppDispatch();
+type AppProps = {
+  isRegisterLoginPageOpen: boolean;
+};
 
-  // Checking if we are logged in or not to then automatically show the content if we are
-  useEffect(() => {
-    dispatch(getMe());
-    // eslint-disable-next-line
-  }, []);
-
+const App: React.FC<AppProps> = ({ isRegisterLoginPageOpen }) => {
   return (
-    <div className="App">
+    <div className={isRegisterLoginPageOpen ? '' : 'App'}>
       <AppRouter />
     </div>
   );

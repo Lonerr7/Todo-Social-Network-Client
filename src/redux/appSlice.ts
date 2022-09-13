@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState = {
   activeMenuNum: 1,
   activeSettingsNum: 1,
+  isRegisterOrLoginPageOpen: false,
 };
 
 const appSlice = createSlice({
@@ -17,8 +18,15 @@ const appSlice = createSlice({
       state.activeSettingsNum = action.payload;
       localStorage.setItem('activeSettingsNum', action.payload.toString());
     },
+    toggleRegisterLoginPageOpening: (state, action: PayloadAction<boolean>) => {
+      state.isRegisterOrLoginPageOpen = action.payload;
+    },
   },
 });
 
 export default appSlice.reducer;
-export const { setActiveMenuNum, setActiveSettingsNum } = appSlice.actions;
+export const {
+  setActiveMenuNum,
+  setActiveSettingsNum,
+  toggleRegisterLoginPageOpening,
+} = appSlice.actions;
