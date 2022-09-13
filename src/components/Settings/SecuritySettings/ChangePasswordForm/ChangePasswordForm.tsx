@@ -30,7 +30,9 @@ const initialValues: UpdateUserPasswordInitialValues = {
 };
 
 const ChangePasswordForm: React.FC = () => {
-  const { isChangingPasswordFetching, errorMsg } = useAppSelector((state) => state.auth);
+  const { isChangingPasswordFetching, errorMsg } = useAppSelector(
+    (state) => state.auth
+  );
   const { isNewPasswordSuccessfulySent } = useAppSelector(
     (state) => state.forms
   );
@@ -87,9 +89,15 @@ const ChangePasswordForm: React.FC = () => {
               msgClass={s.form__success}
             />
           </div>
+          {errorMsg ? (
+            <div className={s.form__error}>
+              <TextError>{errorMsg}</TextError>
+            </div>
+          ) : (
+            ''
+          )}
         </Form>
       </Formik>
-      {errorMsg ? <TextError>{errorMsg}</TextError> : ''}
     </>
   );
 };
