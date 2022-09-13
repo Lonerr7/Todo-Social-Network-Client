@@ -1,7 +1,7 @@
+import s from './GeneralSettings.module.scss';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { clearErrorMsg } from '../../../redux/authSlice';
-import s from './GeneralSettings.module.scss';
 import UpdateUserInfoForm from './UpdateUserInfoForm/UpdateUserInfoForm';
 
 const GeneralSettings: React.FC = () => {
@@ -16,7 +16,10 @@ const GeneralSettings: React.FC = () => {
   return (
     <div className={s.general}>
       <h1 className={s.general__title}>General</h1>
-      <UpdateUserInfoForm />
+      <div className={s.general__inner}>
+        <h2 className={s.general__subtitle}>Profile</h2>
+        <UpdateUserInfoForm />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import { Form, Formik } from 'formik';
 import s from './UpdateUserInfoForm.module.scss';
+import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { UpdateUserFromInitialValues } from '../../../../types/FormikTypes';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
@@ -7,6 +7,7 @@ import FormControl from '../../../common/FormControl/FormControl';
 import { updateMe } from '../../../../redux/authSlice';
 import TextError from '../../../common/TextError/TextError';
 import Preloader from '../../../common/Preloader/Preloader';
+import FormStatus from '../../../common/FormStatus/FormStatus';
 
 const validationSchema = yup.object({
   nickname: yup.string().max(20, 'Your nickname is too long'),
@@ -84,10 +85,12 @@ const UpdateUserInfoForm: React.FC = () => {
             <button className={s.form__btn} type="submit">
               Update Profile
             </button>
-            {isUserUpdateFetching && (
-              <Preloader customClass={s.form__preloader} />
-            )}
-            {isUserInfoSuccessfulySent ? <p className={s.form__success}>Success!</p> : null}
+            <FormStatus
+              isFetching={isUserUpdateFetching}
+              isSuccessfulySent={isUserInfoSuccessfulySent}
+              preloaderClass={s.form__preloader}
+              msgClass={s.form__success}
+            />
           </div>
         </Form>
       </Formik>

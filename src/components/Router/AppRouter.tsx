@@ -9,6 +9,7 @@ import SettingsPage from '../../pages/SettingsPage/SettingsPage';
 import Layout from '../Layout/Layout';
 import GeneralSettings from '../Settings/GeneralSettings/GeneralSettings';
 import PageContainer from '../../pages/Page/PageContainer';
+import SecuritySettings from '../Settings/SecuritySettings/SecuritySettings';
 
 const AppRouter: React.FC = () => {
   return (
@@ -28,7 +29,7 @@ const AppRouter: React.FC = () => {
         <Route path="todos" element={<TodosPage />} />
         <Route path="settings" element={<SettingsPage />}>
           <Route index element={<GeneralSettings />} />
-          <Route path="security" element={<div>Security</div>} />
+          <Route path="security" element={<SecuritySettings />} />
         </Route>
       </Route>
       <Route path="*" element={<div>Not Found</div>} />

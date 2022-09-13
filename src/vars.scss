@@ -129,3 +129,23 @@ $color11: rgb(32, 159, 32);
   width: 80%;
   padding-right: 30px;
 }
+
+%title {
+  font-size: 26px;
+  font-weight: 500;
+  padding-bottom: 13px;
+  border-bottom: 1px solid $color8;
+  margin-bottom: 20px;
+}
+
+%subtitle {
+  font-size: 22px;
+  font-weight: 500;
+  color: $color10;
+  border-bottom: 1px solid $color8;
+  margin-bottom: 20px;
+}
+
+%inner-page--inner {
+  margin-left: 20px;
+}
