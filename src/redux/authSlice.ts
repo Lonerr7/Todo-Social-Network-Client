@@ -7,6 +7,7 @@ import {
   RegisterFormInitialValues,
   UpdateUserFromInitialValues,
 } from '../types/FormikTypes';
+import { showHideSuccessMsg } from './formsSlice';
 
 export const signUserUp = createAsyncThunk(
   'auth/signUserUp',
@@ -68,11 +69,23 @@ export const getMe = createAsyncThunk(
 
 export const updateMe = createAsyncThunk(
   'auth/updateMe',
-  async (newUserData: UpdateUserFromInitialValues, { rejectWithValue }) => {
+  async (
+    newUserData: UpdateUserFromInitialValues,
+    { rejectWithValue, dispatch }
+  ) => {
     try {
       const response = await authAPI.updateMe(newUserData);
 
       console.log(response);
+
+      // If OK, show success message in form. Then delete it after 5 sec.
+      if (response.data.data.user) {
+        dispatch(showHideSuccessMsg(true));
+
+        setTimeout(() => {
+          dispatch(showHideSuccessMsg(false));
+        }, 5000);
+      }
 
       return response.data.data.user;
     } catch (error: any) {

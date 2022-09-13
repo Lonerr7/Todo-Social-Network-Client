@@ -20,6 +20,7 @@ const UpdateUserInfoForm: React.FC = () => {
   const { errorMsg, isUserUpdateFetching } = useAppSelector(
     (state) => state.auth
   );
+  const { isUserInfoSuccessfulySent } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();
 
   const initialValues: UpdateUserFromInitialValues = {
@@ -86,6 +87,7 @@ const UpdateUserInfoForm: React.FC = () => {
             {isUserUpdateFetching && (
               <Preloader customClass={s.form__preloader} />
             )}
+            {isUserInfoSuccessfulySent ? <p className={s.form__success}>Success!</p> : null}
           </div>
         </Form>
       </Formik>

@@ -48,8 +48,9 @@ $color7: rgb(24, 24, 24);
 $color8: rgb(220, 220, 220);
 $color9: rgb(195, 195, 195);
 $color10: rgb(73, 73, 73);
+$color11: rgb(32, 159, 32);
 
-// tempaltes
+// === tempaltes ===
 
 %btn-small {
   display: flex;
@@ -73,7 +74,6 @@ $color10: rgb(73, 73, 73);
   justify-content: center;
   align-items: center;
   background-color: $color1;
-  // overflow-y: scroll;
 }
 
 %form-control {
