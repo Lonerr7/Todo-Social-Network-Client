@@ -1,4 +1,4 @@
-import s from './UpdateUserInfoForm.module.scss';
+import s from '../../../../styles/formStyle.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { UpdateUserFromInitialValues } from '../../../../types/FormikTypes';
@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import FormControl from '../../../common/FormControl/FormControl';
 import { updateMe } from '../../../../redux/authSlice';
 import TextError from '../../../common/TextError/TextError';
-import Preloader from '../../../common/Preloader/Preloader';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 
 const validationSchema = yup.object({

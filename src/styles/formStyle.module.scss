@@ -1,6 +1,8 @@
-@import '../../../../vars';
+@import '../vars';
 
 .form {
+  @extend %settings-elem;
+
   &__label {
     margin-bottom: 5px;
     font-size: 20px;
@@ -28,7 +30,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
   }
 
   &__btn {

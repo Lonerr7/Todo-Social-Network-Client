@@ -1,8 +1,8 @@
 export type RegisterFormInitialValues = {
   email: string;
   nickname: string;
-  firstName: string,
-  lastName: string,
+  firstName: string;
+  lastName: string;
   password: string;
   passwordConfirm: string;
 };
@@ -18,4 +18,10 @@ export type UpdateUserFromInitialValues = {
   firstName: string;
   lastName: string;
   bio: string;
+};
+
+export type UpdateUserPasswordInitialValues = {
+  currentPassword: string;
+  password: string;
+  passwordConfirm: string;
 };

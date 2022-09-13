@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
   RegisterFormInitialValues,
   LoginFormInitialValues,
-  UpdateUserFromInitialValues
+  UpdateUserFromInitialValues,
+  UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
 
 const axiosInstance = axios.create({
@@ -28,5 +29,8 @@ export const authAPI = {
   },
   updateMe: async (newUserData: UpdateUserFromInitialValues) => {
     return await axiosInstance.patch('/users/updateMe', newUserData);
+  },
+  changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {
+    return await axiosInstance.patch('/users/updateMyPassword', passwords);
   },
 };

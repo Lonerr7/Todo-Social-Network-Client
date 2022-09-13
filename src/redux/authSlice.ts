@@ -6,8 +6,12 @@ import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
   UpdateUserFromInitialValues,
+  UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
-import { showHideSuccessMsg } from './formsSlice';
+import {
+  showHideChangePasswordSuccessMessage,
+  showHideUserInfoSuccessMsg,
+} from './formsSlice';
 
 export const signUserUp = createAsyncThunk(
   'auth/signUserUp',
@@ -80,11 +84,43 @@ export const updateMe = createAsyncThunk(
 
       // If OK, show success message in form. Then delete it after 5 sec.
       if (response.data.data.user) {
-        dispatch(showHideSuccessMsg(true));
+        dispatch(showHideUserInfoSuccessMsg(true));
 
         setTimeout(() => {
-          dispatch(showHideSuccessMsg(false));
+          dispatch(showHideUserInfoSuccessMsg(false));
         }, 5000);
+      }
+
+      return response.data.data.user;
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const changePassword = createAsyncThunk(
+  'auth/changePassword',
+  async (
+    passwords: UpdateUserPasswordInitialValues,
+    { rejectWithValue, dispatch }
+  ) => {
+    try {
+      const response = await authAPI.changeMyPassword(passwords);
+      console.log(response);
+
+      // If OK, show success message in form. Then delete it after 5 sec.
+      if (response.data.data.user) {
+        dispatch(showHideChangePasswordSuccessMessage(true));
+
+        setTimeout(() => {
+          dispatch(showHideChangePasswordSuccessMessage(false));
+        }, 5000);
+      }
+
+      // save jwt to localstorage
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
       }
 
       return response.data.data.user;
@@ -112,6 +148,7 @@ const initialState: AuthState = {
   isFetching: false,
   isGetMeFetching: false,
   isUserUpdateFetching: false,
+  isChangingPasswordFetching: false,
   errorMsg: '',
 };
 
@@ -170,6 +207,18 @@ const authSlice = createSlice({
     },
     [updateMe.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isUserUpdateFetching = false;
+      state.errorMsg = action.payload;
+    },
+    [changePassword.pending.type]: (state) => {
+      state.isChangingPasswordFetching = true;
+      state.errorMsg = '';
+    },
+    [changePassword.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.isChangingPasswordFetching = false;
+      state.user = action.payload;
+    },
+    [changePassword.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isChangingPasswordFetching = false;
       state.errorMsg = action.payload;
     },
   },

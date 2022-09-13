@@ -2,17 +2,27 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
   isUserInfoSuccessfulySent: false,
+  isNewPasswordSuccessfulySent: false,
 };
 
 const appSlice = createSlice({
   name: 'forms',
   initialState,
   reducers: {
-    showHideSuccessMsg: (state, action: PayloadAction<boolean>) => {
+    showHideUserInfoSuccessMsg: (state, action: PayloadAction<boolean>) => {
       state.isUserInfoSuccessfulySent = action.payload;
+    },
+    showHideChangePasswordSuccessMessage: (
+      state,
+      action: PayloadAction<boolean>
+    ) => {
+      state.isNewPasswordSuccessfulySent = action.payload;
     },
   },
 });
 
 export default appSlice.reducer;
-export const { showHideSuccessMsg } = appSlice.actions;
+export const {
+  showHideUserInfoSuccessMsg,
+  showHideChangePasswordSuccessMessage,
+} = appSlice.actions;
