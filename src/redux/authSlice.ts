@@ -100,7 +100,6 @@ const initialState: AuthState = {
   isGetMeFetching: false,
   isUserUpdateFetching: false,
   errorMsg: '',
-  
 };
 
 const authSlice = createSlice({

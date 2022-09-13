@@ -11,11 +11,16 @@
     @extend %form-control;
   }
 
+  &__textarea {
+    resize: none;
+    height: 150px;
+  }
+
   &__input {
     @extend %form-input;
     width: 354px;
     padding: 10px;
-    color: $color10;
+    color: $color7;
     background-color: $color6;
   }
 

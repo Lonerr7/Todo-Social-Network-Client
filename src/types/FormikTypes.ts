@@ -1,6 +1,8 @@
 export type RegisterFormInitialValues = {
   email: string;
   nickname: string;
+  firstName: string,
+  lastName: string,
   password: string;
   passwordConfirm: string;
 };

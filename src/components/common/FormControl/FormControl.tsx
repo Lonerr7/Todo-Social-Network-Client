@@ -1,4 +1,4 @@
-import { ErrorMessage, Field } from 'formik';
+import { ErrorMessage, Field, FieldProps } from 'formik';
 import TextError from '../TextError/TextError';
 import s from './FormControl.module.scss';
 
@@ -10,6 +10,7 @@ type FormControlProps = {
   type: 'text' | 'password';
   label?: string;
   labelClass?: string;
+  component?: string | React.ComponentType<FieldProps>;
 };
 
 const FormControl: React.FC<FormControlProps> = ({
@@ -20,6 +21,7 @@ const FormControl: React.FC<FormControlProps> = ({
   type,
   label,
   labelClass,
+  component,
 }) => {
   return (
     <div className={customClass}>
@@ -32,6 +34,7 @@ const FormControl: React.FC<FormControlProps> = ({
         id={field}
         type={type}
         placeholder={placeholder}
+        component={component}
       />
       <ErrorMessage name={field}>
         {(err) => <TextError customClass={s.textError}>{err}</TextError>}

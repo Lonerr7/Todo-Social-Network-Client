@@ -10,6 +10,8 @@ import Preloader from '../../../common/Preloader/Preloader';
 
 const validationSchema = yup.object({
   nickname: yup.string().max(20, 'Your nickname is too long'),
+  firstName: yup.string().max(20, 'Your first name is too long'),
+  lastName: yup.string().max(20, 'Your last name is too long'),
   bio: yup.string().max(100, 'Your bio is too long'),
 });
 
@@ -23,8 +25,8 @@ const UpdateUserInfoForm: React.FC = () => {
   const initialValues: UpdateUserFromInitialValues = {
     nickname: currentUser.nickname,
     bio: currentUser.bio ? currentUser.bio : '',
-    firstName: '',
-    lastName: '',
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
   };
 
   const onSubmit = (values: UpdateUserFromInitialValues) => {
@@ -50,12 +52,31 @@ const UpdateUserInfoForm: React.FC = () => {
           />
           <FormControl
             customClass={s.form__control}
+            field="firstName"
+            placeholder="First name"
+            type="text"
+            inputClass={s.form__input}
+            label="First name"
+            labelClass={s.form__label}
+          />
+          <FormControl
+            customClass={s.form__control}
+            field="lastName"
+            placeholder="Last name"
+            type="text"
+            inputClass={s.form__input}
+            label="Last name"
+            labelClass={s.form__label}
+          />
+          <FormControl
+            customClass={s.form__control}
             field="bio"
             placeholder="Bio"
             type="text"
-            inputClass={s.form__input}
+            inputClass={`${s.form__input} ${s.form__textarea}`}
             label="Bio"
             labelClass={s.form__label}
+            component="textarea"
           />
 
           <div className={s.form__box}>

@@ -9,6 +9,8 @@ import FormControl from '../FormControl/FormControl';
 const initialValues = {
   email: 'newuser@gmail.com',
   nickname: 'New User',
+  firstName: 'Vanya',
+  lastName: 'Karabankov',
   password: 'gZ929ufnAdsa9',
   passwordConfirm: 'gZ929ufnAdsa9',
 } as RegisterFormInitialValues;
@@ -19,6 +21,8 @@ const validationSchema = yup.object({
     .email('Enter a valid email')
     .required('Please, enter an email'),
   nickname: yup.string().required('Please, enter a nickname'),
+  firstName: yup.string().required('Please, enter your first name'),
+  lastName: yup.string().required('Please, enter your last name'),
   password: yup
     .string()
     .required('Please, enter your password')
