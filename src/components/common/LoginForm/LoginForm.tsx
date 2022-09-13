@@ -47,6 +47,8 @@ const LoginForm: React.FC = () => {
           placeholder="Email"
           inputClass={s.loginForm__formInput}
           type="text"
+          label="Email" 
+          labelClass={s.loginForm__label}
         />
         <FormControl
           customClass={s.loginForm__formControl}
@@ -54,6 +56,8 @@ const LoginForm: React.FC = () => {
           placeholder="Password"
           inputClass={s.loginForm__formInput}
           type="password"
+          label="Password" 
+          labelClass={s.loginForm__label}
         />
         <FormControl
           customClass={s.loginForm__formControl}
@@ -61,6 +65,8 @@ const LoginForm: React.FC = () => {
           placeholder="Password confirmation"
           inputClass={s.loginForm__formInput}
           type="password"
+          label="Password confirmation" 
+          labelClass={s.loginForm__label}
         />
 
         <button className={s.loginForm__btn} type="submit">
