@@ -1,15 +1,15 @@
 import s from './GeneralSettings.module.scss';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/hooks';
-import { clearErrorMsg } from '../../../redux/authSlice';
 import UpdateUserInfoForm from './UpdateUserInfoForm/UpdateUserInfoForm';
+import { resetUserErrorMsgs } from '../../../redux/userSlice';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
 
   // reset errorMsg in settings
   useEffect(() => {
-    dispatch(clearErrorMsg());
+    dispatch(resetUserErrorMsgs());
     // eslint-disable-next-line
   }, []);
 

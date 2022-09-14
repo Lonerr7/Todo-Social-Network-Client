@@ -7,7 +7,7 @@ import FormControl from '../../../common/FormControl/FormControl';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { deleteMyProfile } from '../../../../redux/authSlice';
+import { deleteMyProfile } from '../../../../redux/userSlice';
 
 const initialValues: DeleteMyProfileInitialValues = {
   password: '',
@@ -26,8 +26,8 @@ const validationSchema = yup.object({
 });
 
 const DeleteMyProfileForm: React.FC = () => {
-  const { isUserDeletingFetching, errorMsg } = useAppSelector(
-    (state) => state.auth
+  const { isUserDeletingFetching, deleteMyProfileErrorMsg } = useAppSelector(
+    (state) => state.user
   );
   const { isUserSucessfulyDeleted } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();
@@ -74,7 +74,10 @@ const DeleteMyProfileForm: React.FC = () => {
           />
         </div>
 
-        <FormError errorMsg={errorMsg} customClass={s.form__error} />
+        <FormError
+          errorMsg={deleteMyProfileErrorMsg}
+          customClass={s.form__error}
+        />
       </Form>
     </Formik>
   );

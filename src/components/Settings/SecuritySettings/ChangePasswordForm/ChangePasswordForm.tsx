@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import FormControl from '../../../common/FormControl/FormControl';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { changePassword } from '../../../../redux/authSlice';
+import { changePassword } from '../../../../redux/userSlice';
 import FormError from '../../../common/FormError/FormError';
 
 const initialValues: UpdateUserPasswordInitialValues = {
@@ -30,8 +30,8 @@ const validationSchema = yup.object({
 });
 
 const ChangePasswordForm: React.FC = () => {
-  const { isChangingPasswordFetching, errorMsg } = useAppSelector(
-    (state) => state.auth
+  const { isChangingPasswordFetching, changePasswordErrorMsg } = useAppSelector(
+    (state) => state.user
   );
   const { isNewPasswordSuccessfulySent } = useAppSelector(
     (state) => state.forms
@@ -90,7 +90,10 @@ const ChangePasswordForm: React.FC = () => {
             />
           </div>
 
-          <FormError errorMsg={errorMsg} customClass={s.form__error} />
+          <FormError
+            errorMsg={changePasswordErrorMsg}
+            customClass={s.form__error}
+          />
         </Form>
       </Formik>
     </>

@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { UpdateUserFromInitialValues } from '../../../../types/FormikTypes';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import FormControl from '../../../common/FormControl/FormControl';
-import { updateMe } from '../../../../redux/authSlice';
+import { updateMe } from '../../../../redux/userSlice';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
 
@@ -17,8 +17,8 @@ const validationSchema = yup.object({
 
 const UpdateUserInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
-  const { errorMsg, isUserUpdateFetching } = useAppSelector(
-    (state) => state.auth
+  const { updateMeErrorMsg, isUserUpdateFetching } = useAppSelector(
+    (state) => state.user
   );
   const { isUserInfoSuccessfulySent } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();
@@ -91,7 +91,7 @@ const UpdateUserInfoForm: React.FC = () => {
               msgClass={s.form__success}
             />
           </div>
-          <FormError customClass={s.form__error} errorMsg={errorMsg} />
+          <FormError customClass={s.form__error} errorMsg={updateMeErrorMsg} />
         </Form>
       </Formik>
     </>

@@ -1,8 +1,19 @@
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../../hooks/hooks';
+import { resetUserErrorMsgs } from '../../../redux/userSlice';
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';
 import DeleteMyProfileForm from './DeleteMyProfileForm/DeleteMyProfileForm';
 import s from './SecuritySettings.module.scss';
 
 const SecuritySettings: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(resetUserErrorMsgs());
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className={s.security}>
       <h1 className={s.security__title}>Security</h1>
