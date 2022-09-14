@@ -14,5 +14,6 @@ export type AuthState = {
   isGetMeFetching: boolean;
   isUserUpdateFetching: boolean;
   isChangingPasswordFetching: boolean;
+  isUserDeletingFetching: boolean;
   errorMsg: string;
 };

@@ -8,6 +8,12 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { changePassword } from '../../../../redux/authSlice';
 import FormError from '../../../common/FormError/FormError';
 
+const initialValues: UpdateUserPasswordInitialValues = {
+  currentPassword: '',
+  password: '',
+  passwordConfirm: '',
+};
+
 const validationSchema = yup.object({
   currentPassword: yup
     .string()
@@ -22,12 +28,6 @@ const validationSchema = yup.object({
     .oneOf([yup.ref('password'), null], 'Passwords must match')
     .required('Please, confirm your new password'),
 });
-
-const initialValues: UpdateUserPasswordInitialValues = {
-  currentPassword: '',
-  password: '',
-  passwordConfirm: '',
-};
 
 const ChangePasswordForm: React.FC = () => {
   const { isChangingPasswordFetching, errorMsg } = useAppSelector(
@@ -80,7 +80,7 @@ const ChangePasswordForm: React.FC = () => {
 
           <div className={s.form__box}>
             <button className={s.form__btn} type="submit">
-              Update Profile
+              Change Password
             </button>
             <FormStatus
               isFetching={isChangingPasswordFetching}

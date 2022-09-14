@@ -5,8 +5,8 @@ import { UpdateUserFromInitialValues } from '../../../../types/FormikTypes';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import FormControl from '../../../common/FormControl/FormControl';
 import { updateMe } from '../../../../redux/authSlice';
-import TextError from '../../../common/TextError/TextError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
+import FormError from '../../../common/FormError/FormError';
 
 const validationSchema = yup.object({
   nickname: yup.string().max(20, 'Your nickname is too long'),
@@ -91,9 +91,9 @@ const UpdateUserInfoForm: React.FC = () => {
               msgClass={s.form__success}
             />
           </div>
+          <FormError customClass={s.form__error} errorMsg={errorMsg} />
         </Form>
       </Formik>
-      {errorMsg ? <TextError>{errorMsg}</TextError> : ''}
     </>
   );
 };

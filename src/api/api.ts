@@ -5,6 +5,7 @@ import {
   LoginFormInitialValues,
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
+  DeleteMyProfileInitialValues,
 } from '../types/FormikTypes';
 
 const axiosInstance = axios.create({
@@ -32,5 +33,10 @@ export const authAPI = {
   },
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {
     return await axiosInstance.patch('/users/updateMyPassword', passwords);
+  },
+  deleteMe: async (passwords: DeleteMyProfileInitialValues) => {
+    return await axiosInstance.delete('/users/deleteMe', {
+      data: passwords,
+    });
   },
 };

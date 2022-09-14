@@ -3,6 +3,7 @@ import { authAPI } from '../api/api';
 import { activeLsNumbers } from '../types/appTypes';
 import { AuthState, User } from '../types/reduxTypes';
 import {
+  DeleteMyProfileInitialValues,
   LoginFormInitialValues,
   RegisterFormInitialValues,
   UpdateUserFromInitialValues,
@@ -143,12 +144,34 @@ export const logOut = createAsyncThunk(
   }
 );
 
+export const deleteMyProfile = createAsyncThunk(
+  'auth/deleteMyProfile',
+  async (
+    passwords: DeleteMyProfileInitialValues,
+    { rejectWithValue, dispatch }
+  ) => {
+    try {
+      const response = await authAPI.deleteMe(passwords);
+
+      if (!response.data.data) {
+        await dispatch(getMe());
+      }
+
+      console.log(response);
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const initialState: AuthState = {
   user: null,
   isFetching: false,
   isGetMeFetching: false,
   isUserUpdateFetching: false,
   isChangingPasswordFetching: false,
+  isUserDeletingFetching: false,
   errorMsg: '',
 };
 
@@ -219,6 +242,18 @@ const authSlice = createSlice({
     },
     [changePassword.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isChangingPasswordFetching = false;
+      state.errorMsg = action.payload;
+    },
+    [deleteMyProfile.pending.type]: (state) => {
+      state.isUserDeletingFetching = true;
+      state.errorMsg = '';
+    },
+    [deleteMyProfile.fulfilled.type]: (state) => {
+      state.isUserDeletingFetching = false;
+      state.user = null;
+    },
+    [deleteMyProfile.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isUserDeletingFetching = false;
       state.errorMsg = action.payload;
     },
   },

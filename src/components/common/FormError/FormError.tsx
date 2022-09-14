@@ -9,9 +9,9 @@ const FormError: React.FC<FormErrorProps> = ({ errorMsg, customClass }) => {
   return (
     <>
       {errorMsg ? (
-        <p className={customClass}>
+        <div className={customClass}>
           <TextError>{errorMsg}</TextError>
-        </p>
+        </div>
       ) : (
         ''
       )}

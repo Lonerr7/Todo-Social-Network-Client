@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState = {
   isUserInfoSuccessfulySent: false,
   isNewPasswordSuccessfulySent: false,
+  isUserSucessfulyDeleted: false,
 };
 
 const appSlice = createSlice({
