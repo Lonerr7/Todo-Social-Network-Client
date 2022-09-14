@@ -12,3 +12,8 @@ export type SignUpResponse = {
     };
   };
 };
+
+export type DeleteMePasswords = {
+  password: string;
+  passwordConfirm: string;
+};

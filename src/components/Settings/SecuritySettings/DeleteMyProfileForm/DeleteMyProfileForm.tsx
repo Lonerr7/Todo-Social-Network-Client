@@ -8,20 +8,21 @@ import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { deleteMyProfile } from '../../../../redux/userSlice';
+import { DeleteMePasswords } from '../../../../types/axiosTypes';
 
 const initialValues: DeleteMyProfileInitialValues = {
-  password: '',
-  passwordConfirm: '',
+  myPassword: '',
+  myPasswordConfirm: '',
 };
 
 const validationSchema = yup.object({
-  password: yup
+  myPassword: yup
     .string()
     .required('Please, enter your password')
     .min(8, 'Password must be more than 8 characters'),
-  passwordConfirm: yup
+  myPasswordConfirm: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .oneOf([yup.ref('myPassword'), null], 'Passwords must match')
     .required('Please, confirm your password'),
 });
 
@@ -32,8 +33,16 @@ const DeleteMyProfileForm: React.FC = () => {
   const { isUserSucessfulyDeleted } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();
 
-  const onSubmit = (passwords: DeleteMyProfileInitialValues) => {
-    dispatch(deleteMyProfile(passwords));
+  const onSubmit = ({
+    myPassword,
+    myPasswordConfirm,
+  }: DeleteMyProfileInitialValues) => {
+    const obj: DeleteMePasswords = {
+      password: myPassword,
+      passwordConfirm: myPasswordConfirm,
+    };
+
+    dispatch(deleteMyProfile(obj));
   };
 
   return (
@@ -45,7 +54,7 @@ const DeleteMyProfileForm: React.FC = () => {
       <Form className={s.form}>
         <FormControl
           customClass={s.form__control}
-          field="password"
+          field="myPassword"
           placeholder="Password"
           type="password"
           inputClass={s.form__input}
@@ -54,7 +63,7 @@ const DeleteMyProfileForm: React.FC = () => {
         />
         <FormControl
           customClass={s.form__control}
-          field="passwordConfirm"
+          field="myPasswordConfirm"
           placeholder="Confirm your password"
           type="password"
           inputClass={s.form__input}

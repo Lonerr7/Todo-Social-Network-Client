@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
+import { DeleteMePasswords } from '../types/axiosTypes';
 import {
-  DeleteMyProfileInitialValues,
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
@@ -74,10 +74,7 @@ export const changePassword = createAsyncThunk(
 
 export const deleteMyProfile = createAsyncThunk(
   'auth/deleteMyProfile',
-  async (
-    passwords: DeleteMyProfileInitialValues,
-    { rejectWithValue, dispatch }
-  ) => {
+  async (passwords: DeleteMePasswords, { rejectWithValue, dispatch }) => {
     try {
       const response = await authAPI.deleteMe(passwords);
 

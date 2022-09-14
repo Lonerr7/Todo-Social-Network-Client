@@ -27,6 +27,6 @@ export type UpdateUserPasswordInitialValues = {
 };
 
 export type DeleteMyProfileInitialValues = {
-  password: string;
-  passwordConfirm: string;
+  myPassword: string;
+  myPasswordConfirm: string;
 };

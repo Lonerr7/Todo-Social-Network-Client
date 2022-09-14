@@ -1,11 +1,11 @@
 import axios from 'axios';
+import { DeleteMePasswords } from '../types/axiosTypes';
 
 import {
   RegisterFormInitialValues,
   LoginFormInitialValues,
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
-  DeleteMyProfileInitialValues,
 } from '../types/FormikTypes';
 
 const axiosInstance = axios.create({
@@ -34,7 +34,7 @@ export const authAPI = {
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {
     return await axiosInstance.patch('/users/updateMyPassword', passwords);
   },
-  deleteMe: async (passwords: DeleteMyProfileInitialValues) => {
+  deleteMe: async (passwords: DeleteMePasswords) => {
     return await axiosInstance.delete('/users/deleteMe', {
       data: passwords,
     });
