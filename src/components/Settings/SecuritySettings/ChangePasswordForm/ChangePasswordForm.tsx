@@ -6,7 +6,7 @@ import FormControl from '../../../common/FormControl/FormControl';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { changePassword } from '../../../../redux/authSlice';
-import TextError from '../../../common/TextError/TextError';
+import FormError from '../../../common/FormError/FormError';
 
 const validationSchema = yup.object({
   currentPassword: yup
@@ -89,13 +89,8 @@ const ChangePasswordForm: React.FC = () => {
               msgClass={s.form__success}
             />
           </div>
-          {errorMsg ? (
-            <div className={s.form__error}>
-              <TextError>{errorMsg}</TextError>
-            </div>
-          ) : (
-            ''
-          )}
+
+          <FormError errorMsg={errorMsg} customClass={s.form__error} />
         </Form>
       </Formik>
     </>

@@ -8,6 +8,7 @@ const SecuritySettings: React.FC = () => {
       <div className={s.security__inner}>
         <h2 className={s.security__subtitle}>Change Password</h2>
         <ChangePasswordForm />
+        <h2 className={s.security__subtitle}>Delete My Profile</h2>
       </div>
     </div>
   );

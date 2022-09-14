@@ -5,7 +5,7 @@
 
   &__label {
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 18px;
     color: $color7;
   }
 
@@ -57,5 +57,6 @@
 
   &__error {
     margin-bottom: 20px;
+    height: 1px; //!
   }
 }
