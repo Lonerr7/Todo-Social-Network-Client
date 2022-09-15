@@ -19,11 +19,8 @@ export const signUserUp = createAsyncThunk(
         localStorage.setItem('token', response.data.token);
       }
 
-      console.log(response.data);
-
       return response.data.data.user;
     } catch (error: any) {
-      console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -40,11 +37,8 @@ export const logUserIn = createAsyncThunk(
         localStorage.setItem('token', response.data.token);
       }
 
-      console.log(response.data);
-
       return response.data.data.user;
     } catch (error: any) {
-      console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -56,11 +50,8 @@ export const getMe = createAsyncThunk(
     try {
       const response = await authAPI.getMe();
 
-      console.log(response.data);
-
       return response.data.data.data;
     } catch (error: any) {
-      console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }

@@ -57,7 +57,17 @@
   }
 
   &__btn {
+    transition: all 0.1s;
     font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__btnYes:hover {
+    color: $color12;
+  }
+
+  &__btnNo:hover {
+    color: $color11;
   }
 
   &__preloader {

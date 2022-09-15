@@ -34,10 +34,16 @@ const AreYouSurePopup: React.FC<AreYouSurePopupProps> = ({
           </button>
           <h2 className={s.popup__title}>{title}</h2>
           <div className={s.popup__controls}>
-            <button className={s.popup__btn} onClick={yesClickHandler}>
+            <button
+              className={`${s.popup__btn} ${s.popup__btnYes}`}
+              onClick={yesClickHandler}
+            >
               Yes
             </button>
-            <button className={s.popup__btn} onClick={noClickHandler}>
+            <button
+              className={`${s.popup__btn} ${s.popup__btnNo}`}
+              onClick={noClickHandler}
+            >
               No
             </button>
           </div>

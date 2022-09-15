@@ -6,6 +6,7 @@ import {
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
 import { UserState } from '../types/reduxTypes';
+import { setActiveMenuNum, setActiveSettingsNum } from './appSlice';
 import { getMe } from './authSlice';
 import {
   showHideChangePasswordSuccessMessage,
@@ -21,8 +22,6 @@ export const updateMe = createAsyncThunk(
     try {
       const response = await authAPI.updateMe(newUserData);
 
-      console.log(response);
-
       // If OK, show success message in form. Then delete it after 5 sec.
       if (response.data.data.user) {
         dispatch(showHideUserInfoSuccessMsg(true));
@@ -34,7 +33,6 @@ export const updateMe = createAsyncThunk(
 
       return response.data.data.user;
     } catch (error: any) {
-      console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -48,7 +46,6 @@ export const changePassword = createAsyncThunk(
   ) => {
     try {
       const response = await authAPI.changeMyPassword(passwords);
-      console.log(response);
 
       // If OK, show success message in form. Then delete it after 5 sec.
       if (response.data.data.user) {
@@ -66,7 +63,6 @@ export const changePassword = createAsyncThunk(
 
       return response.data.data.user;
     } catch (error: any) {
-      console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -82,9 +78,12 @@ export const deleteMyProfile = createAsyncThunk(
         await dispatch(getMe());
       }
 
-      console.log(response);
+      // reseting active menu fields in Menu and Settings submenu
+      dispatch(setActiveMenuNum(1));
+      dispatch(setActiveSettingsNum(1));
+
+      return response.data.data;
     } catch (error: any) {
-      console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }

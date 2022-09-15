@@ -7,7 +7,6 @@ import FormControl from '../../../common/FormControl/FormControl';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { deleteMyProfile } from '../../../../redux/userSlice';
 import { DeleteMePasswords } from '../../../../types/axiosTypes';
 import { openPopup } from '../../../../redux/popupSlice';
 
