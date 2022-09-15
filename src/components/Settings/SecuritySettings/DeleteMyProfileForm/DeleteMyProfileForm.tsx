@@ -37,6 +37,7 @@ const DeleteMyProfileForm: React.FC = () => {
     myPassword,
     myPasswordConfirm,
   }: DeleteMyProfileInitialValues) => {
+    // Obj to prevent duplicate id fields warning
     const obj: DeleteMePasswords = {
       password: myPassword,
       passwordConfirm: myPasswordConfirm,

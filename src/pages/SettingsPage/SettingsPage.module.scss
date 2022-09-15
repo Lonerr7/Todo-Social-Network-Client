@@ -2,6 +2,7 @@
 
 .settings {
   @extend %main-inner;
+  position: relative;
 
   &__inner {
     display: flex;

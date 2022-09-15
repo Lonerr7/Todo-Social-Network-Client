@@ -6,6 +6,7 @@ type MenuItemProps = {
   activeNum: number;
   neededNum: number;
   setActiveNum: (neededNum: number) => void;
+  resetActiveSettingsNum?: () => void;
   icon?: React.ReactNode;
   text: string;
   urlPath: string;
@@ -24,7 +25,15 @@ const MenuItem: React.FC<MenuItemProps> = ({
   activeBgColor,
   customClass,
   setActiveNum,
+  resetActiveSettingsNum,
 }) => {
+  const onMenuClick = () => {
+    setActiveNum(neededNum);
+    if (resetActiveSettingsNum) {
+      resetActiveSettingsNum();
+    }
+  };
+
   return (
     <li
       className={
@@ -45,7 +54,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
             : s.menuItem__link
         }
         to={urlPath}
-        onClick={() => setActiveNum(neededNum)}
+        onClick={onMenuClick}
       >
         <span
           className={

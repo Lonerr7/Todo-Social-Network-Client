@@ -7,7 +7,10 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import MenuItem from '../../common/MenuItem/MenuItem';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { setActiveMenuNum } from '../../../redux/appSlice';
+import {
+  setActiveMenuNum,
+  setActiveSettingsNum,
+} from '../../../redux/appSlice';
 import { getSetCurrentNumFromLS } from '../../../utils/appHelpers';
 import { activeLsNumbers } from '../../../types/appTypes';
 
@@ -17,6 +20,10 @@ const Menu: React.FC = () => {
 
   const setActiveMenuNumber = (neededNum: number) => {
     dispatch(setActiveMenuNum(neededNum));
+  };
+
+  const resetActiveSettingsNum = () => {
+    dispatch(setActiveSettingsNum(1));
   };
 
   useEffect(() => {
@@ -69,6 +76,7 @@ const Menu: React.FC = () => {
           icon={<IoSettingsOutline className={s.menu__icon} size={24} />}
           urlPath="/settings"
           setActiveNum={setActiveMenuNumber}
+          resetActiveSettingsNum={resetActiveSettingsNum}
         />
       </ul>
     </nav>

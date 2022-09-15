@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import appSlice from './appSlice';
 import authSlice from './authSlice';
 import formsSlice from './formsSlice';
+import popupSlice from './popupSlice';
 import userSlice from './userSlice';
 
 const store = configureStore({
@@ -10,6 +11,7 @@ const store = configureStore({
     user: userSlice,
     app: appSlice,
     forms: formsSlice,
+    popup: popupSlice,
   },
 });
 
