@@ -9,6 +9,7 @@ import FormError from '../../../common/FormError/FormError';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { deleteMyProfile } from '../../../../redux/userSlice';
 import { DeleteMePasswords } from '../../../../types/axiosTypes';
+import { openPopup } from '../../../../redux/popupSlice';
 
 const initialValues: DeleteMyProfileInitialValues = {
   myPassword: '',
@@ -27,9 +28,7 @@ const validationSchema = yup.object({
 });
 
 const DeleteMyProfileForm: React.FC = () => {
-  const { isUserDeletingFetching, deleteMyProfileErrorMsg } = useAppSelector(
-    (state) => state.user
-  );
+  const { deleteMyProfileErrorMsg } = useAppSelector((state) => state.user);
   const { isUserSucessfulyDeleted } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();
 
@@ -43,7 +42,8 @@ const DeleteMyProfileForm: React.FC = () => {
       passwordConfirm: myPasswordConfirm,
     };
 
-    dispatch(deleteMyProfile(obj));
+    // dispatch(deleteMyProfile(obj));
+    dispatch(openPopup(obj));
   };
 
   return (
@@ -77,7 +77,6 @@ const DeleteMyProfileForm: React.FC = () => {
             Delete Profile
           </button>
           <FormStatus
-            isFetching={isUserDeletingFetching}
             isSuccessfulySent={isUserSucessfulyDeleted}
             preloaderClass={s.form__preloader}
             msgClass={s.form__success}

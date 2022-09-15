@@ -1,7 +1,7 @@
 import Preloader from '../Preloader/Preloader';
 
 type FormStatusProps = {
-  isFetching: boolean;
+  isFetching?: boolean;
   isSuccessfulySent: boolean;
   message?: string;
   preloaderClass: string;

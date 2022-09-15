@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { deleteMyProfile } from './userSlice';
 
 const initialState = {
   isPopupOpen: false,
@@ -9,12 +10,26 @@ const popupSlice = createSlice({
   name: 'popup',
   initialState,
   reducers: {
-    openPopup: (state, action: PayloadAction<{ data: any }>) => {
+    openPopup: (state, action: PayloadAction<any>) => {
       state.isPopupOpen = true;
-      state.popupDispatchData = action.payload.data;
+      state.popupDispatchData = action.payload;
+    },
+    closePopup: (state) => {
+      state.isPopupOpen = false;
+      state.popupDispatchData = null;
+    },
+  },
+  extraReducers: {
+    [deleteMyProfile.fulfilled.type]: (state) => {
+      state.isPopupOpen = false;
+      state.popupDispatchData = null;
+    },
+    [deleteMyProfile.rejected.type]: (state) => {
+      state.isPopupOpen = false;
+      state.popupDispatchData = null;
     },
   },
 });
 
 export default popupSlice.reducer;
-export const { openPopup } = popupSlice.actions;
+export const { openPopup, closePopup } = popupSlice.actions;
