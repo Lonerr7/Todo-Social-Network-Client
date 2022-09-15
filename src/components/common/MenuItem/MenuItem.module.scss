@@ -1,10 +1,10 @@
 @import '../../../vars';
 
 .menuItem {
-  &:hover {
-    background-color: $color4;
-  }
-  
+  // &:hover {
+  //   background-color: $color4;
+  // }
+
   &__itemline {
     position: absolute;
     left: 0;
@@ -28,10 +28,6 @@
     align-items: center;
     padding: 10px 0 10px 10px;
     font-weight: 500;
-
-    &:hover {
-      color: $color1;
-    }
   }
 }
 

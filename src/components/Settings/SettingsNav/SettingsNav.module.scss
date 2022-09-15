@@ -8,6 +8,22 @@
   border-radius: 5px;
   position: sticky;
   top: 40px;
+
+  &__listItem {
+    &:first-child {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:hover {
+      background-color: $color8;
+    }
+  }
 }
 
 .item_border_first {

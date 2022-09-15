@@ -3,7 +3,7 @@ import { deleteMyProfile } from './userSlice';
 
 const initialState = {
   isPopupOpen: false,
-  popupDispatchData: null as any,
+  popupDispatchData: null as any, //!
 };
 
 const popupSlice = createSlice({

@@ -5,14 +5,14 @@ import s from './MenuItem.module.scss';
 type MenuItemProps = {
   activeNum: number;
   neededNum: number;
-  setActiveNum: (neededNum: number) => void;
-  resetActiveSettingsNum?: () => void;
   icon?: React.ReactNode;
   text: string;
   urlPath: string;
   itemsCount?: number;
   activeBgColor?: string;
   customClass?: string;
+  setActiveNum: (neededNum: number) => void;
+  resetActiveSettingsNum?: () => void;
 };
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -35,7 +35,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   };
 
   return (
-    <li
+    <div
       className={
         activeNum === neededNum
           ? `${s.menuItem} ${s.active} ${customClass}`
@@ -67,7 +67,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         {text}
         {itemsCount ? <ItemsCounter quantity={itemsCount} /> : null}
       </NavLink>
-    </li>
+    </div>
   );
 };
 
