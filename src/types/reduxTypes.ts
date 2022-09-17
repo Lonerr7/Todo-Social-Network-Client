@@ -47,3 +47,10 @@ export type TodoParams = {
   taskText: string;
   difficulty?: 'easy' | 'medium' | 'hard';
 };
+
+export type UpdateTodoParams = {
+  id: string;
+  isCompleted?: boolean;
+  taskText?: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
+};

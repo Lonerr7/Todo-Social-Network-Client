@@ -1,6 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { todoAPI } from '../api/api';
-import { Todo, TodoParams, TodoState, User } from '../types/reduxTypes';
+import {
+  Todo,
+  TodoParams,
+  TodoState,
+  UpdateTodoParams,
+  User,
+} from '../types/reduxTypes';
 import { getMe } from './authSlice';
 
 export const createTodo = createAsyncThunk(
@@ -18,7 +24,25 @@ export const createTodo = createAsyncThunk(
       return response.data.data.data;
     } catch (error: any) {
       console.log(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
 
+export const updateTodo = createAsyncThunk(
+  'todo/updateTodo',
+  async (
+    { id, isCompleted, taskText, difficulty }: UpdateTodoParams,
+    { rejectWithValue }
+  ) => {
+    const fieldsToUpdate = { isCompleted, taskText, difficulty };
+    const response = await todoAPI.updateTodo(id, fieldsToUpdate);
+
+    console.log(response);
+
+    try {
+    } catch (error: any) {
+      console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }

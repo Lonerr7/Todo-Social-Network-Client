@@ -11,6 +11,8 @@ const TodoInput: React.FC = () => {
   const onSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
+    if (/^\s*$/.test(text)) return;
+
     dispatch(createTodo({ taskText: text }));
     setText('');
   };

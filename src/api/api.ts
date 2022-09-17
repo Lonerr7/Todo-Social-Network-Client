@@ -49,4 +49,7 @@ export const todoAPI = {
   addTodo: async (todoInfo: TodoParams) => {
     return await axiosInstance.post('/todos', todoInfo);
   },
+  updateTodo: async (id: string, data: any) => {
+    return await axiosInstance.patch(`/todos/${id}`, data);
+  },
 };
