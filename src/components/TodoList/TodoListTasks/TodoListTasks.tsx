@@ -6,6 +6,11 @@ const TodoListTasks: React.FC = () => {
     <ul className={s.tasks}>
       <TodoTask />
       <TodoTask />
+      <TodoTask />
+      <TodoTask />
+      <TodoTask />
+      <TodoTask />
+      <TodoTask />
     </ul>
   );
 };

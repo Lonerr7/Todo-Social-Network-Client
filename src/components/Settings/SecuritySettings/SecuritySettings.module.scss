@@ -2,6 +2,7 @@
 
 .security {
   @extend %settings-inner;
+  padding-bottom: 0;
 
   &__title {
     @extend %title;

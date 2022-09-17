@@ -1,0 +1,25 @@
+@import '../../../../vars';
+
+.controls {
+  display: flex;
+  align-items: center;
+
+  &__btn {
+    transition: all 0.2s;
+
+    &:first-child {
+      margin-right: 8px;
+      margin-top: 1px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &:last-child {
+      &:hover {
+        color: $color12;
+      }
+    }
+  }
+}
