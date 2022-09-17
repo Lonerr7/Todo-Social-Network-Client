@@ -1,0 +1,16 @@
+.taskInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 85%;
+
+  &__icon {
+    margin-top: 4px;
+    margin-right: 10px;
+  }
+
+  &__title {
+    line-height: 22px;
+    cursor: pointer;
+  }
+}

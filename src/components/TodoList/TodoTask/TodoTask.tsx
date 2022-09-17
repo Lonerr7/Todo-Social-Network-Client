@@ -1,9 +1,14 @@
-import React from 'react'
+import s from './TodoTask.module.scss';
+import TaskControls from './TaskControls/TaskControls';
+import TaskInfo from './TaskInfo/TaskInfo';
 
-const TodoTask = () => {
+const TodoTask: React.FC = () => {
   return (
-    <div>TodoTask</div>
-  )
-}
+    <li className={s.task}>
+      <TaskInfo />
+      <TaskControls />
+    </li>
+  );
+};
 
-export default TodoTask
+export default TodoTask;
