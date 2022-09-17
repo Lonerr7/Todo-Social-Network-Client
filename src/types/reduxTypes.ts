@@ -39,4 +39,11 @@ export type UserState = {
 
 export type TodoState = {
   todos: Array<Todo>;
+  isTodoCreating: boolean;
+  todoErrMsg: string;
+};
+
+export type TodoParams = {
+  taskText: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
 };

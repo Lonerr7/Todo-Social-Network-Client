@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { authAPI } from '../api/api';
+import { userAPI } from '../api/api';
 import { DeleteMePasswords } from '../types/axiosTypes';
 import {
   UpdateUserFromInitialValues,
@@ -20,7 +20,7 @@ export const updateMe = createAsyncThunk(
     { rejectWithValue, dispatch }
   ) => {
     try {
-      const response = await authAPI.updateMe(newUserData);
+      const response = await userAPI.updateMe(newUserData);
 
       // If OK, show success message in form. Then delete it after 5 sec.
       if (response.data.data.user) {
@@ -45,7 +45,7 @@ export const changePassword = createAsyncThunk(
     { rejectWithValue, dispatch }
   ) => {
     try {
-      const response = await authAPI.changeMyPassword(passwords);
+      const response = await userAPI.changeMyPassword(passwords);
 
       // If OK, show success message in form. Then delete it after 5 sec.
       if (response.data.data.user) {
@@ -72,7 +72,7 @@ export const deleteMyProfile = createAsyncThunk(
   'auth/deleteMyProfile',
   async (passwords: DeleteMePasswords, { rejectWithValue, dispatch }) => {
     try {
-      const response = await authAPI.deleteMe(passwords);
+      const response = await userAPI.deleteMe(passwords);
 
       if (!response.data.data) {
         await dispatch(getMe());

@@ -7,6 +7,7 @@ import {
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
+import { TodoParams } from '../types/reduxTypes';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/api/v1/',
@@ -28,6 +29,9 @@ export const authAPI = {
   getMe: async () => {
     return await axiosInstance.get('/users/me');
   },
+};
+
+export const userAPI = {
   updateMe: async (newUserData: UpdateUserFromInitialValues) => {
     return await axiosInstance.patch('/users/updateMe', newUserData);
   },
@@ -38,5 +42,11 @@ export const authAPI = {
     return await axiosInstance.delete('/users/deleteMe', {
       data: passwords,
     });
+  },
+};
+
+export const todoAPI = {
+  addTodo: async (todoInfo: TodoParams) => {
+    return await axiosInstance.post('/todos', todoInfo);
   },
 };
