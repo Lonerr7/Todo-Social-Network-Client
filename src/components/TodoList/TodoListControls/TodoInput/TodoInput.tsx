@@ -8,7 +8,9 @@ const TodoInput: React.FC = () => {
         type="text"
         placeholder="Add your new task..."
       />
-      <button className={s.todoInput__btn}>Add</button>
+      <button className={s.todoInput__btn} type="submit">
+        Create
+      </button>
     </form>
   );
 };
