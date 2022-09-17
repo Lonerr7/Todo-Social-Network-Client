@@ -12,7 +12,7 @@ export type User = {
 export type Todo = {
   _id: string;
   taskText: string;
-  difficulty: string;
+  difficulty: 'easy' | 'medium' | 'hard';
   isCompleted: boolean;
   createdAt: string;
   user: string;
@@ -35,4 +35,8 @@ export type UserState = {
   updateMeErrorMsg: string;
   changePasswordErrorMsg: string;
   deleteMyProfileErrorMsg: string;
+};
+
+export type TodoState = {
+  todos: Array<Todo>;
 };

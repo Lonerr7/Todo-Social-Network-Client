@@ -1,18 +1,23 @@
+import { useAppSelector } from '../../../hooks/hooks';
 import TodoTask from '../TodoTask/TodoTask';
 import s from './TodoListTasks.module.scss';
 
 const TodoListTasks: React.FC = () => {
-  return (
-    <ul className={s.tasks}>
-      <TodoTask />
-      <TodoTask />
-      <TodoTask />
-      <TodoTask />
-      <TodoTask />
-      <TodoTask />
-      <TodoTask />
-    </ul>
-  );
+  const todos = useAppSelector((state) => state.todo.todos);
+
+  const todoElements = todos.map((t) => (
+    <TodoTask
+      key={t.id}
+      id={t.id}
+      taskText={t.taskText}
+      difficulty={t.difficulty}
+      user={t.user}
+      createdAt={t.createdAt}
+      isCompleted={t.isCompleted}
+    />
+  ));
+
+  return <ul className={s.tasks}>{todoElements}</ul>;
 };
 
 export default TodoListTasks;
