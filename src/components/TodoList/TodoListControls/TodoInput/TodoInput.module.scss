@@ -1,0 +1,22 @@
+@import '../../../../vars';
+
+.todoInput {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+
+  &__input {
+    @extend %form-input;
+    width: 82%;
+    height: 100%;
+    margin-bottom: 0;
+  }
+
+  &__btn {
+    @extend %btn-small;
+    background-color: $color6;
+    width: 90px;
+  }
+}

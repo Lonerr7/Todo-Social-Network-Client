@@ -6,6 +6,19 @@ export type User = {
   role: string;
   id: string;
   bio?: string;
+  todos: Array<Todo>;
+};
+
+export type Todo = {
+  _id: string;
+  taskText: string;
+  difficulty: string;
+  isCompleted: boolean;
+  createdAt: string;
+  user: string;
+  slug: string;
+  __v: number;
+  id: string;
 };
 
 export type AuthState = {
@@ -19,7 +32,7 @@ export type UserState = {
   isUserUpdateFetching: boolean;
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;
-  updateMeErrorMsg: string,
-  changePasswordErrorMsg: string,
-  deleteMyProfileErrorMsg: string,
+  updateMeErrorMsg: string;
+  changePasswordErrorMsg: string;
+  deleteMyProfileErrorMsg: string;
 };

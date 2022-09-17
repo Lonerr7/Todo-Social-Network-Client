@@ -1,0 +1,7 @@
+@import '../../vars';
+
+.todos {
+  @extend %main-inner;
+  display: flex;
+  justify-content: center;
+}
