@@ -1,4 +1,3 @@
-import TodoFilters from './TodoFilters/TodoFilters';
 import s from './TodoList.module.scss';
 import TodoListControls from './TodoListControls/TodoListControls';
 import TodoListTasks from './TodoListTasks/TodoListTasks';
@@ -11,7 +10,6 @@ const TodoList: React.FC = () => {
       <TodoListTitle />
       <TodosCounter />
       <TodoListControls />
-      <TodoFilters />
       <TodoListTasks />
     </div>
   );
