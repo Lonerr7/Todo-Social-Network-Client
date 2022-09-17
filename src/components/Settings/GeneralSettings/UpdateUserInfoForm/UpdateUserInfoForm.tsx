@@ -31,7 +31,14 @@ const UpdateUserInfoForm: React.FC = () => {
   };
 
   const onSubmit = (values: UpdateUserFromInitialValues) => {
-    dispatch(updateMe(values));
+    dispatch(
+      updateMe({
+        nickname: values.nickname.trim(),
+        firstName: values.firstName.trim(),
+        lastName: values.lastName.trim(),
+        bio: values.bio.trim(),
+      })
+    );
   };
 
   return (
