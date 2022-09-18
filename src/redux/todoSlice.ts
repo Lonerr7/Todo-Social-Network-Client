@@ -3,6 +3,7 @@ import { todoAPI } from '../api/api';
 import { UpdateTodoParamsRequest } from '../types/axiosTypes';
 import {
   Todo,
+  TodoFiltersEnum,
   TodoParams,
   TodoState,
   UpdateTodoParams,
@@ -87,12 +88,17 @@ const initialState: TodoState = {
   isTodoCreating: false,
   areAllTodosDeleting: false,
   todoErrMsg: '',
+  activeTodoFilter: TodoFiltersEnum.ALL,
 };
 
 const todoSlice = createSlice({
   name: 'todo',
   initialState,
-  reducers: {},
+  reducers: {
+    changeActiveTodoFilter: (state, action: PayloadAction<TodoFiltersEnum>) => {
+      state.activeTodoFilter = action.payload;
+    },
+  },
   extraReducers: {
     [getMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.todos = action.payload.todos;
@@ -135,4 +141,4 @@ const todoSlice = createSlice({
 });
 
 export default todoSlice.reducer;
-// export const {} = todoSlice.actions;
+export const { changeActiveTodoFilter } = todoSlice.actions;

@@ -37,11 +37,18 @@ export type UserState = {
   deleteMyProfileErrorMsg: string;
 };
 
+export enum TodoFiltersEnum {
+  ALL = 'All',
+  COMPLETED = 'Completed',
+  UNCOMPLETED = 'Uncompleted',
+}
+
 export type TodoState = {
   todos: Array<Todo>;
   isTodoCreating: boolean;
   areAllTodosDeleting: boolean;
   todoErrMsg: string;
+  activeTodoFilter: TodoFiltersEnum;
 };
 
 export type TodoParams = {

@@ -1,9 +1,10 @@
 import { useAppSelector } from '../../../hooks/hooks';
+import { selectTodosByFilter } from '../../../redux/selectors';
 import TodoTask from '../TodoTask/TodoTask';
 import s from './TodoListTasks.module.scss';
 
 const TodoListTasks: React.FC = () => {
-  const todos = useAppSelector((state) => state.todo.todos);
+  const todos = useAppSelector(selectTodosByFilter);
 
   const todoElements = todos.map((t) => (
     <TodoTask
