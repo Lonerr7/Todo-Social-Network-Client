@@ -52,6 +52,20 @@ export const updateTodo = createAsyncThunk(
   }
 );
 
+export const deleteTodo = createAsyncThunk(
+  'todo/deleteTodo',
+  async (id: string, { rejectWithValue }) => {
+    try {
+      await todoAPI.deleteTodo(id);
+
+      return id;
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const initialState: TodoState = {
   todos: [],
   isTodoCreating: false,
@@ -66,6 +80,7 @@ const todoSlice = createSlice({
     [getMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.todos = action.payload.todos;
     },
+
     [createTodo.pending.type]: (state) => {
       state.isTodoCreating = true;
       state.todoErrMsg = '';
@@ -78,6 +93,7 @@ const todoSlice = createSlice({
       state.isTodoCreating = false;
       state.todoErrMsg = action.payload;
     },
+
     [updateTodo.fulfilled.type]: (state, action: PayloadAction<Todo>) => {
       state.todos = state.todos.map((t) =>
         t.id === action.payload.id ? (t = action.payload) : t
@@ -85,6 +101,10 @@ const todoSlice = createSlice({
     },
     [updateTodo.rejected.type]: (state, action: PayloadAction<string>) => {
       state.todoErrMsg = action.payload;
+    },
+
+    [deleteTodo.fulfilled.type]: (state, action: PayloadAction<string>) => {
+      state.todos = state.todos.filter((t) => t.id !== action.payload);
     },
   },
 });

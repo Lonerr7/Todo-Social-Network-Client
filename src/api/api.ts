@@ -54,4 +54,7 @@ export const todoAPI = {
   updateTodo: async (id: string, data: UpdateTodoParamsRequest) => {
     return await axiosInstance.patch(`/todos/${id}`, data);
   },
+  deleteTodo: async (id: string) => {
+    return await axiosInstance.delete(`/todos/${id}`);
+  },
 };

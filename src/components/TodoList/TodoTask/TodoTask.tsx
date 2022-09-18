@@ -22,7 +22,7 @@ const TodoTask: React.FC<TodoTaskProps> = ({
   return (
     <li className={s.task}>
       <TaskInfo taskText={taskText} isCompleted={isCompleted} id={id} />
-      <TaskControls />
+      <TaskControls id={id} />
     </li>
   );
 };
