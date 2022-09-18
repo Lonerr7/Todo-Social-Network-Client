@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { todoAPI } from '../api/api';
+import { UpdateTodoParamsRequest } from '../types/axiosTypes';
 import {
   Todo,
   TodoParams,
@@ -35,12 +36,15 @@ export const updateTodo = createAsyncThunk(
     { id, isCompleted, taskText, difficulty }: UpdateTodoParams,
     { rejectWithValue }
   ) => {
-    const fieldsToUpdate = { isCompleted, taskText, difficulty };
-    const response = await todoAPI.updateTodo(id, fieldsToUpdate);
-
-    console.log(response);
-
     try {
+      const fieldsToUpdate: UpdateTodoParamsRequest = {
+        isCompleted,
+        taskText,
+        difficulty,
+      };
+      const response = await todoAPI.updateTodo(id, fieldsToUpdate);
+
+      return response.data.data.data;
     } catch (error: any) {
       console.log(error.response.data.message);
       return rejectWithValue(error.response.data.message);
@@ -74,8 +78,16 @@ const todoSlice = createSlice({
       state.isTodoCreating = false;
       state.todoErrMsg = action.payload;
     },
+    [updateTodo.fulfilled.type]: (state, action: PayloadAction<Todo>) => {
+      state.todos = state.todos.map((t) =>
+        t.id === action.payload.id ? (t = action.payload) : t
+      );
+    },
+    [updateTodo.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.todoErrMsg = action.payload;
+    },
   },
 });
 
 export default todoSlice.reducer;
-export const {} = todoSlice.actions;
+// export const {} = todoSlice.actions;

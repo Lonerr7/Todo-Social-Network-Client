@@ -1,6 +1,8 @@
 import axios from 'axios';
-import { DeleteMePasswords } from '../types/axiosTypes';
-
+import {
+  DeleteMePasswords,
+  UpdateTodoParamsRequest,
+} from '../types/axiosTypes';
 import {
   RegisterFormInitialValues,
   LoginFormInitialValues,
@@ -49,7 +51,7 @@ export const todoAPI = {
   addTodo: async (todoInfo: TodoParams) => {
     return await axiosInstance.post('/todos', todoInfo);
   },
-  updateTodo: async (id: string, data: any) => {
+  updateTodo: async (id: string, data: UpdateTodoParamsRequest) => {
     return await axiosInstance.patch(`/todos/${id}`, data);
   },
 };

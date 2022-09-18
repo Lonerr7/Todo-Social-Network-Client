@@ -17,3 +17,9 @@ export type DeleteMePasswords = {
   password: string;
   passwordConfirm: string;
 };
+
+export type UpdateTodoParamsRequest = {
+  isCompleted?: boolean;
+  taskText?: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
+};

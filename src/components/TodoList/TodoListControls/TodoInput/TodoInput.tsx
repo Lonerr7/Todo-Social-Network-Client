@@ -31,7 +31,9 @@ const TodoInput: React.FC = () => {
           Create
         </button>
       ) : (
-        <button className={s.todoInput__btn}>Creating...</button>
+        <button className={s.todoInput__btn} disabled={true}>
+          Creating...
+        </button>
       )}
     </form>
   );
