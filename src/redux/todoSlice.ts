@@ -66,9 +66,26 @@ export const deleteTodo = createAsyncThunk(
   }
 );
 
+export const deleteAllUserTodos = createAsyncThunk(
+  'todo/deleteAllUserTodos',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await todoAPI.deleteAllUserTodos();
+
+      if (response.data === '') {
+        return true;
+      }
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const initialState: TodoState = {
   todos: [],
   isTodoCreating: false,
+  areAllTodosDeleting: false,
   todoErrMsg: '',
 };
 
@@ -105,6 +122,14 @@ const todoSlice = createSlice({
 
     [deleteTodo.fulfilled.type]: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((t) => t.id !== action.payload);
+    },
+
+    [deleteAllUserTodos.pending.type]: (state) => {
+      state.areAllTodosDeleting = true;
+    },
+    [deleteAllUserTodos.fulfilled.type]: (state) => {
+      state.areAllTodosDeleting = false;
+      state.todos = [];
     },
   },
 });

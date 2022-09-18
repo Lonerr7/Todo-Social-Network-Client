@@ -40,6 +40,7 @@ export type UserState = {
 export type TodoState = {
   todos: Array<Todo>;
   isTodoCreating: boolean;
+  areAllTodosDeleting: boolean;
   todoErrMsg: string;
 };
 

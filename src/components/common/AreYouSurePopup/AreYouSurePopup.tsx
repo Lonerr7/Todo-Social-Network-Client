@@ -6,20 +6,27 @@ import Preloader from '../Preloader/Preloader';
 
 type AreYouSurePopupProps = {
   title: string;
-  fn: any; //!
+  thunk: any; //!
   isFetching: boolean;
 };
 
 const AreYouSurePopup: React.FC<AreYouSurePopupProps> = ({
   title,
-  fn,
+  thunk,
   isFetching,
 }) => {
   const dispatchData = useAppSelector((state) => state.popup.popupDispatchData);
   const dispatch = useAppDispatch();
 
-  const yesClickHandler = () => {
-    dispatch(fn(dispatchData));
+  const yesClickHandler = async () => {
+    // async await because we are dispathing async thunk
+    if (dispatchData) {
+      await dispatch(thunk(dispatchData));
+      return dispatch(closePopup());
+    }
+
+    await dispatch(thunk());
+    dispatch(closePopup());
   };
   const noClickHandler = () => {
     dispatch(closePopup());

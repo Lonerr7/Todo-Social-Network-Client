@@ -6,7 +6,9 @@ import { deleteMyProfile } from '../../redux/userSlice';
 import s from './SettingsPage.module.scss';
 
 const SettingsPage: React.FC = () => {
-  const isPopupOpen = useAppSelector((state) => state.popup.isPopupOpen);
+  const isPopupOpen = useAppSelector(
+    (state) => state.popup.isAreYouSurePopupOpen
+  );
   const { isUserDeletingFetching } = useAppSelector((state) => state.user);
 
   return (
@@ -18,7 +20,7 @@ const SettingsPage: React.FC = () => {
       {isPopupOpen ? (
         <AreYouSurePopup
           title="Do you really want to delete your profile?"
-          fn={deleteMyProfile}
+          thunk={deleteMyProfile}
           isFetching={isUserDeletingFetching}
         />
       ) : null}

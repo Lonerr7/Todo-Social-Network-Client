@@ -12,7 +12,7 @@ type TaskInfoProps = {
   isCompleted: boolean;
   id: string;
   editMode: boolean;
-  toggleEditMode: () => void
+  toggleEditMode: () => void;
 };
 
 const TaskInfo: React.FC<TaskInfoProps> = ({
@@ -22,7 +22,7 @@ const TaskInfo: React.FC<TaskInfoProps> = ({
   id,
   editMode,
   setText,
-  toggleEditMode
+  toggleEditMode,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -33,7 +33,12 @@ const TaskInfo: React.FC<TaskInfoProps> = ({
   return (
     <>
       {editMode ? (
-        <TaskEditForm text={text} setText={setText} id={id} toggleEditMode={toggleEditMode} />
+        <TaskEditForm
+          text={text}
+          setText={setText}
+          id={id}
+          toggleEditMode={toggleEditMode}
+        />
       ) : (
         <div className={s.taskInfo} onClick={toggleTaskCompletion}>
           {!isCompleted ? (

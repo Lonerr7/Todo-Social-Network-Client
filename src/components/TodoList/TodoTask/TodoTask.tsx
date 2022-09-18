@@ -25,8 +25,6 @@ const TodoTask: React.FC<TodoTaskProps> = ({
 
   const toggleEditMode = () => {
     if (!editMode) {
-      console.log(text);
-
       setText(taskText);
       return setEditMode(!editMode);
     }

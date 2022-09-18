@@ -57,4 +57,7 @@ export const todoAPI = {
   deleteTodo: async (id: string) => {
     return await axiosInstance.delete(`/todos/${id}`);
   },
+  deleteAllUserTodos: async () => {
+    return await axiosInstance.delete('/todos');
+  },
 };
