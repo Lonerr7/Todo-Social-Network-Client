@@ -1,4 +1,5 @@
 import s from './TaskControls.module.scss';
+
 import { BiPencil } from 'react-icons/bi';
 import { MdDeleteForever } from 'react-icons/md';
 import { useAppDispatch } from '../../../../hooks/hooks';
@@ -6,9 +7,15 @@ import { deleteTodo } from '../../../../redux/todoSlice';
 
 type TaskControlsProps = {
   id: string;
+  editMode: boolean;
+  toggleEditMode: () => void;
 };
 
-const TaskControls: React.FC<TaskControlsProps> = ({ id }) => {
+const TaskControls: React.FC<TaskControlsProps> = ({
+  id,
+  editMode,
+  toggleEditMode,
+}) => {
   const dispatch = useAppDispatch();
 
   const deleteTodoHandler = () => {
@@ -17,7 +24,7 @@ const TaskControls: React.FC<TaskControlsProps> = ({ id }) => {
 
   return (
     <div className={s.controls}>
-      <button className={s.controls__btn}>
+      <button className={s.controls__btn} onClick={toggleEditMode}>
         <BiPencil className={s.controls__icon} size={24} />
       </button>
       <button className={s.controls__btn} onClick={deleteTodoHandler}>

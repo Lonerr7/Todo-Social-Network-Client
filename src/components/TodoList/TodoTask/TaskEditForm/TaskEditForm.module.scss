@@ -1,0 +1,23 @@
+@import '../../../../vars';
+
+.form {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__label {
+    width: 90%;
+  }
+
+  &__input {
+    @extend %form-input;
+    width: 100%;
+    height: 32px;
+    background-color: $color9;
+    color: $color7;
+    margin-bottom: 0;
+    font-size: 22px;
+    font-weight: 400;
+  }
+}
