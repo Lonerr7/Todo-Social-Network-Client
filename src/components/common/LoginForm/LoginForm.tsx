@@ -1,10 +1,11 @@
 import s from './LoginForm.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { logUserIn } from '../../../redux/authSlice';
 import { LoginFormInitialValues } from '../../../types/FormikTypes';
 import FormControl from '../FormControl/FormControl';
+import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
 
 const initialValues = {
   email: 'newuser@gmail.com',
@@ -28,6 +29,7 @@ const validationSchema = yup.object({
 });
 
 const LoginForm: React.FC = () => {
+  const { isFetching } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   const onSubmit = (values: LoginFormInitialValues) => {
@@ -47,7 +49,7 @@ const LoginForm: React.FC = () => {
           placeholder="Email"
           inputClass={s.loginForm__formInput}
           type="text"
-          label="Email" 
+          label="Email"
           labelClass={s.loginForm__label}
         />
         <FormControl
@@ -56,7 +58,7 @@ const LoginForm: React.FC = () => {
           placeholder="Password"
           inputClass={s.loginForm__formInput}
           type="password"
-          label="Password" 
+          label="Password"
           labelClass={s.loginForm__label}
         />
         <FormControl
@@ -65,13 +67,18 @@ const LoginForm: React.FC = () => {
           placeholder="Password confirmation"
           inputClass={s.loginForm__formInput}
           type="password"
-          label="Password confirmation" 
+          label="Password confirmation"
           labelClass={s.loginForm__label}
         />
 
-        <button className={s.loginForm__btn} type="submit">
-          Log In
-        </button>
+        <SubmitLoadingBtn
+          btnClass={s.loginForm__btn}
+          btnType="submit"
+          btnText="Log In"
+          btnFetchingText="Logging You In"
+          isFetching={isFetching}
+          onSubmit={() => {}}
+        />
       </Form>
     </Formik>
   );

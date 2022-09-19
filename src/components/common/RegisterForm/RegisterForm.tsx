@@ -2,9 +2,10 @@ import s from './RegisterForm.module.scss';
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import { RegisterFormInitialValues } from '../../../types/FormikTypes';
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { signUserUp } from '../../../redux/authSlice';
 import FormControl from '../FormControl/FormControl';
+import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
 
 const initialValues = {
   email: 'newuser@gmail.com',
@@ -34,6 +35,7 @@ const validationSchema = yup.object({
 });
 
 const RegisterForm: React.FC = () => {
+  const { isFetching } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   const onSubmit = (values: RegisterFormInitialValues) => {
@@ -102,9 +104,14 @@ const RegisterForm: React.FC = () => {
           labelClass={s.registerForm__label}
         />
 
-        <button className={s.registerForm__btn} type="submit">
-          Sign Up
-        </button>
+        <SubmitLoadingBtn
+          btnClass={s.registerForm__btn}
+          btnType="submit"
+          btnText="Sign Up"
+          btnFetchingText="Signing You Up"
+          isFetching={isFetching}
+          onSubmit={() => {}}
+        />
       </Form>
     </Formik>
   );

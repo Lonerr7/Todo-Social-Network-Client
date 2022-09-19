@@ -11,7 +11,7 @@ type PageContainerProps = {
 };
 
 const PageContainer: React.FC<PageContainerProps> = ({ title, form }) => {
-  const { isFetching, user, errorMsg } = useAppSelector((state) => state.auth);
+  const { user, errorMsg } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   // deleting error message when exiting register || login page
@@ -30,14 +30,7 @@ const PageContainer: React.FC<PageContainerProps> = ({ title, form }) => {
   if (user) {
     return <Navigate to="/" />;
   }
-  return (
-    <Page
-      title={title}
-      form={form}
-      isFetching={isFetching}
-      errorMsg={errorMsg}
-    />
-  );
+  return <Page title={title} form={form} errorMsg={errorMsg} />;
 };
 
 export default PageContainer;

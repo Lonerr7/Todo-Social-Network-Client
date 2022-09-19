@@ -80,9 +80,6 @@ const ChangePasswordForm: React.FC = () => {
           />
 
           <div className={s.form__box}>
-            {/* <button className={s.form__btn} type="submit">
-              Change Password
-            </button> */}
             <SubmitLoadingBtn
               btnClass={s.form__btn}
               btnType="submit"
