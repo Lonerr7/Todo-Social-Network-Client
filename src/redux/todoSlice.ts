@@ -21,8 +21,6 @@ export const createTodo = createAsyncThunk(
       };
       const response = await todoAPI.addTodo(fieldsToSend);
 
-      console.log(response.data.data.data);
-
       return response.data.data.data;
     } catch (error: any) {
       console.log(error.response.data.message);
@@ -118,10 +116,8 @@ const todoSlice = createSlice({
       state.todoInputErrMsg = action.payload;
     },
 
-    [updateTodo.pending.type]: (state) => {
-      state.todoErrMsg = '';
-    },
     [updateTodo.fulfilled.type]: (state, action: PayloadAction<Todo>) => {
+      state.todoErrMsg = '';
       state.todos = state.todos.map((t) =>
         t.id === action.payload.id ? (t = action.payload) : t
       );

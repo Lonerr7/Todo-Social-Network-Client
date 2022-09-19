@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { openPopup } from '../../../redux/popupSlice';
+import { openPopup } from '../../../redux/areYouSurePopupSlice';
 import { changeActiveTodoFilter } from '../../../redux/todoSlice';
 import { TodoFiltersEnum } from '../../../types/reduxTypes';
 import s from './TodoFilters.module.scss';

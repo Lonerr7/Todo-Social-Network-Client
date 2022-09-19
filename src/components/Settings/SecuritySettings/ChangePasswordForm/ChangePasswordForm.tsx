@@ -7,6 +7,7 @@ import FormStatus from '../../../common/FormStatus/FormStatus';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { changePassword } from '../../../../redux/userSlice';
 import FormError from '../../../common/FormError/FormError';
+import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 
 const initialValues: UpdateUserPasswordInitialValues = {
   currentPassword: '',
@@ -79,11 +80,18 @@ const ChangePasswordForm: React.FC = () => {
           />
 
           <div className={s.form__box}>
-            <button className={s.form__btn} type="submit">
+            {/* <button className={s.form__btn} type="submit">
               Change Password
-            </button>
-            <FormStatus
+            </button> */}
+            <SubmitLoadingBtn
+              btnClass={s.form__btn}
+              btnType="submit"
+              btnText="Change Password"
+              btnFetchingText="Changing"
               isFetching={isChangingPasswordFetching}
+              onSubmit={() => {}}
+            />
+            <FormStatus
               isSuccessfulySent={isNewPasswordSuccessfulySent}
               preloaderClass={s.form__preloader}
               msgClass={s.form__success}

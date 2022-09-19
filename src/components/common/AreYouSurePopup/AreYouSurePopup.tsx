@@ -1,7 +1,7 @@
 import s from './AreYouSurePopup.module.scss';
 import { ImCross } from 'react-icons/im';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { closePopup } from '../../../redux/popupSlice';
+import { closePopup } from '../../../redux/areYouSurePopupSlice';
 import Preloader from '../Preloader/Preloader';
 
 type AreYouSurePopupProps = {

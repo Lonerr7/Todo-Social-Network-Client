@@ -32,4 +32,12 @@
       background-color: $color8;
     }
   }
+
+  &__btn_disabled {
+    cursor: default;
+  }
+
+  &__error {
+    font-size: 18px;
+  }
 }

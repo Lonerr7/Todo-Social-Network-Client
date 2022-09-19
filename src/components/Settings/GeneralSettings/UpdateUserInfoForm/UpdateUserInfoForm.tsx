@@ -7,6 +7,7 @@ import FormControl from '../../../common/FormControl/FormControl';
 import { updateMe } from '../../../../redux/userSlice';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
+import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 
 const validationSchema = yup.object({
   nickname: yup.string().max(20, 'Your nickname is too long'),
@@ -88,11 +89,15 @@ const UpdateUserInfoForm: React.FC = () => {
           />
 
           <div className={s.form__box}>
-            <button className={s.form__btn} type="submit">
-              Update Profile
-            </button>
-            <FormStatus
+            <SubmitLoadingBtn
+              btnClass={s.form__btn}
+              btnType="submit"
+              btnText="Update Profile"
+              btnFetchingText="Updating"
               isFetching={isUserUpdateFetching}
+              onSubmit={() => {}}
+            />
+            <FormStatus
               isSuccessfulySent={isUserInfoSuccessfulySent}
               preloaderClass={s.form__preloader}
               msgClass={s.form__success}

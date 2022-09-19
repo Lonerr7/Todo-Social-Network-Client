@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { createTodo } from '../../../../redux/todoSlice';
 import TextError from '../../../common/TextError/TextError';
+import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 
 const TodoInput: React.FC = () => {
   const [text, setText] = useState('');
@@ -34,17 +35,32 @@ const TodoInput: React.FC = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        {!isTodoCreating ? (
+        {/* {!isTodoCreating ? (
           <button className={s.todoInput__btn} type="submit" onClick={onSubmit}>
             Create
           </button>
         ) : (
-          <button className={s.todoInput__btn} disabled={true}>
+          <button
+            className={`${s.todoInput__btn} ${s.todoInput__btn_disabled}`}
+            disabled={true}
+          >
             Creating...
           </button>
-        )}
+        )} */}
+        <SubmitLoadingBtn
+          btnClass={s.todoInput__btn}
+          btnType="submit"
+          btnText="Create"
+          btnFetchingText="Creating"
+          isFetching={isTodoCreating}
+          onSubmit={onSubmit}
+        />
       </form>
-      {todoInputErrMsg && <TextError>{todoInputErrMsg}</TextError>}
+      {todoInputErrMsg && (
+        <TextError customClass={s.todoInput__error}>
+          {todoInputErrMsg}
+        </TextError>
+      )}
     </div>
   );
 };

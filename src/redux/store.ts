@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import appSlice from './appSlice';
 import authSlice from './authSlice';
 import formsSlice from './formsSlice';
-import popupSlice from './popupSlice';
+import popupSlice from './areYouSurePopupSlice';
 import todoSlice from './todoSlice';
 import userSlice from './userSlice';
 
