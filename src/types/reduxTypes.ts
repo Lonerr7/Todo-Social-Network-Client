@@ -47,8 +47,9 @@ export type TodoState = {
   todos: Array<Todo>;
   isTodoCreating: boolean;
   areAllTodosDeleting: boolean;
-  todoErrMsg: string;
   activeTodoFilter: TodoFiltersEnum;
+  todoInputErrMsg: string;
+  todoErrMsg: string;
 };
 
 export type TodoParams = {

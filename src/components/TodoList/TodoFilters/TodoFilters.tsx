@@ -1,13 +1,16 @@
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { openPopup } from '../../../redux/popupSlice';
 import { changeActiveTodoFilter } from '../../../redux/todoSlice';
 import { TodoFiltersEnum } from '../../../types/reduxTypes';
 import s from './TodoFilters.module.scss';
 
 const TodoFilters: React.FC = () => {
+  const tasksCount = useAppSelector((state) => state.todo.todos.length);
   const dispatch = useAppDispatch();
 
   const onDeleteAllTasks = () => {
+    if (!tasksCount) return;
+
     dispatch(openPopup(null));
   };
 

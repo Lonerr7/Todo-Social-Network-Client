@@ -87,8 +87,9 @@ const initialState: TodoState = {
   todos: [],
   isTodoCreating: false,
   areAllTodosDeleting: false,
-  todoErrMsg: '',
   activeTodoFilter: TodoFiltersEnum.ALL,
+  todoInputErrMsg: '',
+  todoErrMsg: '',
 };
 
 const todoSlice = createSlice({
@@ -106,17 +107,20 @@ const todoSlice = createSlice({
 
     [createTodo.pending.type]: (state) => {
       state.isTodoCreating = true;
-      state.todoErrMsg = '';
     },
     [createTodo.fulfilled.type]: (state, action: PayloadAction<Todo>) => {
+      state.todoInputErrMsg = '';
       state.isTodoCreating = false;
       state.todos.push(action.payload);
     },
     [createTodo.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isTodoCreating = false;
-      state.todoErrMsg = action.payload;
+      state.todoInputErrMsg = action.payload;
     },
 
+    [updateTodo.pending.type]: (state) => {
+      state.todoErrMsg = '';
+    },
     [updateTodo.fulfilled.type]: (state, action: PayloadAction<Todo>) => {
       state.todos = state.todos.map((t) =>
         t.id === action.payload.id ? (t = action.payload) : t

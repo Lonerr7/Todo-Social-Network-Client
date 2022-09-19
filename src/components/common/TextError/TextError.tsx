@@ -6,7 +6,7 @@ type TextErrorProps = {
 };
 
 const TextError: React.FC<TextErrorProps> = ({ children, customClass }) => {
-  return <p className={`${s.textError} ${customClass}`}>{children}</p>;
+  return <p className={`${s.textError} ${customClass}`}>ERROR, {children}</p>;
 };
 
 export default TextError;
