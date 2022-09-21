@@ -1,13 +1,17 @@
 @import '../../../vars';
 
 .task {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 13px;
   border-radius: 8px;
   background-color: $color8;
   margin-bottom: 14px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 
   &:last-child {
     margin-bottom: 0;

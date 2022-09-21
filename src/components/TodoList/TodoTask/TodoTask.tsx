@@ -2,22 +2,23 @@ import s from './TodoTask.module.scss';
 import TaskControls from './TaskControls/TaskControls';
 import TaskInfo from './TaskInfo/TaskInfo';
 import { useState } from 'react';
+import TaskAdditionalInfo from './TaskAdditionalInfo/TaskAdditionalInfo';
 
-type TodoTaskProps = {
+type Props = {
   taskText: string;
   isCompleted: boolean;
   difficulty: 'easy' | 'medium' | 'hard';
   createdAt: string;
-  user: string;
+  userId: string;
   id: string;
 };
 
-const TodoTask: React.FC<TodoTaskProps> = ({
+const TodoTask: React.FC<Props> = ({
   taskText,
   isCompleted,
   difficulty,
   createdAt,
-  user,
+  userId,
   id,
 }) => {
   const [editMode, setEditMode] = useState(false);
@@ -34,20 +35,25 @@ const TodoTask: React.FC<TodoTaskProps> = ({
 
   return (
     <li className={s.task}>
-      <TaskInfo
-        taskText={taskText}
-        text={text}
-        setText={setText}
-        isCompleted={isCompleted}
-        id={id}
-        editMode={editMode}
-        toggleEditMode={toggleEditMode}
-      />
-      <TaskControls
-        id={id}
-        editMode={editMode}
-        toggleEditMode={toggleEditMode}
-      />
+      <div className={s.task__top}>
+        <TaskInfo
+          taskText={taskText}
+          text={text}
+          setText={setText}
+          isCompleted={isCompleted}
+          id={id}
+          editMode={editMode}
+          toggleEditMode={toggleEditMode}
+        />
+        <TaskControls
+          id={id}
+          editMode={editMode}
+          toggleEditMode={toggleEditMode}
+        />
+      </div>
+      <div className={s.task__bottom}>
+        <TaskAdditionalInfo createdAt={createdAt} difficulty={difficulty} />
+      </div>
     </li>
   );
 };
