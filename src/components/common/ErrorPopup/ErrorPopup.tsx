@@ -1,7 +1,12 @@
 import s from './ErrorPopup.module.scss';
 import { IoIosCloseCircle } from 'react-icons/io';
 
-const ErrorPopup: React.FC = () => {
+type ErrorPopupProps = {
+  message: string;
+  id: string;
+};
+
+const ErrorPopup: React.FC<ErrorPopupProps> = ({ message, id }) => {
   return (
     <li className={s.popup}>
       <button className={s.popup__close}>
@@ -9,9 +14,7 @@ const ErrorPopup: React.FC = () => {
       </button>
       <div className={s.popup__decor}></div>
       <div className={s.popup__box}>
-        <p className={s.popup__errorMsg}>
-        A task must not be more than 40 characters
-        </p>
+        <p className={s.popup__errorMsg}>{message}</p>
       </div>
     </li>
   );

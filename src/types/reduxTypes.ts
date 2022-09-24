@@ -63,3 +63,12 @@ export type UpdateTodoParams = {
   taskText?: string;
   difficulty?: 'easy' | 'medium' | 'hard';
 };
+
+type ErrorPopup = {
+  id: string;
+  message: string;
+};
+
+export type ErrorPopupInitialState = {
+  errors: Array<ErrorPopup>;
+};

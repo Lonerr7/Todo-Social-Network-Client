@@ -1,12 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ErrorPopupInitialState } from '../types/reduxTypes';
 
-const initialState = {};
+const initialState: ErrorPopupInitialState = {
+  errors: [{ id: '1', message: 'An Error' }],
+};
 
 const errorMessagesSlice = createSlice({
   name: 'app',
   initialState,
-  reducers: {},
+  reducers: {
+    createErrorPopup: (state, action: PayloadAction<string>) => {
+      state.errors.unshift({
+        id: nanoid(),
+        message: action.payload,
+      });
+    },
+  },
 });
 
 export default errorMessagesSlice.reducer;
-export const {} = errorMessagesSlice.actions;
+export const { createErrorPopup } = errorMessagesSlice.actions;

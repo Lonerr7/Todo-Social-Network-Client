@@ -4,4 +4,11 @@
   @extend %main-inner;
   display: flex;
   justify-content: center;
+  position: relative;
+
+  &__errors {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }

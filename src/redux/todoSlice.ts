@@ -13,7 +13,10 @@ import { getMe } from './authSlice';
 
 export const createTodo = createAsyncThunk(
   'todo/createTodo',
-  async ({ taskText, difficulty }: TodoParams, { rejectWithValue }) => {
+  async (
+    { taskText, difficulty }: TodoParams,
+    { dispatch, rejectWithValue }
+  ) => {
     try {
       const fieldsToSend = {
         taskText,
@@ -24,6 +27,7 @@ export const createTodo = createAsyncThunk(
       return response.data.data.data;
     } catch (error: any) {
       console.log(error.response.data.message);
+
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -97,6 +101,13 @@ const todoSlice = createSlice({
     changeActiveTodoFilter: (state, action: PayloadAction<TodoFiltersEnum>) => {
       state.activeTodoFilter = action.payload;
     },
+    deleteErrorMsg: (state, action: PayloadAction<number>) => {
+      if (action.payload === 1) {
+        state.todoInputErrMsg = '';
+      } else {
+        state.todoErrMsg = '';
+      }
+    },
   },
   extraReducers: {
     [getMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
@@ -141,4 +152,4 @@ const todoSlice = createSlice({
 });
 
 export default todoSlice.reducer;
-export const { changeActiveTodoFilter } = todoSlice.actions;
+export const { changeActiveTodoFilter, deleteErrorMsg } = todoSlice.actions;
