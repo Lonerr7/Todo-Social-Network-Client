@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { setActiveTodoFilter } from '../../../redux/appSlice';
 import { openPopup } from '../../../redux/areYouSurePopupSlice';
 import { changeActiveTodoFilter } from '../../../redux/todoSlice';
 import { TodoFiltersEnum } from '../../../types/reduxTypes';
@@ -6,6 +7,7 @@ import s from './TodoFilters.module.scss';
 
 const TodoFilters: React.FC = () => {
   const tasksCount = useAppSelector((state) => state.todo.todos.length);
+  const { activeTodoFilter } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
   const onDeleteAllTasks = () => {
@@ -18,24 +20,41 @@ const TodoFilters: React.FC = () => {
     <div className={s.filters}>
       <div className={s.filters__box}>
         <button
-          className={s.filters__btn}
-          onClick={() => dispatch(changeActiveTodoFilter(TodoFiltersEnum.ALL))}
+          className={
+            activeTodoFilter === 1
+              ? `${s.filters__btn} ${s.active}`
+              : s.filters__btn
+          }
+          onClick={() => {
+            dispatch(changeActiveTodoFilter(TodoFiltersEnum.ALL));
+            dispatch(setActiveTodoFilter(1));
+          }}
         >
           All
         </button>
         <button
-          className={s.filters__btn}
-          onClick={() =>
-            dispatch(changeActiveTodoFilter(TodoFiltersEnum.COMPLETED))
+          className={
+            activeTodoFilter === 2
+              ? `${s.filters__btn} ${s.active}`
+              : s.filters__btn
           }
+          onClick={() => {
+            dispatch(changeActiveTodoFilter(TodoFiltersEnum.COMPLETED));
+            dispatch(setActiveTodoFilter(2));
+          }}
         >
           Completed
         </button>
         <button
-          className={s.filters__btn}
-          onClick={() =>
-            dispatch(changeActiveTodoFilter(TodoFiltersEnum.UNCOMPLETED))
+          className={
+            activeTodoFilter === 3
+              ? `${s.filters__btn} ${s.active}`
+              : s.filters__btn
           }
+          onClick={() => {
+            dispatch(changeActiveTodoFilter(TodoFiltersEnum.UNCOMPLETED));
+            dispatch(setActiveTodoFilter(3));
+          }}
         >
           Uncompleted
         </button>
