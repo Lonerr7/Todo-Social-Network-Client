@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import App from './App';
+import ErrorPopup from './components/common/ErrorPopup/ErrorPopup';
 import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { getMe } from './redux/authSlice';
 
@@ -17,6 +18,11 @@ const AppContainer: React.FC = () => {
   }, []);
 
   return <App isRegisterLoginPageOpen={isRegisterLoginPageOpen} />;
+  return (
+    <ul>
+      <ErrorPopup />
+    </ul>
+  );
 };
 
 export default AppContainer;

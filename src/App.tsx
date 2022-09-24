@@ -1,5 +1,4 @@
-import './reset.scss';
-import './fonts.scss';
+
 import './App.scss';
 import AppRouter from './components/Router/AppRouter';
 

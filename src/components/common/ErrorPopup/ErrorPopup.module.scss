@@ -1,0 +1,41 @@
+@import '../../../vars';
+
+.popup {
+  width: 250px;
+  height: 90px;
+  position: relative;
+  border-radius: 8px;
+  display: flex;
+  background-color: $color8;
+
+  &__decor {
+    width: 15px;
+    background-color: $color12;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    text-align: center;
+  }
+
+  &__errorMsg {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__close {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color12;
+    }
+  }
+}
