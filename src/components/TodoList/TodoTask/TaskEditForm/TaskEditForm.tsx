@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../../../hooks/hooks';
-import { updateTodo } from '../../../../redux/todoSlice';
+import { deleteTodosErrorMsg, updateTodo } from '../../../../redux/todoSlice';
 import s from './TaskEditForm.module.scss';
 
 type TaskEditFormProps = {
@@ -17,9 +17,19 @@ const TaskEditForm: React.FC<TaskEditFormProps> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const taskTextChangeHandler = (e: React.FormEvent<HTMLButtonElement>) => {
+  const taskTextChangeHandler = async (
+    e: React.FormEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
-    dispatch(updateTodo({ id, taskText: text }));
+    const response = await dispatch(updateTodo({ id, taskText: text }));
+
+    // deleting errorMsg in Todo after 5 sec
+    if (response.meta.requestStatus === 'rejected') {
+      setTimeout(() => {
+        dispatch(deleteTodosErrorMsg({ num: 2, id }));
+      }, 5000);
+    }
+
     toggleEditMode();
   };
 

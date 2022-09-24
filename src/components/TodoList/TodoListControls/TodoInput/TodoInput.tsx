@@ -1,7 +1,7 @@
 import s from './TodoInput.module.scss';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { createTodo, deleteErrorMsg } from '../../../../redux/todoSlice';
+import { createTodo, deleteTodosErrorMsg } from '../../../../redux/todoSlice';
 import TextError from '../../../common/TextError/TextError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 
@@ -27,7 +27,7 @@ const TodoInput: React.FC = () => {
     // clearing errorMessage after 5 sec
     if (response.meta.requestStatus === 'rejected') {
       setTimeout(() => {
-        dispatch(deleteErrorMsg(1)); // 1 for TodoInput error message
+        dispatch(deleteTodosErrorMsg({ num: 1 })); // 1 for TodoInput error message
       }, 5000);
     }
   };

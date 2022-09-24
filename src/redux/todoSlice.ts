@@ -98,11 +98,21 @@ const todoSlice = createSlice({
     changeActiveTodoFilter: (state, action: PayloadAction<TodoFiltersEnum>) => {
       state.activeTodoFilter = action.payload;
     },
-    deleteErrorMsg: (state, action: PayloadAction<number>) => {
-      if (action.payload === 1) {
+    deleteTodosErrorMsg: (
+      state,
+      action: PayloadAction<{ num: number; id?: string }>
+    ) => {
+      if (action.payload.num === 1) {
         state.todoInputErrMsg = '';
-      } else {
-        
+      } else if (action.payload.num === 2) {
+        state.todos = state.todos.map((t) => {
+          if (t.id === action.payload.id) {
+            t.errorMsg = '';
+            return t;
+          }
+
+          return t;
+        });
       }
     },
   },
@@ -160,4 +170,5 @@ const todoSlice = createSlice({
 });
 
 export default todoSlice.reducer;
-export const { changeActiveTodoFilter, deleteErrorMsg } = todoSlice.actions;
+export const { changeActiveTodoFilter, deleteTodosErrorMsg } =
+  todoSlice.actions;
