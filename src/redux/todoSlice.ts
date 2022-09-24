@@ -13,10 +13,7 @@ import { getMe } from './authSlice';
 
 export const createTodo = createAsyncThunk(
   'todo/createTodo',
-  async (
-    { taskText, difficulty }: TodoParams,
-    { dispatch, rejectWithValue }
-  ) => {
+  async ({ taskText, difficulty }: TodoParams, { rejectWithValue }) => {
     try {
       const fieldsToSend = {
         taskText,
@@ -50,7 +47,7 @@ export const updateTodo = createAsyncThunk(
       return response.data.data.data;
     } catch (error: any) {
       console.log(error.response.data.message);
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue({ error: error.response.data.message, id });
     }
   }
 );
@@ -105,13 +102,14 @@ const todoSlice = createSlice({
       if (action.payload === 1) {
         state.todoInputErrMsg = '';
       } else {
-        state.todoErrMsg = '';
+        
       }
     },
   },
   extraReducers: {
     [getMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
-      state.todos = action.payload.todos;
+      const todosCopy = [...action.payload.todos];
+      state.todos = todosCopy.reverse();
     },
 
     [createTodo.pending.type]: (state) => {
@@ -120,7 +118,7 @@ const todoSlice = createSlice({
     [createTodo.fulfilled.type]: (state, action: PayloadAction<Todo>) => {
       state.todoInputErrMsg = '';
       state.isTodoCreating = false;
-      state.todos.push(action.payload);
+      state.todos.unshift(action.payload);
     },
     [createTodo.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isTodoCreating = false;
@@ -133,8 +131,18 @@ const todoSlice = createSlice({
         t.id === action.payload.id ? (t = action.payload) : t
       );
     },
-    [updateTodo.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.todoErrMsg = action.payload;
+    [updateTodo.rejected.type]: (
+      state,
+      action: PayloadAction<{ id: string; error: string }>
+    ) => {
+      state.todos = state.todos.map((todo) => {
+        if (todo.id === action.payload.id) {
+          todo.errorMsg = action.payload.error;
+          return todo;
+        }
+
+        return todo;
+      });
     },
 
     [deleteTodo.fulfilled.type]: (state, action: PayloadAction<string>) => {

@@ -16,4 +16,9 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  &__error {
+    position: relative;
+    margin-top: 10px;
+  }
 }

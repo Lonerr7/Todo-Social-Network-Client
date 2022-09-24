@@ -15,6 +15,7 @@ const TodoListTasks: React.FC = () => {
       userId={t.user}
       createdAt={t.createdAt}
       isCompleted={t.isCompleted}
+      errMsg={t.errorMsg}
     />
   ));
 

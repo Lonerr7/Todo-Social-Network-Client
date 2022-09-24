@@ -19,6 +19,7 @@ export type Todo = {
   slug: string;
   __v: number;
   id: string;
+  errorMsg: string;
 };
 
 export type AuthState = {
