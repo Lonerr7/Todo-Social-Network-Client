@@ -1,12 +1,20 @@
 import { useAppSelector } from '../../../hooks/hooks';
+import { selectTodosByFilter } from '../../../redux/selectors';
 import s from './TodosCounter.module.scss';
 
 const TodosCounter: React.FC = () => {
-  const todosCount = useAppSelector((state) => state.todo.todos.length);
+  const todosCount = useAppSelector(selectTodosByFilter).length;
+  const { activeTodoFilter } = useAppSelector((state) => state.app);
+
+  let phrase = `All todos:`;
+
+  if (activeTodoFilter === 1) phrase = `All todos:`;
+  if (activeTodoFilter === 2) phrase = 'Completed todos:';
+  if (activeTodoFilter === 3) phrase = 'Uncompleted todos:';
 
   return (
     <h2 className={s.counter}>
-      Tasks count: <span className={s.counter__number}>{todosCount}</span>
+      {phrase} <span className={s.counter__number}>{todosCount}</span>
     </h2>
   );
 };
