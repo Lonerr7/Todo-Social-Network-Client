@@ -16,6 +16,9 @@ import { activeLsNumbers } from '../../../types/appTypes';
 
 const Menu: React.FC = () => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);
+  const uncompletedTodosCount = useAppSelector(
+    (state) => state.todo.todos
+  ).filter((t) => !t.isCompleted).length;
   const dispatch = useAppDispatch();
 
   const setActiveMenuNumber = (neededNum: number) => {
@@ -74,7 +77,7 @@ const Menu: React.FC = () => {
             neededNum={4}
             icon={<RiTodoFill className={s.menu__icon} size={24} />}
             urlPath="/todos"
-            itemsCount={1}
+            itemsCount={uncompletedTodosCount}
             setActiveNum={setActiveMenuNumber}
           />
         </li>
