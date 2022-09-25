@@ -87,6 +87,7 @@ const initialState: TodoState = {
   isTodoCreating: false,
   areAllTodosDeleting: false,
   activeTodoFilter: TodoFiltersEnum.ALL,
+  todoSearchText: '',
   todoInputErrMsg: '',
   todoErrMsg: '',
 };
@@ -114,6 +115,9 @@ const todoSlice = createSlice({
           return t;
         });
       }
+    },
+    setTodoSearchText: (state, action: PayloadAction<string>) => {
+      state.todoSearchText = action.payload;
     },
   },
   extraReducers: {
@@ -170,5 +174,8 @@ const todoSlice = createSlice({
 });
 
 export default todoSlice.reducer;
-export const { changeActiveTodoFilter, deleteTodosErrorMsg } =
-  todoSlice.actions;
+export const {
+  changeActiveTodoFilter,
+  deleteTodosErrorMsg,
+  setTodoSearchText,
+} = todoSlice.actions;

@@ -49,6 +49,7 @@ export type TodoState = {
   isTodoCreating: boolean;
   areAllTodosDeleting: boolean;
   activeTodoFilter: TodoFiltersEnum;
+  todoSearchText: string;
   todoInputErrMsg: string;
   todoErrMsg: string;
 };
