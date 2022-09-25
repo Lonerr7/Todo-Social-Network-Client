@@ -7,6 +7,7 @@ export type User = {
   id: string;
   bio?: string;
   todos: Array<Todo>;
+  img?: string;
 };
 
 export type Todo = {

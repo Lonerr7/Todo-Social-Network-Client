@@ -50,10 +50,10 @@ const Menu: React.FC = () => {
         <li className={s.menu__listItem}>
           <MenuItem
             activeNum={activeNum}
-            text="Friends"
+            text="Users"
             neededNum={2}
             icon={<FaUserFriends className={s.menu__icon} size={24} />}
-            urlPath="/friends"
+            urlPath="/users"
             itemsCount={25}
             setActiveNum={setActiveMenuNumber}
           />

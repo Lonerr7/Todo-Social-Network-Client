@@ -1,9 +1,14 @@
 @import '../../vars';
 
-.page {
+.myPage {
   @extend %main-inner;
 
   &__inner {
     @extend %inner-page--inner;
+    @extend %userpage-inner;
+  }
+
+  &__avatarBox {
+    @extend %avatar-box;
   }
 }

@@ -155,3 +155,13 @@ $color12: rgb(202, 0, 0);
 %settings-elem {
   margin-bottom: 40px;
 }
+
+%userpage-inner {
+  display: flex;
+}
+
+%avatar-box {
+  padding: 15px;
+  background-color: $color6;
+  border-radius: 5px;
+}
