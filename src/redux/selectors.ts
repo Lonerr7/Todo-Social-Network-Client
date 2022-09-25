@@ -6,30 +6,28 @@ export const selectAllTodos = (state: RootState) => state.todo.todos;
 export const selectActiveTodoFilter = (state: RootState) =>
   state.todo.activeTodoFilter;
 
-export const selectTodosBySearch = (state: RootState) =>
+export const selectTodoSearchText = (state: RootState) =>
   state.todo.todoSearchText;
 
 export const selectTodosByFilter = createSelector(
-  [selectAllTodos, selectActiveTodoFilter, selectTodosBySearch],
+  [selectAllTodos, selectActiveTodoFilter, selectTodoSearchText],
   (allTodos, activeFilter, todoSearchText) => {
-    if (activeFilter === TodoFiltersEnum.ALL) {
-      return allTodos.filter((t) =>
+    let allTodosCopy = [...allTodos];
+
+    if (todoSearchText) {
+      allTodosCopy = allTodosCopy.filter((t) =>
         t.taskText.toLowerCase().includes(todoSearchText.toLowerCase())
       );
+    }
+
+    if (activeFilter === TodoFiltersEnum.ALL) {
+      return allTodosCopy;
     }
 
     if (activeFilter === TodoFiltersEnum.COMPLETED) {
-      return allTodos
-        .filter((t) => t.isCompleted)
-        .filter((t) =>
-          t.taskText.toLowerCase().includes(todoSearchText.toLowerCase())
-        );
+      return allTodosCopy.filter((t) => t.isCompleted);
     }
 
-    return allTodos
-      .filter((t) => !t.isCompleted)
-      .filter((t) =>
-        t.taskText.toLowerCase().includes(todoSearchText.toLowerCase())
-      );
+    return allTodosCopy.filter((t) => !t.isCompleted);
   }
 );
