@@ -5,6 +5,7 @@ import s from './TodoListTasks.module.scss';
 
 const TodoListTasks: React.FC = () => {
   const todos = useAppSelector(selectTodosByFilter);
+  const todosCount = todos.length;
 
   const todoElements = todos.map((t) => (
     <TodoTask
@@ -19,7 +20,15 @@ const TodoListTasks: React.FC = () => {
     />
   ));
 
-  return <ul className={s.tasks}>{todoElements}</ul>;
+  return (
+    <>
+      {!todosCount ? (
+        <p className={s.tasks__warning}>[empty Empty]</p>
+      ) : (
+        <ul className={s.tasks}>{todoElements}</ul>
+      )}
+    </>
+  );
 };
 
 export default TodoListTasks;

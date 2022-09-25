@@ -2,6 +2,7 @@ import s from './TodoListSearch.module.scss';
 import { ImCross } from 'react-icons/im';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { setTodoSearchText } from '../../../redux/todoSlice';
+import { useEffect } from 'react';
 
 const TodoListSearch: React.FC = () => {
   const { todoSearchText } = useAppSelector((state) => state.todo);
@@ -17,6 +18,15 @@ const TodoListSearch: React.FC = () => {
   const onInputClear = () => {
     dispatch(setTodoSearchText(''));
   };
+
+  // Clear search input when we leve TodoList Component
+  useEffect(() => {
+    return () => {
+      dispatch(setTodoSearchText(''));
+    };
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className={s.search}>
