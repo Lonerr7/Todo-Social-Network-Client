@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import Avatar from '../MyOrUserPage/common/Avatar/Avatar';
+import Avatar from '../../MyOrUserPage/common/Avatar/Avatar';
 import s from './UserSmall.module.scss';
 
 type Props = {

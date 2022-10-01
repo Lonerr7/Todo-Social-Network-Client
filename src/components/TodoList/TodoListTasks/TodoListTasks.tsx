@@ -4,6 +4,8 @@ import TodoTask from '../TodoTask/TodoTask';
 import s from './TodoListTasks.module.scss';
 
 const TodoListTasks: React.FC = () => {
+  console.log(`tasks rerender`);
+
   const todos = useAppSelector(selectTodosByFilter);
   const todosCount = todos.length;
 

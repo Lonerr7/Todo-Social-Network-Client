@@ -1,3 +1,4 @@
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { setActiveTodoFilter } from '../../../redux/appSlice';
 import { openPopup } from '../../../redux/areYouSurePopupSlice';
@@ -6,6 +7,8 @@ import { TodoFiltersEnum } from '../../../types/reduxTypes';
 import s from './TodoFilters.module.scss';
 
 const TodoFilters: React.FC = () => {
+  console.log(`todoFilters render`);
+
   const tasksCount = useAppSelector((state) => state.todo.todos.length);
   const { activeTodoFilter } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
@@ -69,4 +72,4 @@ const TodoFilters: React.FC = () => {
   );
 };
 
-export default TodoFilters;
+export default React.memo(TodoFilters);

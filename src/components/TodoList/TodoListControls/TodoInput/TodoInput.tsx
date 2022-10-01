@@ -1,3 +1,4 @@
+import React from 'react';
 import s from './TodoInput.module.scss';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
@@ -6,6 +7,8 @@ import TextError from '../../../common/TextError/TextError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 
 const TodoInput: React.FC = () => {
+  console.log(`todoInput rerender`);
+  
   const [text, setText] = useState('');
   const { isTodoCreating, todoInputErrMsg } = useAppSelector(
     (state) => state.todo
@@ -60,4 +63,4 @@ const TodoInput: React.FC = () => {
   );
 };
 
-export default TodoInput;
+export default React.memo(TodoInput);

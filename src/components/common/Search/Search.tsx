@@ -1,32 +1,37 @@
-import React from 'react';
-import s from './TodoListSearch.module.scss';
-import { ImCross } from 'react-icons/im';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { setTodoSearchText } from '../../../redux/todoSlice';
 import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { ImCross } from 'react-icons/im';
+import { useAppDispatch } from '../../../hooks/hooks';
+import s from './Search.module.scss';
 
-const TodoListSearch: React.FC = () => {
+type Props = {
+  text: string;
+  actionCreator: (payload: string) => {
+    payload: string;
+    type: string;
+  };
+};
+
+const Search: React.FC<Props> = ({ actionCreator, text }) => {
   console.log(`search rerender`);
-
-  const { todoSearchText } = useAppSelector((state) => state.todo);
+  
   const dispatch = useAppDispatch();
 
   const onTextChange = (e: React.FormEvent<HTMLInputElement>) => {
     if (e.currentTarget.value.match(/^\s+$/)) {
       return;
     }
-    dispatch(setTodoSearchText(e.currentTarget.value));
+    dispatch(actionCreator(e.currentTarget.value));
   };
 
   const onInputClear = () => {
-    dispatch(setTodoSearchText(''));
+    dispatch(actionCreator(''));
   };
 
-  // Clear search input when we leave TodoList Component
+  // Clear search input when we leave this Component
   useEffect(() => {
     return () => {
-      dispatch(setTodoSearchText(''));
+      dispatch(actionCreator(''));
     };
 
     // eslint-disable-next-line
@@ -39,10 +44,10 @@ const TodoListSearch: React.FC = () => {
         className={s.search__input}
         type="text"
         placeholder="Search for todo"
-        value={todoSearchText}
+        value={text}
         onChange={onTextChange}
       />
-      {todoSearchText && (
+      {text && (
         <button className={s.search__clear} onClick={onInputClear}>
           <ImCross className={s.search__icon} size={15} />
         </button>
@@ -51,4 +56,4 @@ const TodoListSearch: React.FC = () => {
   );
 };
 
-export default React.memo(TodoListSearch);
+export default Search;

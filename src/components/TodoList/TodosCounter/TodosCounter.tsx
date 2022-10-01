@@ -1,8 +1,11 @@
+import React from 'react';
 import { useAppSelector } from '../../../hooks/hooks';
 import { selectTodosByFilter } from '../../../redux/selectors';
 import s from './TodosCounter.module.scss';
 
 const TodosCounter: React.FC = () => {
+  console.log(`counter rerender`);
+  
   const todosCount = useAppSelector(selectTodosByFilter).length;
   const { activeTodoFilter } = useAppSelector((state) => state.app);
 
@@ -19,4 +22,4 @@ const TodosCounter: React.FC = () => {
   );
 };
 
-export default TodosCounter;
+export default React.memo(TodosCounter);

@@ -1,4 +1,5 @@
-import UserSmall from '../../components/UserSmall/UserSmall';
+import Search from '../../components/common/Search/Search';
+import UserSmall from '../../components/Users/UserSmall/UserSmall';
 import { UsersList } from '../../types/reduxTypes';
 import s from './UsersPage.module.scss';
 
@@ -21,6 +22,7 @@ const UsersPage: React.FC<Props> = ({ users }) => {
   return (
     <div className={s.page}>
       <div className={s.page__inner}>
+        {/* <Search /> */}
         {usersElements ? <ul>{usersElements}</ul> : <p>No users</p>}
       </div>
     </div>
