@@ -2,7 +2,7 @@ import s from './GeneralSettings.module.scss';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/hooks';
 import UpdateUserInfoForm from './UpdateUserInfoForm/UpdateUserInfoForm';
-import { resetUserErrorMsgs } from '../../../redux/userSlice';
+import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();

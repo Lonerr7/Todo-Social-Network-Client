@@ -1,5 +1,5 @@
-import Avatar from '../../components/common/MyOrUserPage/common/Avatar/Avatar';
-import MyAvatarControls from '../../components/common/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
+import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
+import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
 import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
 

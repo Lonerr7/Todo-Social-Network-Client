@@ -98,7 +98,7 @@ const initialState: UserState = {
   deleteMyProfileErrorMsg: '',
 };
 
-const userSlice = createSlice({
+const myselfSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -147,5 +147,5 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice.reducer;
-export const { resetUserErrorMsgs } = userSlice.actions;
+export default myselfSlice.reducer;
+export const { resetUserErrorMsgs } = myselfSlice.actions;

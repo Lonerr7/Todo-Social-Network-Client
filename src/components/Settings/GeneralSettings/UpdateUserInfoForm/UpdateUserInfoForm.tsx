@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { UpdateUserFromInitialValues } from '../../../../types/FormikTypes';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import FormControl from '../../../common/FormControl/FormControl';
-import { updateMe } from '../../../../redux/userSlice';
+import { updateMe } from '../../../../redux/myselfSlice';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
@@ -19,7 +19,7 @@ const validationSchema = yup.object({
 const UpdateUserInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
   const { updateMeErrorMsg, isUserUpdateFetching } = useAppSelector(
-    (state) => state.user
+    (state) => state.myslef
   );
   const { isUserInfoSuccessfulySent } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();

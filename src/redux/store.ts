@@ -4,13 +4,13 @@ import authSlice from './authSlice';
 import formsSlice from './formsSlice';
 import popupSlice from './areYouSurePopupSlice';
 import todoSlice from './todoSlice';
-import userSlice from './userSlice';
+import myselfSlice from './myselfSlice';
 import errorMessagesSlice from './errorMessagesSlice';
 
 const store = configureStore({
   reducer: {
     auth: authSlice,
-    user: userSlice,
+    myslef: myselfSlice,
     app: appSlice,
     forms: formsSlice,
     popup: popupSlice,

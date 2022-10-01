@@ -6,7 +6,7 @@ import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
 } from '../types/FormikTypes';
-import { changePassword, deleteMyProfile, updateMe } from './userSlice';
+import { changePassword, deleteMyProfile, updateMe } from './myselfSlice';
 
 export const signUserUp = createAsyncThunk(
   'auth/signUserUp',

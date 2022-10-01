@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import FormControl from '../../../common/FormControl/FormControl';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { changePassword } from '../../../../redux/userSlice';
+import { changePassword } from '../../../../redux/myselfSlice';
 import FormError from '../../../common/FormError/FormError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 
@@ -32,7 +32,7 @@ const validationSchema = yup.object({
 
 const ChangePasswordForm: React.FC = () => {
   const { isChangingPasswordFetching, changePasswordErrorMsg } = useAppSelector(
-    (state) => state.user
+    (state) => state.myslef
   );
   const { isNewPasswordSuccessfulySent } = useAppSelector(
     (state) => state.forms

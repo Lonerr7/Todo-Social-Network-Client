@@ -27,7 +27,7 @@ const validationSchema = yup.object({
 });
 
 const DeleteMyProfileForm: React.FC = () => {
-  const { deleteMyProfileErrorMsg } = useAppSelector((state) => state.user);
+  const { deleteMyProfileErrorMsg } = useAppSelector((state) => state.myslef);
   const { isUserSucessfulyDeleted } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/hooks';
-import { resetUserErrorMsgs } from '../../../redux/userSlice';
+import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';
 import DeleteMyProfileForm from './DeleteMyProfileForm/DeleteMyProfileForm';
 import s from './SecuritySettings.module.scss';
