@@ -7,6 +7,7 @@ export const fetchAllUsers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await usersAPI.getAllUsers();
+      console.log(`request`);
 
       return response.data.data.data;
     } catch (error: any) {
@@ -33,6 +34,7 @@ const usersSlice = createSlice({
     },
     [fetchAllUsers.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errorMsg = action.payload;
+      state.users = null;
     },
   },
 });

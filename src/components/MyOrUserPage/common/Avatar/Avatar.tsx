@@ -6,7 +6,7 @@ type Props = {
   customClass?: string;
 };
 
-const AvatarBig: React.FC<Props> = ({ avatar, customClass }) => {
+const Avatar: React.FC<Props> = ({ avatar, customClass }) => {
   return (
     <div className={s.avatar}>
       {avatar ? (
@@ -26,4 +26,4 @@ const AvatarBig: React.FC<Props> = ({ avatar, customClass }) => {
   );
 };
 
-export default AvatarBig;
+export default Avatar;

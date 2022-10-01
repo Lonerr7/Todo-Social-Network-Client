@@ -9,7 +9,7 @@ import {
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
-import { TodoParams, UsersList } from '../types/reduxTypes';
+import { TodoParams } from '../types/reduxTypes';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/api/v1/',
@@ -64,6 +64,6 @@ export const todoAPI = {
 
 export const usersAPI = {
   getAllUsers: async () => {
-    return await axiosInstance.get('usersd');
+    return await axiosInstance.get('users');
   },
 };

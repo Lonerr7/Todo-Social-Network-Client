@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchAllUsers } from '../../redux/usersSlice';
 import UsersPage from './UsersPage';
 
 const UsersPageContainer: React.FC = () => {
+  const users = useAppSelector((state) => state.users.users);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -12,7 +13,7 @@ const UsersPageContainer: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  return <UsersPage />;
+  return <UsersPage users={users} />;
 };
 
 export default UsersPageContainer;

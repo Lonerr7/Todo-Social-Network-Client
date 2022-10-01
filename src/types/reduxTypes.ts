@@ -79,6 +79,6 @@ export type ErrorPopupInitialState = {
 };
 
 export type UsersInitialState = {
-  users: UsersList;
+  users: UsersList | null;
   errorMsg: string;
 };

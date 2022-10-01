@@ -1,0 +1,11 @@
+@import '../../vars';
+
+.page {
+  @extend %main-inner;
+
+  &__inner {
+    @extend %inner-page--inner;
+    @extend %userpage-inner;
+    display: block;
+  }
+}
