@@ -9,7 +9,7 @@ import {
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
-import { TodoParams } from '../types/reduxTypes';
+import { TodoParams, UsersList } from '../types/reduxTypes';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/api/v1/',
@@ -26,22 +26,22 @@ export const authAPI = {
     return await axiosInstance.post('users/signup', userData);
   },
   logIn: async (userData: LoginFormInitialValues) => {
-    return await axiosInstance.post('/users/login', userData);
+    return await axiosInstance.post('users/login', userData);
   },
   getMe: async () => {
-    return await axiosInstance.get('/users/me');
+    return await axiosInstance.get('users/me');
   },
 };
 
-export const userAPI = {
+export const myselfAPI = {
   updateMe: async (newUserData: UpdateUserFromInitialValues) => {
-    return await axiosInstance.patch('/users/updateMe', newUserData);
+    return await axiosInstance.patch('users/updateMe', newUserData);
   },
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {
-    return await axiosInstance.patch('/users/updateMyPassword', passwords);
+    return await axiosInstance.patch('users/updateMyPassword', passwords);
   },
   deleteMe: async (passwords: DeleteMePasswords) => {
-    return await axiosInstance.delete('/users/deleteMe', {
+    return await axiosInstance.delete('users/deleteMe', {
       data: passwords,
     });
   },
@@ -49,15 +49,21 @@ export const userAPI = {
 
 export const todoAPI = {
   addTodo: async (todoInfo: TodoParams) => {
-    return await axiosInstance.post('/todos', todoInfo);
+    return await axiosInstance.post('todos', todoInfo);
   },
   updateTodo: async (id: string, data: UpdateTodoParamsRequest) => {
-    return await axiosInstance.patch(`/todos/${id}`, data);
+    return await axiosInstance.patch(`todos/${id}`, data);
   },
   deleteTodo: async (id: string) => {
-    return await axiosInstance.delete(`/todos/${id}`);
+    return await axiosInstance.delete(`todos/${id}`);
   },
   deleteAllUserTodos: async () => {
-    return await axiosInstance.delete('/todos');
+    return await axiosInstance.delete('todos');
+  },
+};
+
+export const usersAPI = {
+  getAllUsers: async () => {
+    return await axiosInstance.get('usersd');
   },
 };

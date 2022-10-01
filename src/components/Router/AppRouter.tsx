@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import RegisterForm from '../common/RegisterForm/RegisterForm';
 import LoginForm from '../common/LoginForm/LoginForm';
-import FriendsPage from '../../pages/UsersPage/UsersPage';
 import MessagesPage from '../../pages/MessagesPage/MessagesPage';
 import TodosPage from '../../pages/TodosPage/TodosPage';
 import SettingsPage from '../../pages/SettingsPage/SettingsPage';
@@ -10,6 +9,7 @@ import GeneralSettings from '../Settings/GeneralSettings/GeneralSettings';
 import PageContainer from '../../pages/Page/PageContainer';
 import SecuritySettings from '../Settings/SecuritySettings/SecuritySettings';
 import MyPage from '../../pages/MyPage/MyPage';
+import UsersPageContainer from '../../pages/UsersPage/UsersPageContainer';
 
 const AppRouter: React.FC = () => {
   return (
@@ -24,7 +24,7 @@ const AppRouter: React.FC = () => {
       />
       <Route path="/" element={<Layout />}>
         <Route index element={<MyPage />} />
-        <Route path="users" element={<FriendsPage />} />
+        <Route path="users" element={<UsersPageContainer />} />
         <Route path="messages" element={<MessagesPage />} />
         <Route path="todos" element={<TodosPage />} />
         <Route path="settings" element={<SettingsPage />}>

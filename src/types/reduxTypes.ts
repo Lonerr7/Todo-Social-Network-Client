@@ -10,6 +10,8 @@ export type User = {
   img?: string;
 };
 
+export type UsersList = Array<User>;
+
 export type Todo = {
   _id: string;
   taskText: string;
@@ -74,4 +76,9 @@ type ErrorPopup = {
 
 export type ErrorPopupInitialState = {
   errors: Array<ErrorPopup>;
+};
+
+export type UsersInitialState = {
+  users: UsersList;
+  errorMsg: string;
 };

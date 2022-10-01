@@ -5,17 +5,17 @@ import formsSlice from './formsSlice';
 import popupSlice from './areYouSurePopupSlice';
 import todoSlice from './todoSlice';
 import myselfSlice from './myselfSlice';
-import errorMessagesSlice from './errorMessagesSlice';
+import usersSlice from './usersSlice';
 
 const store = configureStore({
   reducer: {
     auth: authSlice,
     myslef: myselfSlice,
+    users: usersSlice,
     app: appSlice,
     forms: formsSlice,
     popup: popupSlice,
     todo: todoSlice,
-    errors: errorMessagesSlice,
   },
 });
 
