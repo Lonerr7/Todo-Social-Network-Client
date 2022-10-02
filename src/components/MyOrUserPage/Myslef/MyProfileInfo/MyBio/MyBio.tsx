@@ -8,6 +8,7 @@ type Props = {
 
 const MyBio: React.FC<Props> = ({ bio }) => {
   const [editMode, setEditMode] = useState(false);
+  const [text, setText] = useState('');
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
@@ -27,7 +28,7 @@ const MyBio: React.FC<Props> = ({ bio }) => {
             </span>
           ) : (
             <div className={s.bio__editFormBox}>
-              <MyBioEditForm />
+              <MyBioEditForm text={text} setText={setText} />
               <button className={s.bio__btnCloseEdit} onClick={toggleEditMode}>
                 Cancel
               </button>

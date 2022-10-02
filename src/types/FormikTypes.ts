@@ -20,6 +20,10 @@ export type UpdateUserFromInitialValues = {
   bio: string;
 };
 
+export type UpdateMyBioValue = {
+  bio: string;
+}
+
 export type UpdateUserPasswordInitialValues = {
   currentPassword: string;
   password: string;

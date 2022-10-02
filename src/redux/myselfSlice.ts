@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { myselfAPI } from '../api/api';
 import { DeleteMePasswords } from '../types/axiosTypes';
 import {
+  UpdateMyBioValue,
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
@@ -13,8 +14,9 @@ import {
   showHideUserInfoSuccessMsg,
 } from './formsSlice';
 
+// using this in settings
 export const updateMe = createAsyncThunk(
-  'auth/updateMe',
+  'myself/updateMe',
   async (
     newUserData: UpdateUserFromInitialValues,
     { rejectWithValue, dispatch }
@@ -38,8 +40,22 @@ export const updateMe = createAsyncThunk(
   }
 );
 
+// using this in my profile to only update my bio
+export const updateMyBio = createAsyncThunk(
+  'myself/updateMyBio',
+  async (newBio: UpdateMyBioValue, { rejectWithValue }) => {
+    try {
+      const response = await myselfAPI.updateMyBio(newBio);
+
+      console.log(response);
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 export const changePassword = createAsyncThunk(
-  'auth/changePassword',
+  'myself/changePassword',
   async (
     passwords: UpdateUserPasswordInitialValues,
     { rejectWithValue, dispatch }
@@ -69,7 +85,7 @@ export const changePassword = createAsyncThunk(
 );
 
 export const deleteMyProfile = createAsyncThunk(
-  'auth/deleteMyProfile',
+  'myself/deleteMyProfile',
   async (passwords: DeleteMePasswords, { rejectWithValue, dispatch }) => {
     try {
       const response = await myselfAPI.deleteMe(passwords);
@@ -99,7 +115,7 @@ const initialState: UserState = {
 };
 
 const myselfSlice = createSlice({
-  name: 'user',
+  name: 'myslef',
   initialState,
   reducers: {
     resetUserErrorMsgs: (state) => {
