@@ -9,6 +9,14 @@
   }
 
   &__avatarBox {
-    @extend %avatar-box;
+    @extend %profile-box;
+  }
+
+  &__left {
+    margin-right: 60px;
+  }
+
+  &__right {
+    width: 100%;
   }
 }

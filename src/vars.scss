@@ -160,8 +160,8 @@ $color12: rgb(202, 0, 0);
   display: flex;
 }
 
-%avatar-box {
+%profile-box { // for avatar box and info box
   padding: 15px;
-  background-color: $color6;
+  background-color: $color8;
   border-radius: 5px;
 }

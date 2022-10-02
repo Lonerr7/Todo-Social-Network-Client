@@ -1,5 +1,5 @@
 import s from './Avatar.module.scss';
-import mockAvatar from '../../../../img/mockAvatar.jpg';
+import mockAvatar from '../../../../assets/img/mockAvatar.jpg';
 
 type Props = {
   avatar?: string;

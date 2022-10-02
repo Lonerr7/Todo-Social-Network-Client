@@ -1,5 +1,5 @@
 import s from './Preloader.module.scss';
-import preloader from '../../../assets/images/preloader.gif';
+import preloader from '../../../assets/img/preloader.gif';
 
 type PreloaderProps = {
   customClass?: string;

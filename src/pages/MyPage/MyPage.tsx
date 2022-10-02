@@ -1,10 +1,11 @@
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
+import MyProfileInfo from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyProfileInfo';
 import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
 
 const MyPage: React.FC = () => {
-  const myself = useAppSelector((state) => state.auth.user);
+  const myself = useAppSelector((state) => state.auth.user)!; //!
 
   return (
     <div className={s.myPage}>
@@ -15,7 +16,9 @@ const MyPage: React.FC = () => {
             <MyAvatarControls />
           </div>
         </div>
-        <div className={s.myPage__right}></div>
+        <div className={s.myPage__right}>
+          <MyProfileInfo myself={myself} />
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,27 @@
+@import '../../../../../vars';
+
+.nameAndBio {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $color2;
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__name {
+    margin-right: 20px;
+  }
+
+  &__online {
+    font-size: 18px;
+    color: $color10;
+  }
+
+  &__bio {
+    font-size: 20px;
+  }
+}
