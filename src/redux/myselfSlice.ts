@@ -107,6 +107,7 @@ export const deleteMyProfile = createAsyncThunk(
 
 const initialState: UserState = {
   isUserUpdateFetching: false,
+  isMyBioUpdating: false,
   isChangingPasswordFetching: false,
   isUserDeletingFetching: false,
   updateMeErrorMsg: '',
@@ -137,7 +138,15 @@ const myselfSlice = createSlice({
       state.updateMeErrorMsg = action.payload;
     },
 
-    [updateMyBio.fulfilled.type]: (state) => {},
+    [updateMyBio.pending.type]: (state) => {
+      state.isMyBioUpdating = true;
+    },
+    [updateMyBio.fulfilled.type]: (state) => {
+      state.isMyBioUpdating = false;
+    },
+    [updateMyBio.rejected.type]: (state) => {
+      state.isMyBioUpdating = false;
+    },
 
     [changePassword.pending.type]: (state) => {
       state.isChangingPasswordFetching = true;

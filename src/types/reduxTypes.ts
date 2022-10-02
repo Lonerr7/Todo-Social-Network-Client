@@ -34,6 +34,7 @@ export type AuthState = {
 
 export type UserState = {
   isUserUpdateFetching: boolean;
+  isMyBioUpdating: boolean;
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;
   updateMeErrorMsg: string;

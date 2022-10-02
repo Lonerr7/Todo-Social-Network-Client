@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '../../../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks';
 import { updateMyBio } from '../../../../../../redux/myselfSlice';
+import SubmitLoadingBtn from '../../../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import s from './MyBioEditForm.module.scss';
 
 type Props = {
@@ -16,6 +17,7 @@ const MyBioEditForm: React.FC<Props> = ({
   setText,
   toggleEditMode,
 }) => {
+  const { isMyBioUpdating } = useAppSelector((state) => state.myslef);
   const dispatch = useAppDispatch();
 
   const textChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
@@ -46,9 +48,14 @@ const MyBioEditForm: React.FC<Props> = ({
         onChange={textChangeHandler}
       />
       <div className={s.form__controls}>
-        <button className={s.form__btn} type="submit" onClick={onSubmit}>
-          Ok
-        </button>
+        <SubmitLoadingBtn
+          btnClass={s.form__btn}
+          btnFetchingText="Changing..."
+          btnText="Ok"
+          btnType="submit"
+          isFetching={isMyBioUpdating}
+          onSubmit={onSubmit}
+        />
         <button className={s.form__btn} onClick={toggleEditMode}>
           Cancel
         </button>
