@@ -7,8 +7,6 @@ import TextError from '../../../common/TextError/TextError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 
 const TodoInput: React.FC = () => {
-  console.log(`todoInput rerender`);
-  
   const [text, setText] = useState('');
   const { isTodoCreating, todoInputErrMsg } = useAppSelector(
     (state) => state.todo

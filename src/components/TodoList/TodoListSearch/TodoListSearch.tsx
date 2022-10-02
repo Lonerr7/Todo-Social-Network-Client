@@ -7,8 +7,6 @@ import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const TodoListSearch: React.FC = () => {
-  console.log(`search rerender`);
-
   const { todoSearchText } = useAppSelector((state) => state.todo);
   const dispatch = useAppDispatch();
 

@@ -4,8 +4,6 @@ import { selectTodosByFilter } from '../../../redux/selectors';
 import s from './TodosCounter.module.scss';
 
 const TodosCounter: React.FC = () => {
-  console.log(`counter rerender`);
-  
   const todosCount = useAppSelector(selectTodosByFilter).length;
   const { activeTodoFilter } = useAppSelector((state) => state.app);
 

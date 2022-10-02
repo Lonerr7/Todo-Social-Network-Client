@@ -13,8 +13,6 @@ type Props = {
 };
 
 const Search: React.FC<Props> = ({ actionCreator, text }) => {
-  console.log(`search rerender`);
-  
   const dispatch = useAppDispatch();
 
   const onTextChange = (e: React.FormEvent<HTMLInputElement>) => {

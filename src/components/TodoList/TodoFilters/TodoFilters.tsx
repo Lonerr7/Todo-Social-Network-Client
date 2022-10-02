@@ -7,8 +7,6 @@ import { TodoFiltersEnum } from '../../../types/reduxTypes';
 import s from './TodoFilters.module.scss';
 
 const TodoFilters: React.FC = () => {
-  console.log(`todoFilters render`);
-
   const tasksCount = useAppSelector((state) => state.todo.todos.length);
   const { activeTodoFilter } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
