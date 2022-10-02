@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import s from './MyBio.module.scss';
 import MyBioEditForm from './MyBioEditForm/MyBioEditForm';
+import { BiPencil } from 'react-icons/bi';
 
 type Props = {
   bio?: string;
@@ -8,7 +9,7 @@ type Props = {
 
 const MyBio: React.FC<Props> = ({ bio }) => {
   const [editMode, setEditMode] = useState(false);
-  const [text, setText] = useState('');
+  const [text, setText] = useState(bio!);
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
@@ -16,10 +17,13 @@ const MyBio: React.FC<Props> = ({ bio }) => {
 
   return (
     <div className={s.bio}>
-      {bio ? (
-        <>
+      {bio && !editMode ? (
+        <div className={s.bio__textBox}>
           <span className={s.bio__text}>{bio}</span>
-        </>
+          <button className={s.bio__openEdit} onClick={toggleEditMode}>
+            <BiPencil size={18} />
+          </button>
+        </div>
       ) : (
         <>
           {!editMode ? (
@@ -28,10 +32,12 @@ const MyBio: React.FC<Props> = ({ bio }) => {
             </span>
           ) : (
             <div className={s.bio__editFormBox}>
-              <MyBioEditForm text={text} setText={setText} />
-              <button className={s.bio__btnCloseEdit} onClick={toggleEditMode}>
-                Cancel
-              </button>
+              <MyBioEditForm
+                text={text}
+                bio={bio}
+                setText={setText}
+                toggleEditMode={toggleEditMode}
+              />
             </div>
           )}
         </>

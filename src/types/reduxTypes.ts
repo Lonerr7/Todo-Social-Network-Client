@@ -5,7 +5,7 @@ export type User = {
   lastName: string;
   role: string;
   id: string;
-  bio?: string;
+  bio: string;
   todos: Array<Todo>;
   img?: string;
 };

@@ -3,6 +3,15 @@
 .bio {
   font-size: 18px;
 
+  &__textBox {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 10px;
+  }
+
   &__changeText {
     font-size: 16px;
     color: $color10;
@@ -10,6 +19,7 @@
   }
 
   &__editFormBox {
+    width: 100%;
     display: flex;
     align-items: center;
   }

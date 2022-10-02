@@ -22,7 +22,7 @@ export type UpdateUserFromInitialValues = {
 
 export type UpdateMyBioValue = {
   bio: string;
-}
+};
 
 export type UpdateUserPasswordInitialValues = {
   currentPassword: string;

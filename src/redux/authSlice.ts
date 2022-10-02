@@ -6,7 +6,12 @@ import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
 } from '../types/FormikTypes';
-import { changePassword, deleteMyProfile, updateMe } from './myselfSlice';
+import {
+  changePassword,
+  deleteMyProfile,
+  updateMe,
+  updateMyBio,
+} from './myselfSlice';
 
 export const signUserUp = createAsyncThunk(
   'auth/signUserUp',
@@ -91,6 +96,7 @@ const authSlice = createSlice({
     },
     [signUserUp.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
+      state.user.bio = '';
       state.isFetching = false;
     },
     [signUserUp.rejected.type]: (state, action: PayloadAction<string>) => {
@@ -124,6 +130,10 @@ const authSlice = createSlice({
     },
 
     [updateMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.user = action.payload;
+    },
+
+    [updateMyBio.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
 

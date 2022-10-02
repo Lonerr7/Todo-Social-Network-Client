@@ -47,7 +47,7 @@ export const updateMyBio = createAsyncThunk(
     try {
       const response = await myselfAPI.updateMyBio(newBio);
 
-      console.log(response);
+      return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -136,6 +136,8 @@ const myselfSlice = createSlice({
       state.isUserUpdateFetching = false;
       state.updateMeErrorMsg = action.payload;
     },
+
+    [updateMyBio.fulfilled.type]: (state) => {},
 
     [changePassword.pending.type]: (state) => {
       state.isChangingPasswordFetching = true;
