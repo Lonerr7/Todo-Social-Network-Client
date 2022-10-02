@@ -15,7 +15,11 @@ const TodoList: React.FC = () => {
       <TodoListTitle />
       <TodosCounter />
       <TodoListControls />
-      <Search text={todoSearchText} actionCreator={setTodoSearchText} />
+      <Search
+        text={todoSearchText}
+        actionCreator={setTodoSearchText}
+        placeholder="Search for todo"
+      />
       <TodoListTasks />
     </div>
   );

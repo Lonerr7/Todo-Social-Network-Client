@@ -7,7 +7,6 @@ export const fetchAllUsers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await usersAPI.getAllUsers();
-      console.log(`request`);
 
       return response.data.data.data;
     } catch (error: any) {
@@ -19,12 +18,17 @@ export const fetchAllUsers = createAsyncThunk(
 const initialState: UsersInitialState = {
   users: [],
   errorMsg: '',
+  usersSearchText: '',
 };
 
 const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    setUsersSearchText: (state, action: PayloadAction<string>) => {
+      state.usersSearchText = action.payload;
+    },
+  },
   extraReducers: {
     [fetchAllUsers.fulfilled.type]: (
       state,
@@ -40,4 +44,4 @@ const usersSlice = createSlice({
 });
 
 export default usersSlice.reducer;
-export const {} = usersSlice.actions;
+export const { setUsersSearchText } = usersSlice.actions;

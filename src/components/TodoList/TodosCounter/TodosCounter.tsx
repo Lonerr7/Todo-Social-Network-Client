@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../../../hooks/hooks';
-import { selectTodosByFilter } from '../../../redux/selectors';
+import { selectTodosByFilter } from '../../../redux/selectors/todoSelectors';
 import s from './TodosCounter.module.scss';
 
 const TodosCounter: React.FC = () => {

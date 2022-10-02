@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { TodoFiltersEnum } from '../types/reduxTypes';
-import { RootState } from './store';
+import { TodoFiltersEnum } from '../../types/reduxTypes';
+import { RootState } from '../store';
 
 export const selectAllTodos = (state: RootState) => state.todo.todos;
 export const selectActiveTodoFilter = (state: RootState) =>

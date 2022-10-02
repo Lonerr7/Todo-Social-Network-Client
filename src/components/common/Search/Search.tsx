@@ -10,9 +10,10 @@ type Props = {
     payload: string;
     type: string;
   };
+  placeholder?: string;
 };
 
-const Search: React.FC<Props> = ({ actionCreator, text }) => {
+const Search: React.FC<Props> = ({ actionCreator, text, placeholder }) => {
   const dispatch = useAppDispatch();
 
   const onTextChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -41,7 +42,7 @@ const Search: React.FC<Props> = ({ actionCreator, text }) => {
       <input
         className={s.search__input}
         type="text"
-        placeholder="Search for todo"
+        placeholder={placeholder}
         value={text}
         onChange={onTextChange}
       />

@@ -5,9 +5,18 @@ import s from './UsersPage.module.scss';
 
 type Props = {
   users: UsersList | null;
+  usersSearchText: string;
+  searchActionCreator: (payload: string) => {
+    payload: string;
+    type: string;
+  };
 };
 
-const UsersPage: React.FC<Props> = ({ users }) => {
+const UsersPage: React.FC<Props> = ({
+  users,
+  usersSearchText,
+  searchActionCreator,
+}) => {
   const usersElements = users?.map((u) => (
     <UserSmall
       key={u.id}
@@ -22,8 +31,18 @@ const UsersPage: React.FC<Props> = ({ users }) => {
   return (
     <div className={s.page}>
       <div className={s.page__inner}>
-        {/* <Search /> */}
-        {usersElements ? <ul>{usersElements}</ul> : <p>No users</p>}
+        {usersElements ? (
+          <>
+            <Search
+              text={usersSearchText}
+              actionCreator={searchActionCreator}
+              placeholder="Search by user's nickname"
+            />
+            <ul>{usersElements}</ul>
+          </>
+        ) : (
+          <p>No users</p>
+        )}
       </div>
     </div>
   );
