@@ -1,0 +1,16 @@
+@import '../../../../../vars';
+
+.bio {
+  font-size: 18px;
+
+  &__changeText {
+    font-size: 16px;
+    color: $color10;
+    cursor: pointer;
+  }
+
+  &__editFormBox {
+    display: flex;
+    align-items: center;
+  }
+}

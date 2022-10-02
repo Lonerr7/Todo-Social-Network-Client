@@ -1,3 +1,4 @@
+import MyBio from '../MyBio/MyBio';
 import s from './MyNameAndBio.module.scss';
 
 type Props = {
@@ -17,7 +18,7 @@ const MyNameAndBio: React.FC<Props> = ({ fName, lName, nickname, bio }) => {
         <div className={s.nameAndBio__online}>Online</div>
       </div>
       <div className={s.nameAndBio__bioBox}>
-        <span className={s.nameAndBio__bio}>{bio}</span>
+        <MyBio bio={bio} />
       </div>
     </div>
   );
