@@ -3,6 +3,10 @@
 .form {
   width: 100%;
 
+  &__control {
+    position: relative;
+  }
+
   &__input {
     @extend %form-input;
     background-color: #fff;
@@ -11,7 +15,11 @@
     margin-bottom: 20px;
   }
 
-  &__controls {
+  &__inputError {
+    position: relative;
+  }
+
+  &__buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;

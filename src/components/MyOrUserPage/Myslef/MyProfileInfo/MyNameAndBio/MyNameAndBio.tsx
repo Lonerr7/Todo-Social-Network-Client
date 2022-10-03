@@ -5,7 +5,7 @@ type Props = {
   fName: string;
   lName: string;
   nickname: string;
-  bio?: string;
+  bio: string;
 };
 
 const MyNameAndBio: React.FC<Props> = ({ fName, lName, nickname, bio }) => {

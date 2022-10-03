@@ -4,12 +4,11 @@ import MyBioEditForm from './MyBioEditForm/MyBioEditForm';
 import { BiPencil } from 'react-icons/bi';
 
 type Props = {
-  bio?: string;
+  bio: string;
 };
 
 const MyBio: React.FC<Props> = ({ bio }) => {
   const [editMode, setEditMode] = useState(false);
-  const [text, setText] = useState(bio!);
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
@@ -32,12 +31,7 @@ const MyBio: React.FC<Props> = ({ bio }) => {
             </span>
           ) : (
             <div className={s.bio__editFormBox}>
-              <MyBioEditForm
-                text={text}
-                bio={bio}
-                setText={setText}
-                toggleEditMode={toggleEditMode}
-              />
+              <MyBioEditForm bio={bio} toggleEditMode={toggleEditMode} />
             </div>
           )}
         </>

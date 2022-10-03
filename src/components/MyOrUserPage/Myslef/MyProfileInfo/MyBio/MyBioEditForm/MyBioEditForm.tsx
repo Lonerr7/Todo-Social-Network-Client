@@ -1,66 +1,70 @@
-import { useEffect } from 'react';
+import * as yup from 'yup';
+import { Form, Formik } from 'formik';
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks';
 import { updateMyBio } from '../../../../../../redux/myselfSlice';
+import FormControl from '../../../../../common/FormControl/FormControl';
 import SubmitLoadingBtn from '../../../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import s from './MyBioEditForm.module.scss';
 
 type Props = {
-  text: string;
-  bio: string | undefined;
-  setText: React.Dispatch<React.SetStateAction<string>>;
+  bio: string;
   toggleEditMode: () => void;
 };
 
-const MyBioEditForm: React.FC<Props> = ({
-  text,
-  bio,
-  setText,
-  toggleEditMode,
-}) => {
+const validationSchema = yup.object({
+  bio: yup
+    .string()
+    .max(100, 'Your bio is too long. Maximum is 100 characters.'),
+});
+
+const MyBioEditForm: React.FC<Props> = ({ bio, toggleEditMode }) => {
   const { isMyBioUpdating } = useAppSelector((state) => state.myslef);
   const dispatch = useAppDispatch();
 
-  const textChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    setText(e.currentTarget.value);
-  };
-
-  const onSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    await dispatch(updateMyBio({ bio: text }));
+  const onSubmit = async (values: { bio: string }) => {
+    await dispatch(updateMyBio(values));
 
     toggleEditMode();
   };
 
-  useEffect(() => {
-    setText(bio!);
-
-    // eslint-disable-next-line
-  }, []);
+  const initialValues = {
+    bio,
+  };
 
   return (
-    <form className={s.form}>
-      <label htmlFor="bio" />
-      <input
-        className={s.form__input}
-        type="text"
-        id="bio"
-        value={text}
-        onChange={textChangeHandler}
-      />
-      <div className={s.form__controls}>
-        <SubmitLoadingBtn
-          btnClass={s.form__btn}
-          btnFetchingText="Changing..."
-          btnText="Ok"
-          btnType="submit"
-          isFetching={isMyBioUpdating}
-          onSubmit={onSubmit}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+    >
+      <Form className={s.form}>
+        <FormControl
+          customClass={s.form__control}
+          inputClass={s.form__input}
+          errorClass={s.form__inputError}
+          type="text"
+          field="bio"
+          placeholder="Enter your new bio here..."
         />
-        <button className={s.form__btn} onClick={toggleEditMode}>
-          Cancel
-        </button>
-      </div>
-    </form>
+        <div className={s.form__buttons}>
+          <SubmitLoadingBtn
+            btnClass={s.form__btn}
+            btnFetchingText="Changing..."
+            btnText="Ok"
+            btnType="submit"
+            isFetching={isMyBioUpdating}
+            onSubmit={() => {}}
+          />
+          <button
+            type="button"
+            className={s.form__btn}
+            onClick={toggleEditMode}
+          >
+            Cancel
+          </button>
+        </div>
+      </Form>
+    </Formik>
   );
 };
 

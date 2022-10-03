@@ -10,6 +10,7 @@ type FormControlProps = {
   type: 'text' | 'password';
   label?: string;
   labelClass?: string;
+  errorClass?: string;
   component?: string | React.ComponentType<FieldProps>;
 };
 
@@ -22,6 +23,7 @@ const FormControl: React.FC<FormControlProps> = ({
   label,
   labelClass,
   component,
+  errorClass,
 }) => {
   return (
     <div className={customClass}>
@@ -37,7 +39,11 @@ const FormControl: React.FC<FormControlProps> = ({
         component={component}
       />
       <ErrorMessage name={field}>
-        {(err) => <TextError customClass={s.textError}>{err}</TextError>}
+        {(err) => (
+          <TextError customClass={`${s.textError} ${errorClass}`}>
+            {err}
+          </TextError>
+        )}
       </ErrorMessage>
     </div>
   );
