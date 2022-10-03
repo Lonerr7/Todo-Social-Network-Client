@@ -8,6 +8,7 @@ type Props = {
   firstName: string;
   lastName: string;
   nickname: string;
+  bio: string;
 };
 
 const UserSmall: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const UserSmall: React.FC<Props> = ({
   lastName,
   nickname,
   img,
+  bio,
 }) => {
   return (
     <li className={s.user}>
@@ -38,6 +40,7 @@ const UserSmall: React.FC<Props> = ({
         >
           [{nickname}]
         </NavLink>
+        <span className={s.user__bio}>{bio}</span>
       </div>
     </li>
   );

@@ -25,6 +25,7 @@ const UsersPage: React.FC<Props> = ({
       firstName={u.firstName}
       lastName={u.lastName}
       nickname={u.nickname}
+      bio={u.bio}
     />
   ));
 
