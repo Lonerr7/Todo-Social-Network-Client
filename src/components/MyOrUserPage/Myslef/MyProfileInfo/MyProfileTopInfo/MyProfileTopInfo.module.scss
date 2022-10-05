@@ -1,0 +1,33 @@
+@import '../../../../../vars';
+
+.info {
+  &__box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5px;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__number {
+    font-weight: 500;
+    color: $color1;
+    margin-bottom: 5px;
+    font-size: 28px;
+  }
+
+  &__text {
+    text-transform: lowercase;
+    font-size: 21px;
+  }
+}

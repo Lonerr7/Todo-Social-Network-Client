@@ -2,6 +2,7 @@ import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
 import MyProfileInfo from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyProfileInfo';
 import { useAppSelector } from '../../hooks/hooks';
+
 import s from './MyPage.module.scss';
 
 const MyPage: React.FC = () => {

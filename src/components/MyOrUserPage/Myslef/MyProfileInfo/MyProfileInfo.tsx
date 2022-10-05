@@ -1,5 +1,5 @@
 import { User } from '../../../../types/reduxTypes';
-import ProfileInfo from '../../common/ProfileInfo/ProfileInfo';
+import MyProfileTopInfo from './MyProfileTopInfo/MyProfileTopInfo';
 import MyNameAndBio from './MyNameAndBio/MyNameAndBio';
 import s from './MyProfileInfo.module.scss';
 
@@ -16,7 +16,7 @@ const MyProfileInfo: React.FC<Props> = ({ myself }) => {
         nickname={myself.nickname}
         bio={myself.bio}
       />
-      <ProfileInfo />
+      <MyProfileTopInfo todos={myself.todos} />
     </div>
   );
 };
