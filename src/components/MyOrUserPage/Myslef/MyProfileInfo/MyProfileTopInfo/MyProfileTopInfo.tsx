@@ -1,18 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch } from '../../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
 import {
   setActiveMenuNum,
   setActiveTodoFilter,
 } from '../../../../../redux/appSlice';
 import { changeActiveTodoFilter } from '../../../../../redux/todoSlice';
-import { Todo, TodoFiltersEnum } from '../../../../../types/reduxTypes';
+import { TodoFiltersEnum } from '../../../../../types/reduxTypes';
 import s from './MyProfileTopInfo.module.scss';
 
-type Props = {
-  todos: Todo[];
-};
-
-const ProfileInfo: React.FC<Props> = ({ todos }) => {
+const ProfileInfo: React.FC = () => {
+  const todos = useAppSelector((state) => state.todo.todos);
   const allTodosCount = todos.length;
   const completedTodosCount = todos.filter((t) => t.isCompleted).length;
   const dispatch = useAppDispatch();

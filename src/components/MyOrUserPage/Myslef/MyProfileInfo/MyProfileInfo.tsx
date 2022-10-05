@@ -16,7 +16,7 @@ const MyProfileInfo: React.FC<Props> = ({ myself }) => {
         nickname={myself.nickname}
         bio={myself.bio}
       />
-      <MyProfileTopInfo todos={myself.todos} />
+      <MyProfileTopInfo/>
     </div>
   );
 };
