@@ -4,12 +4,12 @@ import Container from '../common/Container/Container';
 import s from './Main.module.scss';
 
 const Main: React.FC = () => {
-  const user = useAppSelector((state) => state.auth.user);
+  const myself = useAppSelector((state) => state.auth.user);
 
   return (
     <main className={s.main}>
       <Container classProp={s.container}>
-        {user ? <Outlet /> : 'Welcome!'}
+        {myself ? <Outlet /> : 'Welcome!'}
       </Container>
     </main>
   );

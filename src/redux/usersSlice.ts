@@ -17,6 +17,7 @@ export const fetchAllUsers = createAsyncThunk(
 
 const initialState: UsersInitialState = {
   users: [],
+  currentUser: null,
   errorMsg: '',
   usersSearchText: '',
 };
@@ -27,6 +28,17 @@ const usersSlice = createSlice({
   reducers: {
     setUsersSearchText: (state, action: PayloadAction<string>) => {
       state.usersSearchText = action.payload;
+    },
+    setCurrentUser: (state, action: PayloadAction<string>) => {
+      state.currentUser = state.users!.filter(
+        (u) => u.id === action.payload
+      )[0];
+
+      console.log(`setCurrentUser`);
+      
+    },
+    removeCurrentUser: (state) => {
+      state.currentUser = null;
     },
   },
   extraReducers: {
@@ -44,4 +56,5 @@ const usersSlice = createSlice({
 });
 
 export default usersSlice.reducer;
-export const { setUsersSearchText } = usersSlice.actions;
+export const { setUsersSearchText, setCurrentUser, removeCurrentUser } =
+  usersSlice.actions;

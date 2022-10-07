@@ -81,6 +81,7 @@ export type ErrorPopupInitialState = {
 
 export type UsersInitialState = {
   users: UsersList | null;
+  currentUser: null | User;
   errorMsg: string;
   usersSearchText: string;
 };
