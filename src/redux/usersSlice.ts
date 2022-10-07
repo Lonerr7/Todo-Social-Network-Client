@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { usersAPI } from '../api/api';
 import { UsersInitialState, UsersList } from '../types/reduxTypes';
+import { getMe } from './authSlice';
 
 export const fetchAllUsers = createAsyncThunk(
   'users/fetchAllUsers',
@@ -47,6 +48,10 @@ const usersSlice = createSlice({
     },
     [fetchAllUsers.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errorMsg = action.payload;
+      state.users = null;
+    },
+
+    [getMe.rejected.type]: (state) => {
       state.users = null;
     },
   },

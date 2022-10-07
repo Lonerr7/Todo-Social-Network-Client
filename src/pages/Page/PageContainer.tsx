@@ -30,6 +30,7 @@ const PageContainer: React.FC<PageContainerProps> = ({ title, form }) => {
   if (user) {
     return <Navigate to="/" />;
   }
+
   return <Page title={title} form={form} errorMsg={errorMsg} />;
 };
 

@@ -8,9 +8,8 @@ import UsersPage from './UsersPage';
 const UsersPageContainer: React.FC = () => {
   const { usersSearchText } = useAppSelector((state) => state.users);
   const myId = useAppSelector((state) => state.auth.user!.id);
-  const usersWithoutMe = useAppSelector(selectUsersBySearch)!.filter(
-    (u) => u.id !== myId
-  );
+  const usersWithoutMe =
+    useAppSelector(selectUsersBySearch)?.filter((u) => u.id !== myId) || null;
   const dispatch = useAppDispatch();
 
   useEffect(() => {

@@ -6,18 +6,21 @@
   justify-content: flex-end;
   align-items: center;
 
+  &__listItem {
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   &__link {
     @extend %btn-small;
     background-color: $color1;
     color: $color5;
-    margin-bottom: 15px;
 
     &:hover {
       background-color: $color2;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
     }
   }
 }
