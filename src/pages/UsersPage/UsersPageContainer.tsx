@@ -6,8 +6,11 @@ import { setUsersSearchText } from '../../redux/usersSlice';
 import UsersPage from './UsersPage';
 
 const UsersPageContainer: React.FC = () => {
-  const users = useAppSelector(selectUsersBySearch);
   const { usersSearchText } = useAppSelector((state) => state.users);
+  const myId = useAppSelector((state) => state.auth.user!.id);
+  const usersWithoutMe = useAppSelector(selectUsersBySearch)!.filter(
+    (u) => u.id !== myId
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,7 +21,7 @@ const UsersPageContainer: React.FC = () => {
 
   return (
     <UsersPage
-      users={users}
+      users={usersWithoutMe}
       usersSearchText={usersSearchText}
       searchActionCreator={setUsersSearchText}
     />

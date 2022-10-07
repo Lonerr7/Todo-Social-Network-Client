@@ -5,5 +5,18 @@
 
   &__inner {
     @extend %inner-page--inner;
+    @extend %userpage-inner;
+  }
+
+  &__avatarBox {
+    @extend %profile-box;
+  }
+
+  &__left {
+    margin-right: 60px;
+  }
+
+  &__right {
+    width: 100%;
   }
 }

@@ -33,9 +33,6 @@ const usersSlice = createSlice({
       state.currentUser = state.users!.filter(
         (u) => u.id === action.payload
       )[0];
-
-      console.log(`setCurrentUser`);
-      
     },
     removeCurrentUser: (state) => {
       state.currentUser = null;

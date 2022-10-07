@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { removeCurrentUser, setCurrentUser } from '../../redux/usersSlice';
 import s from './UserPage.module.scss';
 
 const UserPage: React.FC = () => {
   const { userId } = useParams();
-  const { currentUser } = useAppSelector((state) => state.users);
+  const user = useAppSelector((state) => state.users.currentUser);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -19,10 +20,19 @@ const UserPage: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
+  if (!user) {
+    return <div>No user with this ID!</div>;
+  }
+
   return (
     <div className={s.page}>
       <div className={s.page__inner}>
-        User's page {currentUser?.nickname}: {currentUser?.id}
+        <div className={s.page__left}>
+          <div className={s.page__avatarBox}>
+            <Avatar avatar={user?.img} />
+          </div>
+        </div>
+        <div className={s.page__right}></div>
       </div>
     </div>
   );

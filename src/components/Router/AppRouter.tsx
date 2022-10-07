@@ -34,7 +34,6 @@ const AppRouter: React.FC = () => {
           <Route path="security" element={<SecuritySettings />} />
         </Route>
       </Route>
-      {/* Is it GOOD?*/}
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>
   );
