@@ -1,7 +1,8 @@
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
+import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
 import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
-import MyNameAndBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyNameAndBio/MyNameAndBio';
+import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBio';
 import MyProfileTopInfo from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyProfileTopInfo/MyProfileTopInfo';
 import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
@@ -20,11 +21,11 @@ const MyPage: React.FC = () => {
         </div>
         <div className={s.myPage__right}>
           <ProfileInfo>
-            <MyNameAndBio
+            <NameAndBio
               fName={myself.firstName}
               lName={myself.lastName}
               nickname={myself.nickname}
-              bio={myself.bio}
+              BioComponent={<MyBio bio={myself.bio} />}
             />
             <MyProfileTopInfo />
           </ProfileInfo>
