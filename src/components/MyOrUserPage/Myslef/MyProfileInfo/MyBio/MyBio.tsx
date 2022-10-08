@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import s from './MyBio.module.scss';
+import { useState } from 'react';
 import MyBioEditForm from './MyBioEditForm/MyBioEditForm';
 import { BiPencil } from 'react-icons/bi';
 

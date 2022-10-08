@@ -1,0 +1,15 @@
+@import '../../../../vars';
+
+.bio {
+  font-size: 18px;
+  color: $color10;
+
+  &__textBox {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 10px;
+  }
+}

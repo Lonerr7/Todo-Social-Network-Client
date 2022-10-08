@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
-import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls';
+import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
+import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { removeCurrentUser, setCurrentUser } from '../../redux/usersSlice';
 import s from './UserPage.module.scss';
@@ -42,7 +43,7 @@ const UserPage: React.FC = () => {
               fName={user.firstName}
               lName={user.lastName}
               nickname={user.nickname}
-              BioComponent={user.bio}
+              BioComponent={<UserBio bio={user.bio} />}
             />
           </ProfileInfo>
         </div>
