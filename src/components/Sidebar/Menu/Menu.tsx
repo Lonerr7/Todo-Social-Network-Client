@@ -13,6 +13,7 @@ import {
 } from '../../../redux/appSlice';
 import { getSetCurrentNumFromLS } from '../../../utils/appHelpers';
 import { activeLsNumbers } from '../../../types/appTypes';
+import { NavLink } from 'react-router-dom';
 
 const Menu: React.FC = () => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);
@@ -38,17 +39,21 @@ const Menu: React.FC = () => {
     <nav className={s.menu}>
       <ul className={s.menu__list}>
         <li className={s.menu__listItem}>
-          <MenuItem
+          {/* <MenuItem
             activeNum={activeNum}
             text="My Page"
             neededNum={1}
             icon={<MdOutlineContactPage className={s.menu__icon} size={24} />}
             urlPath="/"
             setActiveNum={setActiveMenuNumber}
-          />
+          /> */}
+          <NavLink to="/">
+            <MdOutlineContactPage className={s.menu__icon} size={24} />
+            My Page
+          </NavLink>
         </li>
         <li className={s.menu__listItem}>
-          <MenuItem
+          {/* <MenuItem
             activeNum={activeNum}
             text="Users"
             neededNum={2}
@@ -56,7 +61,11 @@ const Menu: React.FC = () => {
             urlPath="/users"
             itemsCount={25}
             setActiveNum={setActiveMenuNumber}
-          />
+          /> */}
+          <NavLink to="/users">
+            <FaUserFriends className={s.menu__icon} size={24} />
+            Users
+          </NavLink>
         </li>
         <li className={s.menu__listItem}>
           <MenuItem

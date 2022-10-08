@@ -4,10 +4,13 @@ import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/Profil
 import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
 import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBio';
 import MyProfileTopInfo from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyProfileTopInfo/MyProfileTopInfo';
+import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
 
 const MyPage: React.FC = () => {
+  console.log(`rerender`);
+
   const myself = useAppSelector((state) => state.auth.user)!; //!
 
   return (
@@ -35,4 +38,4 @@ const MyPage: React.FC = () => {
   );
 };
 
-export default MyPage;
+export default withActiveMenuNum(MyPage, 1);

@@ -1,5 +1,6 @@
 import Search from '../../components/common/Search/Search';
 import UserSmall from '../../components/Users/UserSmall/UserSmall';
+import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { UsersList } from '../../types/reduxTypes';
 import s from './UsersPage.module.scss';
 
@@ -49,4 +50,4 @@ const UsersPage: React.FC<Props> = ({
   );
 };
 
-export default UsersPage;
+export default withActiveMenuNum(UsersPage, 2);
