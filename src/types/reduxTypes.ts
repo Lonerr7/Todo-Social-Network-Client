@@ -82,6 +82,7 @@ export type ErrorPopupInitialState = {
 export type UsersInitialState = {
   users: UsersList | null;
   currentUser: null | User;
+  isCurrentUserFetching: boolean;
   errorMsg: string;
   usersSearchText: string;
 };

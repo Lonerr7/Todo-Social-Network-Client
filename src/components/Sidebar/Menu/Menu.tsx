@@ -69,7 +69,7 @@ const Menu: React.FC = () => {
         <li className={s.menu__listItem}>
           <MenuItem
             activeNum={activeNum}
-            text="My Todos"
+            text="Todos"
             neededNum={4}
             icon={<RiTodoFill className={s.menu__icon} size={24} />}
             urlPath="/todos"

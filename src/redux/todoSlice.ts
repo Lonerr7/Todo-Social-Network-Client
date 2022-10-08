@@ -122,8 +122,7 @@ const todoSlice = createSlice({
   },
   extraReducers: {
     [getMe.fulfilled.type]: (state, action: PayloadAction<User>) => {
-      const todosCopy = [...action.payload.todos];
-      state.todos = todosCopy.reverse();
+      state.todos = [...action.payload.todos].reverse();
     },
 
     [createTodo.pending.type]: (state) => {

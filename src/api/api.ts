@@ -70,4 +70,7 @@ export const usersAPI = {
   getAllUsers: async () => {
     return await axiosInstance.get('users');
   },
+  getCurrentUser: async (userId: string) => {
+    return await axiosInstance.get(`users/${userId}`);
+  },
 };

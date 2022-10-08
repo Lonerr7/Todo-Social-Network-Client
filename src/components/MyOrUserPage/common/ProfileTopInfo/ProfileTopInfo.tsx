@@ -1,29 +1,25 @@
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
-import {
-  setActiveMenuNum,
-  setActiveTodoFilter,
-} from '../../../../../redux/appSlice';
-import { changeActiveTodoFilter } from '../../../../../redux/todoSlice';
-import { TodoFiltersEnum } from '../../../../../types/reduxTypes';
-import s from './MyProfileTopInfo.module.scss';
+import { useAppDispatch } from '../../../../hooks/hooks';
+import { setActiveTodoFilter } from '../../../../redux/appSlice';
+import { changeActiveTodoFilter } from '../../../../redux/todoSlice';
+import { Todo, TodoFiltersEnum } from '../../../../types/reduxTypes';
+import s from './ProfileTopInfo.module.scss';
 
-const ProfileInfo: React.FC = () => {
-  const todos = useAppSelector((state) => state.todo.todos);
-  const allTodosCount = todos.length;
+type Props = {
+  todos: Array<Todo>;
+};
+
+const ProfileTopInfo: React.FC<Props> = ({ todos }) => {
+  const allTodosCount = todos?.length;
   const completedTodosCount = todos.filter((t) => t.isCompleted).length;
   const dispatch = useAppDispatch();
 
   const onAllTodosClick = () => {
-    dispatch(setActiveMenuNum(4));
-
     dispatch(changeActiveTodoFilter(TodoFiltersEnum.ALL));
     dispatch(setActiveTodoFilter(1));
   };
 
   const onCompletedTodosClick = () => {
-    dispatch(setActiveMenuNum(4));
-
     dispatch(changeActiveTodoFilter(TodoFiltersEnum.COMPLETED));
     dispatch(setActiveTodoFilter(2));
   };
@@ -31,11 +27,7 @@ const ProfileInfo: React.FC = () => {
   return (
     <div className={s.info}>
       <div className={s.info__box}>
-        <NavLink
-          className={s.info__link}
-          to="/users"
-          onClick={() => dispatch(setActiveMenuNum(2))}
-        >
+        <NavLink className={s.info__link} to="/users">
           <span className={s.info__number}>0</span>
           <span className={s.info__text}>Friends</span>
         </NavLink>
@@ -56,4 +48,4 @@ const ProfileInfo: React.FC = () => {
   );
 };
 
-export default ProfileInfo;
+export default ProfileTopInfo;

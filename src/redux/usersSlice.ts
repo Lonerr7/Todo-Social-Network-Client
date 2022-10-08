@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { usersAPI } from '../api/api';
-import { UsersInitialState, UsersList } from '../types/reduxTypes';
+import { User, UsersInitialState, UsersList } from '../types/reduxTypes';
 import { getMe } from './authSlice';
 
 export const fetchAllUsers = createAsyncThunk(
@@ -16,9 +16,23 @@ export const fetchAllUsers = createAsyncThunk(
   }
 );
 
+export const fetchCurrentUser = createAsyncThunk(
+  'users/fetchCurrentUser',
+  async (userId: string, { rejectWithValue }) => {
+    try {
+      const response = await usersAPI.getCurrentUser(userId);
+
+      return response.data.data.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const initialState: UsersInitialState = {
-  users: [],
+  users: null,
   currentUser: null,
+  isCurrentUserFetching: false,
   errorMsg: '',
   usersSearchText: '',
 };
@@ -29,11 +43,6 @@ const usersSlice = createSlice({
   reducers: {
     setUsersSearchText: (state, action: PayloadAction<string>) => {
       state.usersSearchText = action.payload;
-    },
-    setCurrentUser: (state, action: PayloadAction<string>) => {
-      state.currentUser = state.users!.filter(
-        (u) => u.id === action.payload
-      )[0];
     },
     removeCurrentUser: (state) => {
       state.currentUser = null;
@@ -51,6 +60,22 @@ const usersSlice = createSlice({
       state.users = null;
     },
 
+    [fetchCurrentUser.pending.type]: (state) => {
+      state.isCurrentUserFetching = true;
+      state.errorMsg = '';
+    },
+    [fetchCurrentUser.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.isCurrentUserFetching = false;
+      state.currentUser = action.payload;
+    },
+    [fetchCurrentUser.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.isCurrentUserFetching = false;
+      state.errorMsg = action.payload;
+    },
+
     [getMe.rejected.type]: (state) => {
       state.users = null;
     },
@@ -58,5 +83,4 @@ const usersSlice = createSlice({
 });
 
 export default usersSlice.reducer;
-export const { setUsersSearchText, setCurrentUser, removeCurrentUser } =
-  usersSlice.actions;
+export const { setUsersSearchText, removeCurrentUser } = usersSlice.actions;

@@ -3,13 +3,14 @@ import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndB
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
 import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
 import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBio';
-import MyProfileTopInfo from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyProfileTopInfo/MyProfileTopInfo';
+import MyProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
 
 const MyPage: React.FC = () => {
-  const myself = useAppSelector((state) => state.auth.user)!; //!
+  const myself = useAppSelector((state) => state.auth.user)!; //! Todos are not synced
+  const todos = useAppSelector((state) => state.todo.todos);
 
   return (
     <div className={s.myPage}>
@@ -28,7 +29,7 @@ const MyPage: React.FC = () => {
               nickname={myself.nickname}
               BioComponent={<MyBio bio={myself.bio} />}
             />
-            <MyProfileTopInfo />
+            <MyProfileTopInfo todos={todos} />
           </ProfileInfo>
         </div>
       </div>
