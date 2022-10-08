@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
+import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { removeCurrentUser, setCurrentUser } from '../../redux/usersSlice';
 import s from './UserPage.module.scss';
@@ -29,7 +30,8 @@ const UserPage: React.FC = () => {
       <div className={s.page__inner}>
         <div className={s.page__left}>
           <div className={s.page__avatarBox}>
-            <Avatar avatar={user?.img} />
+            <Avatar avatar={user?.img} wrapperClass={s.page__avatarWrapper} />
+            <UserAvatarControls />
           </div>
         </div>
         <div className={s.page__right}></div>

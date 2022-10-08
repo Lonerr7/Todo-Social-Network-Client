@@ -12,6 +12,10 @@
     @extend %profile-box;
   }
 
+  &__avatarWrapper {
+    margin-bottom: 20px;
+  }
+
   &__left {
     margin-right: 60px;
   }

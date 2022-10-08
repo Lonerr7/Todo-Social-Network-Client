@@ -25,7 +25,7 @@ const UserSmall: React.FC<Props> = ({
         className={`${s.user__avatarLink} ${s.user__link}`}
         to={`/users/${id}`}
       >
-        <Avatar customClass={s.user__avatar} avatar={img} />
+        <Avatar customImgClass={s.user__avatar} avatar={img} />
       </NavLink>
       <div className={s.user__info}>
         <NavLink
