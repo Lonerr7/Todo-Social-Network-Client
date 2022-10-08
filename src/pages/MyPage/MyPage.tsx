@@ -9,8 +9,6 @@ import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
 
 const MyPage: React.FC = () => {
-  console.log(`rerender`);
-
   const myself = useAppSelector((state) => state.auth.user)!; //!
 
   return (

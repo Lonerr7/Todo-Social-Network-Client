@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import AreYouSurePopup from '../../components/common/AreYouSurePopup/AreYouSurePopup';
 import SettingsNav from '../../components/Settings/SettingsNav/SettingsNav';
+import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/hooks';
 import { deleteMyProfile } from '../../redux/myselfSlice';
 import s from './SettingsPage.module.scss';
@@ -28,4 +29,4 @@ const SettingsPage: React.FC = () => {
   );
 };
 
-export default SettingsPage;
+export default withActiveMenuNum(SettingsPage, 5);

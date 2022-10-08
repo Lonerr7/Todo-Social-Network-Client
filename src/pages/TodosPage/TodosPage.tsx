@@ -1,5 +1,6 @@
 import AreYouSurePopup from '../../components/common/AreYouSurePopup/AreYouSurePopup';
 import TodoList from '../../components/TodoList/TodoList';
+import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/hooks';
 import { deleteAllUserTodos } from '../../redux/todoSlice';
 import s from './TodosPage.module.scss';
@@ -24,4 +25,4 @@ const TodosPage: React.FC = () => {
   );
 };
 
-export default TodosPage;
+export default withActiveMenuNum(TodosPage, 4);

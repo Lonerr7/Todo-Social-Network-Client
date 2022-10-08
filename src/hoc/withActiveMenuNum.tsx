@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch } from '../hooks/hooks';
 import { setActiveMenuNum } from '../redux/appSlice';
 

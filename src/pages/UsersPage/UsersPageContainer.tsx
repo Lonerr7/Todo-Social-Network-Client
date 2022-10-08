@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { selectUsersBySearch } from '../../redux/selectors/usersSelectors';
 import { fetchAllUsers } from '../../redux/usersSlice';
@@ -27,4 +28,4 @@ const UsersPageContainer: React.FC = () => {
   );
 };
 
-export default UsersPageContainer;
+export default withActiveMenuNum(UsersPageContainer, 2);

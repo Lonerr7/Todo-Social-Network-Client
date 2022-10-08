@@ -11,7 +11,7 @@ type MenuItemProps = {
   itemsCount?: number;
   activeBgColor?: string;
   customClass?: string;
-  setActiveNum: (neededNum: number) => void;
+  setActiveNum?: (neededNum: number) => void;
   resetActiveSettingsNum?: () => void;
 };
 
@@ -28,7 +28,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
   resetActiveSettingsNum,
 }) => {
   const onMenuClick = () => {
-    setActiveNum(neededNum);
+    if (setActiveNum) {
+      setActiveNum(neededNum);
+    }
+
     if (resetActiveSettingsNum) {
       resetActiveSettingsNum();
     }
