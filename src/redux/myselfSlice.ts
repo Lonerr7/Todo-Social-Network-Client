@@ -33,6 +33,8 @@ export const updateMe = createAsyncThunk(
         }, 5000);
       }
 
+      console.log(response.data.data.user);
+
       return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);

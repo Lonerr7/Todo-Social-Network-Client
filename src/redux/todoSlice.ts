@@ -10,10 +10,14 @@ import {
   User,
 } from '../types/reduxTypes';
 import { getMe, logOut } from './authSlice';
+import { deleteMyProfile } from './myselfSlice';
 
 export const createTodo = createAsyncThunk(
   'todo/createTodo',
-  async ({ taskText, difficulty }: TodoParams, { rejectWithValue }) => {
+  async (
+    { taskText, difficulty }: TodoParams,
+    { rejectWithValue, dispatch }
+  ) => {
     try {
       const fieldsToSend = {
         taskText,
@@ -171,6 +175,10 @@ const todoSlice = createSlice({
     },
 
     [logOut.fulfilled.type]: (state) => {
+      state.todos = [];
+    },
+
+    [deleteMyProfile.fulfilled.type]: (state) => {
       state.todos = [];
     },
   },

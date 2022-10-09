@@ -28,7 +28,7 @@ const MyBioEditForm: React.FC<Props> = ({ bio, toggleEditMode }) => {
   };
 
   const initialValues = {
-    bio,
+    bio: bio || '',
   };
 
   return (

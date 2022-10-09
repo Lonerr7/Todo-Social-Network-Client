@@ -148,8 +148,12 @@ const authSlice = createSlice({
       state.user = action.payload;
     },
 
-    [sendMyAdditionalInfo.fulfilled.type]: (state) => {
+    [sendMyAdditionalInfo.fulfilled.type]: (
+      state,
+      action: PayloadAction<User>
+    ) => {
       state.afterSignUp = false;
+      state.user = action.payload;
     },
 
     [changePassword.fulfilled.type]: (state, action: PayloadAction<User>) => {

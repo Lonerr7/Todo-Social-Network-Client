@@ -9,7 +9,7 @@ import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
 
 const initialValues = {
   email: 'newuser@gmail.com',
-  nickname: 'New User',
+  nickname: '_nic3guy',
   firstName: 'Vanya',
   lastName: 'Karabankov',
   password: 'gZ929ufnAdsa9',

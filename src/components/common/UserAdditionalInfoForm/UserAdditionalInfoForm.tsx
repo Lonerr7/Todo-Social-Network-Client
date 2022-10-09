@@ -4,8 +4,9 @@ import * as yup from 'yup';
 import FormControl from '../FormControl/FormControl';
 import { AdditionalInfoInitialValues } from '../../../types/FormikTypes';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { sendMyAdditionalInfo } from '../../../redux/myselfSlice';
+import FormError from '../FormError/FormError';
 
 const initialValues: AdditionalInfoInitialValues = {
   dateOfBirth: '',
@@ -14,9 +15,15 @@ const initialValues: AdditionalInfoInitialValues = {
   currentCity: '',
 };
 
-const validationSchema = yup.object({});
+const validationSchema = yup.object({
+  dateOfBirth: yup.date().required('Please, enter your birthday date'),
+  country: yup.string().required('Please, enter your country'),
+  cityOfBirth: yup.string().required('Please, enter the city you were born in'),
+  currentCity: yup.string().required('Please, enter the city you live in'),
+});
 
 const UserAdditionalInfoForm: React.FC = () => {
+  const errMsg = useAppSelector((state) => state.myslef.updateMeErrorMsg);
   const dispatch = useAppDispatch();
 
   const onSubmit = (values: AdditionalInfoInitialValues) => {
@@ -74,6 +81,7 @@ const UserAdditionalInfoForm: React.FC = () => {
           isFetching={false}
           onSubmit={() => {}}
         />
+        <FormError customClass={s.form__error} errorMsg={errMsg} />
       </Form>
     </Formik>
   );
