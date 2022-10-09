@@ -31,24 +31,6 @@ export const signUserUp = createAsyncThunk(
   }
 );
 
-export const logUserIn = createAsyncThunk(
-  'auth/logUserIn',
-  async (userData: LoginFormInitialValues, { rejectWithValue }) => {
-    try {
-      const response = await authAPI.logIn(userData);
-
-      // save jwt to localstorage
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-      }
-
-      return response.data.data.user;
-    } catch (error: any) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
-
 export const getMe = createAsyncThunk(
   'auth/getMe',
   async (_, { rejectWithValue }) => {
@@ -58,6 +40,24 @@ export const getMe = createAsyncThunk(
       // console.log(response.data.data.data);
 
       return response.data.data.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const logUserIn = createAsyncThunk(
+  'auth/logUserIn',
+  async (userData: LoginFormInitialValues, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await authAPI.logIn(userData);
+
+      // save jwt to localstorage
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
+
+      await dispatch(getMe());
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -111,7 +111,6 @@ const authSlice = createSlice({
       state.errorMsg = '';
     },
     [logUserIn.fulfilled.type]: (state, action: PayloadAction<User>) => {
-      state.user = action.payload;
       state.isFetching = false;
     },
     [logUserIn.rejected.type]: (state, action: PayloadAction<string>) => {
