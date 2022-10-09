@@ -10,6 +10,7 @@
 
   &__avatarBox {
     @extend %profile-box;
+    margin-bottom: 20px;
   }
 
   &__left {

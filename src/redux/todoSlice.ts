@@ -9,7 +9,7 @@ import {
   UpdateTodoParams,
   User,
 } from '../types/reduxTypes';
-import { getMe } from './authSlice';
+import { getMe, logOut } from './authSlice';
 
 export const createTodo = createAsyncThunk(
   'todo/createTodo',
@@ -167,6 +167,10 @@ const todoSlice = createSlice({
     },
     [deleteAllUserTodos.fulfilled.type]: (state) => {
       state.areAllTodosDeleting = false;
+      state.todos = [];
+    },
+
+    [logOut.fulfilled.type]: (state) => {
       state.todos = [];
     },
   },

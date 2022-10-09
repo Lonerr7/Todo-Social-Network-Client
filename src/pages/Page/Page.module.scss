@@ -2,11 +2,6 @@
 
 .page {
   @extend %page;
-  // overflow: auto;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   padding: 60px 0;
 
   &__title {

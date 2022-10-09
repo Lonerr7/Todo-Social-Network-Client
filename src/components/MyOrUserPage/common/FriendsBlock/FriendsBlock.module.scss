@@ -1,0 +1,6 @@
+@import '../../../../vars';
+
+.friends {
+  @extend %profile-box;
+  padding-bottom: 140px;
+}

@@ -1,8 +1,11 @@
+@import '../../../vars';
+
 .goBack {
   position: absolute;
   top: 20px;
   left: 20px;
   transition: all 0.3s;
+  color: $color3;
 
   &:hover {
     text-decoration: none;

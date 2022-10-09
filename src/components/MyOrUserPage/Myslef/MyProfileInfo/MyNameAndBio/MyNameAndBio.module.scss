@@ -1,9 +1,7 @@
 @import '../../../../../vars';
 
 .nameAndBio {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid $color2;
+  @extend %profile-info-box;
 
   &__box {
     display: flex;

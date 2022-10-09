@@ -72,7 +72,7 @@ export const logOut = createAsyncThunk(
     localStorage.removeItem(activeLsNumbers.MENU_NUM);
     localStorage.removeItem(activeLsNumbers.SETTINGS_NUM);
 
-    dispatch(getMe());
+    await dispatch(getMe());
   }
 );
 
@@ -81,6 +81,7 @@ const initialState: AuthState = {
   isFetching: false,
   isGetMeFetching: false,
   errorMsg: '',
+  afterSignUp: false,
 };
 
 const authSlice = createSlice({
@@ -100,6 +101,7 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.user.bio = '';
       state.isFetching = false;
+      state.afterSignUp = true;
     },
     [signUserUp.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errorMsg = action.payload;
@@ -144,6 +146,10 @@ const authSlice = createSlice({
 
     [deleteMyProfile.fulfilled.type]: (state) => {
       state.user = null;
+    },
+
+    [logOut.fulfilled.type]: (state) => {
+      state.afterSignUp = false;
     },
   },
 });

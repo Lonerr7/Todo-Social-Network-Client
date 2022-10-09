@@ -30,6 +30,7 @@ export type AuthState = {
   isFetching: boolean;
   isGetMeFetching: boolean;
   errorMsg: string;
+  afterSignUp: boolean;
 };
 
 export type UserState = {

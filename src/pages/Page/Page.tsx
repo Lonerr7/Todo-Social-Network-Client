@@ -7,12 +7,13 @@ type PageProps = {
   errorMsg: string;
   title: string;
   form: React.ReactNode;
+  backBtnClass?: string;
 };
 
-const Page: React.FC<PageProps> = ({ title, form, errorMsg }) => {
+const Page: React.FC<PageProps> = ({ title, form, errorMsg, backBtnClass }) => {
   return (
     <div className={s.page}>
-      <GoBack />
+      <GoBack  />
       <Logo overallClass={s.logo} styleClass={s.logo__text} />
       <h1 className={s.page__title}>{title}</h1>
       {form}
