@@ -54,6 +54,22 @@ export const updateMyBio = createAsyncThunk(
   }
 );
 
+// using this when we just got signed up
+export const sendMyAdditionalInfo = createAsyncThunk(
+  'myself/sendMyAdditionalInfo',
+  async (data: any, { rejectWithValue }) => {
+    try {
+      const response = await myselfAPI.sendMyAdditionalInfo(data);
+
+      console.log(response);
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 export const changePassword = createAsyncThunk(
   'myself/changePassword',
   async (
@@ -116,7 +132,7 @@ const initialState: UserState = {
 };
 
 const myselfSlice = createSlice({
-  name: 'myslef',
+  name: 'myself',
   initialState,
   reducers: {
     resetUserErrorMsgs: (state) => {
@@ -146,6 +162,20 @@ const myselfSlice = createSlice({
     },
     [updateMyBio.rejected.type]: (state) => {
       state.isMyBioUpdating = false;
+    },
+
+    [sendMyAdditionalInfo.pending.type]: (state) => {
+      state.isUserUpdateFetching = true;
+    },
+    [sendMyAdditionalInfo.fulfilled.type]: (state) => {
+      state.isUserUpdateFetching = false;
+    },
+    [sendMyAdditionalInfo.pending.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.isUserUpdateFetching = false;
+      state.updateMeErrorMsg = action.payload;
     },
 
     [changePassword.pending.type]: (state) => {

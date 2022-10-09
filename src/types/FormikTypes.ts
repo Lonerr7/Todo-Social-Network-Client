@@ -34,3 +34,10 @@ export type DeleteMyProfileInitialValues = {
   myPassword: string;
   myPasswordConfirm: string;
 };
+
+export type AdditionalInfoInitialValues = {
+  dateOfBirth: string;
+  country: string;
+  currentCity: string;
+  cityOfBirth: string;
+};

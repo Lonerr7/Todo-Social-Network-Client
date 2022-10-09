@@ -9,6 +9,7 @@ import {
 import {
   changePassword,
   deleteMyProfile,
+  sendMyAdditionalInfo,
   updateMe,
   updateMyBio,
 } from './myselfSlice';
@@ -91,6 +92,9 @@ const authSlice = createSlice({
     clearErrorMsg: (state) => {
       state.errorMsg = '';
     },
+    toggleAfterSignUp: (state, action: PayloadAction<boolean>) => {
+      state.afterSignUp = action.payload;
+    },
   },
   extraReducers: {
     [signUserUp.pending.type]: (state) => {
@@ -120,6 +124,10 @@ const authSlice = createSlice({
       state.isFetching = false;
     },
 
+    [logOut.fulfilled.type]: (state) => {
+      state.afterSignUp = false;
+    },
+
     [getMe.pending.type]: (state) => {
       state.isGetMeFetching = true;
     },
@@ -140,6 +148,10 @@ const authSlice = createSlice({
       state.user = action.payload;
     },
 
+    [sendMyAdditionalInfo.fulfilled.type]: (state) => {
+      state.afterSignUp = false;
+    },
+
     [changePassword.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
@@ -147,12 +159,8 @@ const authSlice = createSlice({
     [deleteMyProfile.fulfilled.type]: (state) => {
       state.user = null;
     },
-
-    [logOut.fulfilled.type]: (state) => {
-      state.afterSignUp = false;
-    },
   },
 });
 
-export const { clearErrorMsg } = authSlice.actions;
+export const { clearErrorMsg, toggleAfterSignUp } = authSlice.actions;
 export default authSlice.reducer;

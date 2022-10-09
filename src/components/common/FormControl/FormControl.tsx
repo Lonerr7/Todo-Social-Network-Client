@@ -7,7 +7,7 @@ type FormControlProps = {
   field: string;
   placeholder: string;
   inputClass: string;
-  type: 'text' | 'password';
+  type: 'text' | 'password' | 'date';
   label?: string;
   labelClass?: string;
   errorClass?: string;
