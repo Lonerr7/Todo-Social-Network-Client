@@ -2,4 +2,5 @@
 
 .profileInfo {
   @extend %profile-box;
+  max-width: 600px;
 }

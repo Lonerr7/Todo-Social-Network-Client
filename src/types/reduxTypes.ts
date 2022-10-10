@@ -4,6 +4,11 @@ export type User = {
   firstName: string;
   lastName: string;
   role: string;
+  cityOfBirth: string;
+  currentCity: string;
+  country: string;
+  dateOfBirth: string;
+  phoneNumber: string;
   id: string;
   bio: string;
   todos: Array<Todo>;

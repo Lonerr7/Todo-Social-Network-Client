@@ -6,7 +6,7 @@ type Props = {
 };
 
 const UserAdditionalInfo: React.FC<Props> = ({ user }) => {
-  return <div className={s.info}>INFO</div>;
+  return <div className={s.info}>Additional info</div>;
 };
 
 export default UserAdditionalInfo;

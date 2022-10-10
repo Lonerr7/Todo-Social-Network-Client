@@ -13,6 +13,7 @@ const initialValues: AdditionalInfoInitialValues = {
   country: '',
   cityOfBirth: '',
   currentCity: '',
+  phoneNumber: '',
 };
 
 const validationSchema = yup.object({
@@ -20,6 +21,9 @@ const validationSchema = yup.object({
   country: yup.string().required('Please, enter your country'),
   cityOfBirth: yup.string().required('Please, enter the city you were born in'),
   currentCity: yup.string().required('Please, enter the city you live in'),
+  // mobileNumber: yup
+  //   .string()
+  //   .matches(phoneRegExp, 'Please, enter a valid phone number'),
 });
 
 const UserAdditionalInfoForm: React.FC = () => {
@@ -71,6 +75,15 @@ const UserAdditionalInfoForm: React.FC = () => {
           inputClass={s.form__input}
           type="text"
           label="City of birth"
+          labelClass={s.form__label}
+        />
+        <FormControl
+          customClass={s.form__control}
+          field="phoneNumber"
+          placeholder="Phone number"
+          inputClass={s.form__input}
+          type="tel"
+          label="Phone number"
           labelClass={s.form__label}
         />
         <SubmitLoadingBtn

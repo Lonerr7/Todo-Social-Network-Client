@@ -9,6 +9,7 @@ import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
 import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
 import UserAdditionalInfo from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfo';
+import UserMainInfo from '../../components/MyOrUserPage/common/UserMainInfo/UserMainInfo';
 
 const MyPage: React.FC = () => {
   const myself = useAppSelector((state) => state.auth.user)!; //! Todos are not synced
@@ -32,6 +33,7 @@ const MyPage: React.FC = () => {
               nickname={myself.nickname}
               BioComponent={<MyBio bio={myself.bio} />}
             />
+            <UserMainInfo user={myself} />
             <UserAdditionalInfo user={myself} />
             <MyProfileTopInfo todos={todos} />
           </ProfileInfo>

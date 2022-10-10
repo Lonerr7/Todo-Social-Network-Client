@@ -40,4 +40,5 @@ export type AdditionalInfoInitialValues = {
   country: string;
   currentCity: string;
   cityOfBirth: string;
+  phoneNumber: string;
 };
