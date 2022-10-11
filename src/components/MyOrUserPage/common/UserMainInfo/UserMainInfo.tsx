@@ -9,13 +9,13 @@ type Props = {
 
 const UserMainInfo: React.FC<Props> = ({ user }) => {
   const correctcurrentCity = uppercaseFirstLetter(user.currentCity);
+  const correctDateOfBirth = user.dateOfBirth
+    ? new Date(user.dateOfBirth).toLocaleDateString()
+    : '';
 
   return (
     <div className={s.info}>
-      <UserInfoRow
-        title="Birthday"
-        value={new Date(user.dateOfBirth).toLocaleDateString()}
-      />
+      <UserInfoRow title="Birthday" value={correctDateOfBirth} />
       <UserInfoRow title="City" value={correctcurrentCity} />
     </div>
   );

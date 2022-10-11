@@ -7,6 +7,8 @@ export const getSetCurrentNumFromLS = (
   setActiveNum(currentMenuNum);
 };
 
-export const uppercaseFirstLetter = (word: string) => {
+export const uppercaseFirstLetter = (word: string | undefined) => {
+  if (!word) return '';
+
   return `${word[0].toUpperCase()}${word.slice(1)}`;
 };

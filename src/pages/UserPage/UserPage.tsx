@@ -5,6 +5,7 @@ import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
+import UserMainInfo from '../../components/MyOrUserPage/common/UserMainInfo/UserMainInfo';
 import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
@@ -56,6 +57,7 @@ const UserPage: React.FC = () => {
               nickname={user!.nickname}
               BioComponent={<UserBio bio={user.bio} />}
             />
+            <UserMainInfo user={user} />
             <ProfileTopInfo todos={user.todos} />
           </ProfileInfo>
         </div>
