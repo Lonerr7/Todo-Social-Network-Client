@@ -13,6 +13,11 @@ const UserMainInfo: React.FC<Props> = ({ user }) => {
     ? new Date(user.dateOfBirth).toLocaleDateString()
     : '';
 
+  // don't show anything if user has no main info
+  if (!correctcurrentCity && !correctDateOfBirth) {
+    return <></>;
+  }
+
   return (
     <div className={s.info}>
       <UserInfoRow title="Birthday" value={correctDateOfBirth} />
