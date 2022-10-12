@@ -1,45 +1,25 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Preloader from '../../components/common/Preloader/Preloader';
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
-import UserMainInfo from '../../components/MyOrUserPage/common/UserMainInfo/UserMainInfo';
+import UserAdditionalInfo from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfo';
+import UserMainInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
-import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { fetchCurrentUser, removeCurrentUser } from '../../redux/usersSlice';
+import { User } from '../../types/reduxTypes';
 import s from './UserPage.module.scss';
 
-const UserPage: React.FC = () => {
-  const { userId } = useParams();
-  const {
-    currentUser: user,
-    isCurrentUserFetching: isFetching,
-    errorMsg,
-  } = useAppSelector((state) => state.users);
-  const dispatch = useAppDispatch();
+type Props = {
+  user: User;
+  isAdditionalInfoVisible: boolean;
+  setIsAdditionalInfoVisible: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-  useEffect(() => {
-    dispatch(fetchCurrentUser(userId!));
-
-    return () => {
-      dispatch(removeCurrentUser());
-    };
-
-    // eslint-disable-next-line
-  }, []);
-
-  if (isFetching) {
-    return <Preloader customClass={s.page__preloader} />;
-  }
-
-  if (!user || errorMsg) {
-    return <p>{errorMsg}</p>;
-  }
-
+const UserPage: React.FC<Props> = ({
+  user,
+  isAdditionalInfoVisible,
+  setIsAdditionalInfoVisible,
+}) => {
   return (
     <div className={s.page}>
       <div className={s.page__inner}>
@@ -57,7 +37,15 @@ const UserPage: React.FC = () => {
               nickname={user!.nickname}
               BioComponent={<UserBio bio={user.bio} />}
             />
-            <UserMainInfo user={user} />
+            <UserMainInfo
+              user={user}
+              isAdditionalInfoVisible={isAdditionalInfoVisible}
+              setIsAdditionalInfoVisible={setIsAdditionalInfoVisible}
+            />
+            <UserAdditionalInfo
+              user={user}
+              isVisible={isAdditionalInfoVisible}
+            />
             <ProfileTopInfo todos={user.todos} />
           </ProfileInfo>
         </div>
@@ -66,4 +54,4 @@ const UserPage: React.FC = () => {
   );
 };
 
-export default withActiveMenuNum(UserPage, 2);
+export default UserPage;

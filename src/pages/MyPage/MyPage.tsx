@@ -3,17 +3,20 @@ import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndB
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
 import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
 import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBio';
-import MyProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
+import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
 import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
 import UserAdditionalInfo from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfo';
-import UserMainInfo from '../../components/MyOrUserPage/common/UserMainInfo/UserMainInfo';
+import UserGeneralInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
+import { useState } from 'react';
 
 const MyPage: React.FC = () => {
   const myself = useAppSelector((state) => state.auth.user)!; //! Todos are not synced
   const todos = useAppSelector((state) => state.todo.todos);
+
+  const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
 
   return (
     <div className={s.myPage}>
@@ -33,9 +36,16 @@ const MyPage: React.FC = () => {
               nickname={myself.nickname}
               BioComponent={<MyBio bio={myself.bio} />}
             />
-            <UserMainInfo user={myself} />
-            <UserAdditionalInfo user={myself} />
-            <MyProfileTopInfo todos={todos} />
+            <UserGeneralInfo
+              user={myself}
+              isAdditionalInfoVisible={isAdditionalInfoVisible}
+              setIsAdditionalInfoVisible={setIsAdditionalInfoVisible}
+            />
+            <UserAdditionalInfo
+              user={myself}
+              isVisible={isAdditionalInfoVisible}
+            />
+            <ProfileTopInfo todos={todos} />
           </ProfileInfo>
         </div>
       </div>

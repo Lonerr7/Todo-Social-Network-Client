@@ -6,7 +6,7 @@ type Props = {
 };
 
 const UserInfoRow: React.FC<Props> = ({ title, value }) => {
-  if (!value) return null;
+  // if (!value) return null;
 
   return (
     <div className={s.row}>
