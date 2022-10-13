@@ -5,19 +5,26 @@ import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarContr
 import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBio';
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import { useAppSelector } from '../../hooks/hooks';
 import s from './MyPage.module.scss';
 import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
 import UserAdditionalInfo from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfo';
 import UserGeneralInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
-import { useState } from 'react';
+import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
+import { Todo, User } from '../../types/reduxTypes';
 
-const MyPage: React.FC = () => {
-  const myself = useAppSelector((state) => state.auth.user)!; //! Todos are not synced
-  const todos = useAppSelector((state) => state.todo.todos);
+type Props = {
+  myself: User;
+  isAdditionalInfoVisible: boolean;
+  todos: Array<Todo>;
+  toggleAdditionalInfoVisibility: () => void;
+};
 
-  const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
-
+const MyPage: React.FC<Props> = ({
+  myself,
+  isAdditionalInfoVisible,
+  todos,
+  toggleAdditionalInfoVisibility,
+}) => {
   return (
     <div className={s.myPage}>
       <div className={s.myPage__inner}>
@@ -39,7 +46,9 @@ const MyPage: React.FC = () => {
             <UserGeneralInfo
               user={myself}
               isAdditionalInfoVisible={isAdditionalInfoVisible}
-              setIsAdditionalInfoVisible={setIsAdditionalInfoVisible}
+            />
+            <ShowInfoBtn
+              toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
             />
             <UserAdditionalInfo
               user={myself}

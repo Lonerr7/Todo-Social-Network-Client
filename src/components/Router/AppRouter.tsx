@@ -8,9 +8,9 @@ import Layout from '../Layout/Layout';
 import GeneralSettings from '../Settings/GeneralSettings/GeneralSettings';
 import PageContainer from '../../pages/Page/PageContainer';
 import SecuritySettings from '../Settings/SecuritySettings/SecuritySettings';
-import MyPage from '../../pages/MyPage/MyPage';
 import UsersPageContainer from '../../pages/UsersPage/UsersPageContainer';
 import UserPageContainer from '../../pages/UserPage/UserPageContainer';
+import MyPageContainer from '../../pages/MyPage/MyPageContainer';
 
 const AppRouter: React.FC = () => {
   return (
@@ -24,7 +24,7 @@ const AppRouter: React.FC = () => {
         element={<PageContainer form={<LoginForm />} title="Log in" />}
       />
       <Route path="/" element={<Layout />}>
-        <Route index element={<MyPage />} />
+        <Route index element={<MyPageContainer />} />
         <Route path="users" element={<UsersPageContainer />} />
         <Route path="/users/:userId" element={<UserPageContainer />} />
         <Route path="messages" element={<MessagesPage />} />

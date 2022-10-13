@@ -40,7 +40,6 @@ const UserPage: React.FC<Props> = ({
             <UserMainInfo
               user={user}
               isAdditionalInfoVisible={isAdditionalInfoVisible}
-              setIsAdditionalInfoVisible={setIsAdditionalInfoVisible}
             />
             <UserAdditionalInfo
               user={user}
