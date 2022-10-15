@@ -4,6 +4,7 @@ import Preloader from '../../components/common/Preloader/Preloader';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchCurrentUser, removeCurrentUser } from '../../redux/usersSlice';
+import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import UserPage from './UserPage';
 import s from './UserPage.module.scss';
 
@@ -17,6 +18,11 @@ const UserPageContainer = () => {
   const dispatch = useAppDispatch();
 
   const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
+
+  const toggleAdditionalInfoVisibility = toggleAdditionalInfoVisibilityHelp(
+    isAdditionalInfoVisible,
+    setIsAdditionalInfoVisible
+  );
 
   useEffect(() => {
     dispatch(fetchCurrentUser(userId!));
@@ -40,7 +46,7 @@ const UserPageContainer = () => {
     <UserPage
       user={user}
       isAdditionalInfoVisible={isAdditionalInfoVisible}
-      setIsAdditionalInfoVisible={setIsAdditionalInfoVisible}
+      toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
     />
   );
 };

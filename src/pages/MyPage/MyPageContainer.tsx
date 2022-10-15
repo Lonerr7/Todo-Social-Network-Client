@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/hooks';
+import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import MyPage from './MyPage';
 
 const MyPageContainer: React.FC = () => {
@@ -9,9 +10,10 @@ const MyPageContainer: React.FC = () => {
 
   const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
 
-  const toggleAdditionalInfoVisibility = () => {
-    setIsAdditionalInfoVisible(!isAdditionalInfoVisible);
-  };
+  const toggleAdditionalInfoVisibility = toggleAdditionalInfoVisibilityHelp(
+    isAdditionalInfoVisible,
+    setIsAdditionalInfoVisible
+  );
 
   if (!myself) return <></>;
 

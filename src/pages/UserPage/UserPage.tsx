@@ -1,3 +1,4 @@
+import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
@@ -12,13 +13,13 @@ import s from './UserPage.module.scss';
 type Props = {
   user: User;
   isAdditionalInfoVisible: boolean;
-  setIsAdditionalInfoVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleAdditionalInfoVisibility: () => void;
 };
 
 const UserPage: React.FC<Props> = ({
   user,
   isAdditionalInfoVisible,
-  setIsAdditionalInfoVisible,
+  toggleAdditionalInfoVisibility,
 }) => {
   return (
     <div className={s.page}>
@@ -40,6 +41,9 @@ const UserPage: React.FC<Props> = ({
             <UserMainInfo
               user={user}
               isAdditionalInfoVisible={isAdditionalInfoVisible}
+            />
+            <ShowInfoBtn
+              toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
             />
             <UserAdditionalInfo
               user={user}

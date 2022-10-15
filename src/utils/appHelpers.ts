@@ -12,3 +12,10 @@ export const uppercaseFirstLetter = (word: string | undefined) => {
 
   return `${word[0].toUpperCase()}${word.slice(1)}`;
 };
+
+export const toggleAdditionalInfoVisibilityHelp = (
+  val: boolean,
+  fn: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  return () => fn(!val);
+};
