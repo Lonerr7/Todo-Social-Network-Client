@@ -1,13 +1,17 @@
 import s from './ShowInfoBtn.module.scss';
 
 type Props = {
+  isVisible: boolean;
   toggleAdditionalInfoVisibility: () => void;
 };
 
-const ShowInfoBtn: React.FC<Props> = ({ toggleAdditionalInfoVisibility }) => {
+const ShowInfoBtn: React.FC<Props> = ({
+  isVisible,
+  toggleAdditionalInfoVisibility,
+}) => {
   return (
     <button className={s.btn} onClick={toggleAdditionalInfoVisibility}>
-      Show full information
+      {isVisible ? 'Hide' : 'Show'} full information
     </button>
   );
 };

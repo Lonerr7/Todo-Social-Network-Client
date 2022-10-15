@@ -43,12 +43,10 @@ const MyPage: React.FC<Props> = ({
               nickname={myself.nickname}
               BioComponent={<MyBio bio={myself.bio} />}
             />
-            <UserGeneralInfo
-              user={myself}
-              isAdditionalInfoVisible={isAdditionalInfoVisible}
-            />
+            <UserGeneralInfo user={myself} />
             <ShowInfoBtn
               toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
+              isVisible={isAdditionalInfoVisible}
             />
             <UserAdditionalInfo
               user={myself}

@@ -1,5 +1,6 @@
 import { User } from '../../../../types/reduxTypes';
 import s from './UserAdditionalInfo.module.scss';
+import UserAdditionalInfoBlock from './UserAdditionalInfoBlock/UserAdditionalInfoBlock';
 
 type Props = {
   user: User;
@@ -9,7 +10,15 @@ type Props = {
 const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
   if (!isVisible) return null;
 
-  return <div className={s.info}>Additional info</div>;
+  return (
+    <div className={s.info}>
+      <UserAdditionalInfoBlock
+        blockTitle="Main information"
+        fieldTitles={['City of birth', 'Languages']}
+        fieldValues={[user.cityOfBirth]}
+      />
+    </div>
+  );
 };
 
 export default UserAdditionalInfo;

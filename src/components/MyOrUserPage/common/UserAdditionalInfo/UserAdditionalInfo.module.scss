@@ -2,4 +2,6 @@
 
 .info {
   @extend %profile-info-box;
+  border-top: none;
+  margin-top: 0;
 }

@@ -5,13 +5,9 @@ import s from './UserGeneralInfo.module.scss';
 
 type Props = {
   user: User;
-  isAdditionalInfoVisible: boolean;
 };
 
-const UserGeneralInfo: React.FC<Props> = ({
-  user,
-  isAdditionalInfoVisible: isVisible,
-}) => {
+const UserGeneralInfo: React.FC<Props> = ({ user }) => {
   const correctcurrentCity = uppercaseFirstLetter(user.currentCity);
   const correctDateOfBirth = user.dateOfBirth
     ? new Date(user.dateOfBirth).toLocaleDateString()
