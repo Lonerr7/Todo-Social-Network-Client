@@ -53,7 +53,7 @@ const usersSlice = createSlice({
       state,
       action: PayloadAction<UsersList>
     ) => {
-      state.users = action.payload;
+      state.users = action.payload.reverse();
     },
     [fetchAllUsers.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errorMsg = action.payload;

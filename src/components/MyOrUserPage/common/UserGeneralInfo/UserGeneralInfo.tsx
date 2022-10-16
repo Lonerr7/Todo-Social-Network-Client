@@ -8,9 +8,9 @@ type Props = {
 };
 
 const UserGeneralInfo: React.FC<Props> = ({ user }) => {
-  const correctcurrentCity = uppercaseFirstLetter(user.currentCity);
-  const correctDateOfBirth = user.dateOfBirth
-    ? new Date(user.dateOfBirth).toLocaleDateString()
+  const correctcurrentCity = uppercaseFirstLetter(user.generalInfo.currentCity);
+  const correctDateOfBirth = user.generalInfo.dateOfBirth
+    ? new Date(user.generalInfo.dateOfBirth).toLocaleDateString()
     : '';
 
   // don't show anything if user has no main info

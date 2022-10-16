@@ -61,7 +61,22 @@ export const sendMyAdditionalInfo = createAsyncThunk(
   'myself/sendMyAdditionalInfo',
   async (data: any, { rejectWithValue }) => {
     try {
-      const response = await myselfAPI.sendMyAdditionalInfo(data);
+      const fieldsToSend = {
+        generalInfo: {
+          dateOfBirth: data.dateOfBirth,
+          country: data.country,
+          currentCity: data.currentCity,
+        },
+        mainInfo: {
+          cityOfBirth: data.cityOfBirth,
+          languages: data.languages,
+        },
+        contactInfo: {
+          phoneNumber: data.phoneNumber,
+        },
+      };
+
+      const response = await myselfAPI.sendMyAdditionalInfo(fieldsToSend);
 
       console.log(response);
 
