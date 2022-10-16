@@ -1,5 +1,3 @@
-import { User } from '../types/reduxTypes';
-
 export const getSetCurrentNumFromLS = (
   item: string,
   setActiveNum: (neededNum: number) => void
@@ -22,6 +20,9 @@ export const toggleAdditionalInfoVisibilityHelp = (
   return () => fn(!val);
 };
 
-export const allSameType = (arr: []) => {
-  return new Set(arr.map(item => typeof item)).size <= 1;
-}
+export const notAllSameType = (arr: (string | undefined)[]) => {
+  const set = new Set(arr.map((item) => item));
+  const [firstEl] = set;
+
+  return set.size <= 1 && typeof firstEl === 'undefined';
+};

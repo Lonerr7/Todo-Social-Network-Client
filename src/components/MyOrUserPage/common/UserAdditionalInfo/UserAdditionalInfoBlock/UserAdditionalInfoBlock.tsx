@@ -1,3 +1,4 @@
+import { notAllSameType } from '../../../../../utils/appHelpers';
 import UserInfoRow from '../../UserInfoRow/UserInfoRow';
 import s from './UserAdditionalInfoBlock.module.scss';
 
@@ -14,7 +15,7 @@ const UserAdditionalInfoBlock: React.FC<Props> = ({
 }) => {
   console.log(fieldValues);
 
-  if (fieldValues.length === 0) return null; //! Not working
+  if (notAllSameType(fieldValues)) return null; // checking if all items in array are 'undefined', then it means we display nothing
 
   const elements = fieldValues.map((val, i) => (
     <UserInfoRow key={i} title={fieldTitles[i]} value={val} />
