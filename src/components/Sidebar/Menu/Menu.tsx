@@ -5,34 +5,13 @@ import { TiMessages } from 'react-icons/ti';
 import { RiTodoFill } from 'react-icons/ri';
 import { IoSettingsOutline } from 'react-icons/io5';
 import MenuItem from '../../common/MenuItem/MenuItem';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import {
-  setActiveMenuNum,
-  setActiveSettingsNum,
-} from '../../../redux/appSlice';
-import { getSetCurrentNumFromLS } from '../../../utils/appHelpers';
-import { activeLsNumbers } from '../../../types/appTypes';
+import { useAppSelector } from '../../../hooks/hooks';
 
 const Menu: React.FC = () => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);
   const uncompletedTodosCount = useAppSelector(
     (state) => state.todo.todos
   ).filter((t) => !t.isCompleted).length;
-  const dispatch = useAppDispatch();
-
-  const setActiveMenuNumber = (neededNum: number) => {
-    dispatch(setActiveMenuNum(neededNum));
-  };
-
-  const resetActiveSettingsNum = () => {
-    dispatch(setActiveSettingsNum(1));
-  };
-
-  useEffect(() => {
-    getSetCurrentNumFromLS(activeLsNumbers.MENU_NUM, setActiveMenuNumber);
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <nav className={s.menu}>
@@ -83,7 +62,6 @@ const Menu: React.FC = () => {
             neededNum={5}
             icon={<IoSettingsOutline className={s.menu__icon} size={24} />}
             urlPath="/settings"
-            resetActiveSettingsNum={resetActiveSettingsNum}
           />
         </li>
       </ul>

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/hooks';
 import UpdateUserInfoForm from './UpdateUserInfoForm/UpdateUserInfoForm';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
+import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -24,4 +25,4 @@ const GeneralSettings: React.FC = () => {
   );
 };
 
-export default GeneralSettings;
+export default withActiveSettingsNum(GeneralSettings, 1);

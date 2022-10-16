@@ -13,11 +13,9 @@ const appSlice = createSlice({
   reducers: {
     setActiveMenuNum: (state, action: PayloadAction<number>) => {
       state.activeMenuNum = action.payload;
-      localStorage.setItem('activeMenuNum', action.payload.toString());
     },
     setActiveSettingsNum: (state, action: PayloadAction<number>) => {
       state.activeSettingsNum = action.payload;
-      localStorage.setItem('activeSettingsNum', action.payload.toString());
     },
     toggleRegisterLoginPageOpening: (state, action: PayloadAction<boolean>) => {
       state.isRegisterOrLoginPageOpen = action.payload;

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';
@@ -27,4 +28,4 @@ const SecuritySettings: React.FC = () => {
   );
 };
 
-export default SecuritySettings;
+export default withActiveSettingsNum(SecuritySettings, 2);
