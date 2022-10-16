@@ -6,19 +6,24 @@ type Props = {
   blockTitle: string;
   fieldTitles: string[];
   fieldValues: (string | undefined)[];
+  rowElemsType: string[];
 };
 
 const UserAdditionalInfoBlock: React.FC<Props> = ({
   blockTitle,
   fieldTitles,
   fieldValues,
+  rowElemsType,
 }) => {
-  console.log(fieldValues);
-
   if (notAllSameType(fieldValues)) return null; // checking if all items in array are 'undefined', then it means we display nothing
 
   const elements = fieldValues.map((val, i) => (
-    <UserInfoRow key={i} title={fieldTitles[i]} value={val} />
+    <UserInfoRow
+      key={i}
+      title={fieldTitles[i]}
+      value={val}
+      fieldType={rowElemsType[i]}
+    />
   ));
 
   return (

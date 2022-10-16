@@ -1,6 +1,12 @@
 @import '../../../../../vars';
 
 .block {
+  margin-bottom: 25px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   &__box {
     display: flex;
     // justify-content: space-between;
@@ -12,12 +18,13 @@
     height: 1px;
     background-color: $color2;
     width: 100%;
+    flex: 1;
   }
 
   &__title {
     font-size: 20px;
     font-weight: 500;
-    margin-right: 5px;
-    width: 200px;
+    margin-right: 8px;
+    width: auto;
   }
 }
