@@ -7,3 +7,18 @@ export type MyselfState = {
   changePasswordErrorMsg: string;
   deleteMyProfileErrorMsg: string;
 };
+
+export type AdditionalFieldsToSend = {
+  generalInfo: {
+    dateOfBirth?: string;
+    country?: string;
+    currentCity?: string;
+  };
+  mainInfo: {
+    cityOfBirth?: string;
+    languages?: string;
+  };
+  contactInfo: {
+    phoneNumber?: string;
+  };
+};

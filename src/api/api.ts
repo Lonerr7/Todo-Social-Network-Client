@@ -10,6 +10,7 @@ import {
   UpdateUserPasswordInitialValues,
   UpdateMyBioValue,
 } from '../types/FormikTypes';
+import { AdditionalFieldsToSend } from '../types/reduxTypes/myselfSliceTypes';
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
 
 const axiosInstance = axios.create({
@@ -41,7 +42,7 @@ export const myselfAPI = {
   updateMyBio: async (newBio: UpdateMyBioValue) => {
     return await axiosInstance.patch('users/updateMe', newBio);
   },
-  sendMyAdditionalInfo: async (data: any) => {
+  sendMyAdditionalInfo: async (data: AdditionalFieldsToSend) => {
     return await axiosInstance.patch('users/updateMe', data);
   },
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {

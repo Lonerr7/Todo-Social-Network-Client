@@ -2,11 +2,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { myselfAPI } from '../api/api';
 import { DeleteMePasswords } from '../types/axiosTypes';
 import {
+  AdditionalInfoInitialValues,
   UpdateMyBioValue,
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
-import { MyselfState } from '../types/reduxTypes/myselfSliceTypes';
+import { AdditionalFieldsToSend, MyselfState } from '../types/reduxTypes/myselfSliceTypes';
 import { setActiveMenuNum, setActiveSettingsNum } from './appSlice';
 import { getMe } from './authSlice';
 import {
@@ -59,9 +60,9 @@ export const updateMyBio = createAsyncThunk(
 // using this when we just got signed up
 export const sendMyAdditionalInfo = createAsyncThunk(
   'myself/sendMyAdditionalInfo',
-  async (data: any, { rejectWithValue }) => {
+  async (data: AdditionalInfoInitialValues, { rejectWithValue }) => {
     try {
-      const fieldsToSend = {
+      const fieldsToSend: AdditionalFieldsToSend = {
         generalInfo: {
           dateOfBirth: data.dateOfBirth,
           country: data.country,
@@ -69,7 +70,6 @@ export const sendMyAdditionalInfo = createAsyncThunk(
         },
         mainInfo: {
           cityOfBirth: data.cityOfBirth,
-          languages: data.languages,
         },
         contactInfo: {
           phoneNumber: data.phoneNumber,

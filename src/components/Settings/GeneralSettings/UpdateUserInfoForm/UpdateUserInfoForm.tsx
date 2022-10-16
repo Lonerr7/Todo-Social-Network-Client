@@ -10,9 +10,19 @@ import FormError from '../../../common/FormError/FormError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 
 const validationSchema = yup.object({
-  nickname: yup.string().max(20, 'Your nickname is too long'),
-  firstName: yup.string().max(20, 'Your first name is too long'),
-  lastName: yup.string().max(20, 'Your last name is too long'),
+  nickname: yup
+    .string()
+    .max(20, 'Your nickname is too long')
+    .min(3, 'Your nickname is too short')
+    .required('Nickname is required!'),
+  firstName: yup
+    .string()
+    .max(20, 'Your first name is too long')
+    .required('First name is required!'),
+  lastName: yup
+    .string()
+    .max(20, 'Your last name is too long')
+    .required('Last name is required!'),
   bio: yup.string().max(100, 'Your bio is too long'),
 });
 
