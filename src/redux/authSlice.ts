@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
 import { activeLsNumbers } from '../types/appTypes';
-import { AuthState, User } from '../types/reduxTypes';
+import { AuthState, User } from '../types/reduxTypes/authSliceTypes';
 import {
   LoginFormInitialValues,
   RegisterFormInitialValues,

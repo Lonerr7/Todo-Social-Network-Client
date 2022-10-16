@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useAppDispatch } from '../../../../hooks/hooks';
 import { setActiveTodoFilter } from '../../../../redux/appSlice';
 import { changeActiveTodoFilter } from '../../../../redux/todoSlice';
-import { Todo, TodoFiltersEnum } from '../../../../types/reduxTypes';
+import { Todo, TodoFiltersEnum } from '../../../../types/reduxTypes/todoSliceTypes';
 import s from './ProfileTopInfo.module.scss';
 
 type Props = {

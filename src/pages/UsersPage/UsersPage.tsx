@@ -1,6 +1,6 @@
 import Search from '../../components/common/Search/Search';
 import UserSmall from '../../components/Users/UserSmall/UserSmall';
-import { UsersList } from '../../types/reduxTypes';
+import { UsersList } from '../../types/reduxTypes/usersSliceTypes';
 import s from './UsersPage.module.scss';
 
 type Props = {

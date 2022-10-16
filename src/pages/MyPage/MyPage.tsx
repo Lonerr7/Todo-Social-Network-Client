@@ -10,7 +10,8 @@ import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/Frie
 import UserAdditionalInfo from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfo';
 import UserGeneralInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
-import { Todo, User } from '../../types/reduxTypes';
+import { Todo } from '../../types/reduxTypes/todoSliceTypes';
+import { User } from '../../types/reduxTypes/authSliceTypes';
 
 type Props = {
   myself: User;

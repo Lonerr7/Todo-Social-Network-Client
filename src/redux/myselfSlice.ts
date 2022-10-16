@@ -6,7 +6,7 @@ import {
   UpdateUserFromInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
-import { UserState } from '../types/reduxTypes';
+import { MyselfState } from '../types/reduxTypes/myselfSliceTypes';
 import { setActiveMenuNum, setActiveSettingsNum } from './appSlice';
 import { getMe } from './authSlice';
 import {
@@ -138,7 +138,7 @@ export const deleteMyProfile = createAsyncThunk(
   }
 );
 
-const initialState: UserState = {
+const initialState: MyselfState = {
   isUserUpdateFetching: false,
   isMyBioUpdating: false,
   isChangingPasswordFetching: false,

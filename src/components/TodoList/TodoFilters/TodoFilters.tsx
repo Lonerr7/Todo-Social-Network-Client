@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { setActiveTodoFilter } from '../../../redux/appSlice';
 import { openPopup } from '../../../redux/areYouSurePopupSlice';
 import { changeActiveTodoFilter } from '../../../redux/todoSlice';
-import { TodoFiltersEnum } from '../../../types/reduxTypes';
+import { TodoFiltersEnum } from '../../../types/reduxTypes/todoSliceTypes';
 import s from './TodoFilters.module.scss';
 
 const TodoFilters: React.FC = () => {

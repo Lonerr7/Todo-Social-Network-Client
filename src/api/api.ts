@@ -10,7 +10,7 @@ import {
   UpdateUserPasswordInitialValues,
   UpdateMyBioValue,
 } from '../types/FormikTypes';
-import { TodoParams } from '../types/reduxTypes';
+import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/api/v1/',

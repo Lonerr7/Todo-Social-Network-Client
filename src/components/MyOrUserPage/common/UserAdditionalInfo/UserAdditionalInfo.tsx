@@ -1,4 +1,4 @@
-import { User } from '../../../../types/reduxTypes';
+import { User } from '../../../../types/reduxTypes/authSliceTypes';
 import s from './UserAdditionalInfo.module.scss';
 import UserAdditionalInfoBlock from './UserAdditionalInfoBlock/UserAdditionalInfoBlock';
 

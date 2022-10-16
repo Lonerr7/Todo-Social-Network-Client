@@ -7,8 +7,8 @@ import {
   TodoParams,
   TodoState,
   UpdateTodoParams,
-  User,
-} from '../types/reduxTypes';
+} from '../types/reduxTypes/todoSliceTypes';
+import { User } from '../types/reduxTypes/authSliceTypes';
 import { getMe, logOut } from './authSlice';
 import { deleteMyProfile } from './myselfSlice';
 

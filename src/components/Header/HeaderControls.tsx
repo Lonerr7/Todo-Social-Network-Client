@@ -2,7 +2,7 @@ import s from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/hooks';
 import { setActiveMenuNum } from '../../redux/appSlice';
-import { User } from '../../types/reduxTypes';
+import { User } from '../../types/reduxTypes/authSliceTypes';
 import HeaderNav from './HeaderNav/HeaderNav';
 
 type HeaderControlsProps = {

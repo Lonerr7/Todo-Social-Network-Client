@@ -7,7 +7,7 @@ import UserAdditionalInfo from '../../components/MyOrUserPage/common/UserAdditio
 import UserMainInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
-import { User } from '../../types/reduxTypes';
+import { User } from '../../types/reduxTypes/authSliceTypes';
 import s from './UserPage.module.scss';
 
 type Props = {

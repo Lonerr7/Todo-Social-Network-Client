@@ -1,4 +1,4 @@
-import { User } from '../../../../types/reduxTypes';
+import { User } from '../../../../types/reduxTypes/authSliceTypes';
 import { uppercaseFirstLetter } from '../../../../utils/appHelpers';
 import UserInfoRow from '../UserInfoRow/UserInfoRow';
 import s from './UserGeneralInfo.module.scss';
