@@ -26,7 +26,7 @@ const validationSchema = yup.object({
   bio: yup.string().max(100, 'Your bio is too long'),
 });
 
-const UpdateUserInfoForm: React.FC = () => {
+const UpdateMyGeneralInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
   const { updateMeErrorMsg, isUserUpdateFetching } = useAppSelector(
     (state) => state.myslef
@@ -118,4 +118,4 @@ const UpdateUserInfoForm: React.FC = () => {
   );
 };
 
-export default UpdateUserInfoForm;
+export default UpdateMyGeneralInfoForm;

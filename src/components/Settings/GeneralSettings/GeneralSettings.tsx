@@ -1,7 +1,7 @@
 import s from './GeneralSettings.module.scss';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/hooks';
-import UpdateUserInfoForm from './UpdateUserInfoForm/UpdateUserInfoForm';
+import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoForm';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import SettingsBlock from '../SettingsBlock/SettingsBlock';
@@ -12,6 +12,7 @@ const GeneralSettings: React.FC = () => {
   // reset errorMsg in settings
   useEffect(() => {
     dispatch(resetUserErrorMsgs());
+
     // eslint-disable-next-line
   }, []);
 
@@ -21,7 +22,7 @@ const GeneralSettings: React.FC = () => {
       <div className={s.general__inner}>
         <SettingsBlock
           title="My general information"
-          form={<UpdateUserInfoForm />}
+          form={<UpdateMyGeneralInfoForm />}
         />
       </div>
     </div>
