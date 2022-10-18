@@ -1,0 +1,7 @@
+@import '../../../vars';
+
+.block {
+  &__title {
+    @extend %subtitle;
+  }
+}

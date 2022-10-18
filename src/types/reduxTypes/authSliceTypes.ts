@@ -6,16 +6,16 @@ export type User = {
   firstName: string;
   lastName: string;
   role: string;
-  generalInfo: {
+  generalInfo?: {
     country?: string;
     currentCity?: string;
     dateOfBirth?: string;
   };
-  mainInfo: {
+  mainInfo?: {
     cityOfBirth?: string;
     languages?: string[];
   };
-  contactInfo: {
+  contactInfo?: {
     phoneNumber?: string;
   };
   id: string;

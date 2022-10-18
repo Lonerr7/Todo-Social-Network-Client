@@ -35,10 +35,12 @@
 
   &__btn {
     @extend %form-btn;
-    width: 150px;
+    width: auto;
     font-size: 20px;
     background-color: $color9;
     margin-right: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
 
     &:hover {
       transform: scale(1.1);

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ItemsCounter from '../ItemsCounter/ItemsCounter';
 import s from './MenuItem.module.scss';
 
@@ -38,7 +38,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
           : {}
       }
     >
-      <NavLink
+      <Link
         className={
           activeNum === neededNum
             ? `${s.menuItem__link} ${s.active_link}`
@@ -57,7 +57,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         {icon}
         {text}
         {itemsCount ? <ItemsCounter quantity={itemsCount} /> : null}
-      </NavLink>
+      </Link>
     </div>
   );
 };

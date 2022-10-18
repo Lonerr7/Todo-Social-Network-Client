@@ -4,10 +4,13 @@ import { DeleteMePasswords } from '../types/axiosTypes';
 import {
   AdditionalInfoInitialValues,
   UpdateMyBioValue,
-  UpdateUserFromInitialValues,
+  UpdateMyGeneralInfoFormInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
-import { AdditionalFieldsToSend, MyselfState } from '../types/reduxTypes/myselfSliceTypes';
+import {
+  AdditionalFieldsToSend,
+  MyselfState,
+} from '../types/reduxTypes/myselfSliceTypes';
 import { setActiveMenuNum, setActiveSettingsNum } from './appSlice';
 import { getMe } from './authSlice';
 import {
@@ -16,10 +19,10 @@ import {
 } from './formsSlice';
 
 // using this in settings
-export const updateMe = createAsyncThunk(
-  'myself/updateMe',
+export const updateMyGeneralInfo = createAsyncThunk(
+  'myself/updateMyGeneralInfo',
   async (
-    newUserData: UpdateUserFromInitialValues,
+    newUserData: UpdateMyGeneralInfoFormInitialValues,
     { rejectWithValue, dispatch }
   ) => {
     try {
@@ -34,8 +37,6 @@ export const updateMe = createAsyncThunk(
         }, 5000);
       }
 
-      console.log(response.data.data.user);
-
       return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
@@ -48,7 +49,7 @@ export const updateMyBio = createAsyncThunk(
   'myself/updateMyBio',
   async (newBio: UpdateMyBioValue, { rejectWithValue }) => {
     try {
-      const response = await myselfAPI.updateMyBio(newBio);
+      const response = await myselfAPI.updateMe(newBio);
 
       return response.data.data.user;
     } catch (error: any) {
@@ -76,9 +77,7 @@ export const sendMyAdditionalInfo = createAsyncThunk(
         },
       };
 
-      const response = await myselfAPI.sendMyAdditionalInfo(fieldsToSend);
-
-      console.log(response);
+      const response = await myselfAPI.updateMe(fieldsToSend);
 
       return response.data.data.user;
     } catch (error: any) {
@@ -159,14 +158,17 @@ const myselfSlice = createSlice({
     },
   },
   extraReducers: {
-    [updateMe.pending.type]: (state) => {
+    [updateMyGeneralInfo.pending.type]: (state) => {
       state.isUserUpdateFetching = true;
       state.updateMeErrorMsg = '';
     },
-    [updateMe.fulfilled.type]: (state) => {
+    [updateMyGeneralInfo.fulfilled.type]: (state) => {
       state.isUserUpdateFetching = false;
     },
-    [updateMe.rejected.type]: (state, action: PayloadAction<string>) => {
+    [updateMyGeneralInfo.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
       state.isUserUpdateFetching = false;
       state.updateMeErrorMsg = action.payload;
     },

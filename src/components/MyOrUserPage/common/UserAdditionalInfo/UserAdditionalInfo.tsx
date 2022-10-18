@@ -15,13 +15,13 @@ const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
       <UserAdditionalInfoBlock
         blockTitle="Main information"
         fieldTitles={['City of birth', 'Languages']}
-        fieldValues={[user.mainInfo.cityOfBirth]}
+        fieldValues={[user.mainInfo?.cityOfBirth]}
         rowElemsType={['']} // don't need it here
       />
       <UserAdditionalInfoBlock
         blockTitle="Contact information"
         fieldTitles={['Mobile number']}
-        fieldValues={[user.contactInfo.phoneNumber]}
+        fieldValues={[user.contactInfo?.phoneNumber]}
         rowElemsType={['tel']}
       />
     </div>

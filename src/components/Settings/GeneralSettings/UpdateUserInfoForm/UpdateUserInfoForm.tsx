@@ -1,10 +1,10 @@
 import s from '../../../../styles/formStyle.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { UpdateUserFromInitialValues } from '../../../../types/FormikTypes';
+import { UpdateMyGeneralInfoFormInitialValues } from '../../../../types/FormikTypes';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import FormControl from '../../../common/FormControl/FormControl';
-import { updateMe } from '../../../../redux/myselfSlice';
+import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
@@ -34,16 +34,16 @@ const UpdateUserInfoForm: React.FC = () => {
   const { isUserInfoSuccessfulySent } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();
 
-  const initialValues: UpdateUserFromInitialValues = {
+  const initialValues: UpdateMyGeneralInfoFormInitialValues = {
     nickname: currentUser.nickname,
-    bio: currentUser.bio ? currentUser.bio : '',
+    bio: currentUser.bio || '',
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
   };
 
-  const onSubmit = (values: UpdateUserFromInitialValues) => {
+  const onSubmit = (values: UpdateMyGeneralInfoFormInitialValues) => {
     dispatch(
-      updateMe({
+      updateMyGeneralInfo({
         nickname: values.nickname.trim(),
         firstName: values.firstName.trim(),
         lastName: values.lastName.trim(),
@@ -101,8 +101,8 @@ const UpdateUserInfoForm: React.FC = () => {
           <SubmitLoadingBtn
             btnClass={s.form__btn}
             btnType="submit"
-            btnText="Update Profile"
-            btnFetchingText="Updating"
+            btnText="Update general information"
+            btnFetchingText="Updating general information"
             isFetching={isUserUpdateFetching}
             onSubmit={() => {}}
           />

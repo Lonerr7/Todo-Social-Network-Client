@@ -13,11 +13,11 @@ export type LoginFormInitialValues = {
   passwordConfirm: string;
 };
 
-export type UpdateUserFromInitialValues = {
+export type UpdateMyGeneralInfoFormInitialValues = {
   nickname: string;
   firstName: string;
   lastName: string;
-  bio: string;
+  bio: string | '';
 };
 
 export type UpdateMyBioValue = {

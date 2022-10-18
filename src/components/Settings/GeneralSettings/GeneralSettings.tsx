@@ -4,6 +4,7 @@ import { useAppDispatch } from '../../../hooks/hooks';
 import UpdateUserInfoForm from './UpdateUserInfoForm/UpdateUserInfoForm';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
+import SettingsBlock from '../SettingsBlock/SettingsBlock';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,8 +19,10 @@ const GeneralSettings: React.FC = () => {
     <div className={s.general}>
       <h1 className={s.general__title}>General</h1>
       <div className={s.general__inner}>
-        <h2 className={s.general__subtitle}>Profile</h2>
-        <UpdateUserInfoForm />
+        <SettingsBlock
+          title="My general information"
+          form={<UpdateUserInfoForm />}
+        />
       </div>
     </div>
   );

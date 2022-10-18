@@ -20,7 +20,11 @@ const SubmitLoadingBtn: React.FC<SubmitLoadingBtnProps> = ({
   return (
     <>
       {!isFetching ? (
-        <button className={btnClass} type={btnType} onClick={onSubmit}>
+        <button
+          className={`${s.btn} ${btnClass}`}
+          type={btnType}
+          onClick={onSubmit}
+        >
           {btnText}
         </button>
       ) : (

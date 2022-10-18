@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import {
   DeleteMePasswords,
   UpdateTodoParamsRequest,
@@ -6,7 +6,7 @@ import {
 import {
   RegisterFormInitialValues,
   LoginFormInitialValues,
-  UpdateUserFromInitialValues,
+  UpdateMyGeneralInfoFormInitialValues,
   UpdateUserPasswordInitialValues,
   UpdateMyBioValue,
 } from '../types/FormikTypes';
@@ -35,16 +35,21 @@ export const authAPI = {
   },
 };
 
+async function updateMe(
+  data: UpdateMyGeneralInfoFormInitialValues
+): Promise<AxiosResponse<any, any>>;
+async function updateMe(
+  data: UpdateMyBioValue
+): Promise<AxiosResponse<any, any>>;
+async function updateMe(
+  data: AdditionalFieldsToSend
+): Promise<AxiosResponse<any, any>>;
+async function updateMe(data: unknown) {
+  return await axiosInstance.patch('users/updateMe', data);
+}
+
 export const myselfAPI = {
-  updateMe: async (newUserData: UpdateUserFromInitialValues) => {
-    return await axiosInstance.patch('users/updateMe', newUserData);
-  },
-  updateMyBio: async (newBio: UpdateMyBioValue) => {
-    return await axiosInstance.patch('users/updateMe', newBio);
-  },
-  sendMyAdditionalInfo: async (data: AdditionalFieldsToSend) => {
-    return await axiosInstance.patch('users/updateMe', data);
-  },
+  updateMe,
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {
     return await axiosInstance.patch('users/updateMyPassword', passwords);
   },
