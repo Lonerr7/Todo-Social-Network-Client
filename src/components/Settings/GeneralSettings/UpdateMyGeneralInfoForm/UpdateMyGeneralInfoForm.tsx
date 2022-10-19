@@ -28,10 +28,11 @@ const validationSchema = yup.object({
 
 const UpdateMyGeneralInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
-  const { updateMeErrorMsg, isUserUpdateFetching } = useAppSelector(
-    (state) => state.myslef
+  const { updateMyGeneralInfoErrorMsg, isUserGeneralInfoFetching } =
+    useAppSelector((state) => state.myslef);
+  const { isUserGeneralInfoSuccessfulySent } = useAppSelector(
+    (state) => state.forms
   );
-  const { isUserInfoSuccessfulySent } = useAppSelector((state) => state.forms);
   const dispatch = useAppDispatch();
 
   const initialValues: UpdateMyGeneralInfoFormInitialValues = {
@@ -103,16 +104,19 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
             btnType="submit"
             btnText="Update general information"
             btnFetchingText="Updating general information"
-            isFetching={isUserUpdateFetching}
+            isFetching={isUserGeneralInfoFetching}
             onSubmit={() => {}}
           />
           <FormStatus
-            isSuccessfulySent={isUserInfoSuccessfulySent}
+            isSuccessfulySent={isUserGeneralInfoSuccessfulySent}
             preloaderClass={s.form__preloader}
             msgClass={s.form__success}
           />
         </div>
-        <FormError customClass={s.form__error} errorMsg={updateMeErrorMsg} />
+        <FormError
+          customClass={s.form__error}
+          errorMsg={updateMyGeneralInfoErrorMsg}
+        />
       </Form>
     </Formik>
   );

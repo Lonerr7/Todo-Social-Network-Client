@@ -5,10 +5,16 @@ import FormControl from '../../../common/FormControl/FormControl';
 import FormError from '../../../common/FormError/FormError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 
 const validationSchema = yup.object({});
 
 const UpdateMyMainInfoForm: React.FC = () => {
+  const currentUser = useAppSelector((state) => state.auth.user)!;
+  const { updateMyMainInfoErrorMsg } = useAppSelector((state) => state.myslef);
+  // const {} = useAppSelector((state) => state.forms);
+  const dispatch = useAppDispatch();
+
   const initialValues = {};
 
   const onSubmit = (values: any) => {};

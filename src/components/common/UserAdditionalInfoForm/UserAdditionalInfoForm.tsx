@@ -27,7 +27,9 @@ const validationSchema = yup.object({
 });
 
 const UserAdditionalInfoForm: React.FC = () => {
-  const errMsg = useAppSelector((state) => state.myslef.updateMeErrorMsg);
+  const errMsg = useAppSelector(
+    (state) => state.myslef.sendMyAdditionalInfoErrorMsg
+  );
   const dispatch = useAppDispatch();
 
   const onSubmit = (values: AdditionalInfoInitialValues) => {

@@ -1,9 +1,13 @@
 export type MyselfState = {
-  isUserUpdateFetching: boolean;
+  isUserGeneralInfoFetching: boolean;
+  isUserAdditionalInfoFetching: boolean;
+  isUserMainInfoFetching: boolean;
   isMyBioUpdating: boolean;
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;
-  updateMeErrorMsg: string;
+  sendMyAdditionalInfoErrorMsg: string;
+  updateMyGeneralInfoErrorMsg: string;
+  updateMyMainInfoErrorMsg: string;
   changePasswordErrorMsg: string;
   deleteMyProfileErrorMsg: string;
 };

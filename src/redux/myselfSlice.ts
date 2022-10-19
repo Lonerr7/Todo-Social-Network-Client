@@ -30,10 +30,10 @@ export const updateMyGeneralInfo = createAsyncThunk(
 
       // If OK, show success message in form. Then delete it after 5 sec.
       if (response.data.data.user) {
-        dispatch(showHideUserInfoSuccessMsg(true));
+        dispatch(showHideUserInfoSuccessMsg({ show: true, for: 'general' }));
 
         setTimeout(() => {
-          dispatch(showHideUserInfoSuccessMsg(false));
+          dispatch(showHideUserInfoSuccessMsg({ show: false, for: 'general' }));
         }, 5000);
       }
 
@@ -140,11 +140,15 @@ export const deleteMyProfile = createAsyncThunk(
 );
 
 const initialState: MyselfState = {
-  isUserUpdateFetching: false,
+  isUserGeneralInfoFetching: false,
+  isUserAdditionalInfoFetching: false,
+  isUserMainInfoFetching: false,
   isMyBioUpdating: false,
   isChangingPasswordFetching: false,
   isUserDeletingFetching: false,
-  updateMeErrorMsg: '',
+  sendMyAdditionalInfoErrorMsg: '',
+  updateMyGeneralInfoErrorMsg: '',
+  updateMyMainInfoErrorMsg: '',
   changePasswordErrorMsg: '',
   deleteMyProfileErrorMsg: '',
 };
@@ -154,25 +158,25 @@ const myselfSlice = createSlice({
   initialState,
   reducers: {
     resetUserErrorMsgs: (state) => {
-      state.updateMeErrorMsg = '';
+      state.updateMyGeneralInfoErrorMsg = '';
       state.changePasswordErrorMsg = '';
       state.deleteMyProfileErrorMsg = '';
     },
   },
   extraReducers: {
     [updateMyGeneralInfo.pending.type]: (state) => {
-      state.isUserUpdateFetching = true;
-      state.updateMeErrorMsg = '';
+      state.isUserGeneralInfoFetching = true;
+      state.updateMyGeneralInfoErrorMsg = '';
     },
     [updateMyGeneralInfo.fulfilled.type]: (state) => {
-      state.isUserUpdateFetching = false;
+      state.isUserGeneralInfoFetching = false;
     },
     [updateMyGeneralInfo.rejected.type]: (
       state,
       action: PayloadAction<string>
     ) => {
-      state.isUserUpdateFetching = false;
-      state.updateMeErrorMsg = action.payload;
+      state.isUserGeneralInfoFetching = false;
+      state.updateMyGeneralInfoErrorMsg = action.payload;
     },
 
     [updateMyBio.pending.type]: (state) => {
@@ -186,17 +190,17 @@ const myselfSlice = createSlice({
     },
 
     [sendMyAdditionalInfo.pending.type]: (state) => {
-      state.isUserUpdateFetching = true;
+      state.isUserAdditionalInfoFetching = true;
     },
     [sendMyAdditionalInfo.fulfilled.type]: (state) => {
-      state.isUserUpdateFetching = false;
+      state.isUserAdditionalInfoFetching = false;
     },
     [sendMyAdditionalInfo.pending.type]: (
       state,
       action: PayloadAction<string>
     ) => {
-      state.isUserUpdateFetching = false;
-      state.updateMeErrorMsg = action.payload;
+      state.isUserAdditionalInfoFetching = false;
+      state.sendMyAdditionalInfoErrorMsg = action.payload;
     },
 
     [changePassword.pending.type]: (state) => {
