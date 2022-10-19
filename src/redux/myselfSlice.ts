@@ -140,9 +140,9 @@ export const deleteMyProfile = createAsyncThunk(
 );
 
 const initialState: MyselfState = {
-  isUserGeneralInfoFetching: false,
-  isUserAdditionalInfoFetching: false,
-  isUserMainInfoFetching: false,
+  isMyGeneralInfoFetching: false,
+  isMyAdditionalInfoFetching: false,
+  isMyMainInfoFetching: false,
   isMyBioUpdating: false,
   isChangingPasswordFetching: false,
   isUserDeletingFetching: false,
@@ -165,17 +165,17 @@ const myselfSlice = createSlice({
   },
   extraReducers: {
     [updateMyGeneralInfo.pending.type]: (state) => {
-      state.isUserGeneralInfoFetching = true;
+      state.isMyGeneralInfoFetching = true;
       state.updateMyGeneralInfoErrorMsg = '';
     },
     [updateMyGeneralInfo.fulfilled.type]: (state) => {
-      state.isUserGeneralInfoFetching = false;
+      state.isMyGeneralInfoFetching = false;
     },
     [updateMyGeneralInfo.rejected.type]: (
       state,
       action: PayloadAction<string>
     ) => {
-      state.isUserGeneralInfoFetching = false;
+      state.isMyGeneralInfoFetching = false;
       state.updateMyGeneralInfoErrorMsg = action.payload;
     },
 
@@ -190,16 +190,16 @@ const myselfSlice = createSlice({
     },
 
     [sendMyAdditionalInfo.pending.type]: (state) => {
-      state.isUserAdditionalInfoFetching = true;
+      state.isMyAdditionalInfoFetching = true;
     },
     [sendMyAdditionalInfo.fulfilled.type]: (state) => {
-      state.isUserAdditionalInfoFetching = false;
+      state.isMyAdditionalInfoFetching = false;
     },
     [sendMyAdditionalInfo.pending.type]: (
       state,
       action: PayloadAction<string>
     ) => {
-      state.isUserAdditionalInfoFetching = false;
+      state.isMyAdditionalInfoFetching = false;
       state.sendMyAdditionalInfoErrorMsg = action.payload;
     },
 

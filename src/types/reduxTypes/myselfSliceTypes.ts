@@ -1,7 +1,7 @@
 export type MyselfState = {
-  isUserGeneralInfoFetching: boolean;
-  isUserAdditionalInfoFetching: boolean;
-  isUserMainInfoFetching: boolean;
+  isMyGeneralInfoFetching: boolean;
+  isMyAdditionalInfoFetching: boolean;
+  isMyMainInfoFetching: boolean;
   isMyBioUpdating: boolean;
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;

@@ -28,7 +28,7 @@ const validationSchema = yup.object({
 
 const UpdateMyGeneralInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
-  const { updateMyGeneralInfoErrorMsg, isUserGeneralInfoFetching } =
+  const { updateMyGeneralInfoErrorMsg, isMyGeneralInfoFetching } =
     useAppSelector((state) => state.myslef);
   const { isUserGeneralInfoSuccessfulySent } = useAppSelector(
     (state) => state.forms
@@ -104,7 +104,7 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
             btnType="submit"
             btnText="Update general information"
             btnFetchingText="Updating general information"
-            isFetching={isUserGeneralInfoFetching}
+            isFetching={isMyGeneralInfoFetching}
             onSubmit={() => {}}
           />
           <FormStatus
