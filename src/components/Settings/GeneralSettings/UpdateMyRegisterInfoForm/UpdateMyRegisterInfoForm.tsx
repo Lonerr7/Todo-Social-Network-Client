@@ -28,7 +28,7 @@ const validationSchema = yup.object({
 
 const UpdateMyRegisterInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
-  const { updateMyGeneralInfoErrorMsg, isMyRegisterInfoFetching } =
+  const { updateMyRegisterInfoErrorMsg, isMyRegisterInfoFetching } =
     useAppSelector((state) => state.myslef);
   const { isUserRegisterInfoSuccessfulySent } = useAppSelector(
     (state) => state.forms
@@ -115,7 +115,7 @@ const UpdateMyRegisterInfoForm: React.FC = () => {
         </div>
         <FormError
           customClass={s.form__error}
-          errorMsg={updateMyGeneralInfoErrorMsg}
+          errorMsg={updateMyRegisterInfoErrorMsg}
         />
       </Form>
     </Formik>

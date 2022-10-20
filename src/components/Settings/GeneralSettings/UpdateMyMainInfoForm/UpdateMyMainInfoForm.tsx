@@ -6,9 +6,13 @@ import FormError from '../../../common/FormError/FormError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { MainInfoAdditionalValues } from '../../../../types/FormikTypes';
+import { MainInfoInitialValues } from '../../../../types/FormikTypes';
+import { updateMyMainInfo } from '../../../../redux/myselfSlice';
 
-const validationSchema = yup.object({});
+const validationSchema = yup.object({
+  cityOfBirth: yup.string().max(20, 'City name is too long'),
+  nativeLanguage: yup.string().max(20, 'Language name is too long'),
+});
 
 const UpdateMyMainInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
@@ -20,13 +24,13 @@ const UpdateMyMainInfoForm: React.FC = () => {
   );
   const dispatch = useAppDispatch();
 
-  const initialValues: MainInfoAdditionalValues = {
+  const initialValues: MainInfoInitialValues = {
     cityOfBirth: currentUser.mainInfo.cityOfBirth || '',
     nativeLanguage: currentUser.mainInfo.nativeLanguage || '',
   };
 
-  const onSubmit = (values: MainInfoAdditionalValues) => {
-    // dispatch()
+  const onSubmit = (values: MainInfoInitialValues) => {
+    dispatch(updateMyMainInfo(values));
   };
 
   return (

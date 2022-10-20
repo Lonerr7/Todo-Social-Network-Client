@@ -1,7 +1,7 @@
 import s from './GeneralSettings.module.scss';
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../../hooks/hooks';
-import UpdateMyRegisterInfoForm  from './UpdateMyRegisterInfoForm/UpdateMyRegisterInfoForm';
+import UpdateMyRegisterInfoForm from './UpdateMyRegisterInfoForm/UpdateMyRegisterInfoForm';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import SettingsBlock from '../SettingsBlock/SettingsBlock';
@@ -22,7 +22,7 @@ const GeneralSettings: React.FC = () => {
       <h1 className={s.general__title}>General</h1>
       <div className={s.general__inner}>
         <SettingsBlock
-          title="My general information"
+          title="My register information"
           form={<UpdateMyRegisterInfoForm />}
         />
         <SettingsBlock

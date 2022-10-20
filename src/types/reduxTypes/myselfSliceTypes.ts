@@ -6,7 +6,7 @@ export type MyselfState = {
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;
   sendMyAdditionalInfoErrorMsg: string;
-  updateMyGeneralInfoErrorMsg: string;
+  updateMyRegisterInfoErrorMsg: string;
   updateMyMainInfoErrorMsg: string;
   changePasswordErrorMsg: string;
   deleteMyProfileErrorMsg: string;
@@ -24,5 +24,12 @@ export type AdditionalFieldsToSend = {
   };
   contactInfo: {
     phoneNumber?: string;
+  };
+};
+
+export type MainInfoFieldsToSend = {
+  mainInfo: {
+    cityOfBirth: string;
+    nativeLanguage: string;
   };
 };
