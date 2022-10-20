@@ -20,9 +20,9 @@ export const toggleAdditionalInfoVisibilityHelp = (
   return () => fn(!val);
 };
 
-export const notAllSameType = (arr: (string | undefined)[]) => {
+export const checkIfEpmty = (arr: (string | undefined)[]) => {
   const set = new Set(arr.map((item) => item));
   const [firstEl] = set;
 
-  return set.size <= 1 && typeof firstEl === 'undefined';
+  return set.size <= 1 && !firstEl;
 };

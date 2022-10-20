@@ -1,4 +1,4 @@
-import { notAllSameType } from '../../../../../utils/appHelpers';
+import { checkIfEpmty } from '../../../../../utils/appHelpers';
 import UserInfoRow from '../../UserInfoRow/UserInfoRow';
 import s from './UserAdditionalInfoBlock.module.scss';
 
@@ -15,7 +15,7 @@ const UserAdditionalInfoBlock: React.FC<Props> = ({
   fieldValues,
   rowElemsType,
 }) => {
-  if (notAllSameType(fieldValues)) return null; // checking if all items in array are 'undefined', then it means we display nothing
+  if (checkIfEpmty(fieldValues)) return null; // checking if all items in array are 'undefined', then it means we display nothing
 
   const elements = fieldValues.map((val, i) => (
     <UserInfoRow

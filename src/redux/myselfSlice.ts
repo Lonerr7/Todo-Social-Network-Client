@@ -167,7 +167,7 @@ export const deleteMyProfile = createAsyncThunk(
         await dispatch(getMe());
       }
 
-      // reseting active menu fields in Menu and Settings submenu
+      // reseting active menu fields in Menu and Settings submenu //! Maybe we don't need those lines
       dispatch(setActiveMenuNum(1));
       dispatch(setActiveSettingsNum(1));
 
