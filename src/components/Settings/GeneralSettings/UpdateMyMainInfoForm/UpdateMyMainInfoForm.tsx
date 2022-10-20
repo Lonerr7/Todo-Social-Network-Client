@@ -6,6 +6,7 @@ import FormError from '../../../common/FormError/FormError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { MainInfoAdditionalValues } from '../../../../types/FormikTypes';
 
 const validationSchema = yup.object({});
 
@@ -14,12 +15,19 @@ const UpdateMyMainInfoForm: React.FC = () => {
   const { updateMyMainInfoErrorMsg, isMyMainInfoFetching } = useAppSelector(
     (state) => state.myslef
   );
-  // const {} = useAppSelector((state) => state.forms);
+  const { isUserMainInfoSuccessfulySent } = useAppSelector(
+    (state) => state.forms
+  );
   const dispatch = useAppDispatch();
 
-  const initialValues = {};
+  const initialValues: MainInfoAdditionalValues = {
+    cityOfBirth: currentUser.mainInfo.cityOfBirth || '',
+    nativeLanguage: currentUser.mainInfo.nativeLanguage || '',
+  };
 
-  const onSubmit = (values: any) => {};
+  const onSubmit = (values: MainInfoAdditionalValues) => {
+    // dispatch()
+  };
 
   return (
     <Formik
@@ -30,29 +38,41 @@ const UpdateMyMainInfoForm: React.FC = () => {
       <Form className={s.form}>
         <FormControl
           customClass={s.form__control}
-          field="nickname"
-          placeholder="Nickname"
+          field="cityOfBirth"
+          placeholder="City of birth"
           type="text"
           inputClass={s.form__input}
-          label="Nickname"
+          label="City of birth"
+          labelClass={s.form__label}
+        />
+        <FormControl
+          customClass={s.form__control}
+          field="nativeLanguage"
+          placeholder="Native language"
+          type="text"
+          inputClass={s.form__input}
+          label="Native language"
           labelClass={s.form__label}
         />
         <div className={s.form__box}>
           <SubmitLoadingBtn
             btnClass={s.form__btn}
             btnType="submit"
-            btnText="Update general information"
-            btnFetchingText="Updating general information"
-            isFetching={false} //!
+            btnText="Update main information"
+            btnFetchingText="Updating main information"
+            isFetching={isMyMainInfoFetching}
             onSubmit={() => {}}
           />
           <FormStatus
-            isSuccessfulySent={false} //!
+            isSuccessfulySent={isUserMainInfoSuccessfulySent}
             preloaderClass={s.form__preloader}
             msgClass={s.form__success}
           />
         </div>
-        <FormError customClass={s.form__error} errorMsg={''} /> {/*//! */}
+        <FormError
+          customClass={s.form__error}
+          errorMsg={updateMyMainInfoErrorMsg}
+        />
       </Form>
     </Formik>
   );

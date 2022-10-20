@@ -1,5 +1,5 @@
 export type MyselfState = {
-  isMyGeneralInfoFetching: boolean;
+  isMyRegisterInfoFetching: boolean;
   isMyAdditionalInfoFetching: boolean;
   isMyMainInfoFetching: boolean;
   isMyBioUpdating: boolean;

@@ -4,7 +4,7 @@ import { DeleteMePasswords } from '../types/axiosTypes';
 import {
   AdditionalInfoInitialValues,
   UpdateMyBioValue,
-  UpdateMyGeneralInfoFormInitialValues,
+  UpdateMyRegisterlInfoFormInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
 import {
@@ -19,10 +19,10 @@ import {
 } from './formsSlice';
 
 // using this in settings
-export const updateMyGeneralInfo = createAsyncThunk(
+export const updateMyRegisterInfo = createAsyncThunk(
   'myself/updateMyGeneralInfo',
   async (
-    newUserData: UpdateMyGeneralInfoFormInitialValues,
+    newUserData: UpdateMyRegisterlInfoFormInitialValues,
     { rejectWithValue, dispatch }
   ) => {
     try {
@@ -30,10 +30,14 @@ export const updateMyGeneralInfo = createAsyncThunk(
 
       // If OK, show success message in form. Then delete it after 5 sec.
       if (response.data.data.user) {
-        dispatch(showHideUserInfoSuccessMsg({ show: true, for: 'general' }));
+        dispatch(
+          showHideUserInfoSuccessMsg({ show: true, for: 'generalInfo' })
+        );
 
         setTimeout(() => {
-          dispatch(showHideUserInfoSuccessMsg({ show: false, for: 'general' }));
+          dispatch(
+            showHideUserInfoSuccessMsg({ show: false, for: 'generalInfo' })
+          );
         }, 5000);
       }
 
@@ -52,6 +56,19 @@ export const updateMyBio = createAsyncThunk(
   async (newBio: UpdateMyBioValue, { rejectWithValue }) => {
     try {
       const response = await myselfAPI.updateMe(newBio);
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateMyMainInfo = createAsyncThunk(
+  'myself/updateMyMainInfo',
+  async (data: any, { rejectWithValue }) => {
+    try {
+      const response = await myselfAPI.updateMe(data);
 
       return response.data.data.user;
     } catch (error: any) {
@@ -140,7 +157,7 @@ export const deleteMyProfile = createAsyncThunk(
 );
 
 const initialState: MyselfState = {
-  isMyGeneralInfoFetching: false,
+  isMyRegisterInfoFetching: false,
   isMyAdditionalInfoFetching: false,
   isMyMainInfoFetching: false,
   isMyBioUpdating: false,
@@ -164,18 +181,18 @@ const myselfSlice = createSlice({
     },
   },
   extraReducers: {
-    [updateMyGeneralInfo.pending.type]: (state) => {
-      state.isMyGeneralInfoFetching = true;
+    [updateMyRegisterInfo.pending.type]: (state) => {
+      state.isMyRegisterInfoFetching = true;
       state.updateMyGeneralInfoErrorMsg = '';
     },
-    [updateMyGeneralInfo.fulfilled.type]: (state) => {
-      state.isMyGeneralInfoFetching = false;
+    [updateMyRegisterInfo.fulfilled.type]: (state) => {
+      state.isMyRegisterInfoFetching = false;
     },
-    [updateMyGeneralInfo.rejected.type]: (
+    [updateMyRegisterInfo.rejected.type]: (
       state,
       action: PayloadAction<string>
     ) => {
-      state.isMyGeneralInfoFetching = false;
+      state.isMyRegisterInfoFetching = false;
       state.updateMyGeneralInfoErrorMsg = action.payload;
     },
 

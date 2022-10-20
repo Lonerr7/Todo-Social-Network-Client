@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
-  isUserGeneralInfoSuccessfulySent: false,
+  isUserRegisterInfoSuccessfulySent: false,
   isUserMainInfoSuccessfulySent: false,
-  isUserAdditionalInfoSuccessfulySent: true,
+  isUserAdditionalInfoSuccessfulySent: false,
   isNewPasswordSuccessfulySent: false,
   isUserSucessfulyDeleted: false,
 };
@@ -16,17 +16,17 @@ const appSlice = createSlice({
       state,
       action: PayloadAction<{
         show: boolean;
-        for: 'main' | 'general' | 'additional';
+        for: 'mainInfo' | 'generalInfo' | 'additionalInfo' | 'registerInfo';
       }>
     ) => {
       switch (action.payload.for) {
-        case 'general':
-          state.isUserGeneralInfoSuccessfulySent = action.payload.show;
+        case 'registerInfo':
+          state.isUserRegisterInfoSuccessfulySent = action.payload.show;
           break;
-        case 'additional':
+        case 'additionalInfo':
           state.isUserAdditionalInfoSuccessfulySent = action.payload.show;
           break;
-        case 'main':
+        case 'mainInfo':
           state.isUserMainInfoSuccessfulySent = action.payload.show;
           break;
         default:

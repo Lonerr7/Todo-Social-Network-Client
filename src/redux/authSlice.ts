@@ -10,7 +10,7 @@ import {
   changePassword,
   deleteMyProfile,
   sendMyAdditionalInfo,
-  updateMyGeneralInfo,
+  updateMyRegisterInfo,
   updateMyBio,
 } from './myselfSlice';
 
@@ -140,7 +140,7 @@ const authSlice = createSlice({
       state.isGetMeFetching = false;
     },
 
-    [updateMyGeneralInfo.fulfilled.type]: (
+    [updateMyRegisterInfo.fulfilled.type]: (
       state,
       action: PayloadAction<User>
     ) => {

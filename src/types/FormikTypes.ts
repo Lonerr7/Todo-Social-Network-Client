@@ -1,3 +1,5 @@
+import { AdditionalFieldsToSend } from './reduxTypes/myselfSliceTypes';
+
 export type RegisterFormInitialValues = {
   email: string;
   nickname: string;
@@ -13,7 +15,7 @@ export type LoginFormInitialValues = {
   passwordConfirm: string;
 };
 
-export type UpdateMyGeneralInfoFormInitialValues = {
+export type UpdateMyRegisterlInfoFormInitialValues = {
   nickname: string;
   firstName: string;
   lastName: string;
@@ -42,3 +44,15 @@ export type AdditionalInfoInitialValues = {
   cityOfBirth: string;
   phoneNumber: string;
 };
+
+export type MainInfoAdditionalValues = {
+  cityOfBirth: string;
+  nativeLanguage: string;
+  languages?: string[];
+};
+
+export type UpdateMeInitialValues =
+  | UpdateMyRegisterlInfoFormInitialValues
+  | UpdateMyBioValue
+  | AdditionalFieldsToSend
+  | MainInfoAdditionalValues;

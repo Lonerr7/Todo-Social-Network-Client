@@ -6,17 +6,18 @@ export type User = {
   firstName: string;
   lastName: string;
   role: string;
-  generalInfo?: {
-    country?: string;
-    currentCity?: string;
-    dateOfBirth?: string;
+  generalInfo: {
+    country: string;
+    currentCity: string;
+    dateOfBirth: string;
   };
-  mainInfo?: {
-    cityOfBirth?: string;
-    languages?: string[];
+  mainInfo: {
+    cityOfBirth: string;
+    nativeLanguage: string;
+    languages: string[];
   };
-  contactInfo?: {
-    phoneNumber?: string;
+  contactInfo: {
+    phoneNumber: string;
   };
   id: string;
   bio: string;

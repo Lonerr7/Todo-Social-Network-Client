@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import {
   DeleteMePasswords,
   UpdateTodoParamsRequest,
@@ -6,11 +6,10 @@ import {
 import {
   RegisterFormInitialValues,
   LoginFormInitialValues,
-  UpdateMyGeneralInfoFormInitialValues,
   UpdateUserPasswordInitialValues,
-  UpdateMyBioValue,
+  UpdateMeInitialValues,
 } from '../types/FormikTypes';
-import { AdditionalFieldsToSend } from '../types/reduxTypes/myselfSliceTypes';
+
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
 
 const axiosInstance = axios.create({
@@ -35,21 +34,10 @@ export const authAPI = {
   },
 };
 
-async function updateMe(
-  data: UpdateMyGeneralInfoFormInitialValues
-): Promise<AxiosResponse<any, any>>;
-async function updateMe(
-  data: UpdateMyBioValue
-): Promise<AxiosResponse<any, any>>;
-async function updateMe(
-  data: AdditionalFieldsToSend
-): Promise<AxiosResponse<any, any>>;
-async function updateMe(data: unknown) {
-  return await axiosInstance.patch('users/updateMe', data);
-}
-
 export const myselfAPI = {
-  updateMe,
+  updateMe: async (data: UpdateMeInitialValues) => {
+    return await axiosInstance.patch('users/updateMe', data);
+  },
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {
     return await axiosInstance.patch('users/updateMyPassword', passwords);
   },

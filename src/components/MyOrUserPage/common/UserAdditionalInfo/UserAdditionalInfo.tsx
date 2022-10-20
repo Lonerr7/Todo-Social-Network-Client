@@ -14,8 +14,11 @@ const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
     <div className={s.info}>
       <UserAdditionalInfoBlock
         blockTitle="Main information"
-        fieldTitles={['City of birth', 'Languages']}
-        fieldValues={[user.mainInfo?.cityOfBirth]}
+        fieldTitles={['City of birth', 'Native language']}
+        fieldValues={[
+          user.mainInfo?.cityOfBirth,
+          user.mainInfo?.nativeLanguage,
+        ]}
         rowElemsType={['']} // don't need it here
       />
       <UserAdditionalInfoBlock

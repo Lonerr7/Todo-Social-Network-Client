@@ -1,10 +1,10 @@
 import s from '../../../../styles/formStyle.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { UpdateMyGeneralInfoFormInitialValues } from '../../../../types/FormikTypes';
+import { UpdateMyRegisterlInfoFormInitialValues } from '../../../../types/FormikTypes';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import FormControl from '../../../common/FormControl/FormControl';
-import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
+import { updateMyRegisterInfo } from '../../../../redux/myselfSlice';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
@@ -26,25 +26,25 @@ const validationSchema = yup.object({
   bio: yup.string().max(100, 'Your bio is too long'),
 });
 
-const UpdateMyGeneralInfoForm: React.FC = () => {
+const UpdateMyRegisterInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
-  const { updateMyGeneralInfoErrorMsg, isMyGeneralInfoFetching } =
+  const { updateMyGeneralInfoErrorMsg, isMyRegisterInfoFetching } =
     useAppSelector((state) => state.myslef);
-  const { isUserGeneralInfoSuccessfulySent } = useAppSelector(
+  const { isUserRegisterInfoSuccessfulySent } = useAppSelector(
     (state) => state.forms
   );
   const dispatch = useAppDispatch();
 
-  const initialValues: UpdateMyGeneralInfoFormInitialValues = {
+  const initialValues: UpdateMyRegisterlInfoFormInitialValues = {
     nickname: currentUser.nickname,
     bio: currentUser.bio || '',
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
   };
 
-  const onSubmit = (values: UpdateMyGeneralInfoFormInitialValues) => {
+  const onSubmit = (values: UpdateMyRegisterlInfoFormInitialValues) => {
     dispatch(
-      updateMyGeneralInfo({
+      updateMyRegisterInfo({
         nickname: values.nickname.trim(),
         firstName: values.firstName.trim(),
         lastName: values.lastName.trim(),
@@ -104,11 +104,11 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
             btnType="submit"
             btnText="Update general information"
             btnFetchingText="Updating general information"
-            isFetching={isMyGeneralInfoFetching}
+            isFetching={isMyRegisterInfoFetching}
             onSubmit={() => {}}
           />
           <FormStatus
-            isSuccessfulySent={isUserGeneralInfoSuccessfulySent}
+            isSuccessfulySent={isUserRegisterInfoSuccessfulySent}
             preloaderClass={s.form__preloader}
             msgClass={s.form__success}
           />
@@ -122,4 +122,4 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
   );
 };
 
-export default UpdateMyGeneralInfoForm;
+export default UpdateMyRegisterInfoForm;
