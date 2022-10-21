@@ -13,12 +13,10 @@ import {
   MainInfoFieldsToSend,
   MyselfState,
 } from '../types/reduxTypes/myselfSliceTypes';
+import { updateInfoWithSuccessMsg } from '../utils/myselfHelpers';
 import { setActiveMenuNum, setActiveSettingsNum } from './appSlice';
 import { getMe } from './authSlice';
-import {
-  showHideChangePasswordSuccessMessage,
-  showHideUserInfoSuccessMsg,
-} from './formsSlice';
+import { showHideChangePasswordSuccessMessage } from './formsSlice';
 
 // using this in settings
 export const updateMyRegisterInfo = createAsyncThunk(
@@ -28,24 +26,12 @@ export const updateMyRegisterInfo = createAsyncThunk(
     { rejectWithValue, dispatch }
   ) => {
     try {
-      const response = await myselfAPI.updateMe(newUserData);
-
-      // If OK, show success message in form. Then delete it after 5 sec.
-      if (response.data.data.user) {
-        dispatch(
-          showHideUserInfoSuccessMsg({ show: true, for: 'generalInfo' })
-        );
-
-        setTimeout(() => {
-          dispatch(
-            showHideUserInfoSuccessMsg({ show: false, for: 'generalInfo' })
-          );
-        }, 5000);
-      }
-
-      console.log(response.data.data.user);
-
-      return response.data.data.user;
+      return await updateInfoWithSuccessMsg(
+        myselfAPI,
+        newUserData,
+        'registerInfo',
+        dispatch
+      );
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -66,6 +52,11 @@ export const updateMyBio = createAsyncThunk(
   }
 );
 
+export const updateMyGeneralInfo = createAsyncThunk(
+  'myself/updateMyGeneralInfo',
+  async (data: any, { rejectWithValue }) => {}
+);
+
 export const updateMyMainInfo = createAsyncThunk(
   'myself/updateMyMainInfo',
   async (data: MainInfoInitialValues, { rejectWithValue, dispatch }) => {
@@ -77,22 +68,12 @@ export const updateMyMainInfo = createAsyncThunk(
         },
       };
 
-      const response = await myselfAPI.updateMe(fieldsToSend);
-
-      // If OK, show success message in form. Then delete it after 5 sec.
-      if (response.data.data.user) {
-        dispatch(showHideUserInfoSuccessMsg({ show: true, for: 'mainInfo' }));
-
-        setTimeout(() => {
-          dispatch(
-            showHideUserInfoSuccessMsg({ show: false, for: 'mainInfo' })
-          );
-        }, 5000);
-      }
-
-      console.log(response.data.data.user);
-
-      return response.data.data.user;
+      return await updateInfoWithSuccessMsg(
+        myselfAPI,
+        fieldsToSend,
+        'mainInfo',
+        dispatch
+      );
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }

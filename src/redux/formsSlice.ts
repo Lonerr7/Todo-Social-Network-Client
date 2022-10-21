@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ShowHideFor } from '../types/reduxTypes/formsSliceTypes';
 
 const initialState = {
   isUserRegisterInfoSuccessfulySent: false,
@@ -8,7 +9,7 @@ const initialState = {
   isUserSucessfulyDeleted: false,
 };
 
-const appSlice = createSlice({
+const formSlice = createSlice({
   name: 'forms',
   initialState,
   reducers: {
@@ -16,7 +17,7 @@ const appSlice = createSlice({
       state,
       action: PayloadAction<{
         show: boolean;
-        for: 'mainInfo' | 'generalInfo' | 'additionalInfo' | 'registerInfo';
+        for: ShowHideFor;
       }>
     ) => {
       switch (action.payload.for) {
@@ -42,8 +43,8 @@ const appSlice = createSlice({
   },
 });
 
-export default appSlice.reducer;
+export default formSlice.reducer;
 export const {
   showHideUserInfoSuccessMsg,
   showHideChangePasswordSuccessMessage,
-} = appSlice.actions;
+} = formSlice.actions;
