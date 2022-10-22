@@ -1,6 +1,6 @@
 import { User } from '../../../../types/reduxTypes/authSliceTypes';
 import s from './UserAdditionalInfo.module.scss';
-import UserAdditionalInfoBlock from './UserAdditionalInfoBlock/UserAdditionalInfoBlock';
+import UserInfoBlock from '../UserInfoBlock/UserInfoBlock';
 
 type Props = {
   user: User;
@@ -12,7 +12,7 @@ const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
 
   return (
     <div className={s.info}>
-      <UserAdditionalInfoBlock
+      <UserInfoBlock
         blockTitle="Main information"
         fieldTitles={['City of birth', 'Native language']}
         fieldValues={[
@@ -21,7 +21,7 @@ const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
         ]}
         rowElemsType={['']} // don't need it here
       />
-      <UserAdditionalInfoBlock
+      <UserInfoBlock
         blockTitle="Contact information"
         fieldTitles={['Mobile number']}
         fieldValues={[user.contactInfo?.phoneNumber]}

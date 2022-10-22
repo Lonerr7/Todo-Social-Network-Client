@@ -7,9 +7,12 @@ export type User = {
   lastName: string;
   role: string;
   generalInfo: {
+    dateOfBirth: string;
     country: string;
     currentCity: string;
-    dateOfBirth: string;
+    jobPlace: string;
+    relationship: string; //! needs change in order with backend
+    website: string; //! needs a fix to have a website URL template
   };
   mainInfo: {
     cityOfBirth: string;
