@@ -16,7 +16,7 @@ import {
 import { updateInfoWithSuccessMsg } from '../utils/myselfHelpers';
 import { setActiveMenuNum, setActiveSettingsNum } from './appSlice';
 import { getMe } from './authSlice';
-import { showHideChangePasswordSuccessMessage } from './formsSlice';
+import { showHideUserInfoSuccessMsg } from './formsSlice';
 
 // using this in settings
 export const updateMyRegisterInfo = createAsyncThunk(
@@ -26,12 +26,14 @@ export const updateMyRegisterInfo = createAsyncThunk(
     { rejectWithValue, dispatch }
   ) => {
     try {
-      return await updateInfoWithSuccessMsg(
+      const response = await updateInfoWithSuccessMsg(
         myselfAPI,
         newUserData,
         'registerInfo',
         dispatch
       );
+
+      return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -68,12 +70,14 @@ export const updateMyMainInfo = createAsyncThunk(
         },
       };
 
-      return await updateInfoWithSuccessMsg(
+      const response = await updateInfoWithSuccessMsg(
         myselfAPI,
         fieldsToSend,
         'mainInfo',
         dispatch
       );
+
+      return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -99,7 +103,11 @@ export const sendMyAdditionalInfo = createAsyncThunk(
         },
       };
 
-      const response = await myselfAPI.updateMe(fieldsToSend);
+      const response = await updateInfoWithSuccessMsg(
+        myselfAPI,
+        fieldsToSend,
+        'additionalInfo'
+      );
 
       return response.data.data.user;
     } catch (error: any) {
@@ -119,10 +127,12 @@ export const changePassword = createAsyncThunk(
 
       // If OK, show success message in form. Then delete it after 5 sec.
       if (response.data.data.user) {
-        dispatch(showHideChangePasswordSuccessMessage(true));
+        dispatch(showHideUserInfoSuccessMsg({ show: true, for: 'password' }));
 
         setTimeout(() => {
-          dispatch(showHideChangePasswordSuccessMessage(false));
+          dispatch(
+            showHideUserInfoSuccessMsg({ show: false, for: 'password' })
+          );
         }, 5000);
       }
 
@@ -148,7 +158,7 @@ export const deleteMyProfile = createAsyncThunk(
         await dispatch(getMe());
       }
 
-      // reseting active menu fields in Menu and Settings submenu //! Maybe we don't need those lines
+      // reseting active menu fields in Menu and Settings submenu //! Maybe we don't need these lines
       dispatch(setActiveMenuNum(1));
       dispatch(setActiveSettingsNum(1));
 

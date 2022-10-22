@@ -1,3 +1,5 @@
-import { authAPI, myselfAPI, todoAPI, usersAPI } from '../api/api';
+import { myselfAPI } from '../api/api';
 
 export type MyselfApi = typeof myselfAPI;
+
+export type MyselfApiMethods = 'updateMe' | 'changeMyPassword' | 'deleteMe';

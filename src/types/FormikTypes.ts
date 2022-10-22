@@ -1,4 +1,7 @@
-import { AdditionalFieldsToSend, MainInfoFieldsToSend } from './reduxTypes/myselfSliceTypes';
+import {
+  AdditionalFieldsToSend,
+  MainInfoFieldsToSend,
+} from './reduxTypes/myselfSliceTypes';
 
 export type RegisterFormInitialValues = {
   email: string;

@@ -30,21 +30,15 @@ const formSlice = createSlice({
         case 'mainInfo':
           state.isUserMainInfoSuccessfulySent = action.payload.show;
           break;
+        case 'password':
+          state.isNewPasswordSuccessfulySent = action.payload.show;
+          break;
         default:
           break;
       }
-    },
-    showHideChangePasswordSuccessMessage: (
-      state,
-      action: PayloadAction<boolean>
-    ) => {
-      state.isNewPasswordSuccessfulySent = action.payload;
     },
   },
 });
 
 export default formSlice.reducer;
-export const {
-  showHideUserInfoSuccessMsg,
-  showHideChangePasswordSuccessMessage,
-} = formSlice.actions;
+export const { showHideUserInfoSuccessMsg } = formSlice.actions;
