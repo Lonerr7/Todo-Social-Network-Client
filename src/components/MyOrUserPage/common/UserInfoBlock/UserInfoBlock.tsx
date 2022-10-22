@@ -3,8 +3,8 @@ import s from './UserInfoBlock.module.scss';
 
 type Props = {
   blockTitle?: string;
-  fieldTitles: string[];
-  fieldValues: (string | undefined)[];
+  fieldTitles: string[] | null;
+  fieldValues: (string | undefined)[] | null;
   rowElemsType: string[];
 };
 
@@ -14,6 +14,8 @@ const UserInfoBlock: React.FC<Props> = ({
   fieldValues,
   rowElemsType,
 }) => {
+  if (!fieldTitles || !fieldValues) return null;
+
   const elements = fieldValues.map((val, i) => (
     <UserInfoRow
       key={i}

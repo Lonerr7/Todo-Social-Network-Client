@@ -25,13 +25,15 @@ const UpdateMyMainInfoForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const initialValues: MainInfoInitialValues = {
-    cityOfBirth: currentUser.mainInfo.cityOfBirth || '',
-    nativeLanguage: currentUser.mainInfo.nativeLanguage || '',
+    cityOfBirth: currentUser.mainInfo?.cityOfBirth || '',
+    nativeLanguage: currentUser.mainInfo?.nativeLanguage || '',
   };
 
   const onSubmit = (values: MainInfoInitialValues) => {
     dispatch(updateMyMainInfo(values));
   };
+
+  console.log(initialValues);
 
   return (
     <Formik

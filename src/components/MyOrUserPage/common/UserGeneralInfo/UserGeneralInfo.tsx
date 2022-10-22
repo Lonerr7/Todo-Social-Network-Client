@@ -16,9 +16,9 @@ const UserGeneralInfo: React.FC<Props> = ({ user }) => {
     : null;
 
   // don't show anything if user has no main info
-  if (!correctFieldTitles || !fieldValues) {
-    return null;
-  }
+  // if (!correctFieldTitles || !fieldValues) {
+  //   return null;
+  // }
 
   return (
     <div className={s.info}>

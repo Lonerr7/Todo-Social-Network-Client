@@ -6,6 +6,7 @@ import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import SettingsBlock from '../SettingsBlock/SettingsBlock';
 import UpdateMyMainInfoForm from './UpdateMyMainInfoForm/UpdateMyMainInfoForm';
+import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoForm';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -24,6 +25,10 @@ const GeneralSettings: React.FC = () => {
         <SettingsBlock
           title="My register information"
           form={<UpdateMyRegisterInfoForm />}
+        />
+        <SettingsBlock
+          title="My general information"
+          form={<UpdateMyGeneralInfoForm />}
         />
         <SettingsBlock
           title="My main information"

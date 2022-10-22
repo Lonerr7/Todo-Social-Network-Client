@@ -27,7 +27,9 @@ const validationSchema = yup.object({
 });
 
 const UpdateMyRegisterInfoForm: React.FC = () => {
-  const currentUser = useAppSelector((state) => state.auth.user)!;
+  const { nickname, bio, firstName, lastName } = useAppSelector(
+    (state) => state.auth.user
+  )!;
   const { updateMyRegisterInfoErrorMsg, isMyRegisterInfoFetching } =
     useAppSelector((state) => state.myslef);
   const { isUserRegisterInfoSuccessfulySent } = useAppSelector(
@@ -36,10 +38,10 @@ const UpdateMyRegisterInfoForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const initialValues: UpdateMyRegisterlInfoFormInitialValues = {
-    nickname: currentUser.nickname,
-    bio: currentUser.bio || '',
-    firstName: currentUser.firstName,
-    lastName: currentUser.lastName,
+    nickname: nickname,
+    bio: bio || '',
+    firstName: firstName,
+    lastName: lastName,
   };
 
   const onSubmit = (values: UpdateMyRegisterlInfoFormInitialValues) => {

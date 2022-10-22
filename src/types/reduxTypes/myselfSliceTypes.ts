@@ -1,15 +1,35 @@
 export type MyselfState = {
   isMyRegisterInfoFetching: boolean;
+  isMyGeneralInfoFetching: boolean;
   isMyAdditionalInfoFetching: boolean;
   isMyMainInfoFetching: boolean;
   isMyBioUpdating: boolean;
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;
-  sendMyAdditionalInfoErrorMsg: string;
   updateMyRegisterInfoErrorMsg: string;
+  updateMyGeneralInfoErrorMsg: string;
+  sendMyAdditionalInfoErrorMsg: string;
   updateMyMainInfoErrorMsg: string;
   changePasswordErrorMsg: string;
   deleteMyProfileErrorMsg: string;
+};
+
+export type GeneralInfoFieldsToSend = {
+  generalInfo: {
+    dateOfBirth: string;
+    country: string;
+    currentCity: string;
+    jobPlace: string;
+    relationship: string;
+    website: string;
+  };
+};
+
+export type MainInfoFieldsToSend = {
+  mainInfo: {
+    cityOfBirth: string;
+    nativeLanguage: string;
+  };
 };
 
 export type AdditionalFieldsToSend = {
@@ -24,12 +44,5 @@ export type AdditionalFieldsToSend = {
   };
   contactInfo: {
     phoneNumber?: string;
-  };
-};
-
-export type MainInfoFieldsToSend = {
-  mainInfo: {
-    cityOfBirth: string;
-    nativeLanguage: string;
   };
 };

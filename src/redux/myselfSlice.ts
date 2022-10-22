@@ -3,6 +3,7 @@ import { myselfAPI } from '../api/api';
 import { DeleteMePasswords } from '../types/axiosTypes';
 import {
   AdditionalInfoInitialValues,
+  GeneralInfoInitialValues,
   MainInfoInitialValues,
   UpdateMyBioValue,
   UpdateMyRegisterlInfoFormInitialValues,
@@ -10,6 +11,7 @@ import {
 } from '../types/FormikTypes';
 import {
   AdditionalFieldsToSend,
+  GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
   MyselfState,
 } from '../types/reduxTypes/myselfSliceTypes';
@@ -17,72 +19,6 @@ import { updateInfoWithSuccessMsg } from '../utils/myselfHelpers';
 import { setActiveMenuNum, setActiveSettingsNum } from './appSlice';
 import { getMe } from './authSlice';
 import { showHideUserInfoSuccessMsg } from './formsSlice';
-
-// using this in settings
-export const updateMyRegisterInfo = createAsyncThunk(
-  'myself/updateMyGeneralInfo',
-  async (
-    newUserData: UpdateMyRegisterlInfoFormInitialValues,
-    { rejectWithValue, dispatch }
-  ) => {
-    try {
-      const response = await updateInfoWithSuccessMsg(
-        myselfAPI,
-        newUserData,
-        'registerInfo',
-        dispatch
-      );
-
-      return response.data.data.user;
-    } catch (error: any) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
-
-// using this in my profile to only update my bio
-export const updateMyBio = createAsyncThunk(
-  'myself/updateMyBio',
-  async (newBio: UpdateMyBioValue, { rejectWithValue }) => {
-    try {
-      const response = await myselfAPI.updateMe(newBio);
-
-      return response.data.data.user;
-    } catch (error: any) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
-
-export const updateMyGeneralInfo = createAsyncThunk(
-  'myself/updateMyGeneralInfo',
-  async (data: any, { rejectWithValue }) => {}
-);
-
-export const updateMyMainInfo = createAsyncThunk(
-  'myself/updateMyMainInfo',
-  async (data: MainInfoInitialValues, { rejectWithValue, dispatch }) => {
-    try {
-      const fieldsToSend: MainInfoFieldsToSend = {
-        mainInfo: {
-          cityOfBirth: data.cityOfBirth,
-          nativeLanguage: data.nativeLanguage,
-        },
-      };
-
-      const response = await updateInfoWithSuccessMsg(
-        myselfAPI,
-        fieldsToSend,
-        'mainInfo',
-        dispatch
-      );
-
-      return response.data.data.user;
-    } catch (error: any) {
-      return rejectWithValue(error.response.data.message);
-    }
-  }
-);
 
 // using this when we just got signed up
 export const sendMyAdditionalInfo = createAsyncThunk(
@@ -108,6 +44,109 @@ export const sendMyAdditionalInfo = createAsyncThunk(
         fieldsToSend,
         'additionalInfo'
       );
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+// using this in settings
+export const updateMyRegisterInfo = createAsyncThunk(
+  'myself/updateMyGeneralInfo',
+  async (
+    newUserData: UpdateMyRegisterlInfoFormInitialValues,
+    { rejectWithValue, dispatch }
+  ) => {
+    try {
+      const response = await updateInfoWithSuccessMsg(
+        myselfAPI,
+        newUserData,
+        'registerInfo',
+        dispatch
+      );
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateMyGeneralInfo = createAsyncThunk(
+  'myself/updateMyGeneralInfo',
+  async (
+    {
+      country,
+      currentCity,
+      dateOfBirth,
+      jobPlace,
+      relationship,
+      website,
+    }: GeneralInfoInitialValues,
+    { rejectWithValue, dispatch }
+  ) => {
+    try {
+      const fieldsToSend: GeneralInfoFieldsToSend = {
+        generalInfo: {
+          country,
+          currentCity,
+          dateOfBirth,
+          jobPlace,
+          relationship,
+          website,
+        },
+      };
+
+      const response = await updateInfoWithSuccessMsg(
+        myselfAPI,
+        fieldsToSend,
+        'generalInfo',
+        dispatch
+      );
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateMyMainInfo = createAsyncThunk(
+  'myself/updateMyMainInfo',
+  async (
+    { cityOfBirth, nativeLanguage }: MainInfoInitialValues,
+    { rejectWithValue, dispatch }
+  ) => {
+    try {
+      const fieldsToSend: MainInfoFieldsToSend = {
+        mainInfo: {
+          cityOfBirth,
+          nativeLanguage,
+        },
+      };
+
+      const response = await updateInfoWithSuccessMsg(
+        myselfAPI,
+        fieldsToSend,
+        'mainInfo',
+        dispatch
+      );
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+// using this in my profile to only update my bio
+export const updateMyBio = createAsyncThunk(
+  'myself/updateMyBio',
+  async (newBio: UpdateMyBioValue, { rejectWithValue }) => {
+    try {
+      const response = await myselfAPI.updateMe(newBio);
 
       return response.data.data.user;
     } catch (error: any) {
@@ -171,13 +210,15 @@ export const deleteMyProfile = createAsyncThunk(
 
 const initialState: MyselfState = {
   isMyRegisterInfoFetching: false,
+  isMyGeneralInfoFetching: false,
   isMyAdditionalInfoFetching: false,
   isMyMainInfoFetching: false,
   isMyBioUpdating: false,
   isChangingPasswordFetching: false,
   isUserDeletingFetching: false,
-  sendMyAdditionalInfoErrorMsg: '',
   updateMyRegisterInfoErrorMsg: '',
+  updateMyGeneralInfoErrorMsg: '',
+  sendMyAdditionalInfoErrorMsg: '',
   updateMyMainInfoErrorMsg: '',
   changePasswordErrorMsg: '',
   deleteMyProfileErrorMsg: '',
@@ -219,14 +260,33 @@ const myselfSlice = createSlice({
       state.isMyBioUpdating = false;
     },
 
+    [updateMyGeneralInfo.pending.type]: (state) => {
+      state.isMyGeneralInfoFetching = true;
+      state.updateMyGeneralInfoErrorMsg = '';
+    },
+    [updateMyGeneralInfo.fulfilled.type]: (state) => {
+      state.isMyGeneralInfoFetching = false;
+    },
+    [updateMyGeneralInfo.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.isMyGeneralInfoFetching = false;
+      state.updateMyGeneralInfoErrorMsg = action.payload;
+    },
+
     [updateMyMainInfo.pending.type]: (state) => {
       state.isMyMainInfoFetching = true;
     },
     [updateMyMainInfo.fulfilled.type]: (state) => {
       state.isMyMainInfoFetching = false;
     },
-    [updateMyMainInfo.rejected.type]: (state) => {
+    [updateMyMainInfo.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
       state.isMyMainInfoFetching = false;
+      state.updateMyMainInfoErrorMsg = action.payload;
     },
 
     [sendMyAdditionalInfo.pending.type]: (state) => {
@@ -235,7 +295,7 @@ const myselfSlice = createSlice({
     [sendMyAdditionalInfo.fulfilled.type]: (state) => {
       state.isMyAdditionalInfoFetching = false;
     },
-    [sendMyAdditionalInfo.pending.type]: (
+    [sendMyAdditionalInfo.rejected.type]: (
       state,
       action: PayloadAction<string>
     ) => {
