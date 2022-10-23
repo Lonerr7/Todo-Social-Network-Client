@@ -38,7 +38,6 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
 
   const onSubmit = (values: GeneralInfoInitialValues) => {
     dispatch(updateMyGeneralInfo(values));
-    console.log(values);
   };
 
   return (

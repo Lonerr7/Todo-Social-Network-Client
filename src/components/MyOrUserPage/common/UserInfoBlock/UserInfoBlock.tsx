@@ -16,6 +16,8 @@ const UserInfoBlock: React.FC<Props> = ({
 }) => {
   if (!fieldTitles || !fieldValues) return null;
 
+  if (!fieldValues.filter((val) => val).length) return null;
+
   const elements = fieldValues.map((val, i) => (
     <UserInfoRow
       key={i}

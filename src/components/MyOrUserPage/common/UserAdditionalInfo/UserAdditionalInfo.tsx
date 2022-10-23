@@ -10,6 +10,8 @@ type Props = {
 const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
   if (!isVisible) return null;
 
+  if (!user.mainInfo && !user.contactInfo) return null;
+
   return (
     <div className={s.info}>
       <UserInfoBlock
