@@ -4,6 +4,7 @@ import { ShowHideFor } from '../types/reduxTypes/formsSliceTypes';
 const initialState = {
   isUserRegisterInfoSuccessfulySent: false,
   isUserGeneralInfoSuccessfulySent: false,
+  isUserContactInfoSuccessfulySent: false,
   isUserMainInfoSuccessfulySent: false,
   isUserAdditionalInfoSuccessfulySent: false,
   isNewPasswordSuccessfulySent: false,
@@ -27,6 +28,9 @@ const formSlice = createSlice({
           break;
         case 'generalInfo':
           state.isUserGeneralInfoSuccessfulySent = action.payload.show;
+          break;
+        case 'contactInfo':
+          state.isUserContactInfoSuccessfulySent = action.payload.show;
           break;
         case 'additionalInfo':
           state.isUserAdditionalInfoSuccessfulySent = action.payload.show;

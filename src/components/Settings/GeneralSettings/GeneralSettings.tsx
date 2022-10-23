@@ -7,6 +7,7 @@ import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import SettingsBlock from '../SettingsBlock/SettingsBlock';
 import UpdateMyMainInfoForm from './UpdateMyMainInfoForm/UpdateMyMainInfoForm';
 import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoForm';
+import UpdateMyContactInfoForm from './UpdateMyContactInfoForm/UpdateMyContactInfoForm';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +34,10 @@ const GeneralSettings: React.FC = () => {
         <SettingsBlock
           title="My main information"
           form={<UpdateMyMainInfoForm />}
+        />
+        <SettingsBlock
+          title="My contact information"
+          form={<UpdateMyContactInfoForm />}
         />
       </div>
     </div>

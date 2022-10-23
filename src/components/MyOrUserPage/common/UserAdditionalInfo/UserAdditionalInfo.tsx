@@ -25,8 +25,8 @@ const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
       />
       <UserInfoBlock
         blockTitle="Contact information"
-        fieldTitles={['Mobile number']}
-        fieldValues={[user.contactInfo?.phoneNumber]}
+        fieldTitles={['Mobile number', 'Discord']}
+        fieldValues={[user.contactInfo?.phoneNumber, user.contactInfo?.discord]}
         rowElemsType={['tel']}
       />
     </div>

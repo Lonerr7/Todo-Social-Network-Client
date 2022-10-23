@@ -20,6 +20,7 @@ export type User = {
   };
   contactInfo: {
     phoneNumber: string;
+    discord: string;
   };
   id: string;
   bio: string;

@@ -8,7 +8,7 @@ import {
   LoginFormInitialValues,
   UpdateUserPasswordInitialValues,
 } from '../types/FormikTypes';
-import { UpdateMeInitialValuesForApi } from '../types/apiTypes';
+import { UpdateMeFieldsToSendForApi } from '../types/apiTypes';
 
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
 
@@ -35,7 +35,7 @@ export const authAPI = {
 };
 
 export const myselfAPI = {
-  updateMe: async (data: UpdateMeInitialValuesForApi) => {
+  updateMe: async (data: UpdateMeFieldsToSendForApi) => {
     return await axiosInstance.patch('users/updateMe', data);
   },
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {

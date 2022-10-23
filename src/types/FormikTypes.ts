@@ -44,16 +44,21 @@ export type GeneralInfoInitialValues = {
   jobPlace: string;
 };
 
+export type MainInfoInitialValues = {
+  cityOfBirth: string;
+  nativeLanguage: string;
+  languages?: string[];
+};
+
+export type ContactInfoInitialValues = {
+  phoneNumber: string;
+  discord: string;
+};
+
 export type AdditionalInfoInitialValues = {
   dateOfBirth: string;
   country: string;
   currentCity: string;
   cityOfBirth: string;
   phoneNumber: string;
-};
-
-export type MainInfoInitialValues = {
-  cityOfBirth: string;
-  nativeLanguage: string;
-  languages?: string[];
 };

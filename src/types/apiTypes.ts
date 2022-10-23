@@ -5,6 +5,7 @@ import {
 } from './FormikTypes';
 import {
   AdditionalFieldsToSend,
+  ContactFieldsToSend,
   GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
 } from './reduxTypes/myselfSliceTypes';
@@ -13,9 +14,10 @@ export type MyselfApi = typeof myselfAPI;
 
 export type MyselfApiMethods = 'updateMe' | 'changeMyPassword' | 'deleteMe';
 
-export type UpdateMeInitialValuesForApi =
+export type UpdateMeFieldsToSendForApi =
   | UpdateMyRegisterlInfoFormInitialValues
   | GeneralInfoFieldsToSend
   | UpdateMyBioValue
   | AdditionalFieldsToSend
-  | MainInfoFieldsToSend;
+  | MainInfoFieldsToSend
+  | ContactFieldsToSend;

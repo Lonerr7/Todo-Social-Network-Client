@@ -1,6 +1,7 @@
 export type MyselfState = {
   isMyRegisterInfoFetching: boolean;
   isMyGeneralInfoFetching: boolean;
+  isMyContactInfoFetching: boolean;
   isMyAdditionalInfoFetching: boolean;
   isMyMainInfoFetching: boolean;
   isMyBioUpdating: boolean;
@@ -8,6 +9,7 @@ export type MyselfState = {
   isUserDeletingFetching: boolean;
   updateMyRegisterInfoErrorMsg: string;
   updateMyGeneralInfoErrorMsg: string;
+  updateMyContactInfoErrorMsg: string;
   sendMyAdditionalInfoErrorMsg: string;
   updateMyMainInfoErrorMsg: string;
   changePasswordErrorMsg: string;
@@ -32,17 +34,24 @@ export type MainInfoFieldsToSend = {
   };
 };
 
+export type ContactFieldsToSend = {
+  contactInfo: {
+    phoneNumber: string;
+    discord: string;
+  };
+};
+
 export type AdditionalFieldsToSend = {
   generalInfo: {
-    dateOfBirth?: string;
-    country?: string;
-    currentCity?: string;
+    dateOfBirth: string;
+    country: string;
+    currentCity: string;
   };
   mainInfo: {
-    cityOfBirth?: string;
+    cityOfBirth: string;
     languages?: string;
   };
   contactInfo: {
-    phoneNumber?: string;
+    phoneNumber: string;
   };
 };

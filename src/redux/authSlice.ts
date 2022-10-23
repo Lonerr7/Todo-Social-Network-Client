@@ -13,6 +13,7 @@ import {
   updateMyRegisterInfo,
   updateMyBio,
   updateMyMainInfo,
+  updateMyContactInfo,
 } from './myselfSlice';
 
 export const signUserUp = createAsyncThunk(
@@ -150,6 +151,13 @@ const authSlice = createSlice({
     },
 
     [updateMyMainInfo.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.user = action.payload;
+    },
+
+    [updateMyContactInfo.fulfilled.type]: (
+      state,
+      action: PayloadAction<User>
+    ) => {
       state.user = action.payload;
     },
 

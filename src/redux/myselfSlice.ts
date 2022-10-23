@@ -3,6 +3,7 @@ import { myselfAPI } from '../api/api';
 import { DeleteMePasswords } from '../types/axiosTypes';
 import {
   AdditionalInfoInitialValues,
+  ContactInfoInitialValues,
   GeneralInfoInitialValues,
   MainInfoInitialValues,
   UpdateMyBioValue,
@@ -11,6 +12,7 @@ import {
 } from '../types/FormikTypes';
 import {
   AdditionalFieldsToSend,
+  ContactFieldsToSend,
   GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
   MyselfState,
@@ -141,6 +143,31 @@ export const updateMyMainInfo = createAsyncThunk(
   }
 );
 
+export const updateMyContactInfo = createAsyncThunk(
+  'myslef/updateMyContactInfo',
+  async (
+    { discord, phoneNumber }: ContactInfoInitialValues,
+    { rejectWithValue, dispatch }
+  ) => {
+    try {
+      const fieldsToSend: ContactFieldsToSend = {
+        contactInfo: { discord, phoneNumber },
+      };
+
+      const response = await updateInfoWithSuccessMsg(
+        myselfAPI,
+        fieldsToSend,
+        'contactInfo',
+        dispatch
+      );
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 // using this in my profile to only update my bio
 export const updateMyBio = createAsyncThunk(
   'myself/updateMyBio',
@@ -211,6 +238,7 @@ export const deleteMyProfile = createAsyncThunk(
 const initialState: MyselfState = {
   isMyRegisterInfoFetching: false,
   isMyGeneralInfoFetching: false,
+  isMyContactInfoFetching: false,
   isMyAdditionalInfoFetching: false,
   isMyMainInfoFetching: false,
   isMyBioUpdating: false,
@@ -218,6 +246,7 @@ const initialState: MyselfState = {
   isUserDeletingFetching: false,
   updateMyRegisterInfoErrorMsg: '',
   updateMyGeneralInfoErrorMsg: '',
+  updateMyContactInfoErrorMsg: '',
   sendMyAdditionalInfoErrorMsg: '',
   updateMyMainInfoErrorMsg: '',
   changePasswordErrorMsg: '',
@@ -230,6 +259,9 @@ const myselfSlice = createSlice({
   reducers: {
     resetUserErrorMsgs: (state) => {
       state.updateMyRegisterInfoErrorMsg = '';
+      state.updateMyGeneralInfoErrorMsg = '';
+      state.updateMyMainInfoErrorMsg = '';
+      state.updateMyContactInfoErrorMsg = '';
       state.changePasswordErrorMsg = '';
       state.deleteMyProfileErrorMsg = '';
     },
@@ -287,6 +319,21 @@ const myselfSlice = createSlice({
     ) => {
       state.isMyMainInfoFetching = false;
       state.updateMyMainInfoErrorMsg = action.payload;
+    },
+
+    [updateMyContactInfo.pending.type]: (state) => {
+      state.isMyContactInfoFetching = true;
+      state.updateMyContactInfoErrorMsg = '';
+    },
+    [updateMyContactInfo.fulfilled.type]: (state) => {
+      state.isMyContactInfoFetching = false;
+    },
+    [updateMyContactInfo.pending.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.isMyContactInfoFetching = false;
+      state.updateMyContactInfoErrorMsg = action.payload;
     },
 
     [sendMyAdditionalInfo.pending.type]: (state) => {
