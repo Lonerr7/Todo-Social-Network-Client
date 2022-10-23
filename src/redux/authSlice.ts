@@ -5,7 +5,7 @@ import { AuthState, User } from '../types/reduxTypes/authSliceTypes';
 import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
-} from '../types/FormikTypes';
+} from '../types/formikTypes';
 import {
   changePassword,
   deleteMyProfile,
@@ -14,6 +14,7 @@ import {
   updateMyBio,
   updateMyMainInfo,
   updateMyContactInfo,
+  updateMyBeliefsInfo,
 } from './myselfSlice';
 
 export const signUserUp = createAsyncThunk(
@@ -155,6 +156,13 @@ const authSlice = createSlice({
     },
 
     [updateMyContactInfo.fulfilled.type]: (
+      state,
+      action: PayloadAction<User>
+    ) => {
+      state.user = action.payload;
+    },
+
+    [updateMyBeliefsInfo.fulfilled.type]: (
       state,
       action: PayloadAction<User>
     ) => {

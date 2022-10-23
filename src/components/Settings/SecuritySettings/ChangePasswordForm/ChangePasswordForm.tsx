@@ -1,6 +1,6 @@
 import s from '../../../../styles/formStyle.module.scss';
 import * as yup from 'yup';
-import { UpdateUserPasswordInitialValues } from '../../../../types/FormikTypes';
+import { UpdateUserPasswordInitialValues } from '../../../../types/formikTypes';
 import { Form, Formik } from 'formik';
 import FormControl from '../../../common/FormControl/FormControl';
 import FormStatus from '../../../common/FormStatus/FormStatus';

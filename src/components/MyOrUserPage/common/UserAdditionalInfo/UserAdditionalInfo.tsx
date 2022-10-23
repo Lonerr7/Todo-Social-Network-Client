@@ -29,6 +29,16 @@ const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
         fieldValues={[user.contactInfo?.phoneNumber, user.contactInfo?.discord]}
         rowElemsType={['tel']}
       />
+      <UserInfoBlock
+        blockTitle="Beliefs"
+        fieldTitles={['Inspired by', 'Political Views', 'Religion']}
+        fieldValues={[
+          user.beliefs?.inspiredBy,
+          user.beliefs?.politicalViews,
+          user.beliefs?.religion,
+        ]}
+        rowElemsType={[]}
+      />
     </div>
   );
 };

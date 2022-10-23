@@ -6,31 +6,28 @@ import FormError from '../../../common/FormError/FormError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { MainInfoInitialValues } from '../../../../types/formikTypes';
-import { updateMyMainInfo } from '../../../../redux/myselfSlice';
+import { BeliefsInfoInitialValues } from '../../../../types/formikTypes';
+import { updateMyBeliefsInfo } from '../../../../redux/myselfSlice';
 
-const validationSchema = yup.object({
-  cityOfBirth: yup.string().max(20, 'City name is too long'),
-  nativeLanguage: yup.string().max(20, 'Language name is too long'),
-});
+const validationSchema = yup.object({});
 
-const UpdateMyMainInfoForm: React.FC = () => {
+const UpdateMyBeliefsInfoForm: React.FC = () => {
   const currentUser = useAppSelector((state) => state.auth.user)!;
-  const { updateMyMainInfoErrorMsg, isMyMainInfoFetching } = useAppSelector(
-    (state) => state.myslef
-  );
-  const { isUserMainInfoSuccessfulySent } = useAppSelector(
+  const { isMyBeliefsInfoFetching, updateMyBeliefsInfoErrorMsg } =
+    useAppSelector((state) => state.myslef);
+  const { isUserBeliefsInfoSuccessfulySent } = useAppSelector(
     (state) => state.forms
   );
   const dispatch = useAppDispatch();
 
-  const initialValues: MainInfoInitialValues = {
-    cityOfBirth: currentUser.mainInfo?.cityOfBirth || '',
-    nativeLanguage: currentUser.mainInfo?.nativeLanguage || '',
+  const initialValues: BeliefsInfoInitialValues = {
+    inspiredBy: currentUser.beliefs?.inspiredBy || '',
+    politicalViews: currentUser.beliefs?.politicalViews || '',
+    religion: currentUser.beliefs?.religion || '',
   };
 
-  const onSubmit = (values: MainInfoInitialValues) => {
-    dispatch(updateMyMainInfo(values));
+  const onSubmit = (data: BeliefsInfoInitialValues) => {
+    dispatch(updateMyBeliefsInfo(data));
   };
 
   return (
@@ -42,44 +39,53 @@ const UpdateMyMainInfoForm: React.FC = () => {
       <Form className={s.form}>
         <FormControl
           customClass={s.form__control}
-          field="cityOfBirth"
-          placeholder="City of birth"
-          type="text"
+          field="inspiredBy"
+          placeholder="Inspired by"
           inputClass={s.form__input}
-          label="City of birth"
+          type="text"
+          label="Inspired by"
           labelClass={s.form__label}
         />
         <FormControl
           customClass={s.form__control}
-          field="nativeLanguage"
-          placeholder="Native language"
-          type="text"
+          field="politicalViews"
+          placeholder="Political Views"
           inputClass={s.form__input}
-          label="Native language"
+          type="text"
+          label="Political Views"
+          labelClass={s.form__label}
+        />
+        <FormControl
+          customClass={s.form__control}
+          field="religion"
+          placeholder="Religion"
+          inputClass={s.form__input}
+          type="text"
+          label="Religion"
           labelClass={s.form__label}
         />
         <div className={s.form__box}>
           <SubmitLoadingBtn
             btnClass={s.form__btn}
             btnType="submit"
-            btnText="Update main information"
-            btnFetchingText="Updating main information"
-            isFetching={isMyMainInfoFetching}
+            btnText="Update beliefs"
+            btnFetchingText="Updating beliefs"
+            isFetching={isMyBeliefsInfoFetching}
             onSubmit={() => {}}
           />
           <FormStatus
-            isSuccessfulySent={isUserMainInfoSuccessfulySent}
+            isSuccessfulySent={isUserBeliefsInfoSuccessfulySent}
             preloaderClass={s.form__preloader}
             msgClass={s.form__success}
           />
         </div>
         <FormError
           customClass={s.form__error}
-          errorMsg={updateMyMainInfoErrorMsg}
+          errorMsg={updateMyBeliefsInfoErrorMsg}
         />
       </Form>
     </Formik>
   );
 };
 
-export default UpdateMyMainInfoForm;
+export default UpdateMyBeliefsInfoForm;

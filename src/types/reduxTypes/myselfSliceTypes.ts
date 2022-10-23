@@ -4,6 +4,7 @@ export type MyselfState = {
   isMyContactInfoFetching: boolean;
   isMyAdditionalInfoFetching: boolean;
   isMyMainInfoFetching: boolean;
+  isMyBeliefsInfoFetching: boolean;
   isMyBioUpdating: boolean;
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;
@@ -12,6 +13,7 @@ export type MyselfState = {
   updateMyContactInfoErrorMsg: string;
   sendMyAdditionalInfoErrorMsg: string;
   updateMyMainInfoErrorMsg: string;
+  updateMyBeliefsInfoErrorMsg: string;
   changePasswordErrorMsg: string;
   deleteMyProfileErrorMsg: string;
 };
@@ -53,5 +55,13 @@ export type AdditionalFieldsToSend = {
   };
   contactInfo: {
     phoneNumber: string;
+  };
+};
+
+export type BeliefsFieldsToSend = {
+  beliefs: {
+    politicalViews: string;
+    religion: string;
+    inspiredBy: string;
   };
 };

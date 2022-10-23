@@ -6,7 +6,7 @@ import FormError from '../../../common/FormError/FormError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { GeneralInfoInitialValues } from '../../../../types/FormikTypes';
+import { GeneralInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
 
 const validationSchema = yup.object({
@@ -105,8 +105,8 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
           <SubmitLoadingBtn
             btnClass={s.form__btn}
             btnType="submit"
-            btnText="Update main information"
-            btnFetchingText="Updating main information"
+            btnText="Update general information"
+            btnFetchingText="Updating general information"
             isFetching={isMyGeneralInfoFetching}
             onSubmit={() => {}}
           />

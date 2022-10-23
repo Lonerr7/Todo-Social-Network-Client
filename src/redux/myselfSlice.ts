@@ -3,15 +3,17 @@ import { myselfAPI } from '../api/api';
 import { DeleteMePasswords } from '../types/axiosTypes';
 import {
   AdditionalInfoInitialValues,
+  BeliefsInfoInitialValues,
   ContactInfoInitialValues,
   GeneralInfoInitialValues,
   MainInfoInitialValues,
   UpdateMyBioValue,
   UpdateMyRegisterlInfoFormInitialValues,
   UpdateUserPasswordInitialValues,
-} from '../types/FormikTypes';
+} from '../types/formikTypes';
 import {
   AdditionalFieldsToSend,
+  BeliefsFieldsToSend,
   ContactFieldsToSend,
   GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
@@ -168,6 +170,35 @@ export const updateMyContactInfo = createAsyncThunk(
   }
 );
 
+export const updateMyBeliefsInfo = createAsyncThunk(
+  'myslef/updateMyBeliefs',
+  async (
+    { inspiredBy, politicalViews, religion }: BeliefsInfoInitialValues,
+    { dispatch, rejectWithValue }
+  ) => {
+    try {
+      const fieldsToSend: BeliefsFieldsToSend = {
+        beliefs: {
+          inspiredBy,
+          politicalViews,
+          religion,
+        },
+      };
+
+      const response = await updateInfoWithSuccessMsg(
+        myselfAPI,
+        fieldsToSend,
+        'beliefs',
+        dispatch
+      );
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 // using this in my profile to only update my bio
 export const updateMyBio = createAsyncThunk(
   'myself/updateMyBio',
@@ -241,6 +272,7 @@ const initialState: MyselfState = {
   isMyContactInfoFetching: false,
   isMyAdditionalInfoFetching: false,
   isMyMainInfoFetching: false,
+  isMyBeliefsInfoFetching: false,
   isMyBioUpdating: false,
   isChangingPasswordFetching: false,
   isUserDeletingFetching: false,
@@ -249,6 +281,7 @@ const initialState: MyselfState = {
   updateMyContactInfoErrorMsg: '',
   sendMyAdditionalInfoErrorMsg: '',
   updateMyMainInfoErrorMsg: '',
+  updateMyBeliefsInfoErrorMsg: '',
   changePasswordErrorMsg: '',
   deleteMyProfileErrorMsg: '',
 };
@@ -328,12 +361,27 @@ const myselfSlice = createSlice({
     [updateMyContactInfo.fulfilled.type]: (state) => {
       state.isMyContactInfoFetching = false;
     },
-    [updateMyContactInfo.pending.type]: (
+    [updateMyContactInfo.rejected.type]: (
       state,
       action: PayloadAction<string>
     ) => {
       state.isMyContactInfoFetching = false;
       state.updateMyContactInfoErrorMsg = action.payload;
+    },
+
+    [updateMyBeliefsInfo.pending.type]: (state) => {
+      state.isMyBeliefsInfoFetching = true;
+      state.updateMyBeliefsInfoErrorMsg = '';
+    },
+    [updateMyBeliefsInfo.fulfilled.type]: (state) => {
+      state.isMyBeliefsInfoFetching = false;
+    },
+    [updateMyBeliefsInfo.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.isMyBeliefsInfoFetching = false;
+      state.updateMyBeliefsInfoErrorMsg = action.payload;
     },
 
     [sendMyAdditionalInfo.pending.type]: (state) => {

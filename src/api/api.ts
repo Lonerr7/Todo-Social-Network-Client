@@ -7,7 +7,7 @@ import {
   RegisterFormInitialValues,
   LoginFormInitialValues,
   UpdateUserPasswordInitialValues,
-} from '../types/FormikTypes';
+} from '../types/formikTypes';
 import { UpdateMeFieldsToSendForApi } from '../types/apiTypes';
 
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';

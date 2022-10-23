@@ -62,3 +62,9 @@ export type AdditionalInfoInitialValues = {
   cityOfBirth: string;
   phoneNumber: string;
 };
+
+export type BeliefsInfoInitialValues = {
+  politicalViews: string;
+  religion: string;
+  inspiredBy: string;
+};

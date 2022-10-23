@@ -2,9 +2,10 @@ import { myselfAPI } from '../api/api';
 import {
   UpdateMyBioValue,
   UpdateMyRegisterlInfoFormInitialValues,
-} from './FormikTypes';
+} from './formikTypes';
 import {
   AdditionalFieldsToSend,
+  BeliefsFieldsToSend,
   ContactFieldsToSend,
   GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
@@ -20,4 +21,5 @@ export type UpdateMeFieldsToSendForApi =
   | UpdateMyBioValue
   | AdditionalFieldsToSend
   | MainInfoFieldsToSend
-  | ContactFieldsToSend;
+  | ContactFieldsToSend
+  | BeliefsFieldsToSend;

@@ -22,6 +22,11 @@ export type User = {
     phoneNumber: string;
     discord: string;
   };
+  beliefs: {
+    politicalViews: string;
+    religion: string;
+    inspiredBy: string;
+  };
   id: string;
   bio: string;
   todos: Array<Todo>;

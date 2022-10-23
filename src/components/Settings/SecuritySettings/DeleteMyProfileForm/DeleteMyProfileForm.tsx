@@ -1,7 +1,7 @@
 import s from '../../../../styles/formStyle.module.scss';
 import st from './DeleteMyProfileForm.module.scss';
 import * as yup from 'yup';
-import { DeleteMyProfileInitialValues } from '../../../../types/FormikTypes';
+import { DeleteMyProfileInitialValues } from '../../../../types/formikTypes';
 import { Form, Formik } from 'formik';
 import FormControl from '../../../common/FormControl/FormControl';
 import FormStatus from '../../../common/FormStatus/FormStatus';

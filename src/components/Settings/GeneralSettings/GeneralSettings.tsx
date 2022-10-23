@@ -8,6 +8,7 @@ import SettingsBlock from '../SettingsBlock/SettingsBlock';
 import UpdateMyMainInfoForm from './UpdateMyMainInfoForm/UpdateMyMainInfoForm';
 import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoForm';
 import UpdateMyContactInfoForm from './UpdateMyContactInfoForm/UpdateMyContactInfoForm';
+import UpdateMyBeliefsInfoForm from './UpdateMyBeliefsInfoForm/UpdateMyBeliefsInfoForm';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ const GeneralSettings: React.FC = () => {
           title="My contact information"
           form={<UpdateMyContactInfoForm />}
         />
+        <SettingsBlock title="My beliefs" form={<UpdateMyBeliefsInfoForm />} />
       </div>
     </div>
   );

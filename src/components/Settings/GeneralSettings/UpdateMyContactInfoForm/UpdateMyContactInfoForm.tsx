@@ -6,7 +6,7 @@ import FormError from '../../../common/FormError/FormError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { ContactInfoInitialValues } from '../../../../types/FormikTypes';
+import { ContactInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyContactInfo } from '../../../../redux/myselfSlice';
 
 const validationSchema = yup.object({

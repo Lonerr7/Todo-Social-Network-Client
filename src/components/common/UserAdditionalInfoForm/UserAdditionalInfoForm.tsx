@@ -2,7 +2,7 @@ import s from './UserAdditionalInfoForm.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import FormControl from '../FormControl/FormControl';
-import { AdditionalInfoInitialValues } from '../../../types/FormikTypes';
+import { AdditionalInfoInitialValues } from '../../../types/formikTypes';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { sendMyAdditionalInfo } from '../../../redux/myselfSlice';

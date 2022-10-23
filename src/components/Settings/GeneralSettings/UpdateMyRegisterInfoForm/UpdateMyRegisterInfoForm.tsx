@@ -1,7 +1,7 @@
 import s from '../../../../styles/formStyle.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { UpdateMyRegisterlInfoFormInitialValues } from '../../../../types/FormikTypes';
+import { UpdateMyRegisterlInfoFormInitialValues } from '../../../../types/formikTypes';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import FormControl from '../../../common/FormControl/FormControl';
 import { updateMyRegisterInfo } from '../../../../redux/myselfSlice';
@@ -104,8 +104,8 @@ const UpdateMyRegisterInfoForm: React.FC = () => {
           <SubmitLoadingBtn
             btnClass={s.form__btn}
             btnType="submit"
-            btnText="Update general information"
-            btnFetchingText="Updating general information"
+            btnText="Update register information"
+            btnFetchingText="Updating register information"
             isFetching={isMyRegisterInfoFetching}
             onSubmit={() => {}}
           />
