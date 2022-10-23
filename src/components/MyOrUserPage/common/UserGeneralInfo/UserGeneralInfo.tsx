@@ -21,6 +21,8 @@ const UserGeneralInfo: React.FC<Props> = ({ user }) => {
       })
     : null;
 
+  if (!fieldValues?.filter((val) => val).length) return null;
+
   return (
     <div className={s.info}>
       <UserInfoBlock
