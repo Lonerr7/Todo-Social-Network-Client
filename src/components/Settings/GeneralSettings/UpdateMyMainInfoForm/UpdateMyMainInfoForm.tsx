@@ -33,8 +33,6 @@ const UpdateMyMainInfoForm: React.FC = () => {
     dispatch(updateMyMainInfo(values));
   };
 
-  console.log(initialValues);
-
   return (
     <Formik
       initialValues={initialValues}

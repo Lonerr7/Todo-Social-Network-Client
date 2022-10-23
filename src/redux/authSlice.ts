@@ -38,9 +38,6 @@ export const getMe = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await authAPI.getMe();
-
-      // console.log(response.data.data.data);
-
       return response.data.data.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);

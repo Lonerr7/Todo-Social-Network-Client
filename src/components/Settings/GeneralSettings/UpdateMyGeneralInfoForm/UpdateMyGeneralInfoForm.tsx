@@ -24,7 +24,10 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const initialValues: GeneralInfoInitialValues = {
-    dateOfBirth: currentUser.generalInfo?.dateOfBirth || '',
+    dateOfBirth:
+      new Date(currentUser.generalInfo?.dateOfBirth)
+        .toISOString()
+        .split('T')[0] || '',
     country: currentUser.generalInfo?.country || '',
     currentCity: currentUser.generalInfo?.currentCity || '',
     relationship: currentUser.generalInfo?.relationship || '',
@@ -34,6 +37,7 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
 
   const onSubmit = (values: GeneralInfoInitialValues) => {
     dispatch(updateMyGeneralInfo(values));
+    console.log(values);
   };
 
   return (

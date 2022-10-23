@@ -12,13 +12,14 @@ const UserGeneralInfo: React.FC<Props> = ({ user }) => {
     ? Object.keys(user.generalInfo).map((title) => replaceCamelCase(title))
     : null;
   const fieldValues = Object.keys(user).includes('generalInfo')
-    ? Object.values(user.generalInfo)
-    : null;
+    ? Object.values(user.generalInfo).map((val, i) => {
+        if (correctFieldTitles && correctFieldTitles[i] === 'Date Of Birth') {
+          return val?.split('T')[0];
+        }
 
-  // don't show anything if user has no main info
-  // if (!correctFieldTitles || !fieldValues) {
-  //   return null;
-  // }
+        return val;
+      })
+    : null;
 
   return (
     <div className={s.info}>

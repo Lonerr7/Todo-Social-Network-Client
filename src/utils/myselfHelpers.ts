@@ -21,7 +21,5 @@ export const updateInfoWithSuccessMsg = async (
     }, 5000);
   }
 
-  console.log(response.data.data.user);
-
   return response;
 };
