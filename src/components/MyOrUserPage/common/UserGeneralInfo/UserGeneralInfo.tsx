@@ -1,5 +1,5 @@
 import { User } from '../../../../types/reduxTypes/authSliceTypes';
-import { replaceCamelCase } from '../../../../utils/appHelpers';
+import { createKeysOrValsArr } from '../../../../utils/myPageHelpers';
 import UserInfoBlock from '../UserInfoBlock/UserInfoBlock';
 import s from './UserGeneralInfo.module.scss';
 
@@ -8,9 +8,7 @@ type Props = {
 };
 
 const UserGeneralInfo: React.FC<Props> = ({ user }) => {
-  const correctFieldTitles = Object.keys(user).includes('generalInfo')
-    ? Object.keys(user.generalInfo).map((key) => replaceCamelCase(key))
-    : null;
+  const correctFieldTitles = createKeysOrValsArr(user, 'generalInfo', 'keys');
   const fieldValues = Object.keys(user).includes('generalInfo')
     ? Object.values(user.generalInfo).map((val, i) => {
         if (correctFieldTitles && correctFieldTitles[i] === 'Date Of Birth') {
