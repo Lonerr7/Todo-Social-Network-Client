@@ -7,6 +7,7 @@ import {
   ContactInfoInitialValues,
   GeneralInfoInitialValues,
   MainInfoInitialValues,
+  PersonalInfoInitialValues,
   UpdateMyBioValue,
   UpdateMyRegisterlInfoFormInitialValues,
   UpdateUserPasswordInitialValues,
@@ -14,10 +15,11 @@ import {
 import {
   AdditionalFieldsToSend,
   BeliefsFieldsToSend,
-  ContactFieldsToSend,
+  ContactInfoFieldsToSend,
   GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
   MyselfState,
+  PersonalInfoFieldsToSend,
 } from '../types/reduxTypes/myselfSliceTypes';
 import { updateInfoWithSuccessMsg } from '../utils/myselfHelpers';
 import { setActiveMenuNum, setActiveSettingsNum } from './appSlice';
@@ -80,27 +82,10 @@ export const updateMyRegisterInfo = createAsyncThunk(
 
 export const updateMyGeneralInfo = createAsyncThunk(
   'myself/updateMyGeneralInfo',
-  async (
-    {
-      country,
-      currentCity,
-      dateOfBirth,
-      jobPlace,
-      relationship,
-      website,
-    }: GeneralInfoInitialValues,
-    { rejectWithValue, dispatch }
-  ) => {
+  async (data: GeneralInfoInitialValues, { rejectWithValue, dispatch }) => {
     try {
       const fieldsToSend: GeneralInfoFieldsToSend = {
-        generalInfo: {
-          country,
-          currentCity,
-          dateOfBirth,
-          jobPlace,
-          relationship,
-          website,
-        },
+        generalInfo: { ...data },
       };
 
       const response = await updateInfoWithSuccessMsg(
@@ -119,16 +104,10 @@ export const updateMyGeneralInfo = createAsyncThunk(
 
 export const updateMyMainInfo = createAsyncThunk(
   'myself/updateMyMainInfo',
-  async (
-    { cityOfBirth, nativeLanguage }: MainInfoInitialValues,
-    { rejectWithValue, dispatch }
-  ) => {
+  async (data: MainInfoInitialValues, { rejectWithValue, dispatch }) => {
     try {
       const fieldsToSend: MainInfoFieldsToSend = {
-        mainInfo: {
-          cityOfBirth,
-          nativeLanguage,
-        },
+        mainInfo: { ...data },
       };
 
       const response = await updateInfoWithSuccessMsg(
@@ -147,13 +126,10 @@ export const updateMyMainInfo = createAsyncThunk(
 
 export const updateMyContactInfo = createAsyncThunk(
   'myslef/updateMyContactInfo',
-  async (
-    { discord, phoneNumber }: ContactInfoInitialValues,
-    { rejectWithValue, dispatch }
-  ) => {
+  async (data: ContactInfoInitialValues, { rejectWithValue, dispatch }) => {
     try {
-      const fieldsToSend: ContactFieldsToSend = {
-        contactInfo: { discord, phoneNumber },
+      const fieldsToSend: ContactInfoFieldsToSend = {
+        contactInfo: { ...data },
       };
 
       const response = await updateInfoWithSuccessMsg(
@@ -172,23 +148,38 @@ export const updateMyContactInfo = createAsyncThunk(
 
 export const updateMyBeliefsInfo = createAsyncThunk(
   'myslef/updateMyBeliefs',
-  async (
-    { inspiredBy, politicalViews, religion }: BeliefsInfoInitialValues,
-    { dispatch, rejectWithValue }
-  ) => {
+  async (data: BeliefsInfoInitialValues, { dispatch, rejectWithValue }) => {
     try {
       const fieldsToSend: BeliefsFieldsToSend = {
-        beliefs: {
-          inspiredBy,
-          politicalViews,
-          religion,
-        },
+        beliefs: { ...data },
       };
 
       const response = await updateInfoWithSuccessMsg(
         myselfAPI,
         fieldsToSend,
         'beliefs',
+        dispatch
+      );
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateMyPersonalInfo = createAsyncThunk(
+  'myself/updateMyPersonalInfo',
+  async (data: PersonalInfoInitialValues, { dispatch, rejectWithValue }) => {
+    try {
+      const fieldsToSend: PersonalInfoFieldsToSend = {
+        personalInfo: { ...data },
+      };
+
+      const response = await updateInfoWithSuccessMsg(
+        myselfAPI,
+        fieldsToSend,
+        'personalInfo',
         dispatch
       );
 
@@ -273,6 +264,7 @@ const initialState: MyselfState = {
   isMyAdditionalInfoFetching: false,
   isMyMainInfoFetching: false,
   isMyBeliefsInfoFetching: false,
+  isMyPersonalInfoFetching: false,
   isMyBioUpdating: false,
   isChangingPasswordFetching: false,
   isUserDeletingFetching: false,
@@ -282,6 +274,7 @@ const initialState: MyselfState = {
   sendMyAdditionalInfoErrorMsg: '',
   updateMyMainInfoErrorMsg: '',
   updateMyBeliefsInfoErrorMsg: '',
+  updateMyPersonalInfoErrorMsg: '',
   changePasswordErrorMsg: '',
   deleteMyProfileErrorMsg: '',
 };
@@ -382,6 +375,21 @@ const myselfSlice = createSlice({
     ) => {
       state.isMyBeliefsInfoFetching = false;
       state.updateMyBeliefsInfoErrorMsg = action.payload;
+    },
+
+    [updateMyPersonalInfo.pending.type]: (state) => {
+      state.isMyPersonalInfoFetching = true;
+      state.updateMyPersonalInfoErrorMsg = '';
+    },
+    [updateMyPersonalInfo.fulfilled.type]: (state) => {
+      state.isMyPersonalInfoFetching = false;
+    },
+    [updateMyPersonalInfo.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.isMyPersonalInfoFetching = false;
+      state.updateMyPersonalInfoErrorMsg = action.payload;
     },
 
     [sendMyAdditionalInfo.pending.type]: (state) => {

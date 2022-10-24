@@ -15,6 +15,7 @@ import {
   updateMyMainInfo,
   updateMyContactInfo,
   updateMyBeliefsInfo,
+  updateMyPersonalInfo,
 } from './myselfSlice';
 
 export const signUserUp = createAsyncThunk(
@@ -163,6 +164,13 @@ const authSlice = createSlice({
     },
 
     [updateMyBeliefsInfo.fulfilled.type]: (
+      state,
+      action: PayloadAction<User>
+    ) => {
+      state.user = action.payload;
+    },
+
+    [updateMyPersonalInfo.fulfilled.type]: (
       state,
       action: PayloadAction<User>
     ) => {

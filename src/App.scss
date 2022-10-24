@@ -1,12 +1,5 @@
 @import './vars.scss';
 
-.App__container {
-  grid-area: gc;
-  display: grid;
-  grid-template-areas: 's m';
-  grid-template-columns: 2fr 10fr;
-}
-
 .App {
   min-height: 100vh;
   display: grid;
@@ -14,6 +7,13 @@
     'h h'
     'gc gc';
   grid-template-rows: 60px 1fr;
+}
+
+.App__container {
+  grid-area: gc;
+  display: grid;
+  grid-template-areas: 's m';
+  grid-template-columns: 2fr 10fr;
 }
 
 @media (max-width: 1250px) {

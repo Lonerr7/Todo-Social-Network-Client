@@ -8,6 +8,7 @@ const initialState = {
   isUserMainInfoSuccessfulySent: false,
   isUserAdditionalInfoSuccessfulySent: false,
   isUserBeliefsInfoSuccessfulySent: false,
+  isUserPersonalInfoSuccessfulySent: false,
   isNewPasswordSuccessfulySent: false,
   isUserSucessfulyDeleted: false,
 };
@@ -41,6 +42,9 @@ const formSlice = createSlice({
           break;
         case 'beliefs':
           state.isUserBeliefsInfoSuccessfulySent = action.payload.show;
+          break;
+        case 'personalInfo':
+          state.isUserPersonalInfoSuccessfulySent = action.payload.show;
           break;
         case 'password':
           state.isNewPasswordSuccessfulySent = action.payload.show;

@@ -5,6 +5,7 @@ export type MyselfState = {
   isMyAdditionalInfoFetching: boolean;
   isMyMainInfoFetching: boolean;
   isMyBeliefsInfoFetching: boolean;
+  isMyPersonalInfoFetching: boolean;
   isMyBioUpdating: boolean;
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;
@@ -14,6 +15,7 @@ export type MyselfState = {
   sendMyAdditionalInfoErrorMsg: string;
   updateMyMainInfoErrorMsg: string;
   updateMyBeliefsInfoErrorMsg: string;
+  updateMyPersonalInfoErrorMsg: string;
   changePasswordErrorMsg: string;
   deleteMyProfileErrorMsg: string;
 };
@@ -36,7 +38,7 @@ export type MainInfoFieldsToSend = {
   };
 };
 
-export type ContactFieldsToSend = {
+export type ContactInfoFieldsToSend = {
   contactInfo: {
     phoneNumber: string;
     discord: string;
@@ -63,5 +65,18 @@ export type BeliefsFieldsToSend = {
     politicalViews: string;
     religion: string;
     inspiredBy: string;
+  };
+};
+
+export type PersonalInfoFieldsToSend = {
+  personalInfo: {
+    activities: string;
+    interests: string;
+    attitudeTowardsSmoking: string;
+    attitudeTowardsDrinking: string;
+    favoriteMusic: string;
+    favoriteMovies: string;
+    favouriteBooks: string;
+    aboutMe: string;
   };
 };

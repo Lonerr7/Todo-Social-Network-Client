@@ -68,3 +68,14 @@ export type BeliefsInfoInitialValues = {
   religion: string;
   inspiredBy: string;
 };
+
+export type PersonalInfoInitialValues = {
+  activities: string;
+  interests: string;
+  attitudeTowardsSmoking: string;
+  attitudeTowardsDrinking: string;
+  favoriteMusic: string;
+  favoriteMovies: string;
+  favouriteBooks: string;
+  aboutMe: string;
+};

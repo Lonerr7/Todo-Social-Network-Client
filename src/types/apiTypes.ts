@@ -6,9 +6,10 @@ import {
 import {
   AdditionalFieldsToSend,
   BeliefsFieldsToSend,
-  ContactFieldsToSend,
+  ContactInfoFieldsToSend,
   GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
+  PersonalInfoFieldsToSend,
 } from './reduxTypes/myselfSliceTypes';
 
 export type MyselfApi = typeof myselfAPI;
@@ -21,5 +22,6 @@ export type UpdateMeFieldsToSendForApi =
   | UpdateMyBioValue
   | AdditionalFieldsToSend
   | MainInfoFieldsToSend
-  | ContactFieldsToSend
-  | BeliefsFieldsToSend;
+  | ContactInfoFieldsToSend
+  | BeliefsFieldsToSend
+  | PersonalInfoFieldsToSend;

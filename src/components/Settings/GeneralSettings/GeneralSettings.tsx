@@ -9,6 +9,7 @@ import UpdateMyMainInfoForm from './UpdateMyMainInfoForm/UpdateMyMainInfoForm';
 import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoForm';
 import UpdateMyContactInfoForm from './UpdateMyContactInfoForm/UpdateMyContactInfoForm';
 import UpdateMyBeliefsInfoForm from './UpdateMyBeliefsInfoForm/UpdateMyBeliefsInfoForm';
+import UpdateMyPersonalInfoForm from './UpdateMyPersonalInfoForm/UpdateMyPersonalInfoForm';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -41,6 +42,10 @@ const GeneralSettings: React.FC = () => {
           form={<UpdateMyContactInfoForm />}
         />
         <SettingsBlock title="My beliefs" form={<UpdateMyBeliefsInfoForm />} />
+        <SettingsBlock
+          title="My personal information"
+          form={<UpdateMyPersonalInfoForm />}
+        />
       </div>
     </div>
   );

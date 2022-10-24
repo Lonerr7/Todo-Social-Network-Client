@@ -27,6 +27,16 @@ export type User = {
     religion: string;
     inspiredBy: string;
   };
+  personalInfo: {
+    activities: string;
+    interests: string;
+    attitudeTowardsSmoking: string; //! add enum and select on front
+    attitudeTowardsDrinking: string; //! add enum and select on front
+    favoriteMusic: string;
+    favoriteMovies: string;
+    favouriteBooks: string;
+    aboutMe: string;
+  };
   id: string;
   bio: string;
   todos: Array<Todo>;

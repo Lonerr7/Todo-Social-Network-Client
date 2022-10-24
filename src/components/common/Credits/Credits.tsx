@@ -1,8 +1,12 @@
 import s from './Credits.module.scss';
 
-const Credits: React.FC = () => {
+type Props = {
+  customClass?: string;
+};
+
+const Credits: React.FC<Props> = ({ customClass }) => {
   return (
-    <p className={s.credits}>
+    <p className={`${s.credits} ${customClass}`}>
       Made by:{' '}
       <a
         target="_blank"

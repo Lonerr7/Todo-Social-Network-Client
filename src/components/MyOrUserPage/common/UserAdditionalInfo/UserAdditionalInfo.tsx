@@ -39,6 +39,30 @@ const UserAdditionalInfo: React.FC<Props> = ({ user, isVisible }) => {
         ]}
         rowElemsType={[]}
       />
+      <UserInfoBlock
+        blockTitle="Personal information"
+        fieldTitles={[
+          'Activities',
+          'Interests',
+          'Attitude towards smoking',
+          'Attitude towards drinking',
+          'Favorite music',
+          'Favorite movies',
+          'Favorite books',
+          'About Me',
+        ]}
+        fieldValues={[
+          user.personalInfo?.activities,
+          user.personalInfo?.interests,
+          user.personalInfo?.attitudeTowardsSmoking,
+          user.personalInfo?.attitudeTowardsDrinking,
+          user.personalInfo?.favoriteMusic,
+          user.personalInfo?.favoriteMovies,
+          user.personalInfo?.favouriteBooks,
+          user.personalInfo?.aboutMe,
+        ]}
+        rowElemsType={[]}
+      />
     </div>
   );
 };

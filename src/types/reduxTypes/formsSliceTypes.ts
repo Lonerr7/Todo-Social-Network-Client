@@ -5,4 +5,5 @@ export type ShowHideFor =
   | 'additionalInfo'
   | 'registerInfo'
   | 'password'
-  | 'beliefs';
+  | 'beliefs'
+  | 'personalInfo';

@@ -9,7 +9,7 @@ type Props = {
 
 const UserGeneralInfo: React.FC<Props> = ({ user }) => {
   const correctFieldTitles = Object.keys(user).includes('generalInfo')
-    ? Object.keys(user.generalInfo).map((title) => replaceCamelCase(title))
+    ? Object.keys(user.generalInfo).map((key) => replaceCamelCase(key))
     : null;
   const fieldValues = Object.keys(user).includes('generalInfo')
     ? Object.values(user.generalInfo).map((val, i) => {
