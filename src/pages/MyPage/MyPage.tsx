@@ -7,11 +7,11 @@ import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import s from './MyPage.module.scss';
 import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
-import UserAdditionalInfo from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfo';
 import UserGeneralInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import { User } from '../../types/reduxTypes/authSliceTypes';
+import UserAdditionalInfoContainer from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfoContainer';
 
 type Props = {
   myself: User;
@@ -49,7 +49,7 @@ const MyPage: React.FC<Props> = ({
               toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
               isVisible={isAdditionalInfoVisible}
             />
-            <UserAdditionalInfo
+            <UserAdditionalInfoContainer
               user={myself}
               isVisible={isAdditionalInfoVisible}
             />

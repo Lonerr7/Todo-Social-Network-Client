@@ -3,7 +3,7 @@ import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
-import UserAdditionalInfo from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfo';
+import UserAdditionalInfoContainer from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfoContainer';
 import UserMainInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
@@ -43,7 +43,7 @@ const UserPage: React.FC<Props> = ({
               toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
               isVisible={isAdditionalInfoVisible}
             />
-            <UserAdditionalInfo
+            <UserAdditionalInfoContainer
               user={user}
               isVisible={isAdditionalInfoVisible}
             />

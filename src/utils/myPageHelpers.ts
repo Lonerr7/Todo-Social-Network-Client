@@ -1,11 +1,11 @@
 import { replaceCamelCase } from './appHelpers';
 
-export const createKeysOrValsArr = <T extends object>(
+export const createKeysOrValsArr = <T extends {}>(
   obj: T,
   field: keyof T,
   keysOrVals: 'keys' | 'values'
 ) => {
-  return Object[keysOrVals](obj).includes(field as string)
-    ? Object.keys(obj[field]!).map((key) => replaceCamelCase(key))
+  return Object.keys(obj).includes(field as string)
+    ? Object[keysOrVals](obj[field]!).map((key) => replaceCamelCase(key))
     : null;
 };
