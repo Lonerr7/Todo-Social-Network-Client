@@ -1,3 +1,4 @@
+import Accordion from '../../common/Accordion/Accordion';
 import s from './SettingsBlock.module.scss';
 
 type Props = {
@@ -8,8 +9,8 @@ type Props = {
 const SettingsBlock: React.FC<Props> = ({ title, form }) => {
   return (
     <div className={s.block}>
-      <h2 className={s.block__title}>{title}</h2>
-      {form}
+      {/* <h2 className={s.block__title}>{title}</h2> */}
+      {/* <Accordion title={title}>{form}</Accordion> */}
     </div>
   );
 };

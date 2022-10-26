@@ -4,12 +4,12 @@ import { useAppDispatch } from '../../../hooks/hooks';
 import UpdateMyRegisterInfoForm from './UpdateMyRegisterInfoForm/UpdateMyRegisterInfoForm';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
-import SettingsBlock from '../SettingsBlock/SettingsBlock';
 import UpdateMyMainInfoForm from './UpdateMyMainInfoForm/UpdateMyMainInfoForm';
 import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoForm';
 import UpdateMyContactInfoForm from './UpdateMyContactInfoForm/UpdateMyContactInfoForm';
 import UpdateMyBeliefsInfoForm from './UpdateMyBeliefsInfoForm/UpdateMyBeliefsInfoForm';
 import UpdateMyPersonalInfoForm from './UpdateMyPersonalInfoForm/UpdateMyPersonalInfoForm';
+import Accordion from '../../common/Accordion/Accordion';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,27 +25,24 @@ const GeneralSettings: React.FC = () => {
     <div className={s.general}>
       <h1 className={s.general__title}>General</h1>
       <div className={s.general__inner}>
-        <SettingsBlock
-          title="My register information"
-          form={<UpdateMyRegisterInfoForm />}
-        />
-        <SettingsBlock
-          title="My general information"
-          form={<UpdateMyGeneralInfoForm />}
-        />
-        <SettingsBlock
-          title="My main information"
-          form={<UpdateMyMainInfoForm />}
-        />
-        <SettingsBlock
-          title="My contact information"
-          form={<UpdateMyContactInfoForm />}
-        />
-        <SettingsBlock title="My beliefs" form={<UpdateMyBeliefsInfoForm />} />
-        <SettingsBlock
-          title="My personal information"
-          form={<UpdateMyPersonalInfoForm />}
-        />
+        <Accordion title="My register information">
+          <UpdateMyRegisterInfoForm />
+        </Accordion>
+        <Accordion title="My general information">
+          <UpdateMyGeneralInfoForm />
+        </Accordion>
+        <Accordion title="My main information">
+          <UpdateMyMainInfoForm />
+        </Accordion>
+        <Accordion title="My contact information">
+          <UpdateMyContactInfoForm />
+        </Accordion>
+        <Accordion title="My beliefs">
+          <UpdateMyBeliefsInfoForm />
+        </Accordion>
+        <Accordion title="My personal information">
+          <UpdateMyPersonalInfoForm />
+        </Accordion>
       </div>
     </div>
   );

@@ -3,5 +3,6 @@
 .block {
   &__title {
     @extend %subtitle;
+    cursor: pointer;
   }
 }
