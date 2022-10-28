@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
+import Accordion from '../../common/Accordion/Accordion';
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';
 import DeleteMyProfileForm from './DeleteMyProfileForm/DeleteMyProfileForm';
 import s from './SecuritySettings.module.scss';
@@ -19,10 +20,12 @@ const SecuritySettings: React.FC = () => {
     <div className={s.security}>
       <h1 className={s.security__title}>Security</h1>
       <div className={s.security__inner}>
-        <h2 className={s.security__subtitle}>Change Password</h2>
-        <ChangePasswordForm />
-        <h2 className={s.security__subtitle}>Delete My Profile</h2>
-        <DeleteMyProfileForm />
+        <Accordion title="Change Password">
+          <ChangePasswordForm />
+        </Accordion>
+        <Accordion title="Delete My Profile">
+          <DeleteMyProfileForm />
+        </Accordion>
       </div>
     </div>
   );
