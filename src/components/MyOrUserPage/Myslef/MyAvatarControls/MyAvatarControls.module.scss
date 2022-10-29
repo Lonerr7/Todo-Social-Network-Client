@@ -1,0 +1,14 @@
+@import '../../../../vars';
+
+.controls {
+  &__btn {
+    @extend %btn-small;
+    width: 100%;
+    background-color: $color3;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: $color9;
+    }
+  }
+}

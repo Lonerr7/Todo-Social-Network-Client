@@ -21,7 +21,7 @@ const UsersPage: React.FC<Props> = ({
     <UserSmall
       key={u.id}
       id={u.id}
-      img={u.img}
+      img={u.photo}
       firstName={u.firstName}
       lastName={u.lastName}
       nickname={u.nickname}

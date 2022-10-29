@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { setActiveTodoFilter } from '../../../redux/appSlice';
-import { openPopup } from '../../../redux/areYouSurePopupSlice';
+import { openAreYouSurePopup } from '../../../redux/popupSlice';
 import { changeActiveTodoFilter } from '../../../redux/todoSlice';
 import { TodoFiltersEnum } from '../../../types/reduxTypes/todoSliceTypes';
 import s from './TodoFilters.module.scss';
@@ -14,7 +14,7 @@ const TodoFilters: React.FC = () => {
   const onDeleteAllTasks = () => {
     if (!tasksCount) return;
 
-    dispatch(openPopup(null));
+    dispatch(openAreYouSurePopup(null));
   };
 
   return (

@@ -8,7 +8,7 @@ import FormStatus from '../../../common/FormStatus/FormStatus';
 import FormError from '../../../common/FormError/FormError';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { DeleteMePasswords } from '../../../../types/axiosTypes';
-import { openPopup } from '../../../../redux/areYouSurePopupSlice';
+import { openAreYouSurePopup } from '../../../../redux/popupSlice';
 
 const initialValues: DeleteMyProfileInitialValues = {
   myPassword: '',
@@ -41,8 +41,7 @@ const DeleteMyProfileForm: React.FC = () => {
       passwordConfirm: myPasswordConfirm,
     };
 
-    // dispatch(deleteMyProfile(obj));
-    dispatch(openPopup(obj));
+    dispatch(openAreYouSurePopup(obj));
   };
 
   return (

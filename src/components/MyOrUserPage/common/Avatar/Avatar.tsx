@@ -1,5 +1,5 @@
 import s from './Avatar.module.scss';
-import mockAvatar from '../../../../assets/img/mockAvatar.jpg';
+import defaultAvatar from '../../../../assets/img/default.jpg';
 
 type Props = {
   avatar?: string;
@@ -19,7 +19,7 @@ const Avatar: React.FC<Props> = ({ avatar, customImgClass, wrapperClass }) => {
       ) : (
         <img
           className={`${s.avatar__img} ${customImgClass}`}
-          src={mockAvatar}
+          src={defaultAvatar}
           alt="avatar"
         />
       )}

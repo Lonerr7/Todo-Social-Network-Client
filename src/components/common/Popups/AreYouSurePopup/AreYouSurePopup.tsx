@@ -1,20 +1,16 @@
 import s from './AreYouSurePopup.module.scss';
 import { ImCross } from 'react-icons/im';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { closePopup } from '../../../redux/areYouSurePopupSlice';
-import Preloader from '../Preloader/Preloader';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { closeAreYouSurePopup } from '../../../../redux/popupSlice';
+import Preloader from '../../Preloader/Preloader';
 
-type AreYouSurePopupProps = {
+type Props = {
   title: string;
   thunk: any; //!
   isFetching: boolean;
 };
 
-const AreYouSurePopup: React.FC<AreYouSurePopupProps> = ({
-  title,
-  thunk,
-  isFetching,
-}) => {
+const AreYouSurePopup: React.FC<Props> = ({ title, thunk, isFetching }) => {
   const dispatchData = useAppSelector((state) => state.popup.popupDispatchData);
   const dispatch = useAppDispatch();
 
@@ -22,14 +18,15 @@ const AreYouSurePopup: React.FC<AreYouSurePopupProps> = ({
     // async await because we are dispathing async thunk
     if (dispatchData) {
       await dispatch(thunk(dispatchData));
-      return dispatch(closePopup());
+      return dispatch(closeAreYouSurePopup());
     }
 
     await dispatch(thunk());
-    dispatch(closePopup());
+    dispatch(closeAreYouSurePopup());
   };
+
   const noClickHandler = () => {
-    dispatch(closePopup());
+    dispatch(closeAreYouSurePopup());
   };
 
   return (

@@ -1,11 +1,13 @@
 import { Todo } from '../reduxTypes/todoSliceTypes';
 
 export type User = {
+  id: string;
   email: string;
   nickname: string;
   firstName: string;
   lastName: string;
   role: string;
+  photo: string;
   generalInfo: {
     dateOfBirth: string;
     country: string;
@@ -37,10 +39,8 @@ export type User = {
     favouriteBooks: string;
     aboutMe: string;
   };
-  id: string;
   bio: string;
   todos: Array<Todo>;
-  img?: string;
 };
 
 export type AuthState = {

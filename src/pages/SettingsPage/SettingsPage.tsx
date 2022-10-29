@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import AreYouSurePopup from '../../components/common/AreYouSurePopup/AreYouSurePopup';
+import AreYouSurePopup from '../../components/common/Popups/AreYouSurePopup/AreYouSurePopup';
 import SettingsNav from '../../components/Settings/SettingsNav/SettingsNav';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/hooks';

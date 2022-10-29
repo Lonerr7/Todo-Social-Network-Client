@@ -1,4 +1,4 @@
-import AreYouSurePopup from '../../components/common/AreYouSurePopup/AreYouSurePopup';
+import AreYouSurePopup from '../../components/common/Popups/AreYouSurePopup/AreYouSurePopup';
 import TodoList from '../../components/TodoList/TodoList';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/hooks';
