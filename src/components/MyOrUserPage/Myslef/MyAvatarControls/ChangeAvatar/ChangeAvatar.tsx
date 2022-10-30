@@ -1,36 +1,33 @@
-import { useState } from 'react';
 import s from './ChangeAvatar.module.scss';
+import { AiOutlineCloudUpload } from 'react-icons/ai';
+import { useAppDispatch } from '../../../../../hooks/hooks';
+import { changeMyAvatar } from '../../../../../redux/myselfSlice';
 
-interface Props {
-  toggleChangeAvatarForm: () => void;
-}
-
-const ChangeAvatar: React.FC<Props> = ({ toggleChangeAvatarForm }) => {
-  const [file, setFile] = useState({});
+const ChangeAvatar: React.FC = () => {
+  const dispatch = useAppDispatch();
 
   const fileSelectedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.files && e.target.files[0]);
+    if (e.target.files) {
+      const fd = new FormData();
+      fd.append('photo', e.target.files[0], e.target.files[0].name);
+
+      dispatch(changeMyAvatar(fd));
+    }
   };
 
-  const fileUploadHandler = () => {};
-
   return (
-    <div className={s.change}>
-      <label className={s.change__label} htmlFor="changeAvatar">
-        <input
-          className={s.change__input}
-          type="file"
-          id="changeAvatar"
-          onChange={fileSelectedHandler}
-        />
-      </label>
-      <div className={s.change__btns}>
-        <button className={s.change__btn}>Ok</button>
-        <button className={s.change__btn} onClick={toggleChangeAvatarForm}>
-          Cancel
-        </button>
-      </div>
-    </div>
+    <label className={s.change__label} htmlFor="changeAvatar">
+      <input
+        className={s.change__input}
+        type="file"
+        id="changeAvatar"
+        onChange={fileSelectedHandler}
+      />
+      <span className={s.change__upload}>
+        <AiOutlineCloudUpload className={s.change__icon} size={20} />
+        Change avatar
+      </span>
+    </label>
   );
 };
 

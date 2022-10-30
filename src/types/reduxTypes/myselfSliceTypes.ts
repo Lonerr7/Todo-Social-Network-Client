@@ -6,6 +6,7 @@ export type MyselfState = {
   isMyMainInfoFetching: boolean;
   isMyBeliefsInfoFetching: boolean;
   isMyPersonalInfoFetching: boolean;
+  isMyAvatarChanging: boolean;
   isMyBioUpdating: boolean;
   isChangingPasswordFetching: boolean;
   isUserDeletingFetching: boolean;
@@ -16,6 +17,7 @@ export type MyselfState = {
   updateMyMainInfoErrorMsg: string;
   updateMyBeliefsInfoErrorMsg: string;
   updateMyPersonalInfoErrorMsg: string;
+  changeMyAvatarErrorMsg: string;
   changePasswordErrorMsg: string;
   deleteMyProfileErrorMsg: string;
 };

@@ -38,6 +38,9 @@ export const myselfAPI = {
   updateMe: async (data: UpdateMeFieldsToSendForApi) => {
     return await axiosInstance.patch('users/updateMe', data);
   },
+  changeMyAvatar: async (data: any) => {
+    return await axiosInstance.patch('users/updateMyAvatar', data);
+  },
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {
     return await axiosInstance.patch('users/updateMyPassword', passwords);
   },

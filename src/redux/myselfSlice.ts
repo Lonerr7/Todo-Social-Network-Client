@@ -190,6 +190,20 @@ export const updateMyPersonalInfo = createAsyncThunk(
   }
 );
 
+export const changeMyAvatar = createAsyncThunk(
+  'myself/changeMyAvatar',
+  async (data: any, { rejectWithValue }) => {
+    try {
+      const response = await myselfAPI.changeMyAvatar(data);
+      console.log(response);
+
+      return response.data.data.user;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 // using this in my profile to only update my bio
 export const updateMyBio = createAsyncThunk(
   'myself/updateMyBio',
@@ -265,6 +279,7 @@ const initialState: MyselfState = {
   isMyMainInfoFetching: false,
   isMyBeliefsInfoFetching: false,
   isMyPersonalInfoFetching: false,
+  isMyAvatarChanging: false,
   isMyBioUpdating: false,
   isChangingPasswordFetching: false,
   isUserDeletingFetching: false,
@@ -275,6 +290,7 @@ const initialState: MyselfState = {
   updateMyMainInfoErrorMsg: '',
   updateMyBeliefsInfoErrorMsg: '',
   updateMyPersonalInfoErrorMsg: '',
+  changeMyAvatarErrorMsg: '',
   changePasswordErrorMsg: '',
   deleteMyProfileErrorMsg: '',
 };
@@ -290,6 +306,7 @@ const myselfSlice = createSlice({
       state.updateMyContactInfoErrorMsg = '';
       state.changePasswordErrorMsg = '';
       state.deleteMyProfileErrorMsg = '';
+      state.changeMyAvatarErrorMsg = '';
     },
   },
   extraReducers: {
@@ -394,6 +411,7 @@ const myselfSlice = createSlice({
 
     [sendMyAdditionalInfo.pending.type]: (state) => {
       state.isMyAdditionalInfoFetching = true;
+      state.sendMyAdditionalInfoErrorMsg = '';
     },
     [sendMyAdditionalInfo.fulfilled.type]: (state) => {
       state.isMyAdditionalInfoFetching = false;
@@ -404,6 +422,18 @@ const myselfSlice = createSlice({
     ) => {
       state.isMyAdditionalInfoFetching = false;
       state.sendMyAdditionalInfoErrorMsg = action.payload;
+    },
+
+    [changeMyAvatar.pending.type]: (state) => {
+      state.isMyAvatarChanging = true;
+      state.changeMyAvatarErrorMsg = '';
+    },
+    [changeMyAvatar.fulfilled.type]: (state) => {
+      state.isMyAvatarChanging = false;
+    },
+    [changeMyAvatar.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isMyAvatarChanging = true;
+      state.changeMyAvatarErrorMsg = action.payload;
     },
 
     [changePassword.pending.type]: (state) => {
