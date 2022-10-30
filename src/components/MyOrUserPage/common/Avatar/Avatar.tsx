@@ -12,6 +12,7 @@ const Avatar: React.FC<Props> = ({ avatar, customImgClass, wrapperClass }) => {
     <div className={`${s.avatar} ${wrapperClass}`}>
       {avatar ? (
         <img
+          key={Date.now()}
           className={`${s.avatar__img} ${customImgClass}`}
           src={avatar}
           alt="avatar"

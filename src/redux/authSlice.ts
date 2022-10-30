@@ -149,8 +149,8 @@ const authSlice = createSlice({
       state.user = action.payload;
     },
 
-    [changeMyAvatar.fulfilled.type]: (state, action: PayloadAction<User>) => {
-      state.user = action.payload;
+    [changeMyAvatar.fulfilled.type]: (state, action: PayloadAction<string>) => {
+      state.user!.photo = action.payload;
     },
 
     [updateMyBio.fulfilled.type]: (state, action: PayloadAction<User>) => {

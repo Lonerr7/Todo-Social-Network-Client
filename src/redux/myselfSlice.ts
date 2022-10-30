@@ -197,7 +197,7 @@ export const changeMyAvatar = createAsyncThunk(
       const response = await myselfAPI.changeMyAvatar(data);
       console.log(response);
 
-      return response.data.data.user;
+      return response.data.data.photo;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
