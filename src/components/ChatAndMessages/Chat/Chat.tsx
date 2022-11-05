@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import ChatSidebar from '../ChatSidebar/ChatSidebar';
 import Messages from '../Messages/Messages';
@@ -6,15 +6,27 @@ import SendMessageForm from '../SendMessageForm/SendMessageForm';
 import s from './Chat.module.scss';
 
 const Chat: React.FC = () => {
-  const socket = io('http://localhost:8000/', { transports: ['websocket'] });
+  const [messages, setMessages] = useState<any[]>([]);
+  const [socket, setSocket] = useState<any>();
 
   useEffect(() => {
+    const socket = io('http://localhost:8000/', { transports: ['websocket'] });
+    setSocket(socket);
+
     socket.on('message', (message) => {
       console.log(message);
+      setMessages((prevState) => {
+        return [...prevState, message];
+      });
+
+      console.log(messages);
     });
 
     socket.on('disconnectMessage', (message) => {
       console.log(message);
+      setMessages((prevState) => {
+        return [...prevState, message];
+      });
     });
 
     return () => {
@@ -28,7 +40,7 @@ const Chat: React.FC = () => {
     <div className={s.chat}>
       <ChatSidebar />
       <div className={s.chat__box}>
-        <Messages />
+        <Messages messages={messages} />
         <SendMessageForm socket={socket} />
       </div>
     </div>

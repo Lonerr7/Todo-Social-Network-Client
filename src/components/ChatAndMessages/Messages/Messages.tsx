@@ -1,10 +1,23 @@
+import { Link } from 'react-router-dom';
 import Message from '../Message/Message';
 import s from './Messages.module.scss';
 
-const Messages: React.FC = () => {
+interface Props {
+  messages: any;
+}
+
+const Messages: React.FC<Props> = ({ messages }) => {
   return (
     <div className={s.messages}>
-      <Message />
+      {messages.map((msg: any, i: number) => (
+        <Message
+          key={i}
+          username={msg.username}
+          message={msg.message}
+          photo={msg.avatar}
+          userId={msg.id}
+        />
+      ))}
     </div>
   );
 };

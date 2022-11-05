@@ -1,6 +1,11 @@
 .message {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   &__avatar {
     width: 100px;
