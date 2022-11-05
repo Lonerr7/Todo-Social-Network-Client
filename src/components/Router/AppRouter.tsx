@@ -11,6 +11,7 @@ import SecuritySettings from '../Settings/SecuritySettings/SecuritySettings';
 import UsersPageContainer from '../../pages/UsersPage/UsersPageContainer';
 import UserPageContainer from '../../pages/UserPage/UserPageContainer';
 import MyPageContainer from '../../pages/MyPage/MyPageContainer';
+import ChatPage from '../../pages/ChatPage/ChatPage';
 
 const AppRouter: React.FC = () => {
   return (
@@ -26,8 +27,9 @@ const AppRouter: React.FC = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<MyPageContainer />} />
         <Route path="users" element={<UsersPageContainer />} />
-        <Route path="/users/:userId" element={<UserPageContainer />} />
+        <Route path="users/:userId" element={<UserPageContainer />} />
         <Route path="messages" element={<MessagesPage />} />
+        <Route path="chat" element={<ChatPage />} />
         <Route path="todos" element={<TodosPage />} />
         <Route path="settings" element={<SettingsPage />}>
           <Route index element={<GeneralSettings />} />

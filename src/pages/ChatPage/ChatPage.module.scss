@@ -1,0 +1,6 @@
+@import '../../vars';
+
+.chat {
+  @extend %main-inner;
+  height: 90vh;
+}

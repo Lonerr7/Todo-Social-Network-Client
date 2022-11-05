@@ -26,7 +26,11 @@ const UserPage: React.FC<Props> = ({
       <div className={s.page__inner}>
         <div className={s.page__left}>
           <div className={s.page__avatarBox}>
-            <Avatar avatar={user.photo} wrapperClass={s.page__avatarWrapper} />
+            <Avatar
+              avatar={user.photo}
+              wrapperClass={s.page__avatarWrapper}
+              canViewerBeOpened={true}
+            />
             <UserAvatarControls />
           </div>
         </div>

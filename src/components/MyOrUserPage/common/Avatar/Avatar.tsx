@@ -7,9 +7,15 @@ type Props = {
   avatar?: string;
   customImgClass?: string;
   wrapperClass?: string;
+  canViewerBeOpened?: boolean;
 };
 
-const Avatar: React.FC<Props> = ({ avatar, customImgClass, wrapperClass }) => {
+const Avatar: React.FC<Props> = ({
+  avatar,
+  customImgClass,
+  wrapperClass,
+  canViewerBeOpened,
+}) => {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
 
   const openImageViewer = () => setIsViewerOpen(true);
@@ -29,7 +35,7 @@ const Avatar: React.FC<Props> = ({ avatar, customImgClass, wrapperClass }) => {
   return (
     <div className={`${s.avatar} ${wrapperClass}`}>
       {imgElements}
-      {isViewerOpen && (
+      {canViewerBeOpened && isViewerOpen && (
         <ImageViewer
           src={images}
           currentIndex={0}

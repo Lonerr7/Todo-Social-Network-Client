@@ -31,7 +31,7 @@ const MyPage: React.FC<Props> = ({
       <div className={s.myPage__inner}>
         <div className={s.myPage__left}>
           <div className={s.myPage__avatarBox}>
-            <Avatar avatar={myself.photo} />
+            <Avatar avatar={myself.photo} canViewerBeOpened={true} />
             <MyAvatarControls />
           </div>
           <FriendsBlock />

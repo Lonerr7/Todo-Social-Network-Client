@@ -1,0 +1,18 @@
+@import '../../../vars';
+
+.sidebar {
+  min-width: 200px;
+  height: 100%;
+  overflow-y: auto;
+  background-color: $color9;
+  padding: $chat-padding;
+
+  &__title {
+    display: flex;
+    align-items: center;
+  }
+
+  &__titleicon {
+    margin-right: 10px;
+  }
+}
