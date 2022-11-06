@@ -31,10 +31,10 @@ const Message: React.FC<Props> = ({
         <Avatar customImgClass={s.message__avatar} avatar={photo} />
       </Link>
       <div className={s.message__box}>
-        <Link to={`/users/${userId}`}>
-          <span>{username}</span>
+        <Link className={s.message__usernameLink} to={`/users/${userId}`}>
+          <span className={s.message__username}>{username}</span>
         </Link>
-        <p>{message}</p>
+        <p className={s.message__text}>{message}</p>
       </div>
     </div>
   );
