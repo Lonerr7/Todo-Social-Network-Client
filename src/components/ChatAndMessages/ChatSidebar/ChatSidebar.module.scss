@@ -12,9 +12,34 @@
   &__title {
     display: flex;
     align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color1;
+    margin-bottom: 10px;
   }
 
   &__titleicon {
     margin-right: 10px;
+  }
+
+  &__counter {
+    margin-left: 10px;
+  }
+
+  &__listItem {
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__userLink {
+    font-size: 20px;
+    color: #000;
+    transition: color 0.1s;
+
+    &:hover {
+      color: $color10;
+    }
   }
 }
