@@ -6,6 +6,8 @@
   overflow-y: auto;
   background-color: $color9;
   padding: $chat-padding;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
 
   &__title {
     display: flex;

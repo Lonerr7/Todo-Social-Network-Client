@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Message from '../Message/Message';
 import s from './Messages.module.scss';
 
@@ -16,6 +15,7 @@ const Messages: React.FC<Props> = ({ messages }) => {
           message={msg.message}
           photo={msg.avatar}
           userId={msg.id}
+          fromBot={msg.fromBot}
         />
       ))}
     </div>

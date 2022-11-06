@@ -7,9 +7,24 @@ interface Props {
   username: string;
   message: string;
   photo: string;
+  fromBot?: boolean;
 }
 
-const Message: React.FC<Props> = ({ message, username, userId, photo }) => {
+const Message: React.FC<Props> = ({
+  message,
+  username,
+  userId,
+  photo,
+  fromBot,
+}) => {
+  if (fromBot) {
+    return (
+      <div className={s.botMessage}>
+        <p className={s.botMessage__message}>{message}</p>
+      </div>
+    );
+  }
+
   return (
     <div className={s.message}>
       <Link to={`/users/${userId}`}>
