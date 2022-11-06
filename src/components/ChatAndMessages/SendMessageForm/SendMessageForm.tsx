@@ -9,13 +9,17 @@ interface Props {
 const SendMessageForm: React.FC<Props> = ({ socket }) => {
   const [message, setMessage] = useState('');
   const me = useAppSelector((state) => state.auth.user)!;
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const changeMessageHandler = (e: React.FormEvent<HTMLTextAreaElement>) => {
+  const changeMessageHandler = (e: React.FormEvent<HTMLInputElement>) => {
     setMessage(e.currentTarget.value);
   };
 
-  const sendMessageHandler = () => {
+  const sendMessageHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (/^\s*$/.test(message)) return;
+
     const messageObj = {
       userId: me.id,
       message,
@@ -29,8 +33,8 @@ const SendMessageForm: React.FC<Props> = ({ socket }) => {
   };
 
   return (
-    <div className={s.sendMessage}>
-      <textarea
+    <form className={s.sendMessage} onSubmit={sendMessageHandler}>
+      <input
         className={s.sendMessage__input}
         name="input"
         id="input"
@@ -38,10 +42,10 @@ const SendMessageForm: React.FC<Props> = ({ socket }) => {
         onChange={changeMessageHandler}
         ref={inputRef}
       />
-      <button className={s.sendMessage__btn} onClick={sendMessageHandler}>
+      <button className={s.sendMessage__btn} type="submit">
         Send Message
       </button>
-    </div>
+    </form>
   );
 };
 
