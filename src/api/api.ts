@@ -9,7 +9,6 @@ import {
   UpdateUserPasswordInitialValues,
 } from '../types/formikTypes';
 import { UpdateMeFieldsToSendForApi } from '../types/apiTypes';
-
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
 
 const axiosInstance = axios.create({

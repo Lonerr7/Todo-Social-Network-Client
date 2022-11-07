@@ -16,7 +16,7 @@ const Chat: React.FC = () => {
     setSocket(socket);
 
     // Join Chat
-    socket.emit('joinChat', { username: me.nickname });
+    socket.emit('joinChat', { userId: me.id });
 
     // Proccess bot messages
     socket.on('botMessage', (message) => {
@@ -38,6 +38,7 @@ const Chat: React.FC = () => {
     });
 
     return () => {
+      socket.emit('preDisconnect', me.id);
       socket.disconnect();
     };
 
@@ -46,7 +47,7 @@ const Chat: React.FC = () => {
 
   return (
     <div className={s.chat}>
-      <ChatSidebar />
+      <ChatSidebar socket={socket} />
       <div className={s.chat__box}>
         <Messages messages={messages} />
         <SendMessageForm socket={socket} />
