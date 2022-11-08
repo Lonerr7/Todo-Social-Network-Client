@@ -1,41 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { io } from 'socket.io-client';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { addNewChatMessage, setSocketChannel } from '../../../redux/chatSlice';
+import { ChatMessage } from '../../../types/chatTypes';
 import ChatSidebar from '../ChatSidebar/ChatSidebar';
 import Messages from '../Messages/Messages';
 import SendMessageForm from '../SendMessageForm/SendMessageForm';
 import s from './Chat.module.scss';
 
 const Chat: React.FC = () => {
-  const [messages, setMessages] = useState<any[]>([]);
-  const [socket, setSocket] = useState<any>();
   const me = useAppSelector((state) => state.auth.user)!;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const socket = io('http://localhost:8000/', { transports: ['websocket'] });
-    setSocket(socket);
+    dispatch(setSocketChannel(socket));
 
     // Join Chat
     socket.emit('joinChat', { userId: me.id });
 
-    // Proccess bot messages
-    socket.on('botMessage', (message) => {
-      setMessages((prevState) => {
-        return [...prevState, message];
-      });
-    });
+    // Universal new message hanlder
+    const newMessageHandler = (message: ChatMessage) => {
+      dispatch(addNewChatMessage(message));
+    };
 
-    socket.on('message', (message) => {
-      setMessages((prevState) => {
-        return [...prevState, message];
-      });
-    });
-
-    socket.on('disconnectMessage', (message) => {
-      setMessages((prevState) => {
-        return [...prevState, message];
-      });
-    });
+    // Process bot and users messages
+    socket.on('botMessage', newMessageHandler);
+    socket.on('message', newMessageHandler);
 
     return () => {
       socket.emit('preDisconnect', me.id);
@@ -47,10 +38,10 @@ const Chat: React.FC = () => {
 
   return (
     <div className={s.chat}>
-      <ChatSidebar socket={socket} />
+      <ChatSidebar />
       <div className={s.chat__box}>
-        <Messages messages={messages} />
-        <SendMessageForm socket={socket} />
+        <Messages />
+        <SendMessageForm />
       </div>
     </div>
   );

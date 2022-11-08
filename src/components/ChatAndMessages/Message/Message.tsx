@@ -7,26 +7,11 @@ interface Props {
   username: string;
   message: string;
   photo: string;
-  fromBot?: boolean;
 }
 
-const Message: React.FC<Props> = ({
-  message,
-  username,
-  userId,
-  photo,
-  fromBot,
-}) => {
-  if (fromBot) {
-    return (
-      <div className={s.botMessage}>
-        <p className={s.botMessage__message}>{message}</p>
-      </div>
-    );
-  }
-
+const Message: React.FC<Props> = ({ message, username, userId, photo }) => {
   return (
-    <div className={s.message}>
+    <li className={s.message}>
       <Link to={`/users/${userId}`}>
         <Avatar customImgClass={s.message__avatar} avatar={photo} />
       </Link>
@@ -36,7 +21,7 @@ const Message: React.FC<Props> = ({
         </Link>
         <p className={s.message__text}>{message}</p>
       </div>
-    </div>
+    </li>
   );
 };
 

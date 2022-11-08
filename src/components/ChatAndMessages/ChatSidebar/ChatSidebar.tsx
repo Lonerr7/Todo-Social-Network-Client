@@ -1,37 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import s from './ChatSidebar.module.scss';
 import { FiUsers } from 'react-icons/fi';
 import ChatSidebarUser from './ChatSidebarUser';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { setChatUsers } from '../../../redux/chatSlice';
+import { ChatUser } from '../../../types/chatTypes';
 
-interface Props {
-  socket: any;
-}
-
-const ChatSidebar: React.FC<Props> = ({ socket }) => {
-  const [users, setUsers] = useState<any[]>([]);
+const ChatSidebar: React.FC = () => {
+  const { chatUsers, socketChannel } = useAppSelector((state) => state.chat);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (socket) {
+    if (socketChannel) {
       // Get joined users
-      socket.on('userJoined', (users: any) => {
-        setUsers(users);
+      socketChannel.on('userJoined', (users: ChatUser[]) => {
+        dispatch(setChatUsers(users));
       });
 
-      socket.on('userDisconnected', (users: any) => {
-        setUsers(users);
+      socketChannel.on('userDisconnected', (users: ChatUser[]) => {
+        dispatch(setChatUsers(users));
       });
     }
-  }, [socket]);
+
+    // eslint-disable-next-line
+  }, [socketChannel]);
 
   return (
     <div className={s.sidebar}>
       <h4 className={s.sidebar__title}>
         <FiUsers className={s.sidebar__titleicon} size={22} />
-        Users: <span className={s.sidebar__counter}>{users.length}</span>
+        Users: <span className={s.sidebar__counter}>{chatUsers.length}</span>
       </h4>
       <ul className={s.sidebar__userslist}>
-        {users.map((u) => (
-          <ChatSidebarUser nickname={u.nickname} id={u.id} />
+        {chatUsers.map((u) => (
+          <ChatSidebarUser key={u.id} nickname={u.nickname} id={u.id} />
         ))}
       </ul>
     </div>

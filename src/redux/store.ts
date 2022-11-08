@@ -6,6 +6,7 @@ import popupSlice from './popupSlice';
 import todoSlice from './todoSlice';
 import myselfSlice from './myselfSlice';
 import usersSlice from './usersSlice';
+import chatSlice from './chatSlice';
 
 const store = configureStore({
   reducer: {
@@ -16,7 +17,12 @@ const store = configureStore({
     forms: formsSlice,
     popup: popupSlice,
     todo: todoSlice,
+    chat: chatSlice,
   },
+  middleware: (getDefMiddleware) =>
+    getDefMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;

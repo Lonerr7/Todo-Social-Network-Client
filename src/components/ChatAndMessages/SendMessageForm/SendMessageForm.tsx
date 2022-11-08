@@ -2,12 +2,9 @@ import { useState, useRef } from 'react';
 import { useAppSelector } from '../../../hooks/hooks';
 import s from './SendMessageForm.module.scss';
 
-interface Props {
-  socket: any;
-}
-
-const SendMessageForm: React.FC<Props> = ({ socket }) => {
+const SendMessageForm: React.FC = () => {
   const [message, setMessage] = useState('');
+  const { socketChannel } = useAppSelector((state) => state.chat);
   const me = useAppSelector((state) => state.auth.user)!;
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -22,11 +19,12 @@ const SendMessageForm: React.FC<Props> = ({ socket }) => {
 
     const messageObj = {
       userId: me.id,
-      message,
+      text: message,
     };
 
-    socket.emit('chatMessage', messageObj);
+    socketChannel.emit('chatMessage', messageObj);
     setMessage('');
+    
     if (inputRef.current) {
       inputRef.current.focus();
     }
