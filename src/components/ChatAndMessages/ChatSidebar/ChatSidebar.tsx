@@ -5,9 +5,12 @@ import ChatSidebarUser from './ChatSidebarUser';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { setChatUsers } from '../../../redux/chatSlice';
 import { ChatUser } from '../../../types/chatTypes';
+import { selectMyselfFirstInChatUsers } from '../../../redux/selectors/chatSelectors';
 
 const ChatSidebar: React.FC = () => {
-  const { chatUsers, socketChannel } = useAppSelector((state) => state.chat);
+  const { socketChannel } = useAppSelector((state) => state.chat);
+  // Making myself always appear first in a list of connected users
+  const sortedChatUsers = useAppSelector(selectMyselfFirstInChatUsers);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -29,11 +32,12 @@ const ChatSidebar: React.FC = () => {
     <div className={s.sidebar}>
       <h4 className={s.sidebar__title}>
         <FiUsers className={s.sidebar__titleicon} size={22} />
-        Users: <span className={s.sidebar__counter}>{chatUsers.length}</span>
+        Users:{' '}
+        <span className={s.sidebar__counter}>{sortedChatUsers.length}</span>
       </h4>
       <ul className={s.sidebar__userslist}>
-        {chatUsers.map((u) => (
-          <ChatSidebarUser key={u.id} nickname={u.nickname} id={u.id} />
+        {sortedChatUsers.map((u) => (
+          <ChatSidebarUser key={u?.id} nickname={u.nickname} id={u.id} />
         ))}
       </ul>
     </div>
