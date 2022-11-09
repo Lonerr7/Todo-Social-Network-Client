@@ -19,7 +19,7 @@ const Messages: React.FC = () => {
               username={msg.username}
               message={msg.text}
               photo={msg.avatar}
-              userId={msg.id}
+              id={msg.id}
             />
           );
         })}

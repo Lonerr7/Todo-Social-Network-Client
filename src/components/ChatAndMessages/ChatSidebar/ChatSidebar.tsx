@@ -9,6 +9,7 @@ import { selectMyselfFirstInChatUsers } from '../../../redux/selectors/chatSelec
 
 const ChatSidebar: React.FC = () => {
   const { socketChannel } = useAppSelector((state) => state.chat);
+
   // Making myself always appear first in a list of connected users
   const sortedChatUsers = useAppSelector(selectMyselfFirstInChatUsers);
   const dispatch = useAppDispatch();

@@ -9,12 +9,16 @@ interface Props {
 
 const ChatSidebarUser: React.FC<Props> = ({ nickname, id }) => {
   const myself = useAppSelector((state) => state.auth.user);
-
   const isMe = myself?.id === id;
 
   return (
     <li className={s.sidebar__listItem}>
-      <Link className={isMe ? `${s.sidebar__userLink} ${s.sidebar__me}` : s.sidebar__userLink} to={isMe ? '/' : `/users/${id}`}>
+      <Link
+        className={
+          isMe ? `${s.sidebar__userLink} ${s.sidebar__me}` : s.sidebar__userLink
+        }
+        to={isMe ? '/' : `/users/${id}`}
+      >
         {nickname} {isMe && '(you)'}
       </Link>
     </li>
