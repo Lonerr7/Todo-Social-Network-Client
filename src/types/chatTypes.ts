@@ -1,9 +1,11 @@
 export interface ChatMessage {
+  // This is a combination of 2 types: ChatMessage and ChatBotMessage. I made so that ts wont yell at me
   text: string;
   username: string;
   avatar: string;
   id: string;
-  fromBot: boolean;
+  // fromBot: boolean;
+  // userId: string;
 }
 
 export interface ChatUser {

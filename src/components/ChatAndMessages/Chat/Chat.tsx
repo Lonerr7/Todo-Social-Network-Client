@@ -29,7 +29,6 @@ const Chat: React.FC = () => {
     socket.on('message', newMessageHandler);
 
     return () => {
-      socket.emit('preDisconnect', me.id);
       socket.disconnect();
     };
 

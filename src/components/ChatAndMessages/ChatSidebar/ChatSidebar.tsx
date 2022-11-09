@@ -29,6 +29,8 @@ const ChatSidebar: React.FC = () => {
     // eslint-disable-next-line
   }, [socketChannel]);
 
+  if (!sortedChatUsers.length) return null;
+
   return (
     <div className={s.sidebar}>
       <h4 className={s.sidebar__title}>
@@ -38,7 +40,7 @@ const ChatSidebar: React.FC = () => {
       </h4>
       <ul className={s.sidebar__userslist}>
         {sortedChatUsers.map((u) => (
-          <ChatSidebarUser key={u?.id} nickname={u.nickname} id={u.id} />
+          <ChatSidebarUser key={u?.id} nickname={u?.nickname} id={u?.id} />
         ))}
       </ul>
     </div>

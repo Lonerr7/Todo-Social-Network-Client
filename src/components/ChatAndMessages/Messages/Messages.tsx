@@ -10,9 +10,16 @@ const Messages: React.FC = () => {
     <div className={s.messages}>
       <ul className={s.messages__list}>
         {messages.map((msg) => {
-          if (msg.fromBot) {
-            return <BotMessage key={msg.id} message={msg.text} />;
-          }
+          // if (msg.fromBot) {
+          //   return (
+          //     <BotMessage
+          //       key={msg.id}
+          //       message={msg.text}
+          //       userId={msg.userId}
+          //       username={msg.username}
+          //     />
+          //   );
+          // }
           return (
             <Message
               key={msg.id}

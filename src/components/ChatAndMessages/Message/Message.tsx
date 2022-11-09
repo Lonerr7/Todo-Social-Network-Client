@@ -24,7 +24,9 @@ const Message: React.FC<Props> = ({ message, username, id, photo }) => {
           className={s.message__usernameLink}
           to={isMe ? '/' : `/users/${id}`}
         >
-          <span className={s.message__username}>{username} {isMe && '(you)'}</span>
+          <span className={s.message__username}>
+            {username} {isMe && '(you)'}
+          </span>
         </Link>
         <p className={s.message__text}>{message}</p>
       </div>
