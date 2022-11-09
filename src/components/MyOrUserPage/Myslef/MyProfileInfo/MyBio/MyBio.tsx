@@ -10,6 +10,7 @@ type Props = {
 const MyBio: React.FC<Props> = ({ bio }) => {
   const [editMode, setEditMode] = useState(false);
 
+
   const toggleEditMode = () => {
     setEditMode(!editMode);
   };

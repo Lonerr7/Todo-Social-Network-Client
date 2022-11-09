@@ -5,15 +5,31 @@
   padding: $chat-padding;
   background-color: $color6;
   border-bottom-right-radius: 7px;
+  position: relative;
 
   &__input {
     width: 100%;
     height: 60px;
     border-radius: 7px;
-    padding: 10px;
+    padding: 10px 44px 10px 10px;
     font-size: 16px;
     resize: none;
     margin-bottom: 10px;
+  }
+
+  &__pickerBtn {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+  }
+
+  &__pickerIcon {
+    transition: color 0.2s;
+    color: $color10;
+
+    &:hover {
+      color: $color9;
+    }
   }
 
   &__btn {
@@ -26,5 +42,11 @@
     &:hover {
       background-color: $color1;
     }
+  }
+
+  &__emojiPicker {
+    position: absolute;
+    top: -404px;
+    right: 24px;
   }
 }

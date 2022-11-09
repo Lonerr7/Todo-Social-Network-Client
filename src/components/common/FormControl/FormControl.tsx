@@ -1,3 +1,4 @@
+import React from 'react';
 import { ErrorMessage, Field, FieldProps } from 'formik';
 import TextError from '../TextError/TextError';
 import s from './FormControl.module.scss';
@@ -12,6 +13,7 @@ type FormControlProps = {
   labelClass?: string;
   errorClass?: string;
   component?: string | React.ComponentType<FieldProps>;
+  focus?: boolean;
 };
 
 const FormControl: React.FC<FormControlProps> = ({
@@ -24,6 +26,7 @@ const FormControl: React.FC<FormControlProps> = ({
   labelClass,
   component,
   errorClass,
+  focus,
 }) => {
   return (
     <div className={customClass}>

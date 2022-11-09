@@ -17,9 +17,9 @@ const Messages: React.FC = () => {
   return (
     <div className={s.messages} ref={messagesRef}>
       <ul className={s.messages__list}>
-        {messages.map((msg) => (
+        {messages.map((msg, i) => (
           <Message
-            key={msg.id}
+            key={i}
             username={msg.username}
             message={msg.text}
             photo={msg.avatar}

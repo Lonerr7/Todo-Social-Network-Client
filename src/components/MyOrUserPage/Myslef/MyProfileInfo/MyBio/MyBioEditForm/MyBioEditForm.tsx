@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import { useAppDispatch, useAppSelector } from '../../../../../../hooks/hooks';
@@ -18,6 +19,7 @@ const validationSchema = yup.object({
 });
 
 const MyBioEditForm: React.FC<Props> = ({ bio, toggleEditMode }) => {
+  const bioInputRef = useRef<HTMLInputElement>(null);
   const { isMyBioUpdating } = useAppSelector((state) => state.myslef);
   const dispatch = useAppDispatch();
 
