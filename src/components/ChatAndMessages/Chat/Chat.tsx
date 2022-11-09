@@ -5,7 +5,7 @@ import { addNewChatMessage, setSocketChannel } from '../../../redux/chatSlice';
 import { ChatMessage } from '../../../types/chatTypes';
 import ChatSidebar from '../ChatSidebar/ChatSidebar';
 import Messages from '../Messages/Messages';
-import SendMessageForm from '../SendMessageForm/SendMessageForm';
+import SendMessageFormContainer from '../SendMessageForm/SendMessageFormContainer';
 import s from './Chat.module.scss';
 
 const Chat: React.FC = () => {
@@ -40,7 +40,7 @@ const Chat: React.FC = () => {
       <ChatSidebar />
       <div className={s.chat__box}>
         <Messages />
-        <SendMessageForm />
+        <SendMessageFormContainer />
       </div>
     </div>
   );
