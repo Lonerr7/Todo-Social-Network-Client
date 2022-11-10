@@ -14,6 +14,11 @@ export const selectMyselfFirstInChatUsers = createSelector(
       (u) => u.id !== meChatUser?.id
     );
 
+    // If this is not present we get undefined and then an error with react keys
+    if (!meChatUser) {
+      return [];
+    }
+
     let result = [meChatUser, ...filteredChatUsers];
 
     if (chatUserSearchText) {

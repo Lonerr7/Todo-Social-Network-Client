@@ -48,7 +48,15 @@ const ChatSidebar: React.FC = () => {
       <Search
         actionCreator={setChatUserSearchText}
         text={chatUserSearchText}
-        placeholder="Search for a user"
+        placeholder="Search for a user..."
+        styling={{
+          customBoxClass: s.sidebar__searchBox,
+          customInputClass: s.sidebar__searchInput,
+          customSearchIconClass: s.sidebar__searchIcon,
+          searchIconSize: 20,
+          customClearBtnClass: s.sidebar__clearBtn,
+          clearIconSize: 12,
+        }}
       />
       <ul className={s.sidebar__userslist}>
         {sortedChatUsers.map((u) => (

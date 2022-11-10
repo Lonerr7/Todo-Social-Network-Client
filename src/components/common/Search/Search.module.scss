@@ -27,4 +27,12 @@
     top: 12px;
     color: $color10;
   }
+
+  &__clearIcon {
+    transition: all 0.1s;
+
+    &:hover {
+      color: $color12;
+    }
+  }
 }

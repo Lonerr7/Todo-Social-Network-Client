@@ -1,7 +1,7 @@
 @import '../../../vars';
 
 .sidebar {
-  min-width: 200px;
+  min-width: 250px;
   height: 100%;
   overflow-y: auto;
   background-color: $color9;
@@ -14,7 +14,7 @@
     align-items: center;
     padding-bottom: 10px;
     border-bottom: 1px solid $color1;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
   }
 
   &__titleicon {
@@ -23,6 +23,24 @@
 
   &__counter {
     margin-left: 10px;
+  }
+
+  &__searchBox {
+    margin-bottom: 20px;
+  }
+
+  &__searchInput {
+    padding: 10px 30px 10px 34px;
+    margin-bottom: 0;
+    background-color: $color6;
+  }
+
+  &__clearBtn {
+    top: 13px;
+  }
+
+  &__searchIcon {
+    top: 10px;
   }
 
   &__listItem {
