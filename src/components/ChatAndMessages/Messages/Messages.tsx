@@ -19,11 +19,11 @@ const Messages: React.FC = () => {
       <ul className={s.messages__list}>
         {messages.map((msg, i) => (
           <Message
-            key={i}
-            username={msg.username}
+            key={msg._id}
+            username={msg.nickname}
             message={msg.text}
             photo={msg.avatar}
-            id={msg.id}
+            userId={msg.userId}
           />
         ))}
       </ul>
