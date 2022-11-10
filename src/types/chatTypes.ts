@@ -20,4 +20,5 @@ export interface ChatState {
   socketChannel: any; //!
   messages: ChatMessage[];
   chatUsers: ChatUser[];
+  chatUserSearchText: string;
 }

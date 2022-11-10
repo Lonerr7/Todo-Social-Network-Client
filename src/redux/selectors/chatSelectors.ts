@@ -3,19 +3,25 @@ import { RootState } from '../store';
 
 const selectMe = (state: RootState) => state.auth.user;
 export const selectAllChatUsers = (state: RootState) => state.chat.chatUsers;
-export const selectMyselfFirstInChatUsers = createSelector(
-  [selectMe, selectAllChatUsers],
-  (myself, allChatUsers) => {
-    // Guard clause to prevent app from crashing if we don't have chat users yet
-    if (allChatUsers.length === 0) {
-      return [];
-    }
+const selectChatUserSearchText = (state: RootState) =>
+  state.chat.chatUserSearchText;
 
-    const meChatUser = allChatUsers.find((u) => u.id === myself?.id)!;
+export const selectMyselfFirstInChatUsers = createSelector(
+  [selectMe, selectAllChatUsers, selectChatUserSearchText],
+  (myself, allChatUsers, chatUserSearchText) => {
+    const meChatUser = allChatUsers.find((u) => u.id === myself?.id);
     const filteredChatUsers = allChatUsers.filter(
       (u) => u.id !== meChatUser?.id
     );
 
-    return [meChatUser, ...filteredChatUsers];
+    let result = [meChatUser, ...filteredChatUsers];
+
+    if (chatUserSearchText) {
+      return result.filter((u) =>
+        u?.nickname.toLowerCase().includes(chatUserSearchText.toLowerCase())
+      );
+    }
+
+    return result;
   }
 );

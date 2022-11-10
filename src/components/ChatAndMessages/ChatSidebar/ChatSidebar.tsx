@@ -1,18 +1,23 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import s from './ChatSidebar.module.scss';
 import { FiUsers } from 'react-icons/fi';
 import ChatSidebarUser from './ChatSidebarUser';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { setChatUsers } from '../../../redux/chatSlice';
+import { setChatUsers, setChatUserSearchText } from '../../../redux/chatSlice';
 import { ChatUser } from '../../../types/chatTypes';
 import { selectMyselfFirstInChatUsers } from '../../../redux/selectors/chatSelectors';
+import Search from '../../common/Search/Search';
 
 const ChatSidebar: React.FC = () => {
-  const { socketChannel } = useAppSelector((state) => state.chat);
+  const { socketChannel, chatUserSearchText } = useAppSelector(
+    (state) => state.chat
+  );
 
   // Making myself always appear first in a list of connected users
   const sortedChatUsers = useAppSelector(selectMyselfFirstInChatUsers);
   const dispatch = useAppDispatch();
+
+  console.log(sortedChatUsers);
 
   useEffect(() => {
     if (socketChannel) {
@@ -26,10 +31,12 @@ const ChatSidebar: React.FC = () => {
       });
     }
 
+    return () => {
+      dispatch(setChatUsers([]));
+    };
+
     // eslint-disable-next-line
   }, [socketChannel]);
-
-  if (!sortedChatUsers.length) return null;
 
   return (
     <div className={s.sidebar}>
@@ -38,6 +45,11 @@ const ChatSidebar: React.FC = () => {
         Users:{' '}
         <span className={s.sidebar__counter}>{sortedChatUsers.length}</span>
       </h4>
+      <Search
+        actionCreator={setChatUserSearchText}
+        text={chatUserSearchText}
+        placeholder="Search for a user"
+      />
       <ul className={s.sidebar__userslist}>
         {sortedChatUsers.map((u) => (
           <ChatSidebarUser key={u?.id} nickname={u?.nickname} id={u?.id} />

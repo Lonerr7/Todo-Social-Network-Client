@@ -5,6 +5,7 @@ const initialState: ChatState = {
   socketChannel: null,
   messages: [],
   chatUsers: [],
+  chatUserSearchText: '',
 };
 
 const chatSlice = createSlice({
@@ -23,6 +24,9 @@ const chatSlice = createSlice({
     setChatMessages: (state, action: PayloadAction<ChatMessage[]>) => {
       state.messages = action.payload;
     },
+    setChatUserSearchText: (state, action: PayloadAction<string>) => {
+      state.chatUserSearchText = action.payload;
+    },
   },
 });
 
@@ -32,4 +36,5 @@ export const {
   addNewChatMessage,
   setChatUsers,
   setChatMessages,
+  setChatUserSearchText,
 } = chatSlice.actions;

@@ -20,6 +20,7 @@ const Search: React.FC<Props> = ({ actionCreator, text, placeholder }) => {
     if (e.currentTarget.value.match(/^\s+$/)) {
       return;
     }
+
     dispatch(actionCreator(e.currentTarget.value));
   };
 

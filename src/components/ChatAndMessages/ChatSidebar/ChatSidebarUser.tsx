@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../hooks/hooks';
 
 interface Props {
-  nickname: string;
-  id: string;
+  nickname: string | undefined;
+  id: string | undefined;
 }
 
 const ChatSidebarUser: React.FC<Props> = ({ nickname, id }) => {
   const myself = useAppSelector((state) => state.auth.user);
   const isMe = myself?.id === id;
+
+  if (!nickname || !id) {
+    return null;
+  }
 
   return (
     <li className={s.sidebar__listItem}>
