@@ -40,6 +40,7 @@ const FormControl: React.FC<FormControlProps> = ({
         type={type}
         placeholder={placeholder}
         component={component}
+        autoFocus={focus}
       />
       <ErrorMessage name={field}>
         {(err) => (

@@ -28,6 +28,7 @@ const SendMessageForm: React.FC<Props> = (props) => {
         onChange={props.changeMessageHandler}
         ref={props.inputRef}
         onKeyDown={props.textareaSendMessageHandler}
+        autoFocus
       ></textarea>
       <button
         className={s.sendMessage__pickerBtn}
