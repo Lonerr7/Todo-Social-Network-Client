@@ -14,15 +14,22 @@ const chatSlice = createSlice({
     setSocketChannel: (state, action: PayloadAction<any>) => {
       state.socketChannel = action.payload;
     },
+    setChatUsers: (state, action: PayloadAction<ChatUser[]>) => {
+      state.chatUsers = action.payload;
+    },
     addNewChatMessage: (state, action: PayloadAction<ChatMessage>) => {
       state.messages = [...state.messages, action.payload];
     },
-    setChatUsers: (state, action: PayloadAction<ChatUser[]>) => {
-      state.chatUsers = action.payload;
+    setChatMessages: (state, action: PayloadAction<ChatMessage[]>) => {
+      state.messages = action.payload;
     },
   },
 });
 
 export default chatSlice.reducer;
-export const { setSocketChannel, addNewChatMessage, setChatUsers } =
-  chatSlice.actions;
+export const {
+  setSocketChannel,
+  addNewChatMessage,
+  setChatUsers,
+  setChatMessages,
+} = chatSlice.actions;

@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { addNewChatMessage, setSocketChannel } from '../../../redux/chatSlice';
+import {
+  addNewChatMessage,
+  setChatMessages,
+  setSocketChannel,
+} from '../../../redux/chatSlice';
 import { ChatMessage } from '../../../types/chatTypes';
 import ChatSidebar from '../ChatSidebar/ChatSidebar';
 import Messages from '../Messages/Messages';
@@ -19,13 +23,17 @@ const Chat: React.FC = () => {
     // Join Chat
     socket.emit('joinChat', { userId: me.id });
 
+    // Getting chat messages from DB
+    socket.on('getChatMessages', (messages: ChatMessage[]) => {
+      dispatch(setChatMessages(messages));
+    });
+
     // Universal new message hanlder
     const newMessageHandler = (message: ChatMessage) => {
       dispatch(addNewChatMessage(message));
     };
 
     // Process bot and users messages
-    socket.on('botMessage', newMessageHandler);
     socket.on('message', newMessageHandler);
 
     return () => {
