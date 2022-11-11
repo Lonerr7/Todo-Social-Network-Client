@@ -4,7 +4,7 @@ import { UsersList } from '../../types/reduxTypes/usersSliceTypes';
 import s from './UsersPage.module.scss';
 
 type Props = {
-  users: UsersList | null;
+  users: UsersList | null | undefined;
   usersSearchText: string;
   searchActionCreator: (payload: string) => {
     payload: string;

@@ -7,12 +7,17 @@ import { IoSettingsSharp } from 'react-icons/io5';
 import { BsFillChatLeftDotsFill } from 'react-icons/bs';
 import MenuItem from '../../common/MenuItem/MenuItem';
 import { useAppSelector } from '../../../hooks/hooks';
+import { selectUsersWithoutMe } from '../../../redux/selectors/usersSelectors';
 
 const Menu: React.FC = () => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);
   const uncompletedTodosCount = useAppSelector(
     (state) => state.todo.todos
   ).filter((t) => !t.isCompleted).length;
+  const chatMessagesCount = useAppSelector(
+    (state) => state.chat.messages
+  ).length;
+  const usersCount = useAppSelector(selectUsersWithoutMe)?.length;
 
   return (
     <nav className={s.menu}>
@@ -33,7 +38,7 @@ const Menu: React.FC = () => {
             neededNum={2}
             icon={<FaUserFriends className={s.menu__icon} size={24} />}
             urlPath="/users"
-            itemsCount={25}
+            itemsCount={usersCount}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -53,7 +58,7 @@ const Menu: React.FC = () => {
             neededNum={4}
             icon={<BsFillChatLeftDotsFill className={s.menu__icon} size={24} />}
             urlPath="/chat"
-            itemsCount={123}
+            itemsCount={chatMessagesCount}
           />
         </li>
         <li className={s.menu__listItem}>
