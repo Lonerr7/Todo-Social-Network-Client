@@ -9,15 +9,14 @@ import { selectMyselfFirstInChatUsers } from '../../../redux/selectors/chatSelec
 import Search from '../../common/Search/Search';
 
 const ChatSidebar: React.FC = () => {
-  const { socketChannel, chatUserSearchText } = useAppSelector(
-    (state) => state.chat
+  const socketChannel = useAppSelector((state) => state.chat.socketChannel);
+  const chatUserSearchText = useAppSelector(
+    (state) => state.chat.chatUserSearchText
   );
 
   // Making myself always appear first in a list of connected users
   const sortedChatUsers = useAppSelector(selectMyselfFirstInChatUsers);
   const dispatch = useAppDispatch();
-
-  console.log(sortedChatUsers);
 
   useEffect(() => {
     if (socketChannel) {
@@ -67,4 +66,4 @@ const ChatSidebar: React.FC = () => {
   );
 };
 
-export default ChatSidebar;
+export default React.memo(ChatSidebar);

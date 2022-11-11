@@ -27,7 +27,7 @@ const MyPage: React.FC<Props> = ({
   toggleAdditionalInfoVisibility,
 }) => {
   return (
-    <div className={s.myPage}>  
+    <div className={s.myPage}>
       <div className={s.myPage__inner}>
         <div className={s.myPage__left}>
           <div className={s.myPage__avatarBox}>

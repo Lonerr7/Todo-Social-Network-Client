@@ -1,10 +1,10 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useAppSelector } from '../../../hooks/hooks';
 import Message from '../Message/Message';
 import s from './Messages.module.scss';
 
 const Messages: React.FC = () => {
-  const { messages } = useAppSelector((state) => state.chat);
+  const messages = useAppSelector((state) => state.chat.messages);
   const messagesRef = useRef<HTMLDivElement>(null);
 
   // Auto scroll bottom when a new message appears
@@ -17,7 +17,7 @@ const Messages: React.FC = () => {
   return (
     <div className={s.messages} ref={messagesRef}>
       <ul className={s.messages__list}>
-        {messages.map((msg, i) => (
+        {messages.map((msg) => (
           <Message
             key={msg._id}
             username={msg.nickname}
@@ -31,4 +31,4 @@ const Messages: React.FC = () => {
   );
 };
 
-export default Messages;
+export default React.memo(Messages);

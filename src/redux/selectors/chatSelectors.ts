@@ -30,3 +30,16 @@ export const selectMyselfFirstInChatUsers = createSelector(
     return result;
   }
 );
+
+export const selectChatUserBySearch = createSelector(
+  [selectAllChatUsers, selectChatUserSearchText],
+  (allUsers, userSearchText) => {
+    if (!userSearchText) {
+      return allUsers;
+    }
+
+    return allUsers.filter((u) =>
+      u?.nickname.toLowerCase().includes(userSearchText.toLowerCase())
+    );
+  }
+);
