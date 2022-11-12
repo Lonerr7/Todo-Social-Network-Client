@@ -9,6 +9,7 @@ import {
   ContactInfoFieldsToSend,
   GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
+  OnlineStatusFieldToSend,
   PersonalInfoFieldsToSend,
 } from './reduxTypes/myselfSliceTypes';
 
@@ -24,4 +25,5 @@ export type UpdateMeFieldsToSendForApi =
   | MainInfoFieldsToSend
   | ContactInfoFieldsToSend
   | BeliefsFieldsToSend
-  | PersonalInfoFieldsToSend;
+  | PersonalInfoFieldsToSend
+  | OnlineStatusFieldToSend;

@@ -26,6 +26,8 @@ const MyPage: React.FC<Props> = ({
   todos,
   toggleAdditionalInfoVisibility,
 }) => {
+  console.log(`rerender my page`);
+
   return (
     <div className={s.myPage}>
       <div className={s.myPage__inner}>
@@ -43,6 +45,7 @@ const MyPage: React.FC<Props> = ({
               lName={myself.lastName}
               nickname={myself.nickname}
               BioComponent={<MyBio bio={myself.bio} />}
+              isOnline={myself.onlineStatus}
             />
             <UserGeneralInfo user={myself} />
             <ShowInfoBtn

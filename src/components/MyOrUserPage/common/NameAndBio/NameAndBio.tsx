@@ -1,3 +1,5 @@
+import { OnlineStatusEnum } from '../../../../types/reduxTypes/authSliceTypes';
+import OnlineStatus from '../../../common/OnlineStatus/OnlineStatus';
 import s from './NameAndBio.module.scss';
 
 type Props = {
@@ -5,6 +7,7 @@ type Props = {
   lName: string;
   nickname: string;
   BioComponent: React.ReactNode;
+  isOnline: OnlineStatusEnum;
 };
 
 const NameAndBio: React.FC<Props> = ({
@@ -12,6 +15,7 @@ const NameAndBio: React.FC<Props> = ({
   lName,
   nickname,
   BioComponent,
+  isOnline,
 }) => {
   return (
     <div className={s.nameAndBio}>
@@ -19,7 +23,7 @@ const NameAndBio: React.FC<Props> = ({
         <h1 className={s.nameAndBio__name}>
           {fName} {lName} ({nickname})
         </h1>
-        <div className={s.nameAndBio__online}>Online</div>
+        <OnlineStatus customClass={s.nameAndBio__online} isOnline={isOnline} />
       </div>
       <div className={s.nameAndBio__bioBox}>{BioComponent}</div>
     </div>

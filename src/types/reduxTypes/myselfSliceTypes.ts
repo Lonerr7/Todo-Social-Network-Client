@@ -1,3 +1,5 @@
+import { OnlineStatusEnum } from './authSliceTypes';
+
 export type MyselfState = {
   isMyRegisterInfoFetching: boolean;
   isMyGeneralInfoFetching: boolean;
@@ -81,4 +83,8 @@ export type PersonalInfoFieldsToSend = {
     favouriteBooks: string;
     aboutMe: string;
   };
+};
+
+export type OnlineStatusFieldToSend = {
+  onlineStatus: OnlineStatusEnum;
 };

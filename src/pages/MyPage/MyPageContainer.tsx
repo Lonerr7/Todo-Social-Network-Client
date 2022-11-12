@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { updateMyOnlineStatus } from '../../redux/myselfSlice';
+import { OnlineStatusEnum } from '../../types/reduxTypes/authSliceTypes';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import MyPage from './MyPage';
 
 const MyPageContainer: React.FC = () => {
   const myself = useAppSelector((state) => state.auth.user); //! Todos are not synced
   const todos = useAppSelector((state) => state.todo.todos);
+  const dispatch = useAppDispatch();
 
   const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
 
@@ -14,6 +17,16 @@ const MyPageContainer: React.FC = () => {
     isAdditionalInfoVisible,
     setIsAdditionalInfoVisible
   );
+
+  useEffect(() => {
+    dispatch(
+      updateMyOnlineStatus({
+        onlineStatus: OnlineStatusEnum.ONLINE,
+      })
+    );
+
+    // eslint-disable-next-line
+  }, []);
 
   if (!myself) return <></>;
 

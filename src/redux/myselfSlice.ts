@@ -19,6 +19,7 @@ import {
   GeneralInfoFieldsToSend,
   MainInfoFieldsToSend,
   MyselfState,
+  OnlineStatusFieldToSend,
   PersonalInfoFieldsToSend,
 } from '../types/reduxTypes/myselfSliceTypes';
 import { updateInfoWithSuccessMsg } from '../utils/myselfHelpers';
@@ -198,6 +199,19 @@ export const changeMyAvatar = createAsyncThunk(
       console.log(response);
 
       return response.data.data.photo;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateMyOnlineStatus = createAsyncThunk(
+  'myself/updateMyOnlineStatus',
+  async (newStatus: OnlineStatusFieldToSend, { rejectWithValue }) => {
+    try {
+      const response = await myselfAPI.updateMe(newStatus);
+
+      return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }

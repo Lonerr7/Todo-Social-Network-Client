@@ -39,8 +39,9 @@ const UserPage: React.FC<Props> = ({
             <NameAndBio
               fName={user.firstName}
               lName={user.lastName}
-              nickname={user!.nickname}
+              nickname={user.nickname}
               BioComponent={<UserBio bio={user.bio} />}
+              isOnline={user.onlineStatus}
             />
             <UserMainInfo user={user} />
             <ShowInfoBtn

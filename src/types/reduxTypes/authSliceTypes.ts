@@ -41,7 +41,16 @@ export type User = {
   };
   bio: string;
   todos: Array<Todo>;
+  onlineStatus: OnlineStatusEnum;
 };
+
+export enum OnlineStatusEnum {
+  ONLINE = 'Online',
+  OFFLINE = 'Offline',
+  DONT_BOTHER = "Don't bother",
+  AWAY = 'Away',
+  SLEEPING = 'Sleeping',
+}
 
 export type AuthState = {
   user: User | null;
