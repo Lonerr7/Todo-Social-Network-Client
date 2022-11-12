@@ -14,7 +14,6 @@ const AppContainer: React.FC = () => {
 
   const handleTabClose = (e: BeforeUnloadEvent) => {
     e.preventDefault();
-    debugger;
 
     dispatch(
       updateMyOnlineStatus({

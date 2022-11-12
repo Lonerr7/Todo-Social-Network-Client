@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
-import { activeLsNumbers } from '../types/appTypes';
-import { AuthState, User } from '../types/reduxTypes/authSliceTypes';
+import {
+  AuthState,
+  OnlineStatusEnum,
+  User,
+} from '../types/reduxTypes/authSliceTypes';
 import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
@@ -71,10 +74,15 @@ export const logUserIn = createAsyncThunk(
 export const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { dispatch }) => {
+    // updating online status to offline
+    await dispatch(
+      updateMyOnlineStatus({
+        onlineStatus: OnlineStatusEnum.OFFLINE,
+      })
+    );
+
+    // deleting JWT from LS
     localStorage.removeItem('token');
-    // removing active menu numbers from ls
-    localStorage.removeItem(activeLsNumbers.MENU_NUM);
-    localStorage.removeItem(activeLsNumbers.SETTINGS_NUM);
 
     await dispatch(getMe());
   }
@@ -191,7 +199,10 @@ const authSlice = createSlice({
       state.user = action.payload;
     },
 
-    [updateMyOnlineStatus.fulfilled.type]: (state, action: PayloadAction<User>) => {
+    [updateMyOnlineStatus.fulfilled.type]: (
+      state,
+      action: PayloadAction<User>
+    ) => {
       state.user = action.payload;
     },
 
