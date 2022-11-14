@@ -24,6 +24,7 @@ const Messages: React.FC = () => {
             message={msg.text}
             photo={msg.avatar}
             userId={msg.userId}
+            messageId={msg._id}
           />
         ))}
       </ul>

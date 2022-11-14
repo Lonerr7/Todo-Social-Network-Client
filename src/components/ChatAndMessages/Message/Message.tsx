@@ -9,11 +9,23 @@ interface Props {
   username: string;
   message: string;
   photo: string;
+  messageId: string;
 }
 
-const Message: React.FC<Props> = ({ message, username, userId, photo }) => {
+const Message: React.FC<Props> = ({
+  message,
+  username,
+  userId,
+  photo,
+  messageId,
+}) => {
   const myself = useAppSelector((state) => state.auth.user);
   const isMe = myself?.id === userId;
+  const socketChannel = useAppSelector((state) => state.chat.socketChannel);
+
+  const messageDeleteHandler = () => {
+    socketChannel.emit('deleteMessage', { userId: myself?.id, messageId });
+  };
 
   return (
     <li className={s.message}>
@@ -31,9 +43,14 @@ const Message: React.FC<Props> = ({ message, username, userId, photo }) => {
                 {username} {isMe && '(you)'}
               </span>
             </Link>
-            <button className={s.message__deleteBtn}>
-              <HiOutlineTrash className={s.message__deleteIcon} size={18} />
-            </button>
+            {isMe && (
+              <button
+                className={s.message__deleteBtn}
+                onClick={messageDeleteHandler}
+              >
+                <HiOutlineTrash className={s.message__deleteIcon} size={18} />
+              </button>
+            )}
           </div>
           <p className={s.message__text}>{message}</p>
         </div>

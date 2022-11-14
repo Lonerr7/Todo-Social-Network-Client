@@ -16,6 +16,10 @@ const Chat: React.FC = () => {
   const me = useAppSelector((state) => state.auth.user)!;
   const dispatch = useAppDispatch();
 
+  const setChatMessagesHandler = (messages: ChatMessage[]) => {
+    dispatch(setChatMessages(messages));
+  };
+
   useEffect(() => {
     const socket = io('http://localhost:8000/', { transports: ['websocket'] });
     dispatch(setSocketChannel(socket));
@@ -24,9 +28,7 @@ const Chat: React.FC = () => {
     socket.emit('joinChat', { userId: me.id });
 
     // Getting chat messages from DB
-    socket.on('getChatMessages', (messages: ChatMessage[]) => {
-      dispatch(setChatMessages(messages));
-    });
+    socket.on('getChatMessages', setChatMessagesHandler);
 
     // Universal new message hanlder
     const newMessageHandler = (message: ChatMessage) => {
@@ -35,6 +37,9 @@ const Chat: React.FC = () => {
 
     // Process bot and users messages
     socket.on('message', newMessageHandler);
+
+    // Process user's message deletion
+    socket.on('messageDeleted', setChatMessagesHandler);
 
     return () => {
       socket.disconnect();
