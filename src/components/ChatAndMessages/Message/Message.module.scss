@@ -1,9 +1,19 @@
 @import '../../../vars';
 
 .message {
-  display: flex;
-  align-items: flex-end;
   margin-bottom: 10px;
+  width: fit-content;
+
+  &__inner {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &:hover {
+    .message__deleteBtn {
+      opacity: 1;
+    }
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -35,6 +45,11 @@
     }
   }
 
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
   &__usernameLink {
     display: inline-block;
     margin-bottom: 5px;
@@ -43,8 +58,22 @@
   &__username {
     color: $color1;
     font-weight: 500;
-
+    margin-right: 5px;
     font-size: 20px;
+  }
+
+  &__deleteBtn {
+    margin-top: 3px;
+    opacity: 0;
+    transition: all 0.1s;
+  }
+
+  &__deleteIcon {
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color12;
+    }
   }
 
   &__text {

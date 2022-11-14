@@ -39,7 +39,7 @@ const UserPageContainer = () => {
   }
 
   if (!user || errorMsg) {
-    return <p>{errorMsg}</p>;
+    return <p>Error: {errorMsg}</p>;
   }
 
   return (
