@@ -83,15 +83,11 @@ export const updateMyRegisterInfo = createAsyncThunk(
 
 export const updateMyGeneralInfo = createAsyncThunk(
   'myself/updateMyGeneralInfo',
-  async (data: GeneralInfoInitialValues, { rejectWithValue, dispatch }) => {
+  async (data: GeneralInfoFieldsToSend, { rejectWithValue, dispatch }) => {
     try {
-      const fieldsToSend: GeneralInfoFieldsToSend = {
-        generalInfo: { ...data },
-      };
-
       const response = await updateInfoWithSuccessMsg(
         myselfAPI,
-        fieldsToSend,
+        data,
         'generalInfo',
         dispatch
       );

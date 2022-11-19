@@ -1,4 +1,4 @@
-import { OnlineStatusEnum } from './authSliceTypes';
+import { OnlineStatusEnum, RelationshipEnum } from './authSliceTypes';
 
 export type MyselfState = {
   isMyRegisterInfoFetching: boolean;
@@ -30,7 +30,7 @@ export type GeneralInfoFieldsToSend = {
     country: string;
     currentCity: string;
     jobPlace: string;
-    // relationship: string;
+    relationship: RelationshipEnum;
     website: string;
   };
 };

@@ -11,6 +11,7 @@ import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
 import FormSelectControl from '../../../common/FormSelectControl/FormSelectControl';
 import { RelationshipEnum } from '../../../../types/reduxTypes/authSliceTypes';
 import { useState } from 'react';
+import { GeneralInfoFieldsToSend } from '../../../../types/reduxTypes/myselfSliceTypes';
 
 const validationSchema = yup.object({
   cityOfBirth: yup.string().max(20, 'City name is too long'),
@@ -51,7 +52,18 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
   };
 
   const onSubmit = (values: GeneralInfoInitialValues) => {
-    dispatch(updateMyGeneralInfo(values));
+    const fieldsToSend: GeneralInfoFieldsToSend = {
+      generalInfo: {
+        ...values,
+        relationship: selectValue,
+      },
+    };
+
+    dispatch(updateMyGeneralInfo(fieldsToSend));
+  };
+
+  const onSelectChange = (newValue: any) => {
+    setSelectValue(newValue.value);
   };
 
   return (
@@ -103,7 +115,11 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
             currentUser.generalInfo?.relationship ||
             RelationshipEnum.NOT_SELECTED
           }
+          onChange={onSelectChange}
         />
+        <button onClick={() => console.log(selectValue)} type="button">
+          Log selected value
+        </button>
         <FormControl
           customClass={s.form__control}
           field="website"
