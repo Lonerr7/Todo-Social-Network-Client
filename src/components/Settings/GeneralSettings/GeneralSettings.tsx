@@ -7,9 +7,9 @@ import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import UpdateMyMainInfoForm from './UpdateMyMainInfoForm/UpdateMyMainInfoForm';
 import UpdateMyGeneralInfoFormContainer from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoFormContainer';
 import UpdateMyContactInfoForm from './UpdateMyContactInfoForm/UpdateMyContactInfoForm';
-import UpdateMyBeliefsInfoForm from './UpdateMyBeliefsInfoForm/UpdateMyBeliefsInfoForm';
 import UpdateMyPersonalInfoForm from './UpdateMyPersonalInfoForm/UpdateMyPersonalInfoForm';
 import Accordion from '../../common/Accordion/Accordion';
+import UpdateMyBeliefsInfoFormContainer from './UpdateMyBeliefsInfoForm/UpdateMyBeliefsInfoFormContainer';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +38,7 @@ const GeneralSettings: React.FC = () => {
           <UpdateMyContactInfoForm />
         </Accordion>
         <Accordion title="My beliefs">
-          <UpdateMyBeliefsInfoForm />
+          <UpdateMyBeliefsInfoFormContainer />
         </Accordion>
         <Accordion title="My personal information">
           <UpdateMyPersonalInfoForm />

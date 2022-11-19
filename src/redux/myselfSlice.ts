@@ -3,7 +3,6 @@ import { myselfAPI } from '../api/api';
 import { DeleteMePasswords } from '../types/axiosTypes';
 import {
   AdditionalInfoInitialValues,
-  BeliefsInfoInitialValues,
   ContactInfoInitialValues,
   MainInfoInitialValues,
   PersonalInfoInitialValues,
