@@ -30,7 +30,7 @@ export type GeneralInfoFieldsToSend = {
     country: string;
     currentCity: string;
     jobPlace: string;
-    relationship: string;
+    // relationship: string;
     website: string;
   };
 };

@@ -13,7 +13,7 @@ export type User = {
     country: string;
     currentCity: string;
     jobPlace: string;
-    relationship: string; //! needs change in order with backend (select?)
+    relationship: RelationshipEnum; //! needs change in order with backend (select?)
     website: string; //! needs a fix to have a website URL template
   };
   mainInfo: {
@@ -43,6 +43,14 @@ export type User = {
   todos: Array<Todo>;
   onlineStatus: OnlineStatusEnum;
 };
+
+export enum RelationshipEnum {
+  SINGLE = 'Single',
+  IN_ACTIVE_SEARCH = 'In active search',
+  MARRIED = 'Married',
+  NOT_MARRIED = 'Not married',
+  NOT_SELECTED = '',
+}
 
 export enum OnlineStatusEnum {
   ONLINE = 'Online',

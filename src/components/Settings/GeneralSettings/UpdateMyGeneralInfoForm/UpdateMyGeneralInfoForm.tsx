@@ -8,6 +8,9 @@ import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { GeneralInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
+import FormSelectControl from '../../../common/FormSelectControl/FormSelectControl';
+import { RelationshipEnum } from '../../../../types/reduxTypes/authSliceTypes';
+import { useState } from 'react';
 
 const validationSchema = yup.object({
   cityOfBirth: yup.string().max(20, 'City name is too long'),
@@ -21,6 +24,18 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
   const { isUserGeneralInfoSuccessfulySent } = useAppSelector(
     (state) => state.forms
   );
+  const [selectValue, setSelectValue] = useState(
+    currentUser.generalInfo?.relationship || RelationshipEnum.NOT_SELECTED
+  );
+
+  const selectOptions = [
+    { label: 'Single', value: RelationshipEnum.SINGLE },
+    { label: 'In active search', value: RelationshipEnum.IN_ACTIVE_SEARCH },
+    { label: 'Not married', value: RelationshipEnum.NOT_MARRIED },
+    { label: 'Married', value: RelationshipEnum.MARRIED },
+    { label: 'Not selected', value: RelationshipEnum.NOT_SELECTED },
+  ];
+
   const dispatch = useAppDispatch();
 
   const initialValues: GeneralInfoInitialValues = {
@@ -31,7 +46,6 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
       : '',
     country: currentUser.generalInfo?.country || '',
     currentCity: currentUser.generalInfo?.currentCity || '',
-    relationship: currentUser.generalInfo?.relationship || '',
     jobPlace: currentUser.generalInfo?.jobPlace || '',
     website: currentUser.generalInfo?.website || '',
   };
@@ -74,7 +88,7 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
           label="City"
           labelClass={s.form__label}
         />
-        <FormControl
+        {/* <FormControl
           customClass={s.form__control}
           field="relationship"
           placeholder="Relationship"
@@ -82,6 +96,13 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
           type="text"
           label="Relationship"
           labelClass={s.form__label}
+        /> */}
+        <FormSelectControl
+          options={selectOptions}
+          defaultValue={
+            currentUser.generalInfo?.relationship ||
+            RelationshipEnum.NOT_SELECTED
+          }
         />
         <FormControl
           customClass={s.form__control}

@@ -1,3 +1,5 @@
+import { RelationshipEnum } from './reduxTypes/authSliceTypes';
+
 export type RegisterFormInitialValues = {
   email: string;
   nickname: string;
@@ -39,7 +41,7 @@ export type GeneralInfoInitialValues = {
   dateOfBirth: string;
   currentCity: string;
   country: string;
-  relationship: string;
+  // relationship: RelationshipEnum;
   website: string;
   jobPlace: string;
 };
