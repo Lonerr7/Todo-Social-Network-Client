@@ -64,7 +64,6 @@ export type AdditionalInfoInitialValues = {
 
 export type BeliefsInfoInitialValues = {
   politicalViews: string;
-  religion: string;
   inspiredBy: string;
 };
 

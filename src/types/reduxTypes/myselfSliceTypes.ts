@@ -1,4 +1,4 @@
-import { OnlineStatusEnum, RelationshipEnum } from './authSliceTypes';
+import { OnlineStatusEnum, RelationshipEnum, ReligionEnum } from './authSliceTypes';
 
 export type MyselfState = {
   isMyRegisterInfoFetching: boolean;
@@ -67,7 +67,7 @@ export type AdditionalFieldsToSend = {
 export type BeliefsFieldsToSend = {
   beliefs: {
     politicalViews: string;
-    religion: string;
+    religion: ReligionEnum;
     inspiredBy: string;
   };
 };

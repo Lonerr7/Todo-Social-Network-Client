@@ -13,7 +13,7 @@ export type User = {
     country: string;
     currentCity: string;
     jobPlace: string;
-    relationship: RelationshipEnum; //! needs change in order with backend (select?)
+    relationship: RelationshipEnum;
     website: string; //! needs a fix to have a website URL template
   };
   mainInfo: {
@@ -26,7 +26,7 @@ export type User = {
   };
   beliefs: {
     politicalViews: string;
-    religion: string;
+    religion: ReligionEnum;
     inspiredBy: string;
   };
   personalInfo: {
@@ -43,6 +43,15 @@ export type User = {
   todos: Array<Todo>;
   onlineStatus: OnlineStatusEnum;
 };
+
+export enum ReligionEnum {
+  ORTHODOXY = 'Orthodoxy',
+  CATHOLICISM = 'Catholicism',
+  ISLAM = 'Islam',
+  BUDDHISM = 'Buddhism',
+  JUDAISM = 'Judaism',
+  NOT_SELECTED = '',
+}
 
 export enum RelationshipEnum {
   SINGLE = 'Single',

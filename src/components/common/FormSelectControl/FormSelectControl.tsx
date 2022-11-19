@@ -1,14 +1,14 @@
 import Select from 'react-select';
-import { RelationshipEnum } from '../../../types/reduxTypes/authSliceTypes';
 import s from './FormSelectControl.module.scss';
 
 interface Props {
   options: any[];
-  defaultValue: RelationshipEnum;
+  defaultValue: any;
   onChange: (newValue: any) => void;
   customStyle?: string;
   classNamePrefix: string;
   placeholder?: string;
+  labelText: string;
 }
 
 const FormSelectControl: React.FC<Props> = ({
@@ -17,11 +17,12 @@ const FormSelectControl: React.FC<Props> = ({
   customStyle,
   classNamePrefix,
   placeholder,
+  labelText,
   onChange,
 }) => {
   return (
     <div className={s.select}>
-      <label className={s.select__label}>Relationship</label>
+      <label className={s.select__label}>{labelText}</label>
       <Select
         placeholder={placeholder}
         classNamePrefix={classNamePrefix}

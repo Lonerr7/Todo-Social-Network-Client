@@ -45,14 +45,18 @@
   }
 
   &__value-container {
-    cursor: text;
+    cursor: text !important;
+  }
+
+  &__single-value {
+    padding: 5px 0;
   }
 
   // dropdown menu
   &__menu {
     width: 354px !important;
-    // font-size: 18px;
     background-color: $color8 !important;
+    overflow-y: auto;
   }
 
   &__indicator-separator {

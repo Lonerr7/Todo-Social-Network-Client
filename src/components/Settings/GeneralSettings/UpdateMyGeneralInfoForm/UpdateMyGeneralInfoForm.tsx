@@ -67,6 +67,7 @@ const UpdateMyGeneralInfoForm: React.FC<Props> = (props) => {
           }
           onChange={props.onSelectChange}
           classNamePrefix="generalInfo_select"
+          labelText="Relationship"
           placeholder="Select your relationship..."
         />
         <FormControl

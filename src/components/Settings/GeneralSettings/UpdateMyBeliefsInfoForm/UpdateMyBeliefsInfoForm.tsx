@@ -8,6 +8,10 @@ import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { BeliefsInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyBeliefsInfo } from '../../../../redux/myselfSlice';
+import { BeliefsFieldsToSend } from '../../../../types/reduxTypes/myselfSliceTypes';
+import { useState } from 'react';
+import { ReligionEnum } from '../../../../types/reduxTypes/authSliceTypes';
+import FormSelectControl from '../../../common/FormSelectControl/FormSelectControl';
 
 const validationSchema = yup.object({});
 
@@ -18,16 +22,41 @@ const UpdateMyBeliefsInfoForm: React.FC = () => {
   const { isUserBeliefsInfoSuccessfulySent } = useAppSelector(
     (state) => state.forms
   );
+  const [selectValue, setSelectValue] = useState(
+    currentUser.beliefs.religion || ReligionEnum.NOT_SELECTED
+  );
+
+  const selectOptions = [
+    { label: 'Orthodoxy', value: ReligionEnum.ORTHODOXY },
+    { label: 'Catholicism', value: ReligionEnum.CATHOLICISM },
+    { label: 'Islam', value: ReligionEnum.ISLAM },
+    { label: 'Judaism', value: ReligionEnum.JUDAISM },
+    { label: 'Buddhism', value: ReligionEnum.BUDDHISM },
+    { label: 'Not selected', value: ReligionEnum.NOT_SELECTED },
+  ];
+
   const dispatch = useAppDispatch();
 
   const initialValues: BeliefsInfoInitialValues = {
     inspiredBy: currentUser.beliefs?.inspiredBy || '',
     politicalViews: currentUser.beliefs?.politicalViews || '',
-    religion: currentUser.beliefs?.religion || '',
   };
 
   const onSubmit = (data: BeliefsInfoInitialValues) => {
-    dispatch(updateMyBeliefsInfo(data));
+    const fieldsToSend: BeliefsFieldsToSend = {
+      beliefs: {
+        ...data,
+        religion: selectValue,
+      },
+    };
+    dispatch(updateMyBeliefsInfo(fieldsToSend));
+  };
+
+  const onSelectChange = (newValue: any) => {
+    if (!newValue) {
+      return setSelectValue(ReligionEnum.NOT_SELECTED);
+    }
+    setSelectValue(newValue.value);
   };
 
   return (
@@ -37,6 +66,16 @@ const UpdateMyBeliefsInfoForm: React.FC = () => {
       validationSchema={validationSchema}
     >
       <Form className={s.form}>
+        <FormSelectControl
+          options={selectOptions}
+          defaultValue={
+            currentUser.beliefs?.religion || ReligionEnum.NOT_SELECTED
+          }
+          onChange={onSelectChange}
+          classNamePrefix="generalInfo_select"
+          labelText="Religion"
+          placeholder="Select your religion..."
+        />
         <FormControl
           customClass={s.form__control}
           field="inspiredBy"
@@ -53,15 +92,6 @@ const UpdateMyBeliefsInfoForm: React.FC = () => {
           inputClass={s.form__input}
           type="text"
           label="Political Views"
-          labelClass={s.form__label}
-        />
-        <FormControl
-          customClass={s.form__control}
-          field="religion"
-          placeholder="Religion"
-          inputClass={s.form__input}
-          type="text"
-          label="Religion"
           labelClass={s.form__label}
         />
         <div className={s.form__box}>

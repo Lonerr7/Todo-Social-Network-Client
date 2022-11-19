@@ -144,19 +144,14 @@ export const updateMyContactInfo = createAsyncThunk(
 
 export const updateMyBeliefsInfo = createAsyncThunk(
   'myslef/updateMyBeliefs',
-  async (data: BeliefsInfoInitialValues, { dispatch, rejectWithValue }) => {
+  async (data: BeliefsFieldsToSend, { dispatch, rejectWithValue }) => {
     try {
-      const fieldsToSend: BeliefsFieldsToSend = {
-        beliefs: { ...data },
-      };
-
       const response = await updateInfoWithSuccessMsg(
         myselfAPI,
-        fieldsToSend,
+        data,
         'beliefs',
         dispatch
       );
-
       return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
