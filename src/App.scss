@@ -21,3 +21,72 @@
     width: 100%;
   }
 }
+
+// === react-select ===
+
+.generalInfo_select {
+  // the whole react-select component
+  &__control {
+    font-size: 18px;
+    width: 354px !important;
+    margin-bottom: 35px !important;
+    background-color: $color8 !important;
+    box-shadow: none !important;
+
+    // when menu is opened
+    &--menu-is-open {
+      box-shadow: $color7 !important;
+      border-color: $color7 !important;
+    }
+
+    &--is-focused {
+      border-color: $color7 !important;
+    }
+  }
+
+  &__value-container {
+    cursor: text;
+  }
+
+  // dropdown menu
+  &__menu {
+    width: 354px !important;
+    // font-size: 18px;
+    background-color: $color8 !important;
+  }
+
+  &__indicator-separator {
+    background-color: $color10 !important;
+  }
+
+  &__indicator {
+    cursor: pointer !important;
+    color: $color10 !important;
+
+    svg:hover {
+      color: #000;
+    }
+  }
+
+  &__option {
+    font-size: 18px !important;
+    cursor: pointer !important;
+
+    &__palceholder {
+      font-size: 18px !important;
+    }
+
+    &--is-focused {
+      background-color: $color9 !important;
+    }
+
+    &--is-selected {
+      background-color: $color9 !important;
+      color: #000 !important;
+    }
+
+    &:hover {
+      background-color: $color9 !important;
+    }
+  }
+}

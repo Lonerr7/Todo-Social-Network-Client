@@ -53,4 +53,4 @@ const FormControl: React.FC<FormControlProps> = ({
   );
 };
 
-export default FormControl;
+export default React.memo(FormControl);

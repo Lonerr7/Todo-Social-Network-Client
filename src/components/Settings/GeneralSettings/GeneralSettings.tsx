@@ -5,7 +5,7 @@ import UpdateMyRegisterInfoForm from './UpdateMyRegisterInfoForm/UpdateMyRegiste
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import UpdateMyMainInfoForm from './UpdateMyMainInfoForm/UpdateMyMainInfoForm';
-import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoForm';
+import UpdateMyGeneralInfoFormContainer from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoFormContainer';
 import UpdateMyContactInfoForm from './UpdateMyContactInfoForm/UpdateMyContactInfoForm';
 import UpdateMyBeliefsInfoForm from './UpdateMyBeliefsInfoForm/UpdateMyBeliefsInfoForm';
 import UpdateMyPersonalInfoForm from './UpdateMyPersonalInfoForm/UpdateMyPersonalInfoForm';
@@ -29,7 +29,7 @@ const GeneralSettings: React.FC = () => {
           <UpdateMyRegisterInfoForm />
         </Accordion>
         <Accordion title="My general information">
-          <UpdateMyGeneralInfoForm />
+          <UpdateMyGeneralInfoFormContainer />
         </Accordion>
         <Accordion title="My main information">
           <UpdateMyMainInfoForm />

@@ -5,7 +5,6 @@ import {
   AdditionalInfoInitialValues,
   BeliefsInfoInitialValues,
   ContactInfoInitialValues,
-  GeneralInfoInitialValues,
   MainInfoInitialValues,
   PersonalInfoInitialValues,
   UpdateMyBioValue,

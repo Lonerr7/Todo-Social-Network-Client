@@ -1,76 +1,35 @@
 import s from '../../../../styles/formStyle.module.scss';
-import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import FormControl from '../../../common/FormControl/FormControl';
 import FormError from '../../../common/FormError/FormError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { GeneralInfoInitialValues } from '../../../../types/formikTypes';
-import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
 import FormSelectControl from '../../../common/FormSelectControl/FormSelectControl';
-import { RelationshipEnum } from '../../../../types/reduxTypes/authSliceTypes';
-import { useState } from 'react';
-import { GeneralInfoFieldsToSend } from '../../../../types/reduxTypes/myselfSliceTypes';
+import {
+  RelationshipEnum,
+  User,
+} from '../../../../types/reduxTypes/authSliceTypes';
+import { GeneralInfoInitialValues } from '../../../../types/formikTypes';
+import { GeneralInfoValidationSchema } from './UpdateMyGeneralInfoFormContainer';
 
-const validationSchema = yup.object({
-  cityOfBirth: yup.string().max(20, 'City name is too long'),
-  nativeLanguage: yup.string().max(20, 'Language name is too long'),
-});
+interface Props {
+  currentUser: User;
+  initialValues: GeneralInfoInitialValues;
+  updateMyGeneralInfoErrorMsg: string;
+  isMyGeneralInfoFetching: boolean;
+  isUserGeneralInfoSuccessfulySent: boolean;
+  selectOptions: any[];
+  validationSchema: GeneralInfoValidationSchema;
+  onSubmit: (values: GeneralInfoInitialValues) => void;
+  onSelectChange: (newValue: any) => void;
+}
 
-const UpdateMyGeneralInfoForm: React.FC = () => {
-  const currentUser = useAppSelector((state) => state.auth.user)!;
-  const { updateMyGeneralInfoErrorMsg, isMyGeneralInfoFetching } =
-    useAppSelector((state) => state.myslef);
-  const { isUserGeneralInfoSuccessfulySent } = useAppSelector(
-    (state) => state.forms
-  );
-  const [selectValue, setSelectValue] = useState(
-    currentUser.generalInfo?.relationship || RelationshipEnum.NOT_SELECTED
-  );
-
-  const selectOptions = [
-    { label: 'Single', value: RelationshipEnum.SINGLE },
-    { label: 'In active search', value: RelationshipEnum.IN_ACTIVE_SEARCH },
-    { label: 'Not married', value: RelationshipEnum.NOT_MARRIED },
-    { label: 'Married', value: RelationshipEnum.MARRIED },
-    { label: 'Not selected', value: RelationshipEnum.NOT_SELECTED },
-  ];
-
-  const dispatch = useAppDispatch();
-
-  const initialValues: GeneralInfoInitialValues = {
-    dateOfBirth: currentUser.generalInfo?.dateOfBirth
-      ? new Date(currentUser.generalInfo?.dateOfBirth)
-          .toISOString()
-          .split('T')[0]
-      : '',
-    country: currentUser.generalInfo?.country || '',
-    currentCity: currentUser.generalInfo?.currentCity || '',
-    jobPlace: currentUser.generalInfo?.jobPlace || '',
-    website: currentUser.generalInfo?.website || '',
-  };
-
-  const onSubmit = (values: GeneralInfoInitialValues) => {
-    const fieldsToSend: GeneralInfoFieldsToSend = {
-      generalInfo: {
-        ...values,
-        relationship: selectValue,
-      },
-    };
-
-    dispatch(updateMyGeneralInfo(fieldsToSend));
-  };
-
-  const onSelectChange = (newValue: any) => {
-    setSelectValue(newValue.value);
-  };
-
+const UpdateMyGeneralInfoForm: React.FC<Props> = (props) => {
   return (
     <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
+      initialValues={props.initialValues}
+      onSubmit={props.onSubmit}
+      validationSchema={props.validationSchema}
     >
       <Form className={s.form}>
         <FormControl
@@ -100,26 +59,16 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
           label="City"
           labelClass={s.form__label}
         />
-        {/* <FormControl
-          customClass={s.form__control}
-          field="relationship"
-          placeholder="Relationship"
-          inputClass={s.form__input}
-          type="text"
-          label="Relationship"
-          labelClass={s.form__label}
-        /> */}
         <FormSelectControl
-          options={selectOptions}
+          options={props.selectOptions}
           defaultValue={
-            currentUser.generalInfo?.relationship ||
+            props.currentUser.generalInfo?.relationship ||
             RelationshipEnum.NOT_SELECTED
           }
-          onChange={onSelectChange}
+          onChange={props.onSelectChange}
+          classNamePrefix="generalInfo_select"
+          placeholder="Select your relationship..."
         />
-        <button onClick={() => console.log(selectValue)} type="button">
-          Log selected value
-        </button>
         <FormControl
           customClass={s.form__control}
           field="website"
@@ -144,18 +93,18 @@ const UpdateMyGeneralInfoForm: React.FC = () => {
             btnType="submit"
             btnText="Update general information"
             btnFetchingText="Updating general information"
-            isFetching={isMyGeneralInfoFetching}
+            isFetching={props.isMyGeneralInfoFetching}
             onSubmit={() => {}}
           />
           <FormStatus
-            isSuccessfulySent={isUserGeneralInfoSuccessfulySent}
+            isSuccessfulySent={props.isUserGeneralInfoSuccessfulySent}
             preloaderClass={s.form__preloader}
             msgClass={s.form__success}
           />
         </div>
         <FormError
           customClass={s.form__error}
-          errorMsg={updateMyGeneralInfoErrorMsg}
+          errorMsg={props.updateMyGeneralInfoErrorMsg}
         />
       </Form>
     </Formik>
