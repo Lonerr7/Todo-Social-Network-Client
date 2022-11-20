@@ -75,15 +75,6 @@ const UpdateMyPersonalInfoForm: React.FC<Props> = (props) => {
         />
         <FormControl
           customClass={s.form__control}
-          field="attitudeTowardsDrinking"
-          placeholder="Attitude towards drinking"
-          inputClass={s.form__input}
-          type="text"
-          label="Attitude towards drinking"
-          labelClass={s.form__label}
-        />
-        <FormControl
-          customClass={s.form__control}
           field="favoriteMovies"
           placeholder="Favorite movies"
           inputClass={s.form__input}
