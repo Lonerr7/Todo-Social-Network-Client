@@ -14,7 +14,6 @@ type FormControlProps = {
   errorClass?: string;
   component?: string | React.ComponentType<FieldProps>;
   focus?: boolean;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 };
 
 const FormControl: React.FC<FormControlProps> = ({
@@ -28,7 +27,6 @@ const FormControl: React.FC<FormControlProps> = ({
   component,
   errorClass,
   focus,
-  onKeyDown,
 }) => {
   return (
     <div className={customClass}>
@@ -43,7 +41,6 @@ const FormControl: React.FC<FormControlProps> = ({
         placeholder={placeholder}
         component={component}
         autoFocus={focus}
-        onKeyDown={onKeyDown}
       />
       <ErrorMessage name={field}>
         {(err) => (

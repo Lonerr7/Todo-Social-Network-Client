@@ -14,7 +14,7 @@ export type User = {
     currentCity: string;
     jobPlace: string;
     relationship: RelationshipEnum;
-    website: string;
+    website: string; //! needs a fix to have a website URL template
   };
   mainInfo: {
     cityOfBirth: string;
