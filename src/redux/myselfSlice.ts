@@ -160,15 +160,11 @@ export const updateMyBeliefsInfo = createAsyncThunk(
 
 export const updateMyPersonalInfo = createAsyncThunk(
   'myself/updateMyPersonalInfo',
-  async (data: PersonalInfoInitialValues, { dispatch, rejectWithValue }) => {
+  async (data: PersonalInfoFieldsToSend, { dispatch, rejectWithValue }) => {
     try {
-      const fieldsToSend: PersonalInfoFieldsToSend = {
-        personalInfo: { ...data },
-      };
-
       const response = await updateInfoWithSuccessMsg(
         myselfAPI,
-        fieldsToSend,
+        data,
         'personalInfo',
         dispatch
       );

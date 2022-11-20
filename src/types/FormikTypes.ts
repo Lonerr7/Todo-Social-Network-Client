@@ -70,8 +70,6 @@ export type BeliefsInfoInitialValues = {
 export type PersonalInfoInitialValues = {
   activities: string;
   interests: string;
-  attitudeTowardsSmoking: string;
-  attitudeTowardsDrinking: string;
   favoriteMusic: string;
   favoriteMovies: string;
   favouriteBooks: string;

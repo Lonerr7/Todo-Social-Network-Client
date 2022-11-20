@@ -32,8 +32,8 @@ export type User = {
   personalInfo: {
     activities: string;
     interests: string;
-    attitudeTowardsSmoking: string; //! add enum and select on front
-    attitudeTowardsDrinking: string; //! add enum and select on front
+    attitudeTowardsSmoking: AttitudeTowardsEnum;
+    attitudeTowardsDrinking: AttitudeTowardsEnum;
     favoriteMusic: string;
     favoriteMovies: string;
     favouriteBooks: string;
@@ -43,6 +43,14 @@ export type User = {
   todos: Array<Todo>;
   onlineStatus: OnlineStatusEnum;
 };
+
+export enum AttitudeTowardsEnum {
+  POSITIVE = 'Positive',
+  NEUTRAL = 'Neutral',
+  NEGATIVE = 'Negative',
+  COMPROMISE = 'Compromise',
+  NOT_SELECTED = '',
+}
 
 export enum ReligionEnum {
   ORTHODOXY = 'Orthodoxy',

@@ -1,4 +1,9 @@
-import { OnlineStatusEnum, RelationshipEnum, ReligionEnum } from './authSliceTypes';
+import {
+  AttitudeTowardsEnum,
+  OnlineStatusEnum,
+  RelationshipEnum,
+  ReligionEnum,
+} from './authSliceTypes';
 
 export type MyselfState = {
   isMyRegisterInfoFetching: boolean;
@@ -76,8 +81,8 @@ export type PersonalInfoFieldsToSend = {
   personalInfo: {
     activities: string;
     interests: string;
-    attitudeTowardsSmoking: string;
-    attitudeTowardsDrinking: string;
+    attitudeTowardsSmoking: AttitudeTowardsEnum;
+    attitudeTowardsDrinking: AttitudeTowardsEnum;
     favoriteMusic: string;
     favoriteMovies: string;
     favouriteBooks: string;

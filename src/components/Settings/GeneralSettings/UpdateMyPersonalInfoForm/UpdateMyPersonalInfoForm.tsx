@@ -8,6 +8,10 @@ import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { PersonalInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyPersonalInfo } from '../../../../redux/myselfSlice';
+import { useState } from 'react';
+import { AttitudeTowardsEnum } from '../../../../types/reduxTypes/authSliceTypes';
+import FormSelectControl from '../../../common/FormSelectControl/FormSelectControl';
+import { PersonalInfoFieldsToSend } from '../../../../types/reduxTypes/myselfSliceTypes';
 
 const validationSchema = yup.object({});
 
@@ -18,23 +22,58 @@ const UpdateMyPersonalInfoForm: React.FC = () => {
   const { isUserPersonalInfoSuccessfulySent } = useAppSelector(
     (state) => state.forms
   );
+  const [selectSmokingAttidute, setSelectSmokingAttidute] = useState(
+    currentUser.personalInfo?.attitudeTowardsSmoking ||
+      AttitudeTowardsEnum.NOT_SELECTED
+  );
+  const [selectDrinkingAttitude, setSelectDrinkingAttidute] = useState(
+    currentUser.personalInfo?.attitudeTowardsDrinking ||
+      AttitudeTowardsEnum.NOT_SELECTED
+  );
+  
+  const selectOptions = [
+    { label: 'Negative', value: AttitudeTowardsEnum.NEGATIVE },
+    { label: 'Neutral', value: AttitudeTowardsEnum.NEUTRAL },
+    { label: 'Positive', value: AttitudeTowardsEnum.POSITIVE },
+    { label: 'Compromise', value: AttitudeTowardsEnum.COMPROMISE },
+    { label: 'Not selected', value: AttitudeTowardsEnum.NOT_SELECTED },
+  ];
+
   const dispatch = useAppDispatch();
 
   const initialValues: PersonalInfoInitialValues = {
     aboutMe: currentUser.personalInfo?.aboutMe || '',
     activities: currentUser.personalInfo?.activities || '',
-    attitudeTowardsSmoking:
-      currentUser.personalInfo?.attitudeTowardsSmoking || '',
-    attitudeTowardsDrinking:
-      currentUser.personalInfo?.attitudeTowardsDrinking || '',
     favoriteMovies: currentUser.personalInfo?.favoriteMovies || '',
     favoriteMusic: currentUser.personalInfo?.favoriteMusic || '',
     favouriteBooks: currentUser.personalInfo?.favouriteBooks || '',
     interests: currentUser.personalInfo?.interests || '',
   };
 
+  const onSmokingSelectChange = (newValue: any) => {
+    if (!newValue) {
+      return setSelectSmokingAttidute(AttitudeTowardsEnum.NOT_SELECTED);
+    }
+    setSelectSmokingAttidute(newValue.value);
+  };
+
+  const onDrinkingSelectChange = (newValue: any) => {
+    if (!newValue) {
+      return setSelectDrinkingAttidute(AttitudeTowardsEnum.NOT_SELECTED);
+    }
+    setSelectDrinkingAttidute(newValue.value);
+  };
+
   const onSubmit = (data: PersonalInfoInitialValues) => {
-    dispatch(updateMyPersonalInfo(data));
+    const fieldsToSend: PersonalInfoFieldsToSend = {
+      personalInfo: {
+        ...data,
+        attitudeTowardsDrinking: selectDrinkingAttitude,
+        attitudeTowardsSmoking: selectSmokingAttidute,
+      },
+    };
+
+    dispatch(updateMyPersonalInfo(fieldsToSend));
   };
 
   return (
@@ -62,14 +101,27 @@ const UpdateMyPersonalInfoForm: React.FC = () => {
           label="Activities"
           labelClass={s.form__label}
         />
-        <FormControl
-          customClass={s.form__control}
-          field="attitudeTowardsSmoking"
-          placeholder="Attitude towards smoking"
-          inputClass={s.form__input}
-          type="text"
-          label="Attitude towards smoking"
-          labelClass={s.form__label}
+        <FormSelectControl
+          options={selectOptions}
+          classNamePrefix="generalInfo_select"
+          defaultValue={
+            currentUser.personalInfo?.attitudeTowardsSmoking ||
+            AttitudeTowardsEnum.NOT_SELECTED
+          }
+          labelText="Attidute towards smoking"
+          onChange={onSmokingSelectChange}
+          placeholder="Select your attitude..."
+        />
+        <FormSelectControl
+          options={selectOptions}
+          classNamePrefix="generalInfo_select"
+          defaultValue={
+            currentUser.personalInfo?.attitudeTowardsDrinking ||
+            AttitudeTowardsEnum.NOT_SELECTED
+          }
+          labelText="Attidute towards drinking"
+          onChange={onDrinkingSelectChange}
+          placeholder="Select your drinking..."
         />
         <FormControl
           customClass={s.form__control}
