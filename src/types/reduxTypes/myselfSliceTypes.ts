@@ -1,4 +1,9 @@
-import { OnlineStatusEnum } from './authSliceTypes';
+import {
+  AttitudeTowardsEnum,
+  OnlineStatusEnum,
+  RelationshipEnum,
+  ReligionEnum,
+} from './authSliceTypes';
 
 export type MyselfState = {
   isMyRegisterInfoFetching: boolean;
@@ -30,7 +35,7 @@ export type GeneralInfoFieldsToSend = {
     country: string;
     currentCity: string;
     jobPlace: string;
-    relationship: string;
+    relationship: RelationshipEnum;
     website: string;
   };
 };
@@ -67,7 +72,7 @@ export type AdditionalFieldsToSend = {
 export type BeliefsFieldsToSend = {
   beliefs: {
     politicalViews: string;
-    religion: string;
+    religion: ReligionEnum;
     inspiredBy: string;
   };
 };
@@ -76,8 +81,8 @@ export type PersonalInfoFieldsToSend = {
   personalInfo: {
     activities: string;
     interests: string;
-    attitudeTowardsSmoking: string;
-    attitudeTowardsDrinking: string;
+    attitudeTowardsSmoking: AttitudeTowardsEnum;
+    attitudeTowardsDrinking: AttitudeTowardsEnum;
     favoriteMusic: string;
     favoriteMovies: string;
     favouriteBooks: string;

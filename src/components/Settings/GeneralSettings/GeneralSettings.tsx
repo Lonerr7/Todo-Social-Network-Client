@@ -5,11 +5,11 @@ import UpdateMyRegisterInfoForm from './UpdateMyRegisterInfoForm/UpdateMyRegiste
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
 import UpdateMyMainInfoForm from './UpdateMyMainInfoForm/UpdateMyMainInfoForm';
-import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoForm';
+import UpdateMyGeneralInfoFormContainer from './UpdateMyGeneralInfoForm/UpdateMyGeneralInfoFormContainer';
 import UpdateMyContactInfoForm from './UpdateMyContactInfoForm/UpdateMyContactInfoForm';
-import UpdateMyBeliefsInfoForm from './UpdateMyBeliefsInfoForm/UpdateMyBeliefsInfoForm';
-import UpdateMyPersonalInfoForm from './UpdateMyPersonalInfoForm/UpdateMyPersonalInfoForm';
+import UpdateMyPersonalInfoFormContainer from './UpdateMyPersonalInfoForm/UpdateMyPersonalInfoFormContainer';
 import Accordion from '../../common/Accordion/Accordion';
+import UpdateMyBeliefsInfoFormContainer from './UpdateMyBeliefsInfoForm/UpdateMyBeliefsInfoFormContainer';
 
 const GeneralSettings: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -29,7 +29,7 @@ const GeneralSettings: React.FC = () => {
           <UpdateMyRegisterInfoForm />
         </Accordion>
         <Accordion title="My general information">
-          <UpdateMyGeneralInfoForm />
+          <UpdateMyGeneralInfoFormContainer />
         </Accordion>
         <Accordion title="My main information">
           <UpdateMyMainInfoForm />
@@ -38,10 +38,10 @@ const GeneralSettings: React.FC = () => {
           <UpdateMyContactInfoForm />
         </Accordion>
         <Accordion title="My beliefs">
-          <UpdateMyBeliefsInfoForm />
+          <UpdateMyBeliefsInfoFormContainer />
         </Accordion>
         <Accordion title="My personal information">
-          <UpdateMyPersonalInfoForm />
+          <UpdateMyPersonalInfoFormContainer />
         </Accordion>
       </div>
     </div>

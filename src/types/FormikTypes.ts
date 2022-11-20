@@ -39,7 +39,6 @@ export type GeneralInfoInitialValues = {
   dateOfBirth: string;
   currentCity: string;
   country: string;
-  relationship: string;
   website: string;
   jobPlace: string;
 };
@@ -65,15 +64,12 @@ export type AdditionalInfoInitialValues = {
 
 export type BeliefsInfoInitialValues = {
   politicalViews: string;
-  religion: string;
   inspiredBy: string;
 };
 
 export type PersonalInfoInitialValues = {
   activities: string;
   interests: string;
-  attitudeTowardsSmoking: string;
-  attitudeTowardsDrinking: string;
   favoriteMusic: string;
   favoriteMovies: string;
   favouriteBooks: string;

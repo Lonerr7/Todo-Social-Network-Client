@@ -3,11 +3,8 @@ import { myselfAPI } from '../api/api';
 import { DeleteMePasswords } from '../types/axiosTypes';
 import {
   AdditionalInfoInitialValues,
-  BeliefsInfoInitialValues,
   ContactInfoInitialValues,
-  GeneralInfoInitialValues,
   MainInfoInitialValues,
-  PersonalInfoInitialValues,
   UpdateMyBioValue,
   UpdateMyRegisterlInfoFormInitialValues,
   UpdateUserPasswordInitialValues,
@@ -83,15 +80,11 @@ export const updateMyRegisterInfo = createAsyncThunk(
 
 export const updateMyGeneralInfo = createAsyncThunk(
   'myself/updateMyGeneralInfo',
-  async (data: GeneralInfoInitialValues, { rejectWithValue, dispatch }) => {
+  async (data: GeneralInfoFieldsToSend, { rejectWithValue, dispatch }) => {
     try {
-      const fieldsToSend: GeneralInfoFieldsToSend = {
-        generalInfo: { ...data },
-      };
-
       const response = await updateInfoWithSuccessMsg(
         myselfAPI,
-        fieldsToSend,
+        data,
         'generalInfo',
         dispatch
       );
@@ -149,19 +142,14 @@ export const updateMyContactInfo = createAsyncThunk(
 
 export const updateMyBeliefsInfo = createAsyncThunk(
   'myslef/updateMyBeliefs',
-  async (data: BeliefsInfoInitialValues, { dispatch, rejectWithValue }) => {
+  async (data: BeliefsFieldsToSend, { dispatch, rejectWithValue }) => {
     try {
-      const fieldsToSend: BeliefsFieldsToSend = {
-        beliefs: { ...data },
-      };
-
       const response = await updateInfoWithSuccessMsg(
         myselfAPI,
-        fieldsToSend,
+        data,
         'beliefs',
         dispatch
       );
-
       return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
@@ -171,15 +159,11 @@ export const updateMyBeliefsInfo = createAsyncThunk(
 
 export const updateMyPersonalInfo = createAsyncThunk(
   'myself/updateMyPersonalInfo',
-  async (data: PersonalInfoInitialValues, { dispatch, rejectWithValue }) => {
+  async (data: PersonalInfoFieldsToSend, { dispatch, rejectWithValue }) => {
     try {
-      const fieldsToSend: PersonalInfoFieldsToSend = {
-        personalInfo: { ...data },
-      };
-
       const response = await updateInfoWithSuccessMsg(
         myselfAPI,
-        fieldsToSend,
+        data,
         'personalInfo',
         dispatch
       );
