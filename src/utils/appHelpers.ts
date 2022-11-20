@@ -31,3 +31,13 @@ export const replaceCamelCase = (str: string) => {
   const result = str.replace(/([A-Z])/g, ' $1');
   return result.charAt(0).toUpperCase() + result.slice(1);
 };
+
+export const textareaFormSubmitHandler =
+  (fn: (() => Promise<void>) & (() => Promise<any>)) =>
+  (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.code === 'Enter' && e.shiftKey === false) {
+      e.preventDefault();
+
+      fn();
+    }
+  };
