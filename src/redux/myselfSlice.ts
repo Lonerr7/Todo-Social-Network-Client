@@ -5,7 +5,6 @@ import {
   AdditionalInfoInitialValues,
   ContactInfoInitialValues,
   MainInfoInitialValues,
-  PersonalInfoInitialValues,
   UpdateMyBioValue,
   UpdateMyRegisterlInfoFormInitialValues,
   UpdateUserPasswordInitialValues,

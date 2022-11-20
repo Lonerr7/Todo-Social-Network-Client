@@ -38,7 +38,7 @@ const UpdateMyBeliefsInfoForm: React.FC<Props> = (props) => {
             props.currentUser.beliefs?.religion || ReligionEnum.NOT_SELECTED
           }
           onChange={props.onSelectChange}
-          classNamePrefix="generalInfo_select"
+          classNamePrefix="settings_select"
           labelText="Religion"
           placeholder="Select your religion..."
         />

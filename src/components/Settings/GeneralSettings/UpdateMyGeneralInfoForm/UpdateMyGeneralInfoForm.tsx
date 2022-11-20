@@ -66,7 +66,7 @@ const UpdateMyGeneralInfoForm: React.FC<Props> = (props) => {
             RelationshipEnum.NOT_SELECTED
           }
           onChange={props.onSelectChange}
-          classNamePrefix="generalInfo_select"
+          classNamePrefix="settings_select"
           labelText="Relationship"
           placeholder="Select your relationship..."
         />
