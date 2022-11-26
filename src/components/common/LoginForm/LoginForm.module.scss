@@ -8,12 +8,24 @@
     @extend %form-control;
   }
 
+  &__formControl_last {
+    padding-bottom: 10px;
+  }
+
   &__label {
     @extend %form-label;
   }
 
   &__formInput {
     @extend %form-input;
+  }
+
+  &__link {
+    display: inline-block;
+    // color: $color8;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 25px;
   }
 
   &__errorMsg {

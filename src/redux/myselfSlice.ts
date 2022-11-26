@@ -58,7 +58,7 @@ export const sendMyAdditionalInfo = createAsyncThunk(
 
 // using this in settings
 export const updateMyRegisterInfo = createAsyncThunk(
-  'myself/updateMyGeneralInfo',
+  'myself/updateMyRegisterInfo',
   async (
     newUserData: UpdateMyRegisterlInfoFormInitialValues,
     { rejectWithValue, dispatch }

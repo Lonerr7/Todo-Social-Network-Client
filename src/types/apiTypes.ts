@@ -1,4 +1,4 @@
-import { myselfAPI } from '../api/api';
+import { authAPI, myselfAPI } from '../api/api';
 import {
   UpdateMyBioValue,
   UpdateMyRegisterlInfoFormInitialValues,
@@ -14,6 +14,7 @@ import {
 } from './reduxTypes/myselfSliceTypes';
 
 export type MyselfApi = typeof myselfAPI;
+export type AuthApi = typeof authAPI;
 
 export type MyselfApiMethods = 'updateMe' | 'changeMyPassword' | 'deleteMe';
 

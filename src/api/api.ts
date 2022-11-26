@@ -7,6 +7,7 @@ import {
   RegisterFormInitialValues,
   LoginFormInitialValues,
   UpdateUserPasswordInitialValues,
+  ForgotPasswordInitialValues,
 } from '../types/formikTypes';
 import { UpdateMeFieldsToSendForApi } from '../types/apiTypes';
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
@@ -22,54 +23,49 @@ axiosInstance.interceptors.request.use((config: any) => {
 });
 
 export const authAPI = {
-  signUp: async (userData: RegisterFormInitialValues) => {
-    return await axiosInstance.post('users/signup', userData);
-  },
-  logIn: async (userData: LoginFormInitialValues) => {
-    return await axiosInstance.post('users/login', userData);
-  },
-  getMe: async () => {
-    return await axiosInstance.get('users/me');
-  },
+  signUp: async (userData: RegisterFormInitialValues) =>
+    await axiosInstance.post('users/signup', userData),
+
+  logIn: async (userData: LoginFormInitialValues) =>
+    await axiosInstance.post('users/login', userData),
+
+  getMe: async () => await axiosInstance.get('users/me'),
+
+  sendToForgotPasswordEmail: async (data: ForgotPasswordInitialValues) =>
+    await axiosInstance.post('users/forgotPassword', data),
 };
 
 export const myselfAPI = {
-  updateMe: async (data: UpdateMeFieldsToSendForApi) => {
-    return await axiosInstance.patch('users/updateMe', data);
-  },
-  changeMyAvatar: async (data: any) => {
-    return await axiosInstance.patch('users/updateMyAvatar', data);
-  },
-  changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) => {
-    return await axiosInstance.patch('users/updateMyPassword', passwords);
-  },
-  deleteMe: async (passwords: DeleteMePasswords) => {
-    return await axiosInstance.delete('users/deleteMe', {
+  updateMe: async (data: UpdateMeFieldsToSendForApi) =>
+    await axiosInstance.patch('users/updateMe', data),
+
+  changeMyAvatar: async (data: any) =>
+    await axiosInstance.patch('users/updateMyAvatar', data),
+
+  changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) =>
+    await axiosInstance.patch('users/updateMyPassword', passwords),
+
+  deleteMe: async (passwords: DeleteMePasswords) =>
+    await axiosInstance.delete('users/deleteMe', {
       data: passwords,
-    });
-  },
+    }),
 };
 
 export const todoAPI = {
-  addTodo: async (todoInfo: TodoParams) => {
-    return await axiosInstance.post('todos', todoInfo);
-  },
-  updateTodo: async (id: string, data: UpdateTodoParamsRequest) => {
-    return await axiosInstance.patch(`todos/${id}`, data);
-  },
-  deleteTodo: async (id: string) => {
-    return await axiosInstance.delete(`todos/${id}`);
-  },
-  deleteAllUserTodos: async () => {
-    return await axiosInstance.delete('todos');
-  },
+  addTodo: async (todoInfo: TodoParams) =>
+    await axiosInstance.post('todos', todoInfo),
+
+  updateTodo: async (id: string, data: UpdateTodoParamsRequest) =>
+    await axiosInstance.patch(`todos/${id}`, data),
+
+  deleteTodo: async (id: string) => await axiosInstance.delete(`todos/${id}`),
+
+  deleteAllUserTodos: async () => await axiosInstance.delete('todos'),
 };
 
 export const usersAPI = {
-  getAllUsers: async () => {
-    return await axiosInstance.get('users');
-  },
-  getCurrentUser: async (userId: string) => {
-    return await axiosInstance.get(`users/${userId}`);
-  },
+  getAllUsers: async () => await axiosInstance.get('users'),
+
+  getCurrentUser: async (userId: string) =>
+    await axiosInstance.get(`users/${userId}`),
 };

@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hooks';
 import AdditionalInfoEnterPage from '../../pages/AdditionalInfoEnterPage/AdditionalInfoEnterPage';
+import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import Container from '../common/Container/Container';
 import s from './Main.module.scss';
 
@@ -14,7 +15,7 @@ const Main: React.FC = () => {
   return (
     <main className={s.main}>
       <Container classProp={s.container}>
-        {myself ? <Outlet /> : 'Welcome'}
+        {myself ? <Outlet /> : <WelcomePage />}
       </Container>
     </main>
   );

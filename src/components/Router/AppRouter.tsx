@@ -12,6 +12,7 @@ import UsersPageContainer from '../../pages/UsersPage/UsersPageContainer';
 import UserPageContainer from '../../pages/UserPage/UserPageContainer';
 import MyPageContainer from '../../pages/MyPage/MyPageContainer';
 import ChatPage from '../../pages/ChatPage/ChatPage';
+import ForgotPasswordForm from '../common/ForgotPasswordForm/ForgotPasswordForm';
 
 const AppRouter: React.FC = () => {
   return (
@@ -23,6 +24,15 @@ const AppRouter: React.FC = () => {
       <Route
         path="/login"
         element={<PageContainer form={<LoginForm />} title="Log in" />}
+      />
+      <Route
+        path="/forgotPassword"
+        element={
+          <PageContainer
+            form={<ForgotPasswordForm />}
+            title="Forgot password?"
+          />
+        }
       />
       <Route path="/" element={<Layout />}>
         <Route index element={<MyPageContainer />} />

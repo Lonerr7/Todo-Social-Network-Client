@@ -28,6 +28,14 @@ const MyPageContainer: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
+  useEffect(() => {
+    if (document.title !== 'Todo Social Network') {
+      document.title = 'Todo Social Network';
+    }
+
+    // eslint-disable-next-line
+  }, []);
+
   if (!myself) return <></>;
 
   return (

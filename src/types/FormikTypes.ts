@@ -13,6 +13,10 @@ export type LoginFormInitialValues = {
   passwordConfirm: string;
 };
 
+export interface ForgotPasswordInitialValues {
+  email: string;
+}
+
 export type UpdateMyBioValue = {
   bio: string;
 };

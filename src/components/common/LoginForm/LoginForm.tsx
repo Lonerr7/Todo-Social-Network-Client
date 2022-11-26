@@ -6,6 +6,7 @@ import { logUserIn } from '../../../redux/authSlice';
 import { LoginFormInitialValues } from '../../../types/formikTypes';
 import FormControl from '../FormControl/FormControl';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
+import { Link } from 'react-router-dom';
 
 const initialValues = {
   email: 'newuser@gmail.com',
@@ -62,7 +63,7 @@ const LoginForm: React.FC = () => {
           labelClass={s.loginForm__label}
         />
         <FormControl
-          customClass={s.loginForm__formControl}
+          customClass={`${s.loginForm__formControl} ${s.loginForm__formControl_last}`}
           field="passwordConfirm"
           placeholder="Password confirmation"
           inputClass={s.loginForm__formInput}
@@ -70,6 +71,10 @@ const LoginForm: React.FC = () => {
           label="Password confirmation"
           labelClass={s.loginForm__label}
         />
+
+        <Link className={s.loginForm__link} to="/forgotPassword">
+          Forgot Password?
+        </Link>
 
         <SubmitLoadingBtn
           btnClass={s.loginForm__btn}

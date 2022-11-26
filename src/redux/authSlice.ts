@@ -22,6 +22,7 @@ import {
   changeMyAvatar,
   updateMyOnlineStatus,
 } from './myselfSlice';
+import { submitForgotPasswordEmail } from './forgotPasswordSlice';
 
 export const signUserUp = createAsyncThunk(
   'auth/signUserUp',
@@ -125,10 +126,10 @@ const authSlice = createSlice({
 
     [logUserIn.pending.type]: (state) => {
       state.isFetching = true;
-      state.errorMsg = '';
     },
-    [logUserIn.fulfilled.type]: (state, action: PayloadAction<User>) => {
+    [logUserIn.fulfilled.type]: (state) => {
       state.isFetching = false;
+      state.errorMsg = '';
     },
     [logUserIn.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errorMsg = action.payload;
@@ -137,6 +138,16 @@ const authSlice = createSlice({
 
     [logOut.fulfilled.type]: (state) => {
       state.afterSignUp = false;
+    },
+
+    [submitForgotPasswordEmail.fulfilled.type]: (state) => {
+      state.errorMsg = '';
+    },
+    [submitForgotPasswordEmail.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.errorMsg = action.payload;
     },
 
     [getMe.pending.type]: (state) => {

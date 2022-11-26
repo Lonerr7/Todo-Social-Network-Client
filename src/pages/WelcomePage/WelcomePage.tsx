@@ -1,12 +1,9 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import s from './WelcomePage.module.scss';
 
 const WelcomePage: React.FC = () => {
-  const navigate = useNavigate();
-
   useEffect(() => {
-    navigate('/', { replace: true });
+    document.title = 'Welcome! | Todo Social';
 
     // eslint-disable-next-line
   }, []);
