@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
 import { ForgotPasswordInitialValues } from '../types/formikTypes';
 
@@ -8,7 +8,7 @@ export const submitForgotPasswordEmail = createAsyncThunk(
     try {
       const response = await authAPI.sendToForgotPasswordEmail(data);
 
-      console.log(response);
+      return response.data.message;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -26,20 +26,29 @@ const initialState = {
 const forgotPasswordSlice = createSlice({
   name: 'forgotPassword',
   initialState,
-  reducers: {},
+  reducers: {
+    toggleIsForgotPasswordSent: (state, action: PayloadAction<boolean>) => {
+      state.isForgotPasswordSuccessfullySent = action.payload;
+    },
+  },
   extraReducers: {
     [submitForgotPasswordEmail.pending.type]: (state) => {
       state.isForgotPasswordFetching = true;
     },
-    [submitForgotPasswordEmail.fulfilled.type]: (state) => {
+    [submitForgotPasswordEmail.fulfilled.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
       state.isForgotPasswordFetching = false;
       state.isForgotPasswordSuccessfullySent = true;
+      state.successMsg = action.payload;
     },
     [submitForgotPasswordEmail.rejected.type]: (state) => {
       state.isForgotPasswordFetching = false;
+      state.isForgotPasswordSuccessfullySent = false;
     },
   },
 });
 
 export default forgotPasswordSlice.reducer;
-// export const {} = forgotPasswordSlice.actions;
+export const { toggleIsForgotPasswordSent } = forgotPasswordSlice.actions;

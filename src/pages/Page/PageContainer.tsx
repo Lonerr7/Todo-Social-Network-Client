@@ -8,10 +8,15 @@ import s from './../../components/common/GoBack/GoBack.module.scss';
 
 type PageContainerProps = {
   title: string;
+  subtitle?: string;
   form: React.ReactNode;
 };
 
-const PageContainer: React.FC<PageContainerProps> = ({ title, form }) => {
+const PageContainer: React.FC<PageContainerProps> = ({
+  title,
+  form,
+  subtitle,
+}) => {
   const { user, errorMsg } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
@@ -35,6 +40,7 @@ const PageContainer: React.FC<PageContainerProps> = ({ title, form }) => {
   return (
     <Page
       title={title}
+      subtitle={subtitle}
       form={form}
       errorMsg={errorMsg}
       backBtnClass={s.goBackPosition}

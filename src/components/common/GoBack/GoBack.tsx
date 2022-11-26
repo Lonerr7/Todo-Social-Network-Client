@@ -11,8 +11,8 @@ const GoBack: React.FC<Props> = ({ customClass }) => {
   const goBack = () => navigate(-1);
 
   return (
-    <button className={`${s.goBack} ${customClass}`}>
-      <TbArrowBackUp className={s.goBack__arrow} onClick={goBack} size={50} />
+    <button className={`${s.go} ${customClass}`} onClick={goBack}>
+      <TbArrowBackUp className={s.go__arrow} size={50} />
     </button>
   );
 };

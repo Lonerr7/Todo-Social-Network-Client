@@ -4,8 +4,26 @@
   @extend %page;
   padding: 60px 0;
 
-  &__title {
+  &__goBack {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  &__goHome {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+  }
+
+  &__title,
+  &__subtitle {
     @extend %formpage-title;
+  }
+
+  &__subtitle {
+    font-size: 22px;
+    color: $color8;
   }
 }
 

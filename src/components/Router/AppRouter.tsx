@@ -31,9 +31,20 @@ const AppRouter: React.FC = () => {
           <PageContainer
             form={<ForgotPasswordForm />}
             title="Forgot password?"
+            subtitle="Step 1: Enter your email. We will send there password reset token."
           />
         }
       />
+      {/* <Route
+        path="/resetPassword"
+        element={
+          <PageContainer
+            form={<ForgotPasswordForm />}
+            title="Forgot password?"
+            subtitle="Step 1: Enter your email. We will send there password reset token."
+          />
+        }
+      /> */}
       <Route path="/" element={<Layout />}>
         <Route index element={<MyPageContainer />} />
         <Route path="users" element={<UsersPageContainer />} />
