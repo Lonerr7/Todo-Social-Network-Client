@@ -4,14 +4,12 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import {
   submitForgotPasswordEmail,
   toggleIsForgotPasswordSent,
-} from '../../../redux/forgotPasswordSlice';
+} from '../../../redux/passwordSlice';
 import { ForgotPasswordInitialValues } from '../../../types/formikTypes';
 import FormControl from '../FormControl/FormControl';
-import FormStatus from '../FormStatus/FormStatus';
 import s from './ForgotPasswordForm.module.scss';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
-import { Link, Navigate } from 'react-router-dom';
-import { HiArrowRight } from 'react-icons/hi';
+import { Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const initialValues = {
@@ -26,11 +24,8 @@ const validationSchema = yup.object({
 });
 
 const ForgotPasswordForm: React.FC = () => {
-  const {
-    isForgotPasswordFetching,
-    isForgotPasswordSuccessfullySent,
-    successMsg,
-  } = useAppSelector((state) => state.forgotPassword);
+  const { isForgotPasswordFetching, isForgotPasswordSuccessfullySent } =
+    useAppSelector((state) => state.password);
   const dispatch = useAppDispatch();
 
   const onSubmit = (values: ForgotPasswordInitialValues) => {
@@ -50,51 +45,32 @@ const ForgotPasswordForm: React.FC = () => {
   }
 
   return (
-    <div className={s.form}>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={validationSchema}
-      >
-        <Form>
-          <FormControl
-            customClass={s.form__formControl}
-            field="email"
-            placeholder="Enter your email..."
-            inputClass={s.form__formInput}
-            type="text"
-            label="Email"
-            labelClass={s.form__label}
-          />
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      <Form className={s.form}>
+        <FormControl
+          customClass={s.form__formControl}
+          field="email"
+          placeholder="Enter your email..."
+          inputClass={s.form__formInput}
+          type="text"
+          label="Email"
+          labelClass={s.form__label}
+        />
 
-          <SubmitLoadingBtn
-            btnClass={s.form__btn}
-            btnType="submit"
-            btnText="Send"
-            btnFetchingText="Sending"
-            isFetching={isForgotPasswordFetching}
-            onSubmit={() => {}}
-          />
-
-          {isForgotPasswordSuccessfullySent ? (
-            <div className={s.form__box}>
-              <FormStatus
-                isSuccessfulySent={isForgotPasswordSuccessfullySent}
-                preloaderClass={s.form__preloader}
-                msgClass={s.form__success}
-                message={successMsg}
-              />
-              <Link className={s.form__link} to="/">
-                Next
-                <HiArrowRight className={s.form__linkIcon} size={24} />
-              </Link>
-            </div>
-          ) : (
-            ''
-          )}
-        </Form>
-      </Formik>
-    </div>
+        <SubmitLoadingBtn
+          btnClass={s.form__btn}
+          btnType="submit"
+          btnText="Send"
+          btnFetchingText="Sending"
+          isFetching={isForgotPasswordFetching}
+          onSubmit={() => {}}
+        />
+      </Form>
+    </Formik>
   );
 };
 

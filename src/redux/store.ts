@@ -7,7 +7,7 @@ import todoSlice from './todoSlice';
 import myselfSlice from './myselfSlice';
 import usersSlice from './usersSlice';
 import chatSlice from './chatSlice';
-import forgotPasswordSlice from './forgotPasswordSlice';
+import forgotPasswordSlice from './passwordSlice';
 
 const store = configureStore({
   reducer: {
@@ -19,7 +19,7 @@ const store = configureStore({
     popup: popupSlice,
     todo: todoSlice,
     chat: chatSlice,
-    forgotPassword: forgotPasswordSlice,
+    password: forgotPasswordSlice,
   },
   middleware: (getDefMiddleware) =>
     getDefMiddleware({

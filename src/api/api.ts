@@ -8,6 +8,7 @@ import {
   LoginFormInitialValues,
   UpdateUserPasswordInitialValues,
   ForgotPasswordInitialValues,
+  ResetPasswordInitialValues,
 } from '../types/formikTypes';
 import { UpdateMeFieldsToSendForApi } from '../types/apiTypes';
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
@@ -33,6 +34,9 @@ export const authAPI = {
 
   sendToForgotPasswordEmail: async (data: ForgotPasswordInitialValues) =>
     await axiosInstance.post('users/forgotPassword', data),
+
+  sendPasswordReset: async (data: ResetPasswordInitialValues) =>
+    await axiosInstance.patch('users/resetPassword', data),
 };
 
 export const myselfAPI = {

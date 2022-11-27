@@ -1,14 +1,37 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
-import { ForgotPasswordInitialValues } from '../types/formikTypes';
+import {
+  ForgotPasswordInitialValues,
+  ResetPasswordInitialValues,
+} from '../types/formikTypes';
 
 export const submitForgotPasswordEmail = createAsyncThunk(
-  'forgotPassword/submitForgotPasswordEmail',
+  'password/submitForgotPasswordEmail',
   async (data: ForgotPasswordInitialValues, { rejectWithValue }) => {
     try {
       const response = await authAPI.sendToForgotPasswordEmail(data);
 
       return response.data.message;
+    } catch (error: any) {
+      console.log(error);
+
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const submitResetPassword = createAsyncThunk(
+  'password/submitResetPassword',
+  async (data: ResetPasswordInitialValues, { rejectWithValue }) => {
+    try {
+      const response = await authAPI.sendPasswordReset(data);
+
+      // save jwt to localstorage
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
+
+      return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -18,13 +41,14 @@ export const submitForgotPasswordEmail = createAsyncThunk(
 // ErrorMsg is in authSlice, because we render the form inside Page component which has universal errMsg for both log in and sign up
 
 const initialState = {
-  successMsg: '',
+  // successMsg: '',
   isForgotPasswordFetching: false,
   isForgotPasswordSuccessfullySent: false,
+  isResetPasswordFetching: false,
 };
 
 const forgotPasswordSlice = createSlice({
-  name: 'forgotPassword',
+  name: 'password',
   initialState,
   reducers: {
     toggleIsForgotPasswordSent: (state, action: PayloadAction<boolean>) => {
@@ -36,16 +60,26 @@ const forgotPasswordSlice = createSlice({
       state.isForgotPasswordFetching = true;
     },
     [submitForgotPasswordEmail.fulfilled.type]: (
-      state,
-      action: PayloadAction<string>
+      state
+      // action: PayloadAction<string>
     ) => {
       state.isForgotPasswordFetching = false;
       state.isForgotPasswordSuccessfullySent = true;
-      state.successMsg = action.payload;
+      // state.successMsg = action.payload;
     },
     [submitForgotPasswordEmail.rejected.type]: (state) => {
       state.isForgotPasswordFetching = false;
       state.isForgotPasswordSuccessfullySent = false;
+    },
+
+    [submitResetPassword.pending.type]: (state) => {
+      state.isResetPasswordFetching = true;
+    },
+    [submitResetPassword.fulfilled.type]: (state) => {
+      state.isResetPasswordFetching = false;
+    },
+    [submitResetPassword.rejected.type]: (state) => {
+      state.isResetPasswordFetching = false;
     },
   },
 });

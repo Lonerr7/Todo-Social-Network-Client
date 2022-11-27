@@ -17,6 +17,12 @@ export interface ForgotPasswordInitialValues {
   email: string;
 }
 
+export interface ResetPasswordInitialValues {
+  resetToken: string;
+  password: string;
+  passwordConfirm: string;
+}
+
 export type UpdateMyBioValue = {
   bio: string;
 };

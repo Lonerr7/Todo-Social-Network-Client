@@ -22,7 +22,10 @@ import {
   changeMyAvatar,
   updateMyOnlineStatus,
 } from './myselfSlice';
-import { submitForgotPasswordEmail } from './forgotPasswordSlice';
+import {
+  submitForgotPasswordEmail,
+  submitResetPassword,
+} from './passwordSlice';
 
 export const signUserUp = createAsyncThunk(
   'auth/signUserUp',
@@ -148,6 +151,13 @@ const authSlice = createSlice({
       action: PayloadAction<string>
     ) => {
       state.errorMsg = action.payload;
+    },
+
+    [submitResetPassword.fulfilled.type]: (
+      state,
+      action: PayloadAction<User>
+    ) => {
+      state.user = action.payload;
     },
 
     [getMe.pending.type]: (state) => {
