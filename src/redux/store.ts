@@ -8,6 +8,7 @@ import myselfSlice from './myselfSlice';
 import usersSlice from './usersSlice';
 import chatSlice from './chatSlice';
 import forgotPasswordSlice from './passwordSlice';
+import currentTodoSlice from './currentTodoSlice';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     todo: todoSlice,
     chat: chatSlice,
     password: forgotPasswordSlice,
+    currentTodo: currentTodoSlice
   },
   middleware: (getDefMiddleware) =>
     getDefMiddleware({

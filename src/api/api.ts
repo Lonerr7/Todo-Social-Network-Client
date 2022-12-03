@@ -73,3 +73,8 @@ export const usersAPI = {
   getCurrentUser: async (userId: string) =>
     await axiosInstance.get(`users/${userId}`),
 };
+
+export const usersTodoAPI = {
+  getCurrentUserTodoWithComments: async (todoId: string) =>
+    await axiosInstance.get(`todos/${todoId}`),
+};

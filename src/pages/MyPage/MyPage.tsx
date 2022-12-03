@@ -35,7 +35,7 @@ const MyPage: React.FC<Props> = ({
             <Avatar avatar={myself.photo} canViewerBeOpened={true} />
             <MyAvatarControls />
           </div>
-          <FriendsBlock />
+          {/* <FriendsBlock /> */}
         </div>
         <div className={s.myPage__right}>
           <ProfileInfo>
@@ -57,9 +57,11 @@ const MyPage: React.FC<Props> = ({
             />
             <ProfileTopInfo todos={todos} />
           </ProfileInfo>
-          <ProfileInfo customClass={s.profileInfo__todos}>
-            <UserTodos />
-          </ProfileInfo>
+          {todos.length ? (
+            <ProfileInfo customClass={s.profileInfo__todos}>
+              <UserTodos todos={todos} />
+            </ProfileInfo>
+          ) : null}
         </div>
       </div>
     </div>

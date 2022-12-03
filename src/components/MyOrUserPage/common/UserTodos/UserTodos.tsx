@@ -1,10 +1,12 @@
-import { useAppSelector } from '../../../../hooks/hooks';
 import UserTodoSm from './UserTodoSm/UserTodoSm';
 import s from './UserTodos.module.scss';
+import { Todo } from '../../../../types/reduxTypes/todoSliceTypes';
 
-const UserTodos: React.FC = () => {
-  const todos = useAppSelector((state) => state.todo.todos);
+interface Props {
+  todos: Todo[];
+}
 
+const UserTodos: React.FC<Props> = ({ todos }) => {
   const todosElements = todos.map((t) => (
     <UserTodoSm
       key={t.id}

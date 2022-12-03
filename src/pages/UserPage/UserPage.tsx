@@ -5,6 +5,7 @@ import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/Profil
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
 import UserAdditionalInfoContainer from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfoContainer';
 import UserMainInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
+import UserTodos from '../../components/MyOrUserPage/common/UserTodos/UserTodos';
 import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
 import { User } from '../../types/reduxTypes/authSliceTypes';
@@ -54,6 +55,11 @@ const UserPage: React.FC<Props> = ({
             />
             <ProfileTopInfo todos={user.todos} />
           </ProfileInfo>
+          {user.todos.length ? (
+            <ProfileInfo customClass={s.profileInfo__todos}>
+              <UserTodos todos={user.todos} />
+            </ProfileInfo>
+          ) : null}
         </div>
       </div>
     </div>
