@@ -4,6 +4,20 @@ export enum TodoFiltersEnum {
   UNCOMPLETED = 'Uncompleted',
 }
 
+export interface Comments {
+  _id: string;
+  id: string;
+  comment: string;
+  createdAt: string;
+  todo: string;
+  user: {
+    _id: string;
+    id: string;
+    nickname: string;
+    photo: string;
+  };
+}
+
 export type Todo = {
   _id: string;
   taskText: string;
@@ -15,6 +29,7 @@ export type Todo = {
   __v: number;
   id: string;
   errorMsg: string;
+  comments: Comments[];
 };
 
 export type TodoState = {

@@ -13,7 +13,6 @@ const TodoListTasks: React.FC = () => {
       id={t.id}
       taskText={t.taskText}
       difficulty={t.difficulty}
-      userId={t.user}
       createdAt={t.createdAt}
       isCompleted={t.isCompleted}
       errMsg={t.errorMsg}

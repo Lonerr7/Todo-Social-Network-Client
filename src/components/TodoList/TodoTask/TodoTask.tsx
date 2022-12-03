@@ -4,23 +4,17 @@ import TaskInfo from './TaskInfo/TaskInfo';
 import { useState } from 'react';
 import TaskAdditionalInfo from './TaskAdditionalInfo/TaskAdditionalInfo';
 import TextError from '../../common/TextError/TextError';
+import { TodoTaskProps } from '../../../types/componentTypes/todoPropsTypes';
 
-type Props = {
-  taskText: string;
-  isCompleted: boolean;
-  difficulty: 'easy' | 'medium' | 'hard';
-  createdAt: string;
-  userId: string;
-  id: string;
+interface Props extends TodoTaskProps {
   errMsg: string;
-};
+}
 
 const TodoTask: React.FC<Props> = ({
   taskText,
   isCompleted,
   difficulty,
   createdAt,
-  userId,
   id,
   errMsg,
 }) => {

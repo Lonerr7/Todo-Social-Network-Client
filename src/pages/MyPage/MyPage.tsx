@@ -12,6 +12,7 @@ import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import { User } from '../../types/reduxTypes/authSliceTypes';
 import UserAdditionalInfoContainer from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfoContainer';
+import UserTodos from '../../components/MyOrUserPage/common/UserTodos/UserTodos';
 
 type Props = {
   myself: User;
@@ -26,8 +27,6 @@ const MyPage: React.FC<Props> = ({
   todos,
   toggleAdditionalInfoVisibility,
 }) => {
-  console.log(`rerender my page`);
-
   return (
     <div className={s.myPage}>
       <div className={s.myPage__inner}>
@@ -57,6 +56,9 @@ const MyPage: React.FC<Props> = ({
               isVisible={isAdditionalInfoVisible}
             />
             <ProfileTopInfo todos={todos} />
+          </ProfileInfo>
+          <ProfileInfo customClass={s.profileInfo__todos}>
+            <UserTodos />
           </ProfileInfo>
         </div>
       </div>

@@ -1,0 +1,13 @@
+.todo {
+  &__top {
+    font-size: 22px;
+  }
+
+  &__text_completed {
+    text-decoration: line-through;
+  }
+
+  &__link {
+    font-size: 20px;
+  }
+}
