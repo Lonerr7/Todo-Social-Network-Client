@@ -1,0 +1,22 @@
+@import '../../../../../vars';
+
+.todo {
+  width: 40%;
+  padding-bottom: 40px;
+  border-bottom: 1px solid $color8;
+
+  &__inner {
+    background-color: $color9;
+  }
+
+  &__text {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  &__bottom {
+    p {
+      font-size: 18px;
+    }
+  }
+}

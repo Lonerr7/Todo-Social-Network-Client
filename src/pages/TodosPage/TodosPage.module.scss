@@ -3,12 +3,19 @@
 .todos {
   @extend %main-inner;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   position: relative;
 
   &__errors {
     position: absolute;
     bottom: 0;
     right: 0;
+  }
+
+  &__todoBox {
+    border-bottom: 1px solid $color8;
+    width: 100%;
+    margin: 0 auto;
   }
 }

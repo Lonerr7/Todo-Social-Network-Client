@@ -14,7 +14,7 @@ import MyPageContainer from '../../pages/MyPage/MyPageContainer';
 import ChatPage from '../../pages/ChatPage/ChatPage';
 import ForgotPasswordForm from '../common/ForgotPasswordForm/ForgotPasswordForm';
 import ResetPasswordForm from '../common/ResetPasswordForm/ResetPasswordForm';
-import UserTodoBig from '../MyOrUserPage/common/UserTodos/UserTodoBig/UserTodoBig';
+import UserTodoPageWithCommentsContainer from '../../pages/UserTodoWithCommentsPage/UserTodoWithCommentsPageContainer';
 
 const AppRouter: React.FC = () => {
   return (
@@ -54,7 +54,10 @@ const AppRouter: React.FC = () => {
         <Route path="messages" element={<MessagesPage />} />
         <Route path="chat" element={<ChatPage />} />
         <Route path="todos" element={<TodosPage />} />
-        <Route path="todo/:todoId" element={<UserTodoBig />} />
+        <Route
+          path="todo/:todoId"
+          element={<UserTodoPageWithCommentsContainer />}
+        />
         <Route path="settings" element={<SettingsPage />}>
           <Route index element={<GeneralSettings />} />
           <Route path="security" element={<SecuritySettings />} />

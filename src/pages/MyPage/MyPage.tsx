@@ -6,7 +6,7 @@ import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBi
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import s from './MyPage.module.scss';
-import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
+// import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
 import UserGeneralInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
