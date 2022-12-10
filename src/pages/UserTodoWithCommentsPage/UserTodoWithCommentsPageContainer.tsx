@@ -41,7 +41,7 @@ const UserTodoPageWithCommentsContainer = () => {
       {currentTodo && currentTodoOwner ? (
         <UserTodoWithCommentsPage
           currentTodo={currentTodo}
-          todoOwner={currentTodoOwner}
+          ownerNickname={currentTodoOwner.nickname}
         />
       ) : (
         'Error'

@@ -1,9 +1,10 @@
 @import '../../../../../vars';
 
 .todo {
-  width: 40%;
+  width: 50%;
   padding-bottom: 40px;
   border-bottom: 1px solid $color8;
+  margin-bottom: 40px;
 
   &__inner {
     background-color: $color9;

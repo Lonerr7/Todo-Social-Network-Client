@@ -53,6 +53,7 @@ const currentTodoSlice = createSlice({
     ) => {
       state.isTodoFetching = false;
       state.currentTodo = action.payload;
+      state.errMsg = '';
     },
     [fetchOpenedTodoWithComments.rejected.type]: (
       state,
@@ -68,6 +69,7 @@ const currentTodoSlice = createSlice({
     [fetchTodoOwner.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.isTodoFetching = false;
       state.currentTodoOwner = action.payload;
+      state.errMsg = '';
     },
     [fetchTodoOwner.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isTodoFetching = false;
