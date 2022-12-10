@@ -1,7 +1,9 @@
+import { HiOutlineTrash } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
 import { deleteTodoComment } from '../../../../../redux/currentTodoSlice';
 import { Comment } from '../../../../../types/reduxTypes/todoSliceTypes';
+import Preloader from '../../../../common/Preloader/Preloader';
 import Avatar from '../../../common/Avatar/Avatar';
 import s from './UserTodoComment.module.scss';
 
@@ -22,6 +24,9 @@ const UserTodoComment: React.FC<Props> = ({
 }) => {
   const normalDate = new Date(createdAt).toLocaleString();
   const myself = useAppSelector((state) => state.auth.user);
+  const { isCommentDeleting, currentCommentOnDeletion } = useAppSelector(
+    (state) => state.currentTodo
+  );
   const isMe = myself?.id === user._id;
 
   const dispatch = useAppDispatch();
@@ -38,11 +43,22 @@ const UserTodoComment: React.FC<Props> = ({
 
       <div className={s.comment__box}>
         {isMe ? (
-          <div>
+          <div className={s.comment__container}>
             <Link className={s.comment__link} to="/">
               <span className={s.comment__nickname}>{user.nickname} (you)</span>
             </Link>
-            <button onClick={deleteCommentHandler}>delete</button>
+
+            <div className={s.comment__controls}>
+              {isCommentDeleting && currentCommentOnDeletion === commentId ? (
+                <Preloader customClass={s.comment__preloader} />
+              ) : null}
+              <button
+                className={s.comment__deleteBtn}
+                onClick={deleteCommentHandler}
+              >
+                <HiOutlineTrash size={20} />
+              </button>
+            </div>
           </div>
         ) : (
           <Link className={s.comment__link} to={`/users/${user._id}`}>

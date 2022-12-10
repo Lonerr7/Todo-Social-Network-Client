@@ -52,6 +52,8 @@ const initialState: CurrentTodoState = {
   currentTodo: null,
   currentTodoOwner: null,
   isTodoFetching: false,
+  currentCommentOnDeletion: '',
+  isCommentDeleting: false,
   errMsg: '',
 };
 
@@ -92,15 +94,30 @@ const currentTodoSlice = createSlice({
       state.errMsg = action.payload;
     },
 
+    [deleteTodoComment.pending.type]: (state, action) => {
+      state.isCommentDeleting = true;
+      state.currentCommentOnDeletion = action.meta.arg.commentId
+    },
     [deleteTodoComment.fulfilled.type]: (
       state,
       action: PayloadAction<string>
     ) => {
+      state.isCommentDeleting = false;
+      state.currentCommentOnDeletion = '';
+      state.errMsg = '';
       if (state.currentTodo?.comments) {
         state.currentTodo.comments = state.currentTodo?.comments.filter(
           (c) => c._id !== action.payload
         );
       }
+    },
+    [deleteTodoComment.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.isCommentDeleting = false;
+      state.currentCommentOnDeletion = '';
+      state.errMsg = action.payload;
     },
   },
 });
