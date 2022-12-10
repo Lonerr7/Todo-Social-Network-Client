@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { usersAPI, usersTodoAPI } from '../api/api';
+import { commentsAPI, usersAPI, usersTodoAPI } from '../api/api';
 import { User } from '../types/reduxTypes/authSliceTypes';
 import { CurrentTodoState } from '../types/reduxTypes/currentTodoSliceTypes';
 import { TodoWithComments } from '../types/reduxTypes/todoSliceTypes';
@@ -26,6 +26,22 @@ export const fetchTodoOwner = createAsyncThunk(
       const response = await usersAPI.getCurrentUser(userId);
 
       return response.data.data.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const deleteTodoComment = createAsyncThunk(
+  'currentTodo/deleteTodoComment',
+  async (
+    { todoId, commentId }: { todoId: string; commentId: string },
+    { rejectWithValue }
+  ) => {
+    try {
+      await commentsAPI.deleteTodoComment(todoId, commentId);
+
+      return commentId;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -74,6 +90,17 @@ const currentTodoSlice = createSlice({
     [fetchTodoOwner.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isTodoFetching = false;
       state.errMsg = action.payload;
+    },
+
+    [deleteTodoComment.fulfilled.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      if (state.currentTodo?.comments) {
+        state.currentTodo.comments = state.currentTodo?.comments.filter(
+          (c) => c._id !== action.payload
+        );
+      }
     },
   },
 });

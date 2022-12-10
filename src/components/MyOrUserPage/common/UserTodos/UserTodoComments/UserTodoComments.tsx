@@ -3,22 +3,25 @@ import UserTodoComment from '../UserTodoComment/UserTodoComment';
 import s from './UserTodoComments.module.scss';
 
 const UserTodoComments: React.FC = () => {
-  const todos = useAppSelector(
+  const comments = useAppSelector(
     (state) => state.currentTodo.currentTodo?.comments
   );
+  const todoId = useAppSelector((state) => state.currentTodo.currentTodo?._id)!;
 
-  const todosElems = todos
-    ? todos.map((t) => (
+  const commentsElems = comments
+    ? comments.map((c) => (
         <UserTodoComment
-          key={t._id}
-          comment={t.comment}
-          createdAt={t.createdAt}
-          user={t.user}
+          key={c._id}
+          comment={c.comment}
+          createdAt={c.createdAt}
+          user={c.user}
+          todoId={todoId}
+          commentId={c._id}
         />
       ))
     : null;
 
-  return <ul className={s.comments}>{todosElems}</ul>;
+  return <ul className={s.comments}>{commentsElems}</ul>;
 };
 
 export default UserTodoComments;

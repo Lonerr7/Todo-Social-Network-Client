@@ -13,6 +13,10 @@
     border: none;
   }
 
+  &__link {
+    display: inline-block;
+  }
+
   &__photo {
     width: 100px;
     height: 100px;
@@ -33,13 +37,24 @@
   }
 
   &__nickname {
+    display: inline-block;
+    width: auto;
     color: $color1;
     line-height: 22px;
     font-weight: 500;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__text {
+    font-size: 22px;
   }
 
   &__date {
-    font-size: 20px;
+    font-size: 18px;
     color: $color10;
   }
 }

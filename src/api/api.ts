@@ -78,3 +78,8 @@ export const usersTodoAPI = {
   getCurrentUserTodoWithComments: async (todoId: string) =>
     await axiosInstance.get(`todos/${todoId}`),
 };
+
+export const commentsAPI = {
+  deleteTodoComment: async (todoId: string, commentId: string) =>
+    await axiosInstance.delete(`todos/${todoId}/comments/${commentId}`),
+};
