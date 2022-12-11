@@ -7,5 +7,7 @@ export interface CurrentTodoState {
   isTodoFetching: boolean;
   currentCommentOnDeletion: string;
   isCommentDeleting: boolean;
+  isCommentSending: boolean;
   errMsg: string;
+  sendCommentErrMsg: string;
 }

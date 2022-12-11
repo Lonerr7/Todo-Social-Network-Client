@@ -1,9 +1,14 @@
 @import '../../../../../vars';
 
 .input {
-  display: flex;
+  position: relative;
   width: 70%;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
+  padding-bottom: 60px;
+
+  &__inner {
+    display: flex;
+  }
 
   &__avatarWrapper {
     margin-right: 10px;
@@ -33,5 +38,12 @@
 
   &__sendBtn {
     @extend %send-btn;
+  }
+
+  &__err {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: $color12;
   }
 }

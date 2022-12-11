@@ -3,7 +3,7 @@ import { commentsAPI, usersAPI, usersTodoAPI } from '../api/api';
 import { User } from '../types/reduxTypes/authSliceTypes';
 import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 import { CurrentTodoState } from '../types/reduxTypes/currentTodoSliceTypes';
-import { TodoWithComments } from '../types/reduxTypes/todoSliceTypes';
+import { Comment, TodoWithComments } from '../types/reduxTypes/todoSliceTypes';
 
 export const fetchOpenedTodoWithComments = createAsyncThunk(
   'currentTodo/fetchOpenedTodoWithComments',
@@ -45,7 +45,8 @@ export const sendTodoComment = createAsyncThunk(
       };
 
       const response = await commentsAPI.sendTodoComment(todoId, commentData);
-      console.log(response);
+      
+      return response.data.data.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -74,7 +75,9 @@ const initialState: CurrentTodoState = {
   isTodoFetching: false,
   currentCommentOnDeletion: '',
   isCommentDeleting: false,
+  isCommentSending: false,
   errMsg: '',
+  sendCommentErrMsg: '',
 };
 
 const currentTodoSlice = createSlice({
@@ -114,6 +117,26 @@ const currentTodoSlice = createSlice({
     [fetchTodoOwner.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isTodoFetching = false;
       state.errMsg = action.payload;
+    },
+
+    // Creating(sending) a comment to todo
+    [sendTodoComment.pending.type]: (state) => {
+      state.isCommentSending = true;
+    },
+    [sendTodoComment.fulfilled.type]: (
+      state,
+      action: PayloadAction<Comment>
+    ) => {
+      state.isCommentSending = false;
+      state.sendCommentErrMsg = '';
+
+      if (state.currentTodo?.comments) {
+        state.currentTodo.comments.unshift(action.payload); //!
+      }
+    },
+    [sendTodoComment.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isCommentSending = false;
+      state.sendCommentErrMsg = action.payload;
     },
 
     // Deleting a comment on todo
