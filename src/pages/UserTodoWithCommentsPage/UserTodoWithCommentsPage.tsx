@@ -8,13 +8,13 @@ import UserTodoCommentInput from '../../components/MyOrUserPage/common/UserTodos
 interface Props {
   currentTodo: TodoWithComments;
   ownerNickname: string;
-  ownerPhoto: string;
+  myPhoto: string;
 }
 
 const UserTodoWithCommentsPage: React.FC<Props> = ({
   currentTodo,
   ownerNickname,
-  ownerPhoto,
+  myPhoto,
 }) => {
   return (
     <div className={s.todos}>
@@ -23,8 +23,9 @@ const UserTodoWithCommentsPage: React.FC<Props> = ({
         taskText={currentTodo.taskText}
         createdAt={currentTodo.createdAt}
         difficulty={currentTodo.difficulty}
+        isCompleted={currentTodo.isCompleted}
       />
-      <UserTodoCommentInput ownerPhoto={ownerPhoto} todoId={currentTodo._id} />
+      <UserTodoCommentInput myPhoto={myPhoto} todoId={currentTodo._id} />
       <UserTodoComments />
     </div>
   );

@@ -6,11 +6,11 @@ import Avatar from '../../Avatar/Avatar';
 import s from './UserTodoCommentInput.module.scss';
 
 interface Props {
-  ownerPhoto: string;
+  myPhoto: string;
   todoId: string;
 }
 
-const UserTodoCommentInput: React.FC<Props> = ({ ownerPhoto, todoId }) => {
+const UserTodoCommentInput: React.FC<Props> = ({ myPhoto, todoId }) => {
   const [commentText, setCommentText] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { isCommentSending, sendCommentErrMsg } = useAppSelector(
@@ -58,7 +58,7 @@ const UserTodoCommentInput: React.FC<Props> = ({ ownerPhoto, todoId }) => {
     <div className={s.input}>
       <div className={s.input__inner}>
         <Avatar
-          avatar={ownerPhoto}
+          avatar={myPhoto}
           customImgClass={s.input__avatar}
           wrapperClass={s.input__avatarWrapper}
         />

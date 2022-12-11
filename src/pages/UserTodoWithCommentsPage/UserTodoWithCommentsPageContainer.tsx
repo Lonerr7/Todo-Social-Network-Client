@@ -5,12 +5,15 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import {
   fetchOpenedTodoWithComments,
   fetchTodoOwner,
+  resetCurrentTodoErrorMessages,
 } from '../../redux/currentTodoSlice';
 import UserTodoWithCommentsPage from './UserTodoWithCommentsPage';
 
 const UserTodoPageWithCommentsContainer = () => {
   const { currentTodo, isTodoFetching, errMsg, currentTodoOwner } =
     useAppSelector((state) => state.currentTodo);
+  const myself = useAppSelector((state) => state.auth.user)!;
+
   const dispatch = useAppDispatch();
 
   const { todoId } = useParams();
@@ -29,6 +32,10 @@ const UserTodoPageWithCommentsContainer = () => {
       }
     })();
 
+    return () => {
+      dispatch(resetCurrentTodoErrorMessages());
+    };
+
     // eslint-disable-next-line
   }, []);
 
@@ -42,7 +49,7 @@ const UserTodoPageWithCommentsContainer = () => {
         <UserTodoWithCommentsPage
           currentTodo={currentTodo}
           ownerNickname={currentTodoOwner.nickname}
-          ownerPhoto={currentTodoOwner.photo}
+          myPhoto={myself.photo}
         />
       ) : (
         'Error'

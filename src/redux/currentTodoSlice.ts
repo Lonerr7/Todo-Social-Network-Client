@@ -45,7 +45,7 @@ export const sendTodoComment = createAsyncThunk(
       };
 
       const response = await commentsAPI.sendTodoComment(todoId, commentData);
-      
+
       return response.data.data.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
@@ -83,7 +83,12 @@ const initialState: CurrentTodoState = {
 const currentTodoSlice = createSlice({
   name: 'currentTodo',
   initialState,
-  reducers: {},
+  reducers: {
+    resetCurrentTodoErrorMessages: (state) => {
+      state.errMsg = '';
+      state.sendCommentErrMsg = '';
+    },
+  },
   extraReducers: {
     // Getting an opened todo with comments??????? Need to get comments on this todo separately, to provide pagination?
     [fetchOpenedTodoWithComments.pending.type]: (state) => {
@@ -169,3 +174,4 @@ const currentTodoSlice = createSlice({
 });
 
 export default currentTodoSlice.reducer;
+export const {resetCurrentTodoErrorMessages} = currentTodoSlice.actions;
