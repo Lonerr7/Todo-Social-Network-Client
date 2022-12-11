@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { commentsAPI, usersAPI, usersTodoAPI } from '../api/api';
 import { User } from '../types/reduxTypes/authSliceTypes';
+import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 import { CurrentTodoState } from '../types/reduxTypes/currentTodoSliceTypes';
 import { TodoWithComments } from '../types/reduxTypes/todoSliceTypes';
 
@@ -26,6 +27,25 @@ export const fetchTodoOwner = createAsyncThunk(
       const response = await usersAPI.getCurrentUser(userId);
 
       return response.data.data.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const sendTodoComment = createAsyncThunk(
+  'currentTodo/sendTodoComment',
+  async (
+    { todoId, commentText }: { commentText: string; todoId: string },
+    { rejectWithValue }
+  ) => {
+    try {
+      const commentData: CommentData = {
+        comment: commentText,
+      };
+
+      const response = await commentsAPI.sendTodoComment(todoId, commentData);
+      console.log(response);
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -62,6 +82,7 @@ const currentTodoSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    // Getting an opened todo with comments??????? Need to get comments on this todo separately, to provide pagination?
     [fetchOpenedTodoWithComments.pending.type]: (state) => {
       state.isTodoFetching = true;
     },
@@ -81,6 +102,7 @@ const currentTodoSlice = createSlice({
       state.errMsg = action.payload;
     },
 
+    // Getting a todo owner
     [fetchTodoOwner.pending.type]: (state) => {
       state.isTodoFetching = true;
     },
@@ -94,9 +116,10 @@ const currentTodoSlice = createSlice({
       state.errMsg = action.payload;
     },
 
+    // Deleting a comment on todo
     [deleteTodoComment.pending.type]: (state, action) => {
       state.isCommentDeleting = true;
-      state.currentCommentOnDeletion = action.meta.arg.commentId
+      state.currentCommentOnDeletion = action.meta.arg.commentId;
     },
     [deleteTodoComment.fulfilled.type]: (
       state,

@@ -33,15 +33,7 @@
   }
 
   &__btn {
-    @extend %btn-small;
-    background-color: $color2;
-    width: 140px;
-    height: 32px;
-    color: $color5;
-
-    &:hover {
-      background-color: $color1;
-    }
+    @extend %send-btn;
   }
 
   &__emojiPicker {

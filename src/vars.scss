@@ -176,3 +176,15 @@ $color14: orange;
   padding-top: 20px;
   border-top: 1px solid $color2;
 }
+
+%send-btn {
+  @extend %btn-small;
+  background-color: $color2;
+  width: 140px;
+  height: 32px;
+  color: $color5;
+
+  &:hover {
+    background-color: $color1;
+  }
+}

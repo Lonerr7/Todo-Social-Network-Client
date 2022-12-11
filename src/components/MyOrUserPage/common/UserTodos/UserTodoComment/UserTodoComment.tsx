@@ -61,12 +61,14 @@ const UserTodoComment: React.FC<Props> = ({
             </div>
           </div>
         ) : (
-          <Link className={s.comment__link} to={`/users/${user._id}`}>
-            <p className={s.comment__nickname}>{user.nickname}</p>
-          </Link>
+          <div className={s.comment__linkContainer}>
+            <Link className={s.comment__link} to={`/users/${user._id}`}>
+              <span className={s.comment__nickname}>{user.nickname}</span>
+            </Link>
+          </div>
         )}
 
-        <p className={s.comment__text}>{comment}</p>
+        <span className={s.comment__text}>{comment}</span>
         <p className={s.comment__date}>{normalDate}</p>
       </div>
     </li>

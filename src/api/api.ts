@@ -12,6 +12,7 @@ import {
 } from '../types/formikTypes';
 import { UpdateMeFieldsToSendForApi } from '../types/apiTypes';
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
+import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/api/v1/',
@@ -82,4 +83,8 @@ export const usersTodoAPI = {
 export const commentsAPI = {
   deleteTodoComment: async (todoId: string, commentId: string) =>
     await axiosInstance.delete(`todos/${todoId}/comments/${commentId}`),
+  sendTodoComment: async (
+    todoId: string,
+    commentData: CommentData //!
+  ) => axiosInstance.post(`todos/${todoId}/comments/`, commentData),
 };

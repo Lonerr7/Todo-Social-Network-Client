@@ -42,6 +42,7 @@ const UserTodoPageWithCommentsContainer = () => {
         <UserTodoWithCommentsPage
           currentTodo={currentTodo}
           ownerNickname={currentTodoOwner.nickname}
+          ownerPhoto={currentTodoOwner.photo}
         />
       ) : (
         'Error'
