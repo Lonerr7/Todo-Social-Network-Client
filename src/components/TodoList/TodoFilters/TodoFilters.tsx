@@ -6,19 +6,26 @@ import { changeActiveTodoFilter } from '../../../redux/todoSlice';
 import { TodoFiltersEnum } from '../../../types/reduxTypes/todoSliceTypes';
 import s from './TodoFilters.module.scss';
 
-const TodoFilters: React.FC = () => {
+interface Props {
+  displayDeleteBtn?: boolean;
+  wrapperClass?: string;
+}
+
+const TodoFilters: React.FC<Props> = ({ displayDeleteBtn, wrapperClass }) => {
   const tasksCount = useAppSelector((state) => state.todo.todos.length);
   const { activeTodoFilter } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
-  const onDeleteAllTasks = () => {
-    if (!tasksCount) return;
+  const onDeleteAllTasks = displayDeleteBtn
+    ? () => {
+        if (!tasksCount) return;
 
-    dispatch(openAreYouSurePopup(null));
-  };
+        dispatch(openAreYouSurePopup(null));
+      }
+    : null;
 
   return (
-    <div className={s.filters}>
+    <div className={`${s.filters} ${wrapperClass}`}>
       <div className={s.filters__box}>
         <button
           className={
@@ -60,12 +67,14 @@ const TodoFilters: React.FC = () => {
           Uncompleted
         </button>
       </div>
-      <button
-        className={`${s.filters__btn} ${s.close}`}
-        onClick={onDeleteAllTasks}
-      >
-        Delete All
-      </button>
+      {displayDeleteBtn ? (
+        <button
+          className={`${s.filters__btn} ${s.close}`}
+          onClick={onDeleteAllTasks!}
+        >
+          Delete All
+        </button>
+      ) : null}
     </div>
   );
 };

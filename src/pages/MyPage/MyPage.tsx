@@ -13,12 +13,14 @@ import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import { User } from '../../types/reduxTypes/authSliceTypes';
 import UserAdditionalInfoContainer from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfoContainer';
 import UserTodos from '../../components/MyOrUserPage/common/UserTodos/UserTodos';
+import TodoFilters from '../../components/TodoList/TodoFilters/TodoFilters';
 
 type Props = {
   myself: User;
   isAdditionalInfoVisible: boolean;
   todos: Array<Todo>;
   toggleAdditionalInfoVisibility: () => void;
+  selectedTodos: Todo[];
 };
 
 const MyPage: React.FC<Props> = ({
@@ -26,6 +28,7 @@ const MyPage: React.FC<Props> = ({
   isAdditionalInfoVisible,
   todos,
   toggleAdditionalInfoVisibility,
+  selectedTodos,
 }) => {
   return (
     <div className={s.myPage}>
@@ -57,11 +60,11 @@ const MyPage: React.FC<Props> = ({
             />
             <ProfileTopInfo todos={todos} />
           </ProfileInfo>
-          {todos.length ? (
-            <ProfileInfo customClass={s.profileInfo__todos}>
-              <UserTodos todos={todos} />
-            </ProfileInfo>
-          ) : null}
+
+          <ProfileInfo customClass={s.profileInfo__todos}>
+            <TodoFilters wrapperClass={s.myPage__todoFilters} />
+            {todos.length ? <UserTodos todos={selectedTodos} /> : null}
+          </ProfileInfo>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { updateMyOnlineStatus } from '../../redux/myselfSlice';
+import { selectTodosByFilter } from '../../redux/selectors/todoSelectors';
 import { OnlineStatusEnum } from '../../types/reduxTypes/authSliceTypes';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import MyPage from './MyPage';
@@ -9,6 +10,7 @@ import MyPage from './MyPage';
 const MyPageContainer: React.FC = () => {
   const myself = useAppSelector((state) => state.auth.user); //! Todos are not synced
   const todos = useAppSelector((state) => state.todo.todos);
+  const selectedTodos = useAppSelector(selectTodosByFilter);
   const dispatch = useAppDispatch();
 
   const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
@@ -43,6 +45,7 @@ const MyPageContainer: React.FC = () => {
       myself={myself}
       isAdditionalInfoVisible={isAdditionalInfoVisible}
       todos={todos}
+      selectedTodos={selectedTodos}
       toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
     />
   );
