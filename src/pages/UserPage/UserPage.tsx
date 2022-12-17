@@ -8,18 +8,28 @@ import UserMainInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/U
 import UserTodos from '../../components/MyOrUserPage/common/UserTodos/UserTodos';
 import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
+import TodoFilters from '../../components/TodoList/TodoFilters/TodoFilters';
+import { setActiveUserTodoFilter } from '../../redux/appSlice';
+import { setUserActiveTodoFilterWord } from '../../redux/usersSlice';
 import { User } from '../../types/reduxTypes/authSliceTypes';
+import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import s from './UserPage.module.scss';
 
 type Props = {
   user: User;
   isAdditionalInfoVisible: boolean;
+  userTodos: Todo[];
+  selectedTodos: Todo[];
+  activeTodoFilterNum: number;
   toggleAdditionalInfoVisibility: () => void;
 };
 
 const UserPage: React.FC<Props> = ({
   user,
   isAdditionalInfoVisible,
+  userTodos,
+  selectedTodos,
+  activeTodoFilterNum,
   toggleAdditionalInfoVisibility,
 }) => {
   return (
@@ -55,9 +65,16 @@ const UserPage: React.FC<Props> = ({
             />
             <ProfileTopInfo todos={user.todos} />
           </ProfileInfo>
-          {user.todos.length ? (
+          {userTodos.length ? (
             <ProfileInfo customClass={s.profileInfo__todos}>
-              <UserTodos todos={user.todos} />
+              <TodoFilters
+                wrapperClass={s.page__todoFilters}
+                todos={userTodos}
+                activeTodoFilter={activeTodoFilterNum}
+                changeActiveTodoFilterWord={setUserActiveTodoFilterWord}
+                setActiveTodoFilter={setActiveUserTodoFilter}
+              />
+              <UserTodos todos={selectedTodos} />
             </ProfileInfo>
           ) : null}
         </div>

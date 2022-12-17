@@ -100,7 +100,7 @@ const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    changeActiveTodoFilter: (state, action: PayloadAction<TodoFiltersEnum>) => {
+    changeActiveTodoFilterWord: (state, action: PayloadAction<TodoFiltersEnum>) => {
       state.activeTodoFilter = action.payload;
     },
     deleteTodosErrorMsg: (
@@ -186,7 +186,7 @@ const todoSlice = createSlice({
 
 export default todoSlice.reducer;
 export const {
-  changeActiveTodoFilter,
+  changeActiveTodoFilterWord,
   deleteTodosErrorMsg,
   setTodoSearchText,
 } = todoSlice.actions;

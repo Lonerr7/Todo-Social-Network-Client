@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch } from '../../../../hooks/hooks';
 import { setActiveTodoFilter } from '../../../../redux/appSlice';
-import { changeActiveTodoFilter } from '../../../../redux/todoSlice';
+import { changeActiveTodoFilterWord } from '../../../../redux/todoSlice';
 import { Todo, TodoFiltersEnum } from '../../../../types/reduxTypes/todoSliceTypes';
 import s from './ProfileTopInfo.module.scss';
 
@@ -15,12 +15,12 @@ const ProfileTopInfo: React.FC<Props> = ({ todos }) => {
   const dispatch = useAppDispatch();
 
   const onAllTodosClick = () => {
-    dispatch(changeActiveTodoFilter(TodoFiltersEnum.ALL));
+    dispatch(changeActiveTodoFilterWord(TodoFiltersEnum.ALL));
     dispatch(setActiveTodoFilter(1));
   };
 
   const onCompletedTodosClick = () => {
-    dispatch(changeActiveTodoFilter(TodoFiltersEnum.COMPLETED));
+    dispatch(changeActiveTodoFilterWord(TodoFiltersEnum.COMPLETED));
     dispatch(setActiveTodoFilter(2));
   };
 

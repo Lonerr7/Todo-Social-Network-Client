@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Preloader from '../../components/common/Preloader/Preloader';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { selectUserTodoByFilter } from '../../redux/selectors/usersSelectors';
 import { fetchCurrentUser, removeCurrentUser } from '../../redux/usersSlice';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import UserPage from './UserPage';
@@ -14,7 +15,13 @@ const UserPageContainer = () => {
     currentUser: user,
     isCurrentUserFetching: isFetching,
     errorMsg,
-  } = useAppSelector((state) => state.users);
+  } = useAppSelector((state) => state.users!);
+  const userTodos = user?.todos!;
+  const selectedTodos = useAppSelector(selectUserTodoByFilter);
+  const activeTodoFilterNum = useAppSelector(
+    (state) => state.app.activeUserTodoFilter
+  );
+
   const dispatch = useAppDispatch();
 
   const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
@@ -47,6 +54,9 @@ const UserPageContainer = () => {
       user={user}
       isAdditionalInfoVisible={isAdditionalInfoVisible}
       toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
+      userTodos={userTodos}
+      selectedTodos={selectedTodos}
+      activeTodoFilterNum={activeTodoFilterNum}
     />
   );
 };

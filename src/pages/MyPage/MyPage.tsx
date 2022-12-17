@@ -14,6 +14,8 @@ import { User } from '../../types/reduxTypes/authSliceTypes';
 import UserAdditionalInfoContainer from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfoContainer';
 import UserTodos from '../../components/MyOrUserPage/common/UserTodos/UserTodos';
 import TodoFilters from '../../components/TodoList/TodoFilters/TodoFilters';
+import { changeActiveTodoFilterWord } from '../../redux/todoSlice';
+import { setActiveTodoFilter } from '../../redux/appSlice';
 
 type Props = {
   myself: User;
@@ -21,6 +23,7 @@ type Props = {
   todos: Array<Todo>;
   toggleAdditionalInfoVisibility: () => void;
   selectedTodos: Todo[];
+  activeTodoFilter: number;
 };
 
 const MyPage: React.FC<Props> = ({
@@ -29,6 +32,7 @@ const MyPage: React.FC<Props> = ({
   todos,
   toggleAdditionalInfoVisibility,
   selectedTodos,
+  activeTodoFilter,
 }) => {
   return (
     <div className={s.myPage}>
@@ -62,8 +66,18 @@ const MyPage: React.FC<Props> = ({
           </ProfileInfo>
 
           <ProfileInfo customClass={s.profileInfo__todos}>
-            <TodoFilters wrapperClass={s.myPage__todoFilters} />
-            {todos.length ? <UserTodos todos={selectedTodos} /> : null}
+            {todos.length ? (
+              <>
+                <TodoFilters
+                  wrapperClass={s.myPage__todoFilters}
+                  todos={todos}
+                  activeTodoFilter={activeTodoFilter}
+                  changeActiveTodoFilterWord={changeActiveTodoFilterWord}
+                  setActiveTodoFilter={setActiveTodoFilter}
+                />
+                <UserTodos todos={selectedTodos} />
+              </>
+            ) : null}
           </ProfileInfo>
         </div>
       </div>

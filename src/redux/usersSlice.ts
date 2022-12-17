@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { usersAPI } from '../api/api';
 import { User } from '../types/reduxTypes/authSliceTypes';
+import { TodoFiltersEnum } from '../types/reduxTypes/todoSliceTypes';
 import {
   UsersInitialState,
   UsersList,
@@ -39,6 +40,7 @@ const initialState: UsersInitialState = {
   isCurrentUserFetching: false,
   errorMsg: '',
   usersSearchText: '',
+  activeUserTodoFilterWord: TodoFiltersEnum.ALL,
 };
 
 const usersSlice = createSlice({
@@ -50,6 +52,12 @@ const usersSlice = createSlice({
     },
     removeCurrentUser: (state) => {
       state.currentUser = null;
+    },
+    setUserActiveTodoFilterWord: (
+      state,
+      action: PayloadAction<TodoFiltersEnum>
+    ) => {
+      state.activeUserTodoFilterWord = action.payload;
     },
   },
   extraReducers: {
@@ -87,4 +95,8 @@ const usersSlice = createSlice({
 });
 
 export default usersSlice.reducer;
-export const { setUsersSearchText, removeCurrentUser } = usersSlice.actions;
+export const {
+  setUsersSearchText,
+  removeCurrentUser,
+  setUserActiveTodoFilterWord,
+} = usersSlice.actions;

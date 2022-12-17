@@ -5,6 +5,7 @@ const initialState = {
   activeSettingsNum: 1,
   isRegisterOrLoginPageOpen: false,
   activeTodoFilter: 1,
+  activeUserTodoFilter: 1,
 };
 
 const appSlice = createSlice({
@@ -23,6 +24,9 @@ const appSlice = createSlice({
     setActiveTodoFilter: (state, action: PayloadAction<number>) => {
       state.activeTodoFilter = action.payload;
     },
+    setActiveUserTodoFilter: (state, action: PayloadAction<number>) => {
+      state.activeUserTodoFilter = action.payload;
+    },
   },
 });
 
@@ -32,4 +36,5 @@ export const {
   setActiveSettingsNum,
   toggleRegisterLoginPageOpening,
   setActiveTodoFilter,
+  setActiveUserTodoFilter,
 } = appSlice.actions;

@@ -11,6 +11,9 @@ const MyPageContainer: React.FC = () => {
   const myself = useAppSelector((state) => state.auth.user); //! Todos are not synced
   const todos = useAppSelector((state) => state.todo.todos);
   const selectedTodos = useAppSelector(selectTodosByFilter);
+  const activeTodoFilter = useAppSelector(
+    (state) => state.app.activeTodoFilter
+  );
   const dispatch = useAppDispatch();
 
   const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
@@ -47,6 +50,7 @@ const MyPageContainer: React.FC = () => {
       todos={todos}
       selectedTodos={selectedTodos}
       toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
+      activeTodoFilter={activeTodoFilter}
     />
   );
 };

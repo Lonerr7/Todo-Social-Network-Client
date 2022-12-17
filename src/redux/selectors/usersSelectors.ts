@@ -1,4 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
+import { TodoFiltersEnum } from '../../types/reduxTypes/todoSliceTypes';
 import { RootState } from '../store';
 
 export const selectAllUsers = (state: RootState) => state.users.users;
@@ -33,5 +34,28 @@ export const selectUsersWithoutMe = createSelector(
     if (!myself) return allUsers;
 
     return allUsers?.filter((u) => u.id !== myself.id);
+  }
+);
+
+// =========================
+
+export const selectAllUserTodos = (state: RootState) =>
+  state.users.currentUser?.todos!;
+
+export const selectUserActiveTodoFilterWord = (state: RootState) =>
+  state.users.activeUserTodoFilterWord;
+
+export const selectUserTodoByFilter = createSelector(
+  [selectAllUserTodos, selectUserActiveTodoFilterWord],
+  (allUserTodos, activeTodoFilterWord) => {
+    if (activeTodoFilterWord === TodoFiltersEnum.ALL) {
+      return allUserTodos;
+    }
+
+    if (activeTodoFilterWord === TodoFiltersEnum.COMPLETED) {
+      return allUserTodos.filter((t) => t.isCompleted);
+    }
+
+    return allUserTodos.filter((t) => !t.isCompleted);
   }
 );

@@ -8,13 +8,13 @@ import { useAppSelector } from '../../hooks/hooks';
 import { setTodoSearchText } from '../../redux/todoSlice';
 
 const TodoList: React.FC = () => {
-  const { todoSearchText } = useAppSelector((state) => state.todo);
+  const { todoSearchText, todos } = useAppSelector((state) => state.todo);
 
   return (
     <div className={s.todoList}>
       <TodoListTitle />
       <TodosCounter />
-      <TodoListControls />
+      <TodoListControls todos={todos} />
       <Search
         text={todoSearchText}
         actionCreator={setTodoSearchText}

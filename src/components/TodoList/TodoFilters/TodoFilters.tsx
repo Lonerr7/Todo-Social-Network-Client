@@ -1,19 +1,31 @@
+import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { setActiveTodoFilter } from '../../../redux/appSlice';
+import { useAppDispatch } from '../../../hooks/hooks';
 import { openAreYouSurePopup } from '../../../redux/popupSlice';
-import { changeActiveTodoFilter } from '../../../redux/todoSlice';
-import { TodoFiltersEnum } from '../../../types/reduxTypes/todoSliceTypes';
+import {
+  Todo,
+  TodoFiltersEnum,
+} from '../../../types/reduxTypes/todoSliceTypes';
 import s from './TodoFilters.module.scss';
 
 interface Props {
+  todos: Todo[];
+  activeTodoFilter: number;
   displayDeleteBtn?: boolean;
   wrapperClass?: string;
+  changeActiveTodoFilterWord: ActionCreatorWithPayload<TodoFiltersEnum, string>;
+  setActiveTodoFilter: ActionCreatorWithPayload<number, string>;
 }
 
-const TodoFilters: React.FC<Props> = ({ displayDeleteBtn, wrapperClass }) => {
-  const tasksCount = useAppSelector((state) => state.todo.todos.length);
-  const { activeTodoFilter } = useAppSelector((state) => state.app);
+const TodoFilters: React.FC<Props> = ({
+  displayDeleteBtn,
+  wrapperClass,
+  todos,
+  activeTodoFilter,
+  changeActiveTodoFilterWord,
+  setActiveTodoFilter
+}) => {
+  const tasksCount = todos.length;
   const dispatch = useAppDispatch();
 
   const onDeleteAllTasks = displayDeleteBtn
@@ -34,7 +46,7 @@ const TodoFilters: React.FC<Props> = ({ displayDeleteBtn, wrapperClass }) => {
               : s.filters__btn
           }
           onClick={() => {
-            dispatch(changeActiveTodoFilter(TodoFiltersEnum.ALL));
+            dispatch(changeActiveTodoFilterWord(TodoFiltersEnum.ALL));
             dispatch(setActiveTodoFilter(1));
           }}
         >
@@ -47,7 +59,7 @@ const TodoFilters: React.FC<Props> = ({ displayDeleteBtn, wrapperClass }) => {
               : s.filters__btn
           }
           onClick={() => {
-            dispatch(changeActiveTodoFilter(TodoFiltersEnum.COMPLETED));
+            dispatch(changeActiveTodoFilterWord(TodoFiltersEnum.COMPLETED));
             dispatch(setActiveTodoFilter(2));
           }}
         >
@@ -60,7 +72,7 @@ const TodoFilters: React.FC<Props> = ({ displayDeleteBtn, wrapperClass }) => {
               : s.filters__btn
           }
           onClick={() => {
-            dispatch(changeActiveTodoFilter(TodoFiltersEnum.UNCOMPLETED));
+            dispatch(changeActiveTodoFilterWord(TodoFiltersEnum.UNCOMPLETED));
             dispatch(setActiveTodoFilter(3));
           }}
         >

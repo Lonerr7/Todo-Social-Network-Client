@@ -1,4 +1,5 @@
 import { User } from './authSliceTypes';
+import { TodoFiltersEnum } from './todoSliceTypes';
 
 export type UsersList = Array<User>;
 
@@ -8,4 +9,5 @@ export type UsersInitialState = {
   isCurrentUserFetching: boolean;
   errorMsg: string;
   usersSearchText: string;
+  activeUserTodoFilterWord: TodoFiltersEnum;
 };
