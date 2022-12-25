@@ -3,7 +3,7 @@ import App from './App';
 import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { getMe } from './redux/authSlice';
 import { updateMyOnlineStatus } from './redux/myselfSlice';
-import { fetchAllUsers } from './redux/usersSlice';
+// import { fetchAllUsers } from './redux/usersSlice';
 import { OnlineStatusEnum } from './types/reduxTypes/authSliceTypes';
 
 const AppContainer: React.FC = () => {
@@ -25,7 +25,7 @@ const AppContainer: React.FC = () => {
   // Checking if we are logged in or not to then automatically show the content if we are
   useEffect(() => {
     dispatch(getMe());
-    dispatch(fetchAllUsers());
+    // dispatch(fetchAllUsers());
 
     // eslint-disable-next-line
   }, []);
