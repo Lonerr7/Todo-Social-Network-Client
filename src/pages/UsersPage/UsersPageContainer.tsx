@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { selectUsersBySearch } from '../../redux/selectors/usersSelectors';
@@ -12,14 +13,23 @@ const UsersPageContainer: React.FC = () => {
   );
   const users = useAppSelector(selectUsersBySearch);
   const pageCount = Math.ceil(totalUsersCount / 5); // 5 is a limit
-  const [page, setCurrentPage] = useState(1);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchURLArr = location.search.split('');
+  const page = +searchURLArr[searchURLArr.length - 1];
 
   const dispatch = useAppDispatch();
 
-  const handlePageClick = (selectedItem: { selected: number }) => {
-    const selectedPage = selectedItem.selected + 1;
+  const handlePageClick = (selectedItem: { selected: number } | number) => {
+    let selectedPage;
+    if (typeof selectedItem === 'object') {
+      selectedPage = selectedItem.selected + 1;
+    } else {
+      selectedPage = selectedItem;
+    }
 
-    setCurrentPage(selectedPage);
+    navigate(`/users?page=${selectedPage}`);
   };
 
   useEffect(() => {
@@ -39,6 +49,7 @@ const UsersPageContainer: React.FC = () => {
       searchActionCreator={setUsersSearchText}
       pageCount={pageCount}
       handlePageClick={handlePageClick}
+      currentPage={page - 1}
     />
   );
 };

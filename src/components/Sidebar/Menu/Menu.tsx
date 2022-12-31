@@ -37,7 +37,7 @@ const Menu: React.FC = () => {
             text="Users"
             neededNum={2}
             icon={<FaUserFriends className={s.menu__icon} size={24} />}
-            urlPath="/users"
+            urlPath="/users?page=1"
             itemsCount={usersCount}
           />
         </li>

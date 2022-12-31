@@ -8,6 +8,7 @@ interface Props {
   users: UsersList | null | undefined;
   usersSearchText: string;
   pageCount: number;
+  currentPage: number;
   searchActionCreator: (payload: string) => {
     payload: string;
     type: string;
@@ -19,6 +20,7 @@ const UsersPage: React.FC<Props> = ({
   users,
   usersSearchText,
   pageCount,
+  currentPage,
   searchActionCreator,
   handlePageClick,
 }) => {
@@ -59,7 +61,8 @@ const UsersPage: React.FC<Props> = ({
               marginPagesDisplayed={1}
               breakLabel="..."
               breakClassName="paginator__break"
-              disabledLinkClassName='paginator__disabled'
+              disabledLinkClassName="paginator__disabled"
+              forcePage={currentPage}
             />
           </>
         ) : (
