@@ -33,6 +33,10 @@
     color: $color2;
   }
 
+  &__nickname {
+    width: fit-content;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;

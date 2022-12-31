@@ -9,5 +9,6 @@ export type UsersInitialState = {
   isCurrentUserFetching: boolean;
   errorMsg: string;
   usersSearchText: string;
+  totalUsersCount: number;
   activeUserTodoFilterWord: TodoFiltersEnum;
 };

@@ -8,13 +8,23 @@ import {
 } from '../types/reduxTypes/usersSliceTypes';
 import { getMe } from './authSlice';
 
+interface FetchAllUsersReturn {
+  users: UsersList;
+  allUsersCount: number;
+  currentPage: number;
+}
+
 export const fetchAllUsers = createAsyncThunk(
   'users/fetchAllUsers',
-  async (_, { rejectWithValue }) => {
+  async (page: number, { rejectWithValue }) => {
     try {
-      const response = await usersAPI.getAllUsers();
+      const response = await usersAPI.getAllUsers(page);
 
-      return response.data.data.data;
+      return {
+        allUsersCount: response.data.allDocumentsCount,
+        users: response.data.data.data,
+        currentPage: page,
+      } as FetchAllUsersReturn;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -40,6 +50,7 @@ const initialState: UsersInitialState = {
   isCurrentUserFetching: false,
   errorMsg: '',
   usersSearchText: '',
+  totalUsersCount: 0,
   activeUserTodoFilterWord: TodoFiltersEnum.ALL,
 };
 
@@ -63,9 +74,10 @@ const usersSlice = createSlice({
   extraReducers: {
     [fetchAllUsers.fulfilled.type]: (
       state,
-      action: PayloadAction<UsersList>
+      action: PayloadAction<FetchAllUsersReturn>
     ) => {
-      state.users = action.payload.reverse();
+      state.users = action.payload.users.reverse();
+      state.totalUsersCount = action.payload.allUsersCount;
     },
     [fetchAllUsers.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errorMsg = action.payload;
