@@ -48,7 +48,18 @@ const UsersPage: React.FC<Props> = ({
             <ReactPaginate
               pageCount={pageCount}
               onPageChange={handlePageClick}
-              activeClassName={s.active}
+              containerClassName="paginator__container"
+              activeClassName="paginator__item_active"
+              pageClassName="paginator__page"
+              nextClassName="paginator__next"
+              previousClassName="paginator__prev"
+              previousLabel="<"
+              nextLabel=">"
+              pageRangeDisplayed={3}
+              marginPagesDisplayed={1}
+              breakLabel="..."
+              breakClassName="paginator__break"
+              disabledLinkClassName='paginator__disabled'
             />
           </>
         ) : (

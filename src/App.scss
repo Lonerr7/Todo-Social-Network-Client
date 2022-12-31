@@ -94,3 +94,82 @@
     }
   }
 }
+
+// === Pagination ===
+
+.paginator {
+  &__container {
+    margin-top: 30px;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color8;
+    border-radius: 6px;
+  }
+
+  &__item_active {
+    // font-weight: 700;
+    background-color: $color3;
+  }
+
+  &__page,
+  &__next,
+  &__prev,
+  &__break {
+    cursor: pointer;
+    border: 1px solid black;
+    a {
+      display: inline-block;
+      padding: 10px 15px;
+    }
+  }
+
+  &__prev:hover,
+  &__page:hover,
+  &__next:hover,
+  &__break:hover {
+    background-color: $color3;
+  }
+
+  &__prev {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  &__next {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  &__break {
+    a {
+      padding: 10px 15px;
+    }
+  }
+
+  &__disabled {
+    cursor: default;
+    background-color: $color5;
+
+    a {
+      &:hover {
+        background-color: $color8;
+      }
+    }
+  }
+}
+
+.disabled.paginator__prev {
+  a {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+}
+
+.disabled.paginator__next {
+  a {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}
