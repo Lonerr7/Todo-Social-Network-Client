@@ -6,7 +6,7 @@ import { RiTodoLine } from 'react-icons/ri';
 import { IoSettingsSharp } from 'react-icons/io5';
 import { BsFillChatLeftDotsFill } from 'react-icons/bs';
 import MenuItem from '../../common/MenuItem/MenuItem';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 
 const Menu: React.FC = () => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);

@@ -4,7 +4,7 @@ import Logo from '../../components/common/Logo/Logo';
 import Preloader from '../../components/common/Preloader/Preloader';
 import RegisterForm from '../../components/common/RegisterForm/RegisterForm';
 import TextError from '../../components/common/TextError/TextError';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import s from './RegisterPage.module.scss';
 
 const RegisterPage: React.FC = () => {

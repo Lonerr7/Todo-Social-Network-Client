@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/reduxToolkitHooks';
 import { sendTodoComment } from '../../../../../redux/currentTodoSlice';
 import SubmitLoadingBtn from '../../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import Avatar from '../../Avatar/Avatar';

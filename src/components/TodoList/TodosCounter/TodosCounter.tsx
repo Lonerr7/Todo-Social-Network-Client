@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import { selectTodosByFilter } from '../../../redux/selectors/todoSelectors';
 import s from './TodosCounter.module.scss';
 

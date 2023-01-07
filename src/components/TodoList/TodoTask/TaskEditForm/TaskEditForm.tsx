@@ -1,4 +1,4 @@
-import { useAppDispatch } from '../../../../hooks/hooks';
+import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
 import { deleteTodosErrorMsg, updateTodo } from '../../../../redux/todoSlice';
 import s from './TaskEditForm.module.scss';
 

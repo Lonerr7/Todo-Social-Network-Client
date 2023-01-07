@@ -2,7 +2,7 @@ import s from './TaskControls.module.scss';
 
 import { BiPencil } from 'react-icons/bi';
 import { MdDeleteForever } from 'react-icons/md';
-import { useAppDispatch } from '../../../../hooks/hooks';
+import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
 import { deleteTodo } from '../../../../redux/todoSlice';
 
 type TaskControlsProps = {

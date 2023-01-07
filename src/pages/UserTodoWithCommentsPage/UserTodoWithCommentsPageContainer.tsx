@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Preloader from '../../components/common/Preloader/Preloader';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import {
   fetchOpenedTodoComments,
   fetchTodoOwner,

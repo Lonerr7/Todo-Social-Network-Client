@@ -11,8 +11,6 @@ export const fetchOpenedTodoComments = createAsyncThunk(
     try {
       const response = await usersTodoAPI.getOpenedTodoComments(todoId);
 
-      console.log(response);
-
       return response.data.data.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);

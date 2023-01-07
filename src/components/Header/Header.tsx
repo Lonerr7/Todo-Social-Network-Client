@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import Container from '../common/Container/Container';
 import Logo from '../common/Logo/Logo';
 import s from './Header.module.scss';

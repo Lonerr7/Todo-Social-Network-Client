@@ -1,6 +1,6 @@
 import s from './ChatSidebar.module.scss';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 
 interface Props {
   nickname: string | undefined;

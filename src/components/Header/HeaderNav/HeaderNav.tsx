@@ -1,6 +1,6 @@
 import s from './HeaderNav.module.scss';
 import { IoExitOutline } from 'react-icons/io5';
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch } from '../../../hooks/reduxToolkitHooks';
 import { logOut } from '../../../redux/authSlice';
 
 const HeaderNav: React.FC = () => {

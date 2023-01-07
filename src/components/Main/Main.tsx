@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import AdditionalInfoEnterPage from '../../pages/AdditionalInfoEnterPage/AdditionalInfoEnterPage';
 import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import Container from '../common/Container/Container';

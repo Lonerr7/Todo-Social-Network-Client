@@ -1,6 +1,6 @@
 import { EmojiClickData } from 'emoji-picker-react';
 import { useState, useRef } from 'react';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import SendMessageForm from './SendMessageForm';
 
 const SendMessageFormContainer: React.FC = () => {

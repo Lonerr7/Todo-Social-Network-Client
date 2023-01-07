@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import Message from '../Message/Message';
 import s from './Messages.module.scss';
 

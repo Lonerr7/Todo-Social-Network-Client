@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { updateMyOnlineStatus } from '../../redux/myselfSlice';
 import { selectTodosByFilter } from '../../redux/selectors/todoSelectors';
 import { OnlineStatusEnum } from '../../types/reduxTypes/authSliceTypes';

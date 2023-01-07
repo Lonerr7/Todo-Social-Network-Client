@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import Credits from '../common/Credits/Credits';
 import Menu from './Menu/Menu';
 import QuckLogin from './QuckLogin/QuckLogin';

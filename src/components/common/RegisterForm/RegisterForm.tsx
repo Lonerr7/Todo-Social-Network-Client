@@ -2,7 +2,7 @@ import s from './RegisterForm.module.scss';
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import { RegisterFormInitialValues } from '../../../types/formikTypes';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import { signUserUp } from '../../../redux/authSlice';
 import FormControl from '../FormControl/FormControl';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';

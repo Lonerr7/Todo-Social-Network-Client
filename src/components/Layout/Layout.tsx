@@ -1,5 +1,5 @@
 import s from './Layout.module.scss';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import Preloader from '../common/Preloader/Preloader';
 import Header from '../Header/Header';
 import Main from '../Main/Main';

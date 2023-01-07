@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { ImCross } from 'react-icons/im';
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch } from '../../../hooks/reduxToolkitHooks';
 import s from './Search.module.scss';
 
 type Props = {

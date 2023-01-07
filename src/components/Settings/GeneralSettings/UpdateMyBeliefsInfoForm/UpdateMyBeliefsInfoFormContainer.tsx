@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import UpdateMyBeliefsInfoForm from './UpdateMyBeliefsInfoForm';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxToolkitHooks';
 import { BeliefsInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyBeliefsInfo } from '../../../../redux/myselfSlice';
 import { BeliefsFieldsToSend } from '../../../../types/reduxTypes/myselfSliceTypes';

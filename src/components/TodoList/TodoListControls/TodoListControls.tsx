@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import { setActiveTodoFilter } from '../../../redux/appSlice';
 import { changeActiveTodoFilterWord } from '../../../redux/todoSlice';
 import { Todo } from '../../../types/reduxTypes/todoSliceTypes';

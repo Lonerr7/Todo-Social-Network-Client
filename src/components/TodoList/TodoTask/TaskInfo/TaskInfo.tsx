@@ -1,7 +1,7 @@
 import s from './TaskInfo.module.scss';
 import { BsToggleOff } from 'react-icons/bs';
 import { BsToggleOn } from 'react-icons/bs';
-import { useAppDispatch } from '../../../../hooks/hooks';
+import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
 import { updateTodo } from '../../../../redux/todoSlice';
 import TaskEditForm from '../TaskEditForm/TaskEditForm';
 

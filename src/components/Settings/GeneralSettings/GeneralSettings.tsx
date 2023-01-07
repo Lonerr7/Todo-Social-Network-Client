@@ -1,6 +1,6 @@
 import s from './GeneralSettings.module.scss';
 import { useEffect } from 'react';
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch } from '../../../hooks/reduxToolkitHooks';
 import UpdateMyRegisterInfoForm from './UpdateMyRegisterInfoForm/UpdateMyRegisterInfoForm';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';

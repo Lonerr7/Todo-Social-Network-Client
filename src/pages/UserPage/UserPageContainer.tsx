@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Preloader from '../../components/common/Preloader/Preloader';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { selectUserTodoByFilter } from '../../redux/selectors/usersSelectors';
 import { fetchCurrentUser, removeCurrentUser } from '../../redux/usersSlice';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';

@@ -4,7 +4,7 @@ import TodoListTasks from './TodoListTasks/TodoListTasks';
 import TodoListTitle from './TodoListTitle/TodoListTitle';
 import TodosCounter from './TodosCounter/TodosCounter';
 import Search from '../common/Search/Search';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { setTodoSearchText } from '../../redux/todoSlice';
 
 const TodoList: React.FC = () => {

@@ -1,6 +1,6 @@
 import s from './ChangeAvatar.module.scss';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
-import { useAppDispatch } from '../../../../../hooks/hooks';
+import { useAppDispatch } from '../../../../../hooks/reduxToolkitHooks';
 import { changeMyAvatar } from '../../../../../redux/myselfSlice';
 
 const ChangeAvatar: React.FC = () => {

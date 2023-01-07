@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import withActiveSettingsNum from '../../../hoc/withActiveSettingsNum';
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch } from '../../../hooks/reduxToolkitHooks';
 import { resetUserErrorMsgs } from '../../../redux/myselfSlice';
 import Accordion from '../../common/Accordion/Accordion';
 import ChangePasswordForm from './ChangePasswordForm/ChangePasswordForm';

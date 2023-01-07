@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../../../../hooks/hooks';
+import { useAppSelector } from '../../../../../hooks/reduxToolkitHooks';
 import UserTodoComment from '../UserTodoComment/UserTodoComment';
 import s from './UserTodoComments.module.scss';
 

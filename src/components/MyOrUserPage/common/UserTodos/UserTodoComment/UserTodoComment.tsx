@@ -1,6 +1,6 @@
 import { HiOutlineTrash } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/reduxToolkitHooks';
 import { deleteTodoComment } from '../../../../../redux/currentTodoSlice';
 import { Comment } from '../../../../../types/reduxTypes/todoSliceTypes';
 import Preloader from '../../../../common/Preloader/Preloader';

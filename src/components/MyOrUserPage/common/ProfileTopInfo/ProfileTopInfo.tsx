@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch } from '../../../../hooks/hooks';
+import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
 import { setActiveTodoFilter } from '../../../../redux/appSlice';
 import { changeActiveTodoFilterWord } from '../../../../redux/todoSlice';
 import { Todo, TodoFiltersEnum } from '../../../../types/reduxTypes/todoSliceTypes';
