@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Preloader from '../../components/common/Preloader/Preloader';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import {
-  fetchOpenedTodoWithComments,
+  fetchOpenedTodoComments,
   fetchTodoOwner,
   resetCurrentTodoErrorMessages,
 } from '../../redux/currentTodoSlice';
@@ -23,12 +23,17 @@ const UserTodoPageWithCommentsContainer = () => {
     (async () => {
       if (todoId !== undefined) {
         // 1) Getting selected todo with comments
-        const res = await dispatch(fetchOpenedTodoWithComments(todoId));
+        const res = await Promise.allSettled([
+          dispatch(fetchOpenedTodoComments(todoId)),
+          dispatch(fetchTodoOwner(todoId)),
+        ]);
 
-        // 2) If todo has a userId then fetch a todo owner
-        if (res.payload.user) {
-          dispatch(fetchTodoOwner(res.payload.user));
-        }
+        console.log(res);
+
+        // // 2) If todo has a userId then fetch a todo owner
+        // if (res.payload) {
+        //   dispatch(fetchTodoOwner(res.payload.user));
+        // }
       }
     })();
 
