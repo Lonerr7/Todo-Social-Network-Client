@@ -5,46 +5,65 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import {
   fetchOpenedTodoComments,
   fetchTodoOwner,
+  resetCurrentTodoComments,
   resetCurrentTodoErrorMessages,
+  setCurrentTodo,
 } from '../../redux/currentTodoSlice';
+import { TodoSmall } from '../../types/reduxTypes/todoSliceTypes';
 import UserTodoWithCommentsPage from './UserTodoWithCommentsPage';
 
 const UserTodoPageWithCommentsContainer = () => {
-  const { currentTodo, isTodoFetching, errMsg, currentTodoOwner } =
-    useAppSelector((state) => state.currentTodo);
+  const {
+    currentTodo,
+    isTodoCommentsAndOwnerFetching,
+    errMsg,
+    currentTodoOwner,
+  } = useAppSelector((state) => state.currentTodo);
   const myself = useAppSelector((state) => state.auth.user)!;
+  const myTodos = useAppSelector((state) => state.todo.todos);
 
   const dispatch = useAppDispatch();
 
   const { todoId } = useParams();
 
-  // fetching selected todo with comments
+  // getting selected todo from state and setting it
   useEffect(() => {
-    (async () => {
-      if (todoId !== undefined) {
-        // 1) Getting selected todo with comments
-        const res = await Promise.allSettled([
-          dispatch(fetchOpenedTodoComments(todoId)),
-          dispatch(fetchTodoOwner(todoId)),
-        ]);
+    const { _id, createdAt, difficulty, id, isCompleted, taskText }: TodoSmall =
+      myTodos.filter((t) => t.id === todoId)[0];
 
-        console.log(res);
+    const todoSmall: TodoSmall = {
+      id,
+      createdAt,
+      difficulty,
+      _id,
+      isCompleted,
+      taskText,
+    };
 
-        // // 2) If todo has a userId then fetch a todo owner
-        // if (res.payload) {
-        //   dispatch(fetchTodoOwner(res.payload.user));
-        // }
-      }
-    })();
+    dispatch(setCurrentTodo(todoSmall));
+
+    // eslint-disable-next-line
+  }, []);
+
+  // fetching selected todo comments
+  useEffect(() => {
+    if (todoId !== undefined) {
+      // 1) Getting selected todo comments
+      Promise.allSettled([
+        dispatch(fetchOpenedTodoComments(todoId)),
+        dispatch(fetchTodoOwner(todoId)),
+      ]);
+    }
 
     return () => {
       dispatch(resetCurrentTodoErrorMessages());
+      dispatch(resetCurrentTodoComments());
     };
 
     // eslint-disable-next-line
   }, []);
 
-  if (isTodoFetching) return <Preloader />;
+  if (isTodoCommentsAndOwnerFetching) return <Preloader />;
 
   if (errMsg) return <div>{errMsg}</div>;
 

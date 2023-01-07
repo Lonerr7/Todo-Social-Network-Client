@@ -25,13 +25,7 @@ const UserTodoSm: React.FC<Props> = ({
         >
           {taskText}
         </p>
-        <Link
-          className={`${s.task__link} ${st.todo__link}`}
-          to={`/todo/${id}`}
-          onClick={() => {
-            console.log(`clicked`);
-          }}
-        >
+        <Link className={`${s.task__link} ${st.todo__link}`} to={`/todo/${id}`}>
           View comments
         </Link>
       </div>

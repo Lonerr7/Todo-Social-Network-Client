@@ -1,12 +1,12 @@
 import s from '../TodosPage/TodosPage.module.scss';
 import st from './UserTodoWithCommentsPage.module.scss';
 import UserTodoBig from '../../components/MyOrUserPage/common/UserTodos/UserTodoBig/UserTodoBig';
-import { TodoWithComments } from '../../types/reduxTypes/todoSliceTypes';
 import UserTodoComments from '../../components/MyOrUserPage/common/UserTodos/UserTodoComments/UserTodoComments';
 import UserTodoCommentInput from '../../components/MyOrUserPage/common/UserTodos/UserTodoCommentInput/UserTodoCommentInput';
+import { TodoSmall } from '../../types/reduxTypes/todoSliceTypes';
 
 interface Props {
-  currentTodo: TodoWithComments;
+  currentTodo: TodoSmall;
   ownerNickname: string;
   myPhoto: string;
 }

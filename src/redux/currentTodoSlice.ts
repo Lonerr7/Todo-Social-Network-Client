@@ -1,24 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { commentsAPI, usersAPI, usersTodoAPI } from '../api/api';
+import { commentsAPI, usersTodoAPI } from '../api/api';
 import { User } from '../types/reduxTypes/authSliceTypes';
 import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 import { CurrentTodoState } from '../types/reduxTypes/currentTodoSliceTypes';
-import { Comment, TodoWithComments } from '../types/reduxTypes/todoSliceTypes';
-
-// export const fetchOpenedTodoWithComments = createAsyncThunk(
-//   'currentTodo/fetchOpenedTodoWithComments',
-//   async (todoId: string, { rejectWithValue }) => {
-//     try {
-//       const response = await usersTodoAPI.getCurrentUserTodoWithComments(
-//         todoId
-//       );
-
-//       return response.data.data.data;
-//     } catch (error: any) {
-//       return rejectWithValue(error.response.data.message);
-//     }
-//   }
-// );
+import { Comment, TodoSmall } from '../types/reduxTypes/todoSliceTypes';
 
 export const fetchOpenedTodoComments = createAsyncThunk(
   'currentTodo/fetchOpenedTodoComments',
@@ -86,8 +71,9 @@ export const deleteTodoComment = createAsyncThunk(
 
 const initialState: CurrentTodoState = {
   currentTodo: null,
+  currentTodoComments: [],
   currentTodoOwner: null,
-  isTodoFetching: false,
+  isTodoCommentsAndOwnerFetching: false,
   currentCommentOnDeletion: '',
   isCommentDeleting: false,
   isCommentSending: false,
@@ -99,43 +85,49 @@ const currentTodoSlice = createSlice({
   name: 'currentTodo',
   initialState,
   reducers: {
+    setCurrentTodo: (state, action: PayloadAction<TodoSmall>) => {
+      state.currentTodo = action.payload;
+    },
     resetCurrentTodoErrorMessages: (state) => {
       state.errMsg = '';
       state.sendCommentErrMsg = '';
+    },
+    resetCurrentTodoComments: (state) => {
+      state.currentTodoComments = [];
     },
   },
   extraReducers: {
     // Getting an opened todo with comments??????? Need to get comments on this todo separately to provide pagination?
     [fetchOpenedTodoComments.pending.type]: (state) => {
-      state.isTodoFetching = true;
+      state.isTodoCommentsAndOwnerFetching = true;
     },
-    // [fetchOpenedTodoWithComments.fulfilled.type]: (
-    //   state,
-    //   action: PayloadAction<TodoWithComments>
-    // ) => {
-    //   state.isTodoFetching = false;
-    //   state.currentTodo = action.payload;
-    //   state.errMsg = '';
-    // },
-    // [fetchOpenedTodoWithComments.rejected.type]: (
-    //   state,
-    //   action: PayloadAction<string>
-    // ) => {
-    //   state.isTodoFetching = false;
-    //   state.errMsg = action.payload;
-    // },
+    [fetchOpenedTodoComments.fulfilled.type]: (
+      state,
+      action: PayloadAction<Comment[]>
+    ) => {
+      state.isTodoCommentsAndOwnerFetching = false;
+      state.currentTodoComments = action.payload;
+      state.errMsg = '';
+    },
+    [fetchOpenedTodoComments.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.isTodoCommentsAndOwnerFetching = false;
+      state.errMsg = action.payload;
+    },
 
     // Getting a todo owner
     [fetchTodoOwner.pending.type]: (state) => {
-      state.isTodoFetching = true;
+      state.isTodoCommentsAndOwnerFetching = true;
     },
     [fetchTodoOwner.fulfilled.type]: (state, action: PayloadAction<User>) => {
-      state.isTodoFetching = false;
+      state.isTodoCommentsAndOwnerFetching = false;
       state.currentTodoOwner = action.payload;
       state.errMsg = '';
     },
     [fetchTodoOwner.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.isTodoFetching = false;
+      state.isTodoCommentsAndOwnerFetching = false;
       state.errMsg = action.payload;
     },
 
@@ -150,8 +142,8 @@ const currentTodoSlice = createSlice({
       state.isCommentSending = false;
       state.sendCommentErrMsg = '';
 
-      if (state.currentTodo?.comments) {
-        state.currentTodo.comments.unshift(action.payload); //!
+      if (state.currentTodoComments) {
+        state.currentTodoComments.unshift(action.payload); //!
       }
     },
     [sendTodoComment.rejected.type]: (state, action: PayloadAction<string>) => {
@@ -171,8 +163,9 @@ const currentTodoSlice = createSlice({
       state.isCommentDeleting = false;
       state.currentCommentOnDeletion = '';
       state.errMsg = '';
-      if (state.currentTodo?.comments) {
-        state.currentTodo.comments = state.currentTodo?.comments.filter(
+
+      if (state.currentTodoComments) {
+        state.currentTodoComments = state.currentTodoComments.filter(
           (c) => c._id !== action.payload
         );
       }
@@ -189,4 +182,8 @@ const currentTodoSlice = createSlice({
 });
 
 export default currentTodoSlice.reducer;
-export const { resetCurrentTodoErrorMessages } = currentTodoSlice.actions;
+export const {
+  resetCurrentTodoErrorMessages,
+  setCurrentTodo,
+  resetCurrentTodoComments,
+} = currentTodoSlice.actions;

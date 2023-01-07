@@ -31,8 +31,13 @@ export interface Todo {
   errorMsg: string;
 }
 
-export interface TodoWithComments extends Todo {
-  comments: Comment[];
+export interface TodoSmall {
+  _id: string;
+  id: string;
+  taskText: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+  isCompleted: boolean;
+  createdAt: string;
 }
 
 export type TodoState = {
