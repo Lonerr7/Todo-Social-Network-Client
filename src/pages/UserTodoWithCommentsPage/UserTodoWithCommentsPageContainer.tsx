@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Preloader from '../../components/common/Preloader/Preloader';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
+import { usePagination } from '../../hooks/usePagination';
 import {
   fetchOpenedTodoComments,
   fetchTodoOwner,
@@ -18,6 +19,7 @@ const UserTodoPageWithCommentsContainer = () => {
     isTodoCommentsAndOwnerFetching,
     errMsg,
     currentTodoOwner,
+    totalCommentsCount,
   } = useAppSelector((state) => state.currentTodo);
   const myself = useAppSelector((state) => state.auth.user)!;
   const myTodos = useAppSelector((state) => state.todo.todos);
@@ -25,6 +27,16 @@ const UserTodoPageWithCommentsContainer = () => {
   const dispatch = useAppDispatch();
 
   const { todoId } = useParams();
+  const navigate = useNavigate();
+
+  // using pagination and getting comments by page
+  const { handlePageClick, page, pageCount } = usePagination(
+    totalCommentsCount,
+    `/todo/${todoId}?page=`,
+    5,
+    todoId!,
+    fetchOpenedTodoComments
+  );
 
   // getting selected todo from state and setting it
   useEffect(() => {
@@ -45,15 +57,13 @@ const UserTodoPageWithCommentsContainer = () => {
     // eslint-disable-next-line
   }, []);
 
-  // fetching selected todo comments
+  // fetching todo owner and resetting data when we leave component
   useEffect(() => {
     if (todoId !== undefined) {
-      // 1) Getting selected todo comments
-      Promise.allSettled([
-        dispatch(fetchOpenedTodoComments(todoId)),
-        dispatch(fetchTodoOwner(todoId)),
-      ]);
+      dispatch(fetchTodoOwner(todoId));
     }
+
+    navigate(`/todo/${todoId}?page=1`);
 
     return () => {
       dispatch(resetCurrentTodoErrorMessages());
@@ -62,6 +72,16 @@ const UserTodoPageWithCommentsContainer = () => {
 
     // eslint-disable-next-line
   }, []);
+
+  // fetching selected todo comments
+  // useEffect(() => {
+  //   if (todoId !== undefined) {
+  //     // Getting selected todo comments
+  //     dispatch(fetchOpenedTodoComments({ todoId, page: 1 }));
+  //   }
+
+  //   // eslint-disable-next-line
+  // }, []);
 
   if (isTodoCommentsAndOwnerFetching) return <Preloader />;
 
@@ -74,6 +94,9 @@ const UserTodoPageWithCommentsContainer = () => {
           currentTodo={currentTodo}
           ownerNickname={currentTodoOwner.nickname}
           myPhoto={myself.photo}
+          pageCount={pageCount}
+          currentPage={page - 1}
+          handlePageClick={handlePageClick}
         />
       ) : (
         'Error'

@@ -5,13 +5,26 @@ import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 import { CurrentTodoState } from '../types/reduxTypes/currentTodoSliceTypes';
 import { Comment, TodoSmall } from '../types/reduxTypes/todoSliceTypes';
 
+interface FetchCommentsReturn {
+  allCommentsCount: number;
+  currentPage: number;
+  comments: Comment[];
+}
+
 export const fetchOpenedTodoComments = createAsyncThunk(
   'currentTodo/fetchOpenedTodoComments',
-  async (todoId: string, { rejectWithValue }) => {
+  async (
+    { itemId, page }: { itemId: string; page: number },
+    { rejectWithValue }
+  ) => {
     try {
-      const response = await usersTodoAPI.getOpenedTodoComments(todoId);
+      const response = await usersTodoAPI.getOpenedTodoComments(itemId, page);
 
-      return response.data.data.data;
+      return {
+        allCommentsCount: response.data.allDocumentsCount,
+        currentPage: page,
+        comments: response.data.data.data,
+      } as FetchCommentsReturn;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -70,6 +83,7 @@ export const deleteTodoComment = createAsyncThunk(
 const initialState: CurrentTodoState = {
   currentTodo: null,
   currentTodoComments: [],
+  totalCommentsCount: 0,
   currentTodoOwner: null,
   isTodoCommentsAndOwnerFetching: false,
   currentCommentOnDeletion: '',
@@ -101,10 +115,11 @@ const currentTodoSlice = createSlice({
     },
     [fetchOpenedTodoComments.fulfilled.type]: (
       state,
-      action: PayloadAction<Comment[]>
+      action: PayloadAction<FetchCommentsReturn>
     ) => {
       state.isTodoCommentsAndOwnerFetching = false;
-      state.currentTodoComments = action.payload;
+      state.currentTodoComments = action.payload.comments;
+      state.totalCommentsCount = action.payload.allCommentsCount;
       state.errMsg = '';
     },
     [fetchOpenedTodoComments.rejected.type]: (

@@ -16,6 +16,7 @@ const UsersPageContainer: React.FC = () => {
     totalUsersCount,
     '/users?page=',
     5,
+    null,
     fetchAllUsers
   );
 

@@ -6,6 +6,7 @@ export const usePagination = (
   totalItemsCount: number,
   navigateURL: string,
   limit: number,
+  neededItemId: string | null,
   fetchFn: any //! Needs a definite type
 ) => {
   const pageCount = Math.ceil(totalItemsCount / limit);
@@ -13,6 +14,8 @@ export const usePagination = (
   const navigate = useNavigate();
   const location = useLocation();
   const searchURLArr = location.search.split('');
+  console.log(location);
+
   const page = +searchURLArr[searchURLArr.length - 1];
 
   const dispatch = useAppDispatch();
@@ -30,7 +33,11 @@ export const usePagination = (
 
   useEffect(() => {
     (async () => {
-      await dispatch(fetchFn(page));
+      if (neededItemId) {
+        await dispatch(fetchFn({ itemId: neededItemId, page: page }));
+      } else {
+        await dispatch(fetchFn(page));
+      }
 
       window.scrollTo(0, 0);
     })();

@@ -4,6 +4,7 @@ import { Comment, TodoSmall } from './todoSliceTypes';
 export interface CurrentTodoState {
   currentTodo: null | TodoSmall;
   currentTodoComments: Comment[];
+  totalCommentsCount: number;
   currentTodoOwner: User | null;
   isTodoCommentsAndOwnerFetching: boolean;
   currentCommentOnDeletion: string;
