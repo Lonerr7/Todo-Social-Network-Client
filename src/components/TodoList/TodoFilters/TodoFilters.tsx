@@ -1,6 +1,6 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import React from 'react';
-import { useAppDispatch } from '../../../hooks/hooks';
+import { useAppDispatch } from '../../../hooks/reduxToolkitHooks';
 import { openAreYouSurePopup } from '../../../redux/popupSlice';
 import {
   Todo,

@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxToolkitHooks';
 import { PersonalInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyPersonalInfo } from '../../../../redux/myselfSlice';
 import { useState } from 'react';

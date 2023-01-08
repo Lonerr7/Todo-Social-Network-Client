@@ -3,7 +3,7 @@ import GoBack from '../../components/common/GoBack/GoBack';
 import LoginForm from '../../components/common/LoginForm/LoginForm';
 import Logo from '../../components/common/Logo/Logo';
 import TextError from '../../components/common/TextError/TextError';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import s from './LoginPage.module.scss';
 
 const LoginPage: React.FC = () => {

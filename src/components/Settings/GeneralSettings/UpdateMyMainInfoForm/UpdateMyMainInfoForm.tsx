@@ -5,7 +5,7 @@ import FormControl from '../../../common/FormControl/FormControl';
 import FormError from '../../../common/FormError/FormError';
 import FormStatus from '../../../common/FormStatus/FormStatus';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxToolkitHooks';
 import { MainInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyMainInfo } from '../../../../redux/myselfSlice';
 

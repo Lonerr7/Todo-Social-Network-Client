@@ -1,5 +1,5 @@
 import s from './SettingsNav.module.scss';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import MenuItem from '../../common/MenuItem/MenuItem';
 
 const SettingsNav: React.FC = () => {

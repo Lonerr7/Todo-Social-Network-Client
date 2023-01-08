@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import App from './App';
-import { useAppDispatch, useAppSelector } from './hooks/hooks';
+import { useAppDispatch, useAppSelector } from './hooks/reduxToolkitHooks';
 import { getMe } from './redux/authSlice';
 import { updateMyOnlineStatus } from './redux/myselfSlice';
 // import { fetchAllUsers } from './redux/usersSlice';

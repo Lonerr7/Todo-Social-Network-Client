@@ -1,10 +1,10 @@
-import { useAppSelector } from '../../../../../hooks/hooks';
+import { useAppSelector } from '../../../../../hooks/reduxToolkitHooks';
 import UserTodoComment from '../UserTodoComment/UserTodoComment';
 import s from './UserTodoComments.module.scss';
 
 const UserTodoComments: React.FC = () => {
   const comments = useAppSelector(
-    (state) => state.currentTodo.currentTodo?.comments
+    (state) => state.currentTodo.currentTodoComments
   );
   const todoId = useAppSelector((state) => state.currentTodo.currentTodo?._id)!;
 

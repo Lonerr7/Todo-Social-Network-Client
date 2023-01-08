@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as yup from 'yup';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxToolkitHooks';
 import { GeneralInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
 import { RelationshipEnum } from '../../../../types/reduxTypes/authSliceTypes';

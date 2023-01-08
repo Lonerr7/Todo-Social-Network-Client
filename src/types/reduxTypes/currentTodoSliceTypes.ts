@@ -1,10 +1,12 @@
 import { User } from './authSliceTypes';
-import { TodoWithComments } from './todoSliceTypes';
+import { Comment, TodoSmall } from './todoSliceTypes';
 
 export interface CurrentTodoState {
-  currentTodo: null | TodoWithComments;
+  currentTodo: null | TodoSmall;
+  currentTodoComments: Comment[];
+  totalCommentsCount: number;
   currentTodoOwner: User | null;
-  isTodoFetching: boolean;
+  isTodoCommentsAndOwnerFetching: boolean;
   currentCommentOnDeletion: string;
   isCommentDeleting: boolean;
   isCommentSending: boolean;

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import Avatar from '../../MyOrUserPage/common/Avatar/Avatar';
 import { HiOutlineTrash } from 'react-icons/hi';
 import s from './Message.module.scss';

@@ -1,19 +1,30 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { commentsAPI, usersAPI, usersTodoAPI } from '../api/api';
+import { commentsAPI, usersTodoAPI } from '../api/api';
 import { User } from '../types/reduxTypes/authSliceTypes';
 import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 import { CurrentTodoState } from '../types/reduxTypes/currentTodoSliceTypes';
-import { Comment, TodoWithComments } from '../types/reduxTypes/todoSliceTypes';
+import { Comment, TodoSmall } from '../types/reduxTypes/todoSliceTypes';
 
-export const fetchOpenedTodoWithComments = createAsyncThunk(
-  'currentTodo/fetchOpenedTodoWithComments',
-  async (todoId: string, { rejectWithValue }) => {
+interface FetchCommentsReturn {
+  allCommentsCount: number;
+  currentPage: number;
+  comments: Comment[];
+}
+
+export const fetchOpenedTodoComments = createAsyncThunk(
+  'currentTodo/fetchOpenedTodoComments',
+  async (
+    { itemId, page }: { itemId: string; page: number },
+    { rejectWithValue }
+  ) => {
     try {
-      const response = await usersTodoAPI.getCurrentUserTodoWithComments(
-        todoId
-      );
+      const response = await usersTodoAPI.getOpenedTodoComments(itemId, page);
 
-      return response.data.data.data;
+      return {
+        allCommentsCount: response.data.allDocumentsCount,
+        currentPage: page,
+        comments: response.data.data.data,
+      } as FetchCommentsReturn;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -22,11 +33,11 @@ export const fetchOpenedTodoWithComments = createAsyncThunk(
 
 export const fetchTodoOwner = createAsyncThunk(
   'currentTodo/fetchTodoOwner',
-  async (userId: string, { rejectWithValue }) => {
+  async (todoId: string, { rejectWithValue }) => {
     try {
-      const response = await usersAPI.getCurrentUser(userId);
+      const response = await usersTodoAPI.getTodoOwner(todoId);
 
-      return response.data.data.data;
+      return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -71,8 +82,10 @@ export const deleteTodoComment = createAsyncThunk(
 
 const initialState: CurrentTodoState = {
   currentTodo: null,
+  currentTodoComments: [],
+  totalCommentsCount: 0,
   currentTodoOwner: null,
-  isTodoFetching: false,
+  isTodoCommentsAndOwnerFetching: false,
   currentCommentOnDeletion: '',
   isCommentDeleting: false,
   isCommentSending: false,
@@ -84,43 +97,50 @@ const currentTodoSlice = createSlice({
   name: 'currentTodo',
   initialState,
   reducers: {
+    setCurrentTodo: (state, action: PayloadAction<TodoSmall>) => {
+      state.currentTodo = action.payload;
+    },
     resetCurrentTodoErrorMessages: (state) => {
       state.errMsg = '';
       state.sendCommentErrMsg = '';
     },
+    resetCurrentTodoComments: (state) => {
+      state.currentTodoComments = [];
+    },
   },
   extraReducers: {
-    // Getting an opened todo with comments??????? Need to get comments on this todo separately, to provide pagination?
-    [fetchOpenedTodoWithComments.pending.type]: (state) => {
-      state.isTodoFetching = true;
+    // Getting an opened todo with comments??????? Need to get comments on this todo separately to provide pagination?
+    [fetchOpenedTodoComments.pending.type]: (state) => {
+      state.isTodoCommentsAndOwnerFetching = true;
     },
-    [fetchOpenedTodoWithComments.fulfilled.type]: (
+    [fetchOpenedTodoComments.fulfilled.type]: (
       state,
-      action: PayloadAction<TodoWithComments>
+      action: PayloadAction<FetchCommentsReturn>
     ) => {
-      state.isTodoFetching = false;
-      state.currentTodo = action.payload;
+      state.isTodoCommentsAndOwnerFetching = false;
+      state.currentTodoComments = action.payload.comments;
+      state.totalCommentsCount = action.payload.allCommentsCount;
       state.errMsg = '';
     },
-    [fetchOpenedTodoWithComments.rejected.type]: (
+    [fetchOpenedTodoComments.rejected.type]: (
       state,
       action: PayloadAction<string>
     ) => {
-      state.isTodoFetching = false;
+      state.isTodoCommentsAndOwnerFetching = false;
       state.errMsg = action.payload;
     },
 
     // Getting a todo owner
     [fetchTodoOwner.pending.type]: (state) => {
-      state.isTodoFetching = true;
+      state.isTodoCommentsAndOwnerFetching = true;
     },
     [fetchTodoOwner.fulfilled.type]: (state, action: PayloadAction<User>) => {
-      state.isTodoFetching = false;
+      state.isTodoCommentsAndOwnerFetching = false;
       state.currentTodoOwner = action.payload;
       state.errMsg = '';
     },
     [fetchTodoOwner.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.isTodoFetching = false;
+      state.isTodoCommentsAndOwnerFetching = false;
       state.errMsg = action.payload;
     },
 
@@ -135,8 +155,8 @@ const currentTodoSlice = createSlice({
       state.isCommentSending = false;
       state.sendCommentErrMsg = '';
 
-      if (state.currentTodo?.comments) {
-        state.currentTodo.comments.unshift(action.payload); //!
+      if (state.currentTodoComments) {
+        state.currentTodoComments.unshift(action.payload); //!
       }
     },
     [sendTodoComment.rejected.type]: (state, action: PayloadAction<string>) => {
@@ -156,8 +176,9 @@ const currentTodoSlice = createSlice({
       state.isCommentDeleting = false;
       state.currentCommentOnDeletion = '';
       state.errMsg = '';
-      if (state.currentTodo?.comments) {
-        state.currentTodo.comments = state.currentTodo?.comments.filter(
+
+      if (state.currentTodoComments) {
+        state.currentTodoComments = state.currentTodoComments.filter(
           (c) => c._id !== action.payload
         );
       }
@@ -174,4 +195,8 @@ const currentTodoSlice = createSlice({
 });
 
 export default currentTodoSlice.reducer;
-export const {resetCurrentTodoErrorMessages} = currentTodoSlice.actions;
+export const {
+  resetCurrentTodoErrorMessages,
+  setCurrentTodo,
+  resetCurrentTodoComments,
+} = currentTodoSlice.actions;

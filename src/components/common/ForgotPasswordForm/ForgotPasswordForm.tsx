@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import {
   submitForgotPasswordEmail,
   toggleIsForgotPasswordSent,

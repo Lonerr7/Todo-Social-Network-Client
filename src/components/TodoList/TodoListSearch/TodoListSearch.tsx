@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './TodoListSearch.module.scss';
 import { ImCross } from 'react-icons/im';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import { setTodoSearchText } from '../../../redux/todoSlice';
 import { useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';

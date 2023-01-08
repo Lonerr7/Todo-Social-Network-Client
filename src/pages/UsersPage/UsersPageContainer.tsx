@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
+import { usePagination } from '../../hooks/usePagination';
 import { selectUsersBySearch } from '../../redux/selectors/usersSelectors';
 import { fetchAllUsers } from '../../redux/usersSlice';
 import { setUsersSearchText } from '../../redux/usersSlice';
@@ -12,35 +11,14 @@ const UsersPageContainer: React.FC = () => {
     (state) => state.users
   );
   const users = useAppSelector(selectUsersBySearch);
-  const pageCount = Math.ceil(totalUsersCount / 5); // 5 is a limit
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const searchURLArr = location.search.split('');
-  const page = +searchURLArr[searchURLArr.length - 1];
-
-  const dispatch = useAppDispatch();
-
-  const handlePageClick = (selectedItem: { selected: number } | number) => {
-    let selectedPage;
-    if (typeof selectedItem === 'object') {
-      selectedPage = selectedItem.selected + 1;
-    } else {
-      selectedPage = selectedItem;
-    }
-
-    navigate(`/users?page=${selectedPage}`);
-  };
-
-  useEffect(() => {
-    (async () => {
-      await dispatch(fetchAllUsers(page));
-
-      window.scrollTo(0, 0);
-    })();
-
-    // eslint-disable-next-line
-  }, [page]);
+  const { pageCount, page, handlePageClick } = usePagination(
+    totalUsersCount,
+    '/users?page=',
+    5,
+    null,
+    fetchAllUsers
+  );
 
   return (
     <UsersPage

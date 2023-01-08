@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '../hooks/hooks';
+import { useAppDispatch } from '../hooks/reduxToolkitHooks';
 import { setActiveMenuNum } from '../redux/appSlice';
 
 const withActiveMenuNum = (Component: any, newActiveMenuNum: number) => {

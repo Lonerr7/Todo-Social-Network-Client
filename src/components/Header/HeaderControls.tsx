@@ -1,6 +1,6 @@
 import s from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks/hooks';
+import { useAppDispatch } from '../../hooks/reduxToolkitHooks';
 import { setActiveMenuNum } from '../../redux/appSlice';
 import { User } from '../../types/reduxTypes/authSliceTypes';
 import HeaderNav from './HeaderNav/HeaderNav';

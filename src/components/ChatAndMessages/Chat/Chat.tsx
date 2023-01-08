@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import {
   addNewChatMessage,
   setChatMessages,

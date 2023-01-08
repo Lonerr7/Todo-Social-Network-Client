@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './TodoInput.module.scss';
 import { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxToolkitHooks';
 import { createTodo, deleteTodosErrorMsg } from '../../../../redux/todoSlice';
 import TextError from '../../../common/TextError/TextError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';

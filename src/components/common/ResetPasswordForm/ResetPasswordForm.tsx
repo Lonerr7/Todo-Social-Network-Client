@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import { submitResetPassword } from '../../../redux/passwordSlice';
 import { ResetPasswordInitialValues } from '../../../types/formikTypes';
 import s from '../ForgotPasswordForm/ForgotPasswordForm.module.scss';

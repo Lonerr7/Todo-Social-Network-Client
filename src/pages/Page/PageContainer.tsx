@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { toggleRegisterLoginPageOpening } from '../../redux/appSlice';
 import { clearErrorMsg } from '../../redux/authSlice';
 import Page from './Page';

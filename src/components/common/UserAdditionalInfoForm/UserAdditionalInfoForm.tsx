@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import FormControl from '../FormControl/FormControl';
 import { AdditionalInfoInitialValues } from '../../../types/formikTypes';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import { sendMyAdditionalInfo } from '../../../redux/myselfSlice';
 import FormError from '../FormError/FormError';
 

@@ -8,7 +8,7 @@ import {
 } from '../types/reduxTypes/usersSliceTypes';
 import { getMe } from './authSlice';
 
-interface FetchAllUsersReturn {
+interface FetchUsersReturn {
   users: UsersList;
   allUsersCount: number;
   currentPage: number;
@@ -24,7 +24,7 @@ export const fetchAllUsers = createAsyncThunk(
         allUsersCount: response.data.allDocumentsCount,
         users: response.data.data.data,
         currentPage: page,
-      } as FetchAllUsersReturn;
+      } as FetchUsersReturn;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -74,7 +74,7 @@ const usersSlice = createSlice({
   extraReducers: {
     [fetchAllUsers.fulfilled.type]: (
       state,
-      action: PayloadAction<FetchAllUsersReturn>
+      action: PayloadAction<FetchUsersReturn>
     ) => {
       state.users = action.payload.users.reverse();
       state.totalUsersCount = action.payload.allUsersCount;

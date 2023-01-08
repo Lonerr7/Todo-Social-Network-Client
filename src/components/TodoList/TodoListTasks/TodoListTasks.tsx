@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import { selectTodosByFilter } from '../../../redux/selectors/todoSelectors';
 import TodoTask from '../TodoTask/TodoTask';
 import s from './TodoListTasks.module.scss';
