@@ -1,5 +1,4 @@
 import s from '../TodosPage/TodosPage.module.scss';
-import st from './UserTodoWithCommentsPage.module.scss';
 import UserTodoBig from '../../components/MyOrUserPage/common/UserTodos/UserTodoBig/UserTodoBig';
 import UserTodoComments from '../../components/MyOrUserPage/common/UserTodos/UserTodoComments/UserTodoComments';
 import UserTodoCommentInput from '../../components/MyOrUserPage/common/UserTodos/UserTodoCommentInput/UserTodoCommentInput';
@@ -8,7 +7,6 @@ import ReactPaginate from 'react-paginate';
 
 interface Props {
   currentTodo: TodoSmall;
-  ownerNickname: string;
   myPhoto: string;
   currentPage: number;
   pageCount: number;
@@ -23,7 +21,6 @@ interface Props {
 
 const UserTodoWithCommentsPage: React.FC<Props> = ({
   currentTodo,
-  ownerNickname,
   myPhoto,
   currentPage,
   pageCount,
@@ -31,7 +28,6 @@ const UserTodoWithCommentsPage: React.FC<Props> = ({
 }) => {
   return (
     <div className={s.todos}>
-      <h1 className={st.todoPage__title}>{ownerNickname}'s todo's comments</h1>
       <UserTodoBig
         taskText={currentTodo.taskText}
         createdAt={currentTodo.createdAt}

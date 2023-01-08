@@ -23,7 +23,7 @@ export const fetchAllUsers = createAsyncThunk(
       return {
         allUsersCount: response.data.allDocumentsCount,
         users: response.data.data.data,
-        currentPage: page,
+        // currentPage: page,
       } as FetchUsersReturn;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
