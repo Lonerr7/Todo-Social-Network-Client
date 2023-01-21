@@ -7,6 +7,8 @@ import ReactPaginate from 'react-paginate';
 
 interface Props {
   ownersNickname: string | undefined;
+  ownersId: string| undefined;
+  isMe: boolean;
   currentTodo: TodoSmall;
   myPhoto: string;
   currentPage: number;
@@ -22,6 +24,8 @@ interface Props {
 
 const UserTodoWithCommentsPage: React.FC<Props> = ({
   ownersNickname,
+  ownersId,
+  isMe,
   currentTodo,
   myPhoto,
   currentPage,
@@ -31,7 +35,9 @@ const UserTodoWithCommentsPage: React.FC<Props> = ({
   return (
     <div className={s.todos}>
       <UserTodoBig
+        isMe={isMe}
         ownersNickname={ownersNickname}
+        ownersId={ownersId}
         taskText={currentTodo.taskText}
         createdAt={currentTodo.createdAt}
         difficulty={currentTodo.difficulty}

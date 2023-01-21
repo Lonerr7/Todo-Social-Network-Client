@@ -17,8 +17,6 @@ export const fetchOpenedTodo = createAsyncThunk(
     try {
       const response = await usersTodoAPI.getOpenedTodo(todoId);
 
-      console.log(response.data.data.data);
-
       if (response.data.status === 'success') {
         dispatch(fetchTodoOwner(response.data.data.data.user));
       }

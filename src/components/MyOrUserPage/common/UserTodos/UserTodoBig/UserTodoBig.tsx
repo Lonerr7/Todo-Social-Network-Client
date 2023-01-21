@@ -5,6 +5,8 @@ import st from './UserTodoBig.module.scss';
 
 interface Props {
   ownersNickname: string | undefined;
+  ownersId: string | undefined;
+  isMe: boolean;
   taskText: string;
   createdAt: string;
   difficulty: 'easy' | 'medium' | 'hard';
@@ -13,6 +15,8 @@ interface Props {
 
 const UserTodoBig: React.FC<Props> = ({
   ownersNickname,
+  isMe,
+  ownersId,
   taskText,
   createdAt,
   difficulty,
@@ -31,8 +35,11 @@ const UserTodoBig: React.FC<Props> = ({
           >
             {taskText}
           </p>
-          {ownersNickname ? (
-            <Link to={''} className={st.todo__ownersNickname}>
+          {ownersNickname && ownersId ? (
+            <Link
+              to={isMe ? '/' : `/users/${ownersId}`}
+              className={st.todo__ownersNickname}
+            >
               by <span>{ownersNickname}</span>
             </Link>
           ) : null}

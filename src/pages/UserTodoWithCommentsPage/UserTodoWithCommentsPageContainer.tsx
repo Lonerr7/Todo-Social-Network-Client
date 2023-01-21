@@ -22,6 +22,9 @@ const UserTodoPageWithCommentsContainer = () => {
     totalCommentsCount,
   } = useAppSelector((state) => state.currentTodo);
   const myself = useAppSelector((state) => state.auth.user)!;
+  const isMe = myself.id === todoOwner?.id;
+
+  console.log(isMe);
 
   const dispatch = useAppDispatch();
 
@@ -60,7 +63,9 @@ const UserTodoPageWithCommentsContainer = () => {
     <div>
       {currentTodo ? (
         <UserTodoWithCommentsPage
+          isMe={isMe}
           ownersNickname={todoOwner?.nickname}
+          ownersId={todoOwner?.id}
           currentTodo={currentTodo}
           myPhoto={myself.photo}
           pageCount={pageCount}
