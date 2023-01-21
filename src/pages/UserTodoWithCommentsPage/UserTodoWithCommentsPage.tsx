@@ -7,7 +7,7 @@ import ReactPaginate from 'react-paginate';
 
 interface Props {
   ownersNickname: string | undefined;
-  ownersId: string| undefined;
+  ownersId: string | undefined;
   isMe: boolean;
   currentTodo: TodoSmall;
   myPhoto: string;

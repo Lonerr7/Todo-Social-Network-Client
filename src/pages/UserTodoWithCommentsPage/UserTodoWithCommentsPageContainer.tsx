@@ -17,14 +17,11 @@ const UserTodoPageWithCommentsContainer = () => {
     isCurrentTodoFetching,
     currentTodoOwner: todoOwner,
     isTodoOwnerFetching,
-    isTodoCommentsFetching,
     errMsg,
     totalCommentsCount,
   } = useAppSelector((state) => state.currentTodo);
   const myself = useAppSelector((state) => state.auth.user)!;
   const isMe = myself.id === todoOwner?.id;
-
-  console.log(isMe);
 
   const dispatch = useAppDispatch();
 
@@ -54,8 +51,7 @@ const UserTodoPageWithCommentsContainer = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (isCurrentTodoFetching || isTodoCommentsFetching || isTodoOwnerFetching)
-    return <Preloader />;
+  if (isCurrentTodoFetching || isTodoOwnerFetching) return <Preloader />;
 
   if (errMsg) return <div>{errMsg}</div>;
 
