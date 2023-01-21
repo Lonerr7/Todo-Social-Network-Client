@@ -1,12 +1,12 @@
 import UserInfoRow from '../UserInfoRow/UserInfoRow';
 import s from './UserInfoBlock.module.scss';
 
-type Props = {
+interface Props {
   blockTitle?: string;
   fieldTitles: string[] | null;
   fieldValues: (string | undefined)[] | null;
   rowElemsType: string[];
-};
+}
 
 const UserInfoBlock: React.FC<Props> = ({
   blockTitle,

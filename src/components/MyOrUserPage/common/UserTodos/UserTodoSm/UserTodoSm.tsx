@@ -25,7 +25,10 @@ const UserTodoSm: React.FC<Props> = ({
         >
           {taskText}
         </p>
-        <Link className={`${s.task__link} ${st.todo__link}`} to={`/todo/${id}`}>
+        <Link
+          className={`${s.task__link} ${st.todo__link}`}
+          to={`/todo/${id}?page=1`}
+        >
           View comments
         </Link>
       </div>

@@ -15,14 +15,14 @@ import { User } from '../../types/reduxTypes/authSliceTypes';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import s from './UserPage.module.scss';
 
-type Props = {
+interface Props {
   user: User;
   isAdditionalInfoVisible: boolean;
   userTodos: Todo[];
   selectedTodos: Todo[];
   activeTodoFilterNum: number;
   toggleAdditionalInfoVisibility: () => void;
-};
+}
 
 const UserPage: React.FC<Props> = ({
   user,

@@ -38,6 +38,7 @@ export interface TodoSmall {
   difficulty: 'easy' | 'medium' | 'hard';
   isCompleted: boolean;
   createdAt: string;
+  user: string;
 }
 
 export type TodoState = {

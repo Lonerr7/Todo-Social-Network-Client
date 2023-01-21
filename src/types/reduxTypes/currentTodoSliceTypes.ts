@@ -6,7 +6,9 @@ export interface CurrentTodoState {
   currentTodoComments: Comment[];
   totalCommentsCount: number;
   currentTodoOwner: User | null;
-  isTodoCommentsAndOwnerFetching: boolean;
+  isCurrentTodoFetching: boolean;
+  isTodoOwnerFetching: boolean;
+  isTodoCommentsFetching: boolean;
   currentCommentOnDeletion: string;
   isCommentDeleting: boolean;
   isCommentSending: boolean;
