@@ -4,23 +4,24 @@ import Preloader from '../../components/common/Preloader/Preloader';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { usePagination } from '../../hooks/usePagination';
 import {
+  fetchOpenedTodo,
   fetchOpenedTodoComments,
   resetCurrentTodoComments,
   resetCurrentTodoErrorMessages,
-  setCurrentTodo,
 } from '../../redux/currentTodoSlice';
-import { TodoSmall } from '../../types/reduxTypes/todoSliceTypes';
 import UserTodoWithCommentsPage from './UserTodoWithCommentsPage';
 
 const UserTodoPageWithCommentsContainer = () => {
   const {
     currentTodo,
-    isTodoCommentsAndOwnerFetching,
+    isCurrentTodoFetching,
+    currentTodoOwner: todoOwner,
+    isTodoOwnerFetching,
+    isTodoCommentsFetching,
     errMsg,
     totalCommentsCount,
   } = useAppSelector((state) => state.currentTodo);
   const myself = useAppSelector((state) => state.auth.user)!;
-  const myTodos = useAppSelector((state) => state.todo.todos);
 
   const dispatch = useAppDispatch();
 
@@ -37,25 +38,11 @@ const UserTodoPageWithCommentsContainer = () => {
 
   // getting selected todo from state and setting it
   useEffect(() => {
-    const { _id, createdAt, difficulty, id, isCompleted, taskText }: TodoSmall =
-      myTodos?.filter((t) => t.id === todoId)[0];
+    (async () => {
+      await dispatch(fetchOpenedTodo(todoId!));
+    })();
 
-    const todoSmall: TodoSmall = {
-      id,
-      createdAt,
-      difficulty,
-      _id,
-      isCompleted,
-      taskText,
-    };
-
-    dispatch(setCurrentTodo(todoSmall));
-
-    // eslint-disable-next-line
-  }, []);
-
-  // fetching todo owner and resetting data when we leave component
-  useEffect(() => {
+    // resetting data when we leave component
     return () => {
       dispatch(resetCurrentTodoErrorMessages());
       dispatch(resetCurrentTodoComments());
@@ -64,7 +51,8 @@ const UserTodoPageWithCommentsContainer = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (isTodoCommentsAndOwnerFetching) return <Preloader />;
+  if (isCurrentTodoFetching || isTodoCommentsFetching || isTodoOwnerFetching)
+    return <Preloader />;
 
   if (errMsg) return <div>{errMsg}</div>;
 
@@ -72,6 +60,7 @@ const UserTodoPageWithCommentsContainer = () => {
     <div>
       {currentTodo ? (
         <UserTodoWithCommentsPage
+          ownersNickname={todoOwner?.nickname}
           currentTodo={currentTodo}
           myPhoto={myself.photo}
           pageCount={pageCount}

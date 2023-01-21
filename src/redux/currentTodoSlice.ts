@@ -11,6 +11,45 @@ interface FetchCommentsReturn {
   comments: Comment[];
 }
 
+export const fetchOpenedTodo = createAsyncThunk(
+  'currentTodo/fetchOpenedTodo',
+  async (todoId: string, { dispatch, rejectWithValue }) => {
+    try {
+      const response = await usersTodoAPI.getOpenedTodo(todoId);
+
+      console.log(response.data.data.data);
+
+      if (response.data.status === 'success') {
+        dispatch(fetchTodoOwner(response.data.data.data.user));
+      }
+
+      const {
+        _id,
+        createdAt,
+        difficulty,
+        id,
+        isCompleted,
+        taskText,
+        user,
+      }: TodoSmall = response.data.data.data;
+
+      const todoSmall = {
+        _id,
+        createdAt,
+        difficulty,
+        id,
+        isCompleted,
+        taskText,
+        user,
+      };
+
+      return todoSmall;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 export const fetchOpenedTodoComments = createAsyncThunk(
   'currentTodo/fetchOpenedTodoComments',
   async (
@@ -85,7 +124,9 @@ const initialState: CurrentTodoState = {
   currentTodoComments: [],
   totalCommentsCount: 0,
   currentTodoOwner: null,
-  isTodoCommentsAndOwnerFetching: false,
+  isCurrentTodoFetching: false,
+  isTodoOwnerFetching: false,
+  isTodoCommentsFetching: false,
   currentCommentOnDeletion: '',
   isCommentDeleting: false,
   isCommentSending: false,
@@ -110,14 +151,30 @@ const currentTodoSlice = createSlice({
   },
   extraReducers: {
     // Getting an opened todo with comments??????? Need to get comments on this todo separately to provide pagination?
+
+    [fetchOpenedTodo.pending.type]: (state) => {
+      state.isCurrentTodoFetching = true;
+    },
+    [fetchOpenedTodo.fulfilled.type]: (
+      state,
+      action: PayloadAction<TodoSmall>
+    ) => {
+      state.isCurrentTodoFetching = false;
+      state.currentTodo = action.payload;
+    },
+    [fetchOpenedTodo.rejected.type]: (state, action) => {
+      state.isCurrentTodoFetching = false;
+      state.errMsg = action.payload;
+    },
+
     [fetchOpenedTodoComments.pending.type]: (state) => {
-      state.isTodoCommentsAndOwnerFetching = true;
+      state.isTodoCommentsFetching = true;
     },
     [fetchOpenedTodoComments.fulfilled.type]: (
       state,
       action: PayloadAction<FetchCommentsReturn>
     ) => {
-      state.isTodoCommentsAndOwnerFetching = false;
+      state.isTodoCommentsFetching = false;
       state.currentTodoComments = action.payload.comments;
       state.totalCommentsCount = action.payload.allCommentsCount;
       state.errMsg = '';
@@ -126,21 +183,21 @@ const currentTodoSlice = createSlice({
       state,
       action: PayloadAction<string>
     ) => {
-      state.isTodoCommentsAndOwnerFetching = false;
+      state.isTodoCommentsFetching = false;
       state.errMsg = action.payload;
     },
 
     // Getting a todo owner
     [fetchTodoOwner.pending.type]: (state) => {
-      state.isTodoCommentsAndOwnerFetching = true;
+      state.isTodoOwnerFetching = true;
     },
     [fetchTodoOwner.fulfilled.type]: (state, action: PayloadAction<User>) => {
-      state.isTodoCommentsAndOwnerFetching = false;
+      state.isTodoOwnerFetching = false;
       state.currentTodoOwner = action.payload;
       state.errMsg = '';
     },
     [fetchTodoOwner.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.isTodoCommentsAndOwnerFetching = false;
+      state.isTodoOwnerFetching = false;
       state.errMsg = action.payload;
     },
 

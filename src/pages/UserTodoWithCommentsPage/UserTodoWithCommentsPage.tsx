@@ -6,6 +6,7 @@ import { TodoSmall } from '../../types/reduxTypes/todoSliceTypes';
 import ReactPaginate from 'react-paginate';
 
 interface Props {
+  ownersNickname: string | undefined;
   currentTodo: TodoSmall;
   myPhoto: string;
   currentPage: number;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const UserTodoWithCommentsPage: React.FC<Props> = ({
+  ownersNickname,
   currentTodo,
   myPhoto,
   currentPage,
@@ -29,6 +31,7 @@ const UserTodoWithCommentsPage: React.FC<Props> = ({
   return (
     <div className={s.todos}>
       <UserTodoBig
+        ownersNickname={ownersNickname}
         taskText={currentTodo.taskText}
         createdAt={currentTodo.createdAt}
         difficulty={currentTodo.difficulty}

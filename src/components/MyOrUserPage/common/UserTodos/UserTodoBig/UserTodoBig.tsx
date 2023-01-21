@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
 import TaskAdditionalInfo from '../../../../TodoList/TodoTask/TaskAdditionalInfo/TaskAdditionalInfo';
 import s from '../../../../TodoList/TodoTask/TodoTask.module.scss';
 import st from './UserTodoBig.module.scss';
 
 interface Props {
+  ownersNickname: string | undefined;
   taskText: string;
   createdAt: string;
   difficulty: 'easy' | 'medium' | 'hard';
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const UserTodoBig: React.FC<Props> = ({
+  ownersNickname,
   taskText,
   createdAt,
   difficulty,
@@ -28,6 +31,11 @@ const UserTodoBig: React.FC<Props> = ({
           >
             {taskText}
           </p>
+          {ownersNickname ? (
+            <Link to={''} className={st.todo__ownersNickname}>
+              by <span>{ownersNickname}</span>
+            </Link>
+          ) : null}
         </div>
         <div className={st.todo__bottom}>
           <TaskAdditionalInfo createdAt={createdAt} difficulty={difficulty} />

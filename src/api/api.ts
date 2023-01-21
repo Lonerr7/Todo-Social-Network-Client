@@ -79,8 +79,10 @@ export const usersAPI = {
 export const usersTodoAPI = {
   getOpenedTodoComments: async (todoId: string, page: number) =>
     await axiosInstance.get(`todos/${todoId}/comments?limit=5&page=${page}`),
-  getTodoOwner: async (todoId: string) =>
-    await axiosInstance.get(`todos/${todoId}/owner`),
+  getTodoOwner: async (userId: string) =>
+    await axiosInstance.get(`todos/${userId}/owner`),
+  getOpenedTodo: async (todoId: string) =>
+    await axiosInstance.get(`todos/${todoId}`),
 };
 
 export const commentsAPI = {

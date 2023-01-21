@@ -7,6 +7,7 @@ import { IoSettingsSharp } from 'react-icons/io5';
 import { BsFillChatLeftDotsFill } from 'react-icons/bs';
 import MenuItem from '../../common/MenuItem/MenuItem';
 import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
+import { selectUsersWithoutMe } from '../../../redux/selectors/usersSelectors';
 
 const Menu: React.FC = () => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);
@@ -16,7 +17,7 @@ const Menu: React.FC = () => {
   const chatMessagesCount = useAppSelector(
     (state) => state.chat.messages
   ).length;
-  const usersCount = useAppSelector((state) => state.users.users)?.length;
+  const usersCount = useAppSelector(selectUsersWithoutMe)?.length;
 
   return (
     <nav className={s.menu}>
