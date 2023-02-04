@@ -100,24 +100,36 @@ const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    changeActiveTodoFilterWord: (state, action: PayloadAction<TodoFiltersEnum>) => {
+    changeActiveTodoFilterWord: (
+      state,
+      action: PayloadAction<TodoFiltersEnum>
+    ) => {
       state.activeTodoFilter = action.payload;
     },
     deleteTodosErrorMsg: (
       state,
       action: PayloadAction<{ num: number; id?: string }>
     ) => {
-      if (action.payload.num === 1) {
-        state.todoInputErrMsg = '';
-      } else if (action.payload.num === 2) {
-        state.todos = state.todos.map((t) => {
-          if (t.id === action.payload.id) {
-            t.errorMsg = '';
-            return t;
-          }
+      switch (action.payload.num) {
+        case 1: {
+          state.todoInputErrMsg = '';
+          return;
+        }
+        case 2: {
+          state.todos = state.todos.map((t) => {
+            if (t.id === action.payload.id) {
+              t.errorMsg = '';
+              return t;
+            }
 
-          return t;
-        });
+            return t;
+          });
+          return;
+        }
+        case 3: {
+          state.todoErrMsg = '';
+          return;
+        }
       }
     },
     setTodoSearchText: (state, action: PayloadAction<string>) => {
@@ -164,6 +176,10 @@ const todoSlice = createSlice({
 
     [deleteTodo.fulfilled.type]: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((t) => t.id !== action.payload);
+      state.todoErrMsg = '';
+    },
+    [deleteTodo.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.todoErrMsg = action.payload;
     },
 
     [deleteAllUserTodos.pending.type]: (state) => {

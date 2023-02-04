@@ -1,9 +1,16 @@
 .tasks {
+  padding-top: 45px;
   &__warning {
     display: flex;
     align-content: center;
   }
   &__icon {
     margin-right: 10px;
+  }
+
+  &__error {
+    position: absolute;
+
+    // margin-top: 10px;
   }
 }

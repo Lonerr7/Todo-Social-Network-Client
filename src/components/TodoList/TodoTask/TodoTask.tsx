@@ -3,20 +3,14 @@ import TaskControls from './TaskControls/TaskControls';
 import TaskInfo from './TaskInfo/TaskInfo';
 import { useState } from 'react';
 import TaskAdditionalInfo from './TaskAdditionalInfo/TaskAdditionalInfo';
-import TextError from '../../common/TextError/TextError';
 import { TodoTaskProps } from '../../../types/componentTypes/todoPropsTypes';
 
-interface Props extends TodoTaskProps {
-  errMsg: string;
-}
-
-const TodoTask: React.FC<Props> = ({
+const TodoTask: React.FC<TodoTaskProps> = ({
   taskText,
   isCompleted,
   difficulty,
   createdAt,
   id,
-  errMsg,
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [text, setText] = useState(taskText);
@@ -51,7 +45,7 @@ const TodoTask: React.FC<Props> = ({
       <div className={s.task__bottom}>
         <TaskAdditionalInfo createdAt={createdAt} difficulty={difficulty} />
       </div>
-      {errMsg && <TextError customClass={s.task__error}>{errMsg}</TextError>}
+      {/* {errMsg && <TextError customClass={s.task__error}>{errMsg}</TextError>} */}
     </li>
   );
 };
