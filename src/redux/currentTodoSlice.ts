@@ -4,6 +4,7 @@ import { User } from '../types/reduxTypes/authSliceTypes';
 import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 import { CurrentTodoState } from '../types/reduxTypes/currentTodoSliceTypes';
 import { Comment, TodoSmall } from '../types/reduxTypes/todoSliceTypes';
+import { setProgress } from './progressBarSlice';
 
 interface FetchCommentsReturn {
   allCommentsCount: number;
@@ -15,6 +16,7 @@ export const fetchOpenedTodo = createAsyncThunk(
   'currentTodo/fetchOpenedTodo',
   async (todoId: string, { dispatch, rejectWithValue }) => {
     try {
+      dispatch(setProgress(80));
       const response = await usersTodoAPI.getOpenedTodo(todoId);
 
       if (response.data.status === 'success') {

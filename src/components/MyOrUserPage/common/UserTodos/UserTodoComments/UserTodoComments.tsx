@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
-import { useAppSelector } from '../../../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../../hooks/reduxToolkitHooks';
+import { setProgress } from '../../../../../redux/progressBarSlice';
 import UserTodoComment from '../UserTodoComment/UserTodoComment';
 import s from './UserTodoComments.module.scss';
 
@@ -8,9 +12,12 @@ const UserTodoComments: React.FC = () => {
     (state) => state.currentTodo.currentTodoComments
   );
   const todoId = useAppSelector((state) => state.currentTodo.currentTodo?._id)!;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    
+    dispatch(setProgress(100));
+
+    // eslint-disable-next-line
   }, []);
 
   const commentsElems = comments

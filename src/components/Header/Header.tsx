@@ -29,9 +29,9 @@ const Header: React.FC = () => {
       <LoadingBar
         className={s.header__loadingBar}
         progress={progress}
-        loaderSpeed={500}
+        loaderSpeed={1000}
         shadow={false}
-        color="rgb(98, 100, 152)"
+        color="rgb(84, 92, 246)"
         onLoaderFinished={() => {
           dispatch(setProgress(0));
         }}

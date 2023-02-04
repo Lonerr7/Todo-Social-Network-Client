@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Preloader from '../../components/common/Preloader/Preloader';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { usePagination } from '../../hooks/usePagination';
 import {
@@ -51,7 +50,7 @@ const UserTodoPageWithCommentsContainer: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (isCurrentTodoFetching || isTodoOwnerFetching) return <Preloader />;
+  if (isCurrentTodoFetching || isTodoOwnerFetching) return null;
 
   if (errMsg) return <div>{errMsg}</div>;
 
