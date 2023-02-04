@@ -7,6 +7,7 @@ import {
   UsersList,
 } from '../types/reduxTypes/usersSliceTypes';
 import { getMe } from './authSlice';
+import { setProgress } from './progressBarSlice';
 
 interface FetchUsersReturn {
   users: UsersList;
@@ -33,8 +34,9 @@ export const fetchAllUsers = createAsyncThunk(
 
 export const fetchCurrentUser = createAsyncThunk(
   'users/fetchCurrentUser',
-  async (userId: string, { rejectWithValue }) => {
+  async (userId: string, { rejectWithValue, dispatch }) => {
     try {
+      dispatch(setProgress(80));
       const response = await usersAPI.getCurrentUser(userId);
 
       return response.data.data.data;

@@ -9,6 +9,7 @@ import usersSlice from './usersSlice';
 import chatSlice from './chatSlice';
 import forgotPasswordSlice from './passwordSlice';
 import currentTodoSlice from './currentTodoSlice';
+import progressBarSlice from './progressBarSlice';
 
 const store = configureStore({
   reducer: {
@@ -21,7 +22,8 @@ const store = configureStore({
     todo: todoSlice,
     chat: chatSlice,
     password: forgotPasswordSlice,
-    currentTodo: currentTodoSlice
+    currentTodo: currentTodoSlice,
+    progressBar: progressBarSlice,
   },
   middleware: (getDefMiddleware) =>
     getDefMiddleware({

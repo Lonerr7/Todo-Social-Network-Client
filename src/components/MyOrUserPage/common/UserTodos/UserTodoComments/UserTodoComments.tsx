@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useAppSelector } from '../../../../../hooks/reduxToolkitHooks';
 import UserTodoComment from '../UserTodoComment/UserTodoComment';
 import s from './UserTodoComments.module.scss';
@@ -7,6 +8,10 @@ const UserTodoComments: React.FC = () => {
     (state) => state.currentTodo.currentTodoComments
   );
   const todoId = useAppSelector((state) => state.currentTodo.currentTodo?._id)!;
+
+  useEffect(() => {
+    
+  }, []);
 
   const commentsElems = comments
     ? comments.map((c) => (

@@ -1,6 +1,9 @@
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
-import { useAppDispatch, useAppSelector } from '../../../../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../../../hooks/reduxToolkitHooks';
 import { updateMyBio } from '../../../../../../redux/myselfSlice';
 import FormControl from '../../../../../common/FormControl/FormControl';
 import SubmitLoadingBtn from '../../../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
@@ -18,7 +21,9 @@ const validationSchema = yup.object({
 });
 
 const MyBioEditForm: React.FC<Props> = ({ bio, toggleEditMode }) => {
-  const { isMyBioUpdating } = useAppSelector((state) => state.myslef);
+  const isMyBioUpdating = useAppSelector(
+    (state) => state.myslef.isMyBioUpdating
+  );
   const dispatch = useAppDispatch();
 
   const onSubmit = async (values: { bio: string }) => {

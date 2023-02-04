@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
@@ -9,7 +10,9 @@ import UserTodos from '../../components/MyOrUserPage/common/UserTodos/UserTodos'
 import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
 import TodoFilters from '../../components/TodoList/TodoFilters/TodoFilters';
+import { useAppDispatch } from '../../hooks/reduxToolkitHooks';
 import { setActiveUserTodoFilter } from '../../redux/appSlice';
+import { setProgress } from '../../redux/progressBarSlice';
 import { setUserActiveTodoFilterWord } from '../../redux/usersSlice';
 import { User } from '../../types/reduxTypes/authSliceTypes';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
@@ -32,6 +35,15 @@ const UserPage: React.FC<Props> = ({
   activeTodoFilterNum,
   toggleAdditionalInfoVisibility,
 }) => {
+  const dispatch = useAppDispatch();
+
+  // setting progress loader bar to 100%, then it automatically disappears
+  useEffect(() => {
+    dispatch(setProgress(100));
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className={s.page}>
       <div className={s.page__inner}>

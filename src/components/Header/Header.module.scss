@@ -9,6 +9,10 @@
   height: 60px;
   z-index: 40;
 
+  &__loadingBar {
+    margin-top: 60px;
+  }
+
   &__inner {
     height: 100%;
     display: flex;
