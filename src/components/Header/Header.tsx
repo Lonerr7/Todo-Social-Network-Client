@@ -7,13 +7,17 @@ import Logo from '../common/Logo/Logo';
 import s from './Header.module.scss';
 import HeaderControls from './HeaderControls';
 
-const Header: React.FC = () => {
+interface Props {
+  customClass?: string;
+}
+
+const Header: React.FC<Props> = ({ customClass }) => {
   const user = useAppSelector((state) => state.auth.user);
   const progress = useAppSelector((state) => state.progressBar.progress);
   const dispatch = useAppDispatch();
 
   return (
-    <header className={s.header}>
+    <header className={customClass ? `${s.header} ${customClass}` : s.header}>
       <Container classProp={s.header__container}>
         <div className={s.header__inner}>
           <Logo />

@@ -16,8 +16,8 @@ const Layout: React.FC = () => {
         </div>
       ) : (
         <>
-          <Header />
-          <div className="App__container">
+          <Header customClass={s.animated} />
+          <div className={`App__container ${s.animated}`}>
             <Sidebar />
             <Main />
           </div>
