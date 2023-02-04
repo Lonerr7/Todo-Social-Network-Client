@@ -11,7 +11,7 @@ import {
 } from '../../redux/currentTodoSlice';
 import UserTodoWithCommentsPage from './UserTodoWithCommentsPage';
 
-const UserTodoPageWithCommentsContainer = () => {
+const UserTodoPageWithCommentsContainer: React.FC = () => {
   const {
     currentTodo,
     isCurrentTodoFetching,

@@ -1,15 +1,25 @@
 @import '../../../../vars';
 
 .nameAndBio {
-  &__box {
+  &__box,
+  &__row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
   }
 
   &__name {
-    margin-right: 20px;
+    margin-right: 2px;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__box {
+    margin-bottom: 10px;
   }
 
   &__online {

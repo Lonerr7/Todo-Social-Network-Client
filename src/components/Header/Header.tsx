@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import Container from '../common/Container/Container';
 import Logo from '../common/Logo/Logo';
@@ -14,9 +14,9 @@ const Header: React.FC = () => {
         <div className={s.header__inner}>
           <Logo />
           {!user ? (
-            <NavLink to="/register" className={s.header__register}>
+            <Link to="/register" className={s.header__register}>
               Sign up
-            </NavLink>
+            </Link>
           ) : (
             <HeaderControls user={user} />
           )}

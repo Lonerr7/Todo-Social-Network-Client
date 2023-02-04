@@ -53,6 +53,7 @@ const UserPage: React.FC<Props> = ({
               nickname={user.nickname}
               BioComponent={<UserBio bio={user.bio} />}
               isOnline={user.onlineStatus}
+              isVerified={user.isVerified}
             />
             <UserMainInfo user={user} />
             <ShowInfoBtn

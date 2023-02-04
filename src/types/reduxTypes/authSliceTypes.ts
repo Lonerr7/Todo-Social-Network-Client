@@ -1,12 +1,15 @@
 import { Todo } from '../reduxTypes/todoSliceTypes';
 
-export type User = {
+export type UserRole = 'user' | 'admin' | 'CEO';
+
+export interface User {
   id: string;
   email: string;
   nickname: string;
   firstName: string;
   lastName: string;
-  role: string;
+  role: UserRole;
+  isVerified: boolean;
   photo: string;
   generalInfo: {
     dateOfBirth: string;
@@ -42,7 +45,7 @@ export type User = {
   bio: string;
   todos: Array<Todo>;
   onlineStatus: OnlineStatusEnum;
-};
+}
 
 export enum AttitudeTowardsEnum {
   POSITIVE = 'Positive',
@@ -77,10 +80,10 @@ export enum OnlineStatusEnum {
   SLEEPING = 'Sleeping',
 }
 
-export type AuthState = {
+export interface AuthState {
   user: User | null;
   isFetching: boolean;
   isGetMeFetching: boolean;
   errorMsg: string;
   afterSignUp: boolean;
-};
+}

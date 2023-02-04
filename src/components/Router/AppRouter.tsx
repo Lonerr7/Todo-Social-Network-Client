@@ -47,6 +47,7 @@ const AppRouter: React.FC = () => {
           />
         }
       />
+
       <Route path="/" element={<Layout />}>
         <Route index element={<MyPageContainer />} />
         <Route path="users" element={<UsersPageContainer />} />
@@ -63,6 +64,7 @@ const AppRouter: React.FC = () => {
           <Route path="security" element={<SecuritySettings />} />
         </Route>
       </Route>
+
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>
   );

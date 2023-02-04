@@ -27,10 +27,12 @@
 
   &__ownersNickname {
     span {
+      display: inline-block;
       transition: all 0.2s;
       font-weight: 500;
 
       &:hover {
+        transform: scale(1.1);
         color: $color10;
       }
     }
