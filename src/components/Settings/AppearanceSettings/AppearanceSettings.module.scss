@@ -1,0 +1,18 @@
+@import '../../../vars';
+
+.appearance {
+  @extend %settings-inner;
+  padding-bottom: 0;
+
+  &__title {
+    @extend %title;
+  }
+
+  &__inner {
+    @extend %inner-page--inner;
+  }
+
+  &__subtitle {
+    @extend %subtitle;
+  }
+}

@@ -23,8 +23,6 @@ const MenuItem: React.FC<MenuItemProps> = ({
   activeBgColor,
   customClass,
 }) => {
-  const onMenuClick = () => {};
-
   return (
     <div
       className={
@@ -45,7 +43,6 @@ const MenuItem: React.FC<MenuItemProps> = ({
             : s.menuItem__link
         }
         to={urlPath}
-        onClick={onMenuClick}
       >
         <span
           className={

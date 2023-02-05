@@ -17,3 +17,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+// === colors theme ===
+
+body[data-theme='light'] {
+  --color1: rgb(40, 41, 97);
+  --color2: rgb(74, 76, 127);
+  --color3: rgb(255, 255, 255);
+  --color4: rgb(250, 250, 250);
+  --color5: rgb(240, 240, 240);
+  --color6: rgb(231, 231, 231);
+  --color7: rgb(24, 24, 24);
+  --color8: rgb(220, 220, 220);
+  --color9: rgb(195, 195, 195);
+  --color10: rgb(73, 73, 73);
+  --color11: rgb(32, 159, 32);
+  --color12: rgb(202, 0, 0);
+  --color13: rgb(109, 112, 196);
+  --color14: orange;
+}
+
+body[data-theme='dark'] {
+  --color1: rgb(40, 41, 97);
+  --color2: rgb(74, 76, 127);
+  --color3: rgb(255, 255, 255);
+  --color4: rgb(250, 250, 250);
+  --color5: rgb(240, 240, 240);
+  --color6: rgb(231, 231, 231);
+  --color7: rgb(24, 24, 24);
+  --color8: rgb(220, 220, 220);
+  --color9: rgb(195, 195, 195);
+  --color10: rgb(73, 73, 73);
+  --color11: rgb(32, 159, 32);
+  --color12: rgb(202, 0, 0);
+  --color13: rgb(109, 112, 196);
+  --color14: orange;
+}

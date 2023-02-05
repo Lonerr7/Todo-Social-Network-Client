@@ -15,6 +15,7 @@ import ChatPage from '../../pages/ChatPage/ChatPage';
 import ForgotPasswordForm from '../common/ForgotPasswordForm/ForgotPasswordForm';
 import ResetPasswordForm from '../common/ResetPasswordForm/ResetPasswordForm';
 import UserTodoPageWithCommentsContainer from '../../pages/UserTodoWithCommentsPage/UserTodoWithCommentsPageContainer';
+import AppearanceSettings from '../Settings/AppearanceSettings/AppearanceSettings';
 
 const AppRouter: React.FC = () => {
   return (
@@ -62,6 +63,7 @@ const AppRouter: React.FC = () => {
         <Route path="settings" element={<SettingsPage />}>
           <Route index element={<GeneralSettings />} />
           <Route path="security" element={<SecuritySettings />} />
+          <Route path="appearance" element={<AppearanceSettings />} />
         </Route>
       </Route>
 

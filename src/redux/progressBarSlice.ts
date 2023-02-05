@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const progressBarSlice = createSlice({
-  name: 'app',
+  name: 'theme',
   initialState,
   reducers: {
     setProgress: (state, action: PayloadAction<number>) => {
