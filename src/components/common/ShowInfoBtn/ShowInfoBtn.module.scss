@@ -4,9 +4,9 @@
   margin-top: 20px;
   @extend %form-btn;
   font-size: 18px;
-  background-color: $color6;
+  background-color: var(--color6);
 
   &:hover {
-    background-color: $color9;
+    background-color: var(--color9);
   }
 }

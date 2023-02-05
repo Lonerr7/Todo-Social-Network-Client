@@ -3,7 +3,7 @@
 .sendMessage {
   height: 150px;
   padding: $chat-padding;
-  background-color: $color6;
+  background-color: var(--color6);
   border-bottom-right-radius: 7px;
   position: relative;
 
@@ -25,10 +25,10 @@
 
   &__pickerIcon {
     transition: color 0.2s;
-    color: $color10;
+    color: var(--color10);
 
     &:hover {
-      color: $color9;
+      color: var(--color9);
     }
   }
 

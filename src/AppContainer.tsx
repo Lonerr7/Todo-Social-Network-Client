@@ -33,7 +33,7 @@ const AppContainer: React.FC = () => {
 
   // setting current theme
   useEffect(() => {
-    document.body.setAttribute('theme', currentTheme);
+    document.body.setAttribute('data-theme', currentTheme);
 
     // eslint-disable-next-line
   }, []);

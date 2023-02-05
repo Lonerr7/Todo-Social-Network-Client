@@ -18,8 +18,8 @@
   }
 
   &__content {
-    background-color: $color8;
-    color: $color7;
+    background-color: var(--color8);
+    color: var(--color7);
     max-width: 800px;
     padding: 50px 30px 30px 30px;
     border-radius: 8px;
@@ -45,7 +45,7 @@
     transition: all 0.1s;
 
     &:hover {
-      color: $color12;
+      color: var(--color12);
     }
   }
 
@@ -64,11 +64,11 @@
   }
 
   &__btnYes:hover {
-    color: $color12;
+    color: var(--color12);
   }
 
   &__btnNo:hover {
-    color: $color11;
+    color: var(--color11);
   }
 
   &__preloader {

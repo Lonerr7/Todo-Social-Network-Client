@@ -4,11 +4,11 @@
   &__btn {
     @extend %btn-small;
     width: 100%;
-    background-color: $color3;
+    background-color: var(--color3);
     margin-top: 20px;
 
     &:hover {
-      background-color: $color9;
+      background-color: var(--color9);
     }
   }
 }

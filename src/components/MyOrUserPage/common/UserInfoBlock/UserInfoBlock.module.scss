@@ -16,7 +16,7 @@
 
   &__line {
     height: 1px;
-    background-color: $color2;
+    background-color: var(--color2);
     width: 100%;
     flex: 1;
   }

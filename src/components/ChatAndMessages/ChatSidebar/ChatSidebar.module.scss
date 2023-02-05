@@ -4,7 +4,7 @@
   min-width: 250px;
   height: 100%;
   overflow-y: auto;
-  background-color: $color9;
+  background-color: var(--color9);
   padding: $chat-padding;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     padding-bottom: 10px;
-    border-bottom: 1px solid $color1;
+    border-bottom: 1px solid var(--color1);
     margin-bottom: 24px;
   }
 
@@ -32,7 +32,7 @@
   &__searchInput {
     padding: 10px 30px 10px 34px;
     margin-bottom: 0;
-    background-color: $color6;
+    background-color: var(--color6);
   }
 
   &__clearBtn {
@@ -57,7 +57,7 @@
     transition: color 0.1s;
 
     &:hover {
-      color: $color10;
+      color: var(--color10);
     }
   }
 

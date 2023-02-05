@@ -28,13 +28,13 @@
 }
 
 .active {
-  background-color: $color4;
+  background-color: var(--color4);
 }
 
 .active_link {
-  color: $color1;
+  color: var(--color1);
 }
 
 .activeLine {
-  background-color: $color1;
+  background-color: var(--color1);
 }

@@ -26,7 +26,7 @@
   transition: all 0.1s;
 
   &:hover {
-    color: $color12;
+    color: var(--color12);
   }
 }
 

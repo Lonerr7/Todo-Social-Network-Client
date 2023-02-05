@@ -14,8 +14,8 @@
     @extend %form-input;
     width: 100%;
     height: 32px;
-    background-color: $color9;
-    color: $color7;
+    background-color: var(--color9);
+    color: var(--color7);
     margin-bottom: 0;
     font-size: 22px;
     font-weight: 400;

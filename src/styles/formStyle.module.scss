@@ -6,7 +6,7 @@
   &__label {
     margin-bottom: 5px;
     font-size: 18px;
-    color: $color7;
+    color: --color7;
   }
 
   &__control {
@@ -22,8 +22,8 @@
     @extend %form-input;
     width: 354px;
     padding: 10px;
-    color: $color7;
-    background-color: $color6;
+    color: --color7;
+    background-color: --color6;
   }
 
   &__box {
@@ -37,7 +37,7 @@
     @extend %form-btn;
     width: auto;
     font-size: 20px;
-    background-color: $color9;
+    background-color: --color9;
     margin-right: 30px;
     padding-right: 10px;
     padding-left: 10px;
@@ -53,7 +53,7 @@
   }
 
   &__success {
-    color: $color11;
+    color: --color11;
     font-weight: 500;
   }
 

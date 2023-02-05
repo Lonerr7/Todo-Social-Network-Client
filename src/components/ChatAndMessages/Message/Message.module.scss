@@ -27,7 +27,7 @@
   }
 
   &__box {
-    background-color: $color9;
+    background-color: var(--color9);
     border-radius: 20px;
     border-bottom-left-radius: 0px;
     padding: 10px;
@@ -39,7 +39,7 @@
       width: 0;
       height: 0;
       border-top: 8px solid transparent;
-      border-right: 8px solid $color9;
+      border-right: 8px solid var(--color9);
       bottom: 0;
       left: -7px;
     }
@@ -56,7 +56,7 @@
   }
 
   &__username {
-    color: $color1;
+    color: var(--color1);
     font-weight: 500;
     margin-right: 5px;
     font-size: 20px;
@@ -72,7 +72,7 @@
     transition: color 0.2s;
 
     &:hover {
-      color: $color12;
+      color: var(--color12);
     }
   }
 
@@ -83,7 +83,7 @@
 
 .botMessage {
   width: 100%;
-  background-color: $color9;
+  background-color: var(--color9);
   margin-bottom: 20px;
   text-align: center;
   border-radius: 7px;
@@ -96,7 +96,7 @@
   }
 
   &__message {
-    color: $color10;
+    color: var(--color10);
   }
 
   &__link {

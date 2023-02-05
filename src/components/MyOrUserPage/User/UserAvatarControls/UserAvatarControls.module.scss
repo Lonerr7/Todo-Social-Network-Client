@@ -3,17 +3,17 @@
 .controls {
   &__btn {
     @extend %btn-small;
-    background-color: $color2;
+    background-color: var(--color2);
     width: 100%;
     margin-bottom: 12px;
-    color: $color6;
+    color: var(--color6);
 
     &:last-child {
       margin-bottom: 0;
     }
 
     &:hover {
-      background-color: $color1;
+      background-color: var(--color1);
     }
   }
 }

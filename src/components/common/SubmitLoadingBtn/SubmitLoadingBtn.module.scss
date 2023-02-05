@@ -2,7 +2,7 @@
 
 .btn {
   @extend %form-btn;
-  background-color: $color9;
+  background-color: var(--color9);
   padding-left: 10px !important;
   padding-right: 10px !important;
 

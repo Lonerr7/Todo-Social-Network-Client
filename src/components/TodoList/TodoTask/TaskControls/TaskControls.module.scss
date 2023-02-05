@@ -18,7 +18,7 @@
 
     &:last-child {
       &:hover {
-        color: $color12;
+        color: var(--color12);
       }
     }
   }

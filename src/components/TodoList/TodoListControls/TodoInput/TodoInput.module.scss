@@ -26,10 +26,10 @@
     height: 50px;
     font-size: 20px;
     font-weight: 500;
-    background-color: $color6;
+    background-color: var(--color6);
 
     &:hover {
-      background-color: $color8;
+      background-color: var(--color8);
     }
   }
 

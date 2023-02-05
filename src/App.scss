@@ -30,17 +30,17 @@
     font-size: 18px;
     width: 354px !important;
     margin-bottom: 35px !important;
-    background-color: $color8 !important;
+    background-color: var(--color8) !important;
     box-shadow: none !important;
 
     // when menu is opened
     &--menu-is-open {
-      box-shadow: $color7 !important;
-      border-color: $color7 !important;
+      box-shadow: var(--color7) !important;
+      border-color: var(--color7) !important;
     }
 
     &--is-focused {
-      border-color: $color7 !important;
+      border-color: var(--color7) !important;
     }
   }
 
@@ -55,17 +55,17 @@
   // dropdown menu
   &__menu {
     width: 354px !important;
-    background-color: $color8 !important;
+    background-color: var(--color8) !important;
     overflow-y: auto;
   }
 
   &__indicator-separator {
-    background-color: $color10 !important;
+    background-color: var(--color10) !important;
   }
 
   &__indicator {
     cursor: pointer !important;
-    color: $color10 !important;
+    color: var(--color10) !important;
 
     svg:hover {
       color: #000;
@@ -81,16 +81,16 @@
     }
 
     &--is-focused {
-      background-color: $color9 !important;
+      background-color: var(--color9) !important;
     }
 
     &--is-selected {
-      background-color: $color9 !important;
+      background-color: var(--color9) !important;
       color: #000 !important;
     }
 
     &:hover {
-      background-color: $color9 !important;
+      background-color: var(--color9) !important;
     }
   }
 }
@@ -104,13 +104,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $color8;
+    background-color: var(--color8);
     border-radius: 6px;
   }
 
   &__item_active {
     // font-weight: 700;
-    background-color: $color3;
+    background-color: var(--color3);
   }
 
   &__page,
@@ -129,7 +129,7 @@
   &__page:hover,
   &__next:hover,
   &__break:hover {
-    background-color: $color3;
+    background-color: var(--color3);
   }
 
   &__prev {
@@ -150,11 +150,11 @@
 
   &__disabled {
     cursor: default;
-    background-color: $color5;
+    background-color: var(--color5);
 
     a {
       &:hover {
-        background-color: $color8;
+        background-color: var(--color8);
       }
     }
   }

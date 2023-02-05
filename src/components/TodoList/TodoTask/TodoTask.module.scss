@@ -3,7 +3,7 @@
 .task {
   padding: 13px;
   border-radius: 8px;
-  background-color: $color8;
+  background-color: var(--color8);
   margin-bottom: 14px;
 
   &__top {

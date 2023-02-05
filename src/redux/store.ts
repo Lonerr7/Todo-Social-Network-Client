@@ -1,14 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import appSlice from './appSlice';
 import authSlice from './authSlice';
@@ -50,9 +41,7 @@ const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefMiddleware) =>
     getDefMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
+      serializableCheck: false,
     }),
 });
 

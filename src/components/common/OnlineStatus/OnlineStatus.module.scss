@@ -21,7 +21,7 @@
     position: relative;
 
     &::before {
-      background-color: $color11;
+      background-color: var(--color11);
     }
   }
 
@@ -29,7 +29,7 @@
     position: relative;
 
     &::before {
-      background-color: $color9;
+      background-color: var(--color9);
     }
   }
 
@@ -37,7 +37,7 @@
     position: relative;
 
     &::before {
-      background-color: $color14;
+      background-color: var(--color14);
     }
   }
 
@@ -45,7 +45,7 @@
     position: relative;
 
     &::before {
-      background-color: $color12;
+      background-color: var(--color12);
     }
   }
 }

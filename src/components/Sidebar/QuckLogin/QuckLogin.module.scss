@@ -16,11 +16,11 @@
 
   &__link {
     @extend %btn-small;
-    background-color: $color1;
-    color: $color5;
+    background-color: var(--color1);
+    color: var(--color5);
 
     &:hover {
-      background-color: $color2;
+      background-color: var(--color2);
     }
   }
 }
