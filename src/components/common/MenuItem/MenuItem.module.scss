@@ -18,6 +18,7 @@
   }
 
   &__link {
+    color: var(--color16);
     position: relative;
     font-size: 21px;
     display: flex;
@@ -32,9 +33,9 @@
 }
 
 .active_link {
-  color: var(--color1);
+  color: var(--color16);
 }
 
 .activeLine {
-  background-color: var(--color1);
+  background-color: var(--color17);
 }

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Themes, ThemeState } from '../types/reduxTypes/themeSliceTypes';
 
 const initialState: ThemeState = {
-  theme: Themes.LIGHT,
+  theme: Themes.DARK,
 };
 
 const themeSlice = createSlice({
@@ -11,6 +11,7 @@ const themeSlice = createSlice({
   reducers: {
     changeTheme: (state, action: PayloadAction<Themes.DARK | Themes.LIGHT>) => {
       state.theme = action.payload;
+      document.body.setAttribute('data-theme', action.payload);
     },
   },
 });
