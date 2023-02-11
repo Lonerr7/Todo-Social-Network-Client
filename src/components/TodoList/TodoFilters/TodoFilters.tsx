@@ -23,7 +23,7 @@ const TodoFilters: React.FC<Props> = ({
   todos,
   activeTodoFilter,
   changeActiveTodoFilterWord,
-  setActiveTodoFilter
+  setActiveTodoFilter,
 }) => {
   const tasksCount = todos.length;
   const dispatch = useAppDispatch();
