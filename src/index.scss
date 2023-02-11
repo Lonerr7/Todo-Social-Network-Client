@@ -36,6 +36,11 @@ body[data-theme='light'] {
   --color15: rgb(250, 250, 250);
   --color16: black;
   --color17: rgb(40, 41, 97);
+  --color18: black;
+  --color20: #fff;
+  --color21: rgb(231, 231, 231);
+  --color22: rgb(74, 76, 127);
+  --color23: rgb(195, 195, 195);
 }
 
 body[data-theme='dark'] {
@@ -46,9 +51,9 @@ body[data-theme='dark'] {
   --color5: rgb(240, 240, 240);
   --color6: #0d1117;
   --color7: rgb(24, 24, 24);
-  --color8: rgb(220, 220, 220);
+  --color8: #22272e;
   --color9: rgb(195, 195, 195);
-  --color10: rgb(73, 73, 73);
+  --color10: rgb(184, 184, 184);
   --color11: rgb(32, 159, 32);
   --color12: rgb(202, 0, 0);
   --color13: rgb(109, 112, 196);
@@ -56,4 +61,9 @@ body[data-theme='dark'] {
   --color15: rgb(250, 250, 250);
   --color16: rgb(240, 240, 240);
   --color17: rgb(195, 195, 195);
+  --color18: rgb(195, 195, 195);
+  --color20: #161b22;
+  --color21: rgb(195, 195, 195);
+  --color22: rgb(71, 71, 71);
+  --color23: rgb(114, 114, 114);
 }

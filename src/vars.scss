@@ -105,7 +105,7 @@ $chat-padding: 15px;
 
 %form-btn {
   @extend %btn-small;
-  background-color: var(--color6);
+  background-color: var(--color21);
   width: 100%;
   font-size: 24px;
   height: auto;
@@ -174,7 +174,7 @@ $chat-padding: 15px;
 %profile-info-box {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid var(--color2);
+  border-top: 1px solid var(--color22);
 }
 
 %send-btn {
