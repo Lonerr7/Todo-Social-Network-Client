@@ -18,6 +18,7 @@
     margin-bottom: 0;
     padding: 15px 15px;
     font-size: 20px;
+    color: var(--color16);
   }
 
   &__btn {
@@ -26,7 +27,8 @@
     height: 50px;
     font-size: 20px;
     font-weight: 500;
-    background-color: var(--color6);
+    background-color: var(--color42);
+    color: var(--color29);
 
     &:hover {
       background-color: var(--color8);
