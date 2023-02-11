@@ -179,12 +179,12 @@ $chat-padding: 15px;
 
 %send-btn {
   @extend %btn-small;
-  background-color: var(--color2);
+  background-color: var(--color22);
   width: 140px;
   height: 32px;
   color: var(--color5);
 
   &:hover {
-    background-color: var(--color1);
+    background-color: var(--color40);
   }
 }

@@ -27,7 +27,7 @@
   }
 
   &__box {
-    background-color: var(--color9);
+    background-color: var(--color38);
     border-radius: 20px;
     border-bottom-left-radius: 0px;
     padding: 10px;
@@ -39,7 +39,7 @@
       width: 0;
       height: 0;
       border-top: 8px solid transparent;
-      border-right: 8px solid var(--color9);
+      border-right: 8px solid var(--color38);
       bottom: 0;
       left: -7px;
     }
@@ -56,7 +56,7 @@
   }
 
   &__username {
-    color: var(--color1);
+    color: var(--color17);
     font-weight: 500;
     margin-right: 5px;
     font-size: 20px;
@@ -70,6 +70,7 @@
 
   &__deleteIcon {
     transition: color 0.2s;
+    color: var(--color16);
 
     &:hover {
       color: var(--color12);
@@ -78,6 +79,7 @@
 
   &__text {
     font-size: 18px;
+    color: var(--color29);
   }
 }
 

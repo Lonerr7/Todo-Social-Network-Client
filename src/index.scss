@@ -53,6 +53,11 @@ body[data-theme='light'] {
   --color33: black;
   --color34: rgb(255, 255, 255);
   --color35: rgb(255, 255, 255);
+  --color36: rgb(195, 195, 195);
+  --color37: #fff;
+  --color38: rgb(195, 195, 195);
+  --color39: black;
+  --color40: rgb(40, 41, 97);
 }
 
 body[data-theme='dark'] {
@@ -90,4 +95,9 @@ body[data-theme='dark'] {
   --color33: rgb(102, 102, 102);
   --color34: rgb(120, 119, 119);
   --color35: rgb(170, 170, 170);
+  --color36: #161b22;
+  --color37: black;
+  --color38: rgb(62, 62, 62);
+  --color39: #fff;
+  --color40: rgb(48, 48, 48);;
 }
