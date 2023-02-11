@@ -16,7 +16,7 @@
 
   &__line {
     height: 1px;
-    background-color: var(--color2);
+    background-color: var(--color22);
     width: 100%;
     flex: 1;
   }
@@ -26,5 +26,6 @@
     font-weight: 500;
     margin-right: 8px;
     width: auto;
+    color: var(--color16);
   }
 }

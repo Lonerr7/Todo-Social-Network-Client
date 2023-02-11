@@ -14,33 +14,17 @@
   &__upload {
     @extend %btn-small;
     width: 100%;
-    background-color: var(--color9);
+    background-color: var(--color24);
     cursor: pointer;
     display: flex;
     align-items: center;
 
     &:hover {
-      background-color: var(--color5);
+      background-color: var(--color25);
     }
   }
 
   &__icon {
     margin-right: 5px;
-  }
-
-  &__btn {
-    @extend %btn-small;
-    width: 45%;
-    margin-right: 20px;
-    background-color: var(--color9);
-    height: 36px;
-
-    &:hover {
-      background-color: var(--color5);
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 }
