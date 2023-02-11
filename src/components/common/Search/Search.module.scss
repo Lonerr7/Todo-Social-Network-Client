@@ -8,7 +8,8 @@
   &__input {
     @extend %form-input;
     padding: 15px 30px 15px 45px;
-    background-color: var(--color9);
+    background-color: var(--color20);
+    color: var(--color29)
   }
 
   &__clear {

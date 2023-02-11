@@ -104,13 +104,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color8);
+    background-color: var(--color32);
     border-radius: 6px;
   }
 
   &__item_active {
     // font-weight: 700;
-    background-color: var(--color3);
+    background-color: var(--color34);
   }
 
   &__page,
@@ -118,7 +118,7 @@
   &__prev,
   &__break {
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid var(--color33);
     a {
       display: inline-block;
       padding: 10px 15px;
@@ -129,7 +129,7 @@
   &__page:hover,
   &__next:hover,
   &__break:hover {
-    background-color: var(--color3);
+    background-color: var(--color35);
   }
 
   &__prev {
