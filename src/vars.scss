@@ -140,15 +140,16 @@ $chat-padding: 15px;
   font-size: 26px;
   font-weight: 500;
   padding-bottom: 13px;
-  border-bottom: 1px solid var(--color8);
+  border-bottom: 1px solid var(--color45);
   margin-bottom: 20px;
+  color: var(--color16);
 }
 
 %subtitle {
   font-size: 22px;
   font-weight: 500;
-  color: var(--color10);
-  border-bottom: 1px solid var(--color8);
+  color: var(--color47);
+  border-bottom: 1px solid var(--color45);
   margin-bottom: 20px;
 }
 

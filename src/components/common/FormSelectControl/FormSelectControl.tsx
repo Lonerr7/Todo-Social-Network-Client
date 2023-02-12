@@ -1,4 +1,5 @@
 import Select from 'react-select';
+import { Themes } from '../../../types/reduxTypes/themeSliceTypes';
 import s from './FormSelectControl.module.scss';
 
 interface Props {
@@ -31,6 +32,17 @@ const FormSelectControl: React.FC<Props> = ({
         defaultInputValue={defaultValue}
         onChange={onChange}
         isClearable={true}
+        styles={{
+          placeholder: (defaultStyles) => {
+            return {
+              ...defaultStyles,
+              color:
+                document.body.getAttribute('data-theme') === Themes.DARK
+                  ? 'rgb(195, 195, 195)'
+                  : 'rgb(73, 73, 73)',
+            };
+          },
+        }}
       />
     </div>
   );

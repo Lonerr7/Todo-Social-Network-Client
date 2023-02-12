@@ -32,6 +32,7 @@
     margin-bottom: 35px !important;
     background-color: var(--color8) !important;
     box-shadow: none !important;
+    border-color: var(--color50) !important;
 
     // when menu is opened
     &--menu-is-open {
@@ -40,7 +41,7 @@
     }
 
     &--is-focused {
-      border-color: var(--color7) !important;
+      border-color: var(--color51) !important;
     }
   }
 
@@ -50,6 +51,7 @@
 
   &__single-value {
     padding: 5px 0;
+    color: var(--color52) !important;
   }
 
   // dropdown menu
@@ -75,13 +77,15 @@
   &__option {
     font-size: 18px !important;
     cursor: pointer !important;
+    color: var(--color29) !important;
 
     &__palceholder {
       font-size: 18px !important;
+      color: var(--color29) !important;
     }
 
     &--is-focused {
-      background-color: var(--color9) !important;
+      background-color: var(--color23) !important;
     }
 
     &--is-selected {
@@ -90,7 +94,7 @@
     }
 
     &:hover {
-      background-color: var(--color9) !important;
+      background-color: var(--color23) !important;
     }
   }
 }

@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import * as yup from 'yup';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../hooks/reduxToolkitHooks';
 import { GeneralInfoInitialValues } from '../../../../types/formikTypes';
 import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
 import { RelationshipEnum } from '../../../../types/reduxTypes/authSliceTypes';
 import { GeneralInfoFieldsToSend } from '../../../../types/reduxTypes/myselfSliceTypes';
 import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm';
+import { Themes } from '../../../../types/reduxTypes/themeSliceTypes';
 
 const validationSchema = yup.object({
   currentCity: yup.string().max(20, 'City name is too long'),
@@ -23,6 +27,9 @@ const UpdateMyGeneralInfoFormContainer = () => {
   const [selectValue, setSelectValue] = useState(
     currentUser.generalInfo?.relationship || RelationshipEnum.NOT_SELECTED
   );
+
+  const isDarkMode =
+    useAppSelector((state) => state.theme.theme) === Themes.DARK ? true : false;
 
   const selectOptions = [
     { label: 'Single', value: RelationshipEnum.SINGLE },
@@ -75,6 +82,7 @@ const UpdateMyGeneralInfoFormContainer = () => {
       onSubmit={onSubmit}
       selectOptions={selectOptions}
       validationSchema={validationSchema}
+      isDarkMode={isDarkMode}
     />
   );
 };
