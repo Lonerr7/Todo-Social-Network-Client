@@ -10,4 +10,4 @@ const ChatPage: React.FC = () => {
   );
 };
 
-export default withActiveMenuNum(ChatPage, 4);
+export default withActiveMenuNum(ChatPage, 3);

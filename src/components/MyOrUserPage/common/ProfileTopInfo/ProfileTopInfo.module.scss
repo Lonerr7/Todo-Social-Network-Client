@@ -23,7 +23,7 @@
 
   &__number {
     font-weight: 500;
-    color: $color1;
+    color: var(--color28);
     margin-bottom: 5px;
     font-size: 28px;
   }
@@ -31,5 +31,6 @@
   &__text {
     text-transform: lowercase;
     font-size: 21px;
+    color: var(--color29);
   }
 }

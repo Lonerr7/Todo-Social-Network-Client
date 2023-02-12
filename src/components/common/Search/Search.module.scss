@@ -8,7 +8,8 @@
   &__input {
     @extend %form-input;
     padding: 15px 30px 15px 45px;
-    background-color: $color9;
+    background-color: var(--color20);
+    color: var(--color29)
   }
 
   &__clear {
@@ -18,21 +19,21 @@
   }
 
   &__icon {
-    color: $color10;
+    color: var(--color10);
   }
 
   &__searchIcon {
     position: absolute;
     left: 10px;
     top: 12px;
-    color: $color10;
+    color: var(--color10);
   }
 
   &__clearIcon {
     transition: all 0.1s;
 
     &:hover {
-      color: $color12;
+      color: var(--color12);
     }
   }
 }

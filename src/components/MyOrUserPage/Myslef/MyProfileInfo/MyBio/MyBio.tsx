@@ -20,7 +20,7 @@ const MyBio: React.FC<Props> = ({ bio }) => {
         <div className={s.bio__textBox}>
           <span className={s.bio__text}>{bio}</span>
           <button className={s.bio__openEdit} onClick={toggleEditMode}>
-            <BiPencil size={18} />
+            <BiPencil className={s.bio__editIcon} size={18} />
           </button>
         </div>
       ) : (

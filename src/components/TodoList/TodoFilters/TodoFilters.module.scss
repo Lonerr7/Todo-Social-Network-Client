@@ -15,6 +15,7 @@
   &__btn {
     font-size: 20px;
     transition: all 0.2s;
+    color: var(--color16);
 
     &:hover {
       transform: scale(1.1);
@@ -26,7 +27,7 @@
   transition: all 0.1s;
 
   &:hover {
-    color: $color12;
+    color: var(--color12);
   }
 }
 

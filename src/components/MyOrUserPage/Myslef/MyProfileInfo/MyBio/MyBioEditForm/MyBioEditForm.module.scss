@@ -9,7 +9,8 @@
 
   &__input {
     @extend %form-input;
-    background-color: #fff;
+    background-color: var(--color20);
+    color: var(--color16);
     padding: 5px 10px;
     width: 100%;
     margin-bottom: 20px;
@@ -30,10 +31,10 @@
     width: 45%;
     margin-right: 10px;
     padding: 5px 0;
-    // background-color: $color6;
 
     &:hover {
-      background-color: $color9;
+      background-color: var(--color23);
+      transform: scale(1);
     }
 
     &:last-child {

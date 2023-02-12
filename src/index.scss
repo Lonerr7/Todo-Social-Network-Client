@@ -1,5 +1,3 @@
-@import './vars.scss';
-
 html {
   overflow-y: scroll;
 }
@@ -10,10 +8,124 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $color4;
+  background-color: var(--color4);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Color theme */
+
+body[data-theme='light'] {
+  --color1: rgb(40, 41, 97);
+  --color2: rgb(74, 76, 127);
+  --color3: rgb(255, 255, 255);
+  --color4: rgb(250, 250, 250);
+  --color5: rgb(240, 240, 240);
+  --color6: rgb(231, 231, 231);
+  --color7: rgb(24, 24, 24);
+  --color8: rgb(220, 220, 220);
+  --color9: rgb(195, 195, 195);
+  --color10: rgb(73, 73, 73);
+  --color11: rgb(32, 159, 32);
+  --color12: rgb(202, 0, 0);
+  --color13: rgb(109, 112, 196);
+  --color14: orange;
+  --color15: rgb(250, 250, 250);
+  --color16: black;
+  --color17: rgb(40, 41, 97);
+  --color18: black;
+  --color20: #fff;
+  --color21: rgb(231, 231, 231);
+  --color22: rgb(74, 76, 127);
+  --color23: rgb(195, 195, 195);
+  --color24: rgb(195, 195, 195);
+  --color25: rgb(165, 165, 165);
+  --color26: rgb(231, 231, 231);
+  --color27: rgb(195, 195, 195);
+  --color28: rgb(40, 41, 97);
+  --color29: black;
+  --color30: black;
+  --color31: rgb(73, 73, 73);
+  --color32: rgb(220, 220, 220);
+  --color33: black;
+  --color34: rgb(255, 255, 255);
+  --color35: rgb(255, 255, 255);
+  --color36: rgb(195, 195, 195);
+  --color37: #fff;
+  --color38: rgb(195, 195, 195);
+  --color39: black;
+  --color40: rgb(40, 41, 97);
+  --color41: rgb(40, 41, 97);
+  --color42: rgb(231, 231, 231);
+  --color43: rgb(195, 195, 195);
+  --color44: rgb(240, 240, 240);
+  --color45: rgb(220, 220, 220);
+  --color46: rgb(24, 24, 24);
+  --color47: rgb(73, 73, 73);
+  --color48: rgb(231, 231, 231);
+  --color49: rgb(195, 195, 195);
+  --color50: hsl(0, 0%, 80%);
+  --color51: rgb(24, 24, 24);
+  --color52: rgb(73, 73, 73);
+
+  --icon-inversion: 0;
+}
+
+body[data-theme='dark'] {
+  --color1: #161b22;
+  --color2: rgb(74, 76, 127);
+  --color3: rgb(255, 255, 255);
+  --color4: #010409;
+  --color5: rgb(240, 240, 240);
+  --color6: #0d1117;
+  --color7: rgb(24, 24, 24);
+  --color8: #22272e;
+  --color9: rgb(195, 195, 195);
+  --color10: rgb(184, 184, 184);
+  --color11: rgb(32, 159, 32);
+  --color12: rgb(202, 0, 0);
+  --color13: rgb(109, 112, 196);
+  --color14: orange;
+  --color15: rgb(250, 250, 250);
+  --color16: rgb(240, 240, 240);
+  --color17: rgb(195, 195, 195);
+  --color18: rgb(195, 195, 195);
+  --color20: #161b22;
+  --color21: rgb(195, 195, 195);
+  --color22: rgb(71, 71, 71);
+  --color23: rgb(114, 114, 114);
+  --color24: rgb(195, 195, 195);
+  --color25: rgb(114, 114, 114);
+  --color26: rgb(71, 71, 71);
+  --color27: rgb(102, 102, 102);
+  --color28: rgb(240, 240, 240);
+  --color29: rgb(184, 184, 184);
+  --color30: rgb(221, 221, 221);
+  --color31: rgb(240, 240, 240);
+  --color32: rgb(195, 195, 195);
+  --color33: rgb(102, 102, 102);
+  --color34: rgb(120, 119, 119);
+  --color35: rgb(170, 170, 170);
+  --color36: #161b22;
+  --color37: black;
+  --color38: rgb(62, 62, 62);
+  --color39: #fff;
+  --color40: rgb(48, 48, 48);
+  --color41: #fff;
+  --color42: #22272e;
+  --color43: #010409;
+  --color44: #161b22;
+  --color45: rgb(71, 71, 71);
+  --color46: rgb(195, 195, 195);
+  --color47: rgb(217, 217, 217);
+  --color48: #22272e;
+  --color49: #22272e;
+  --color50: hsl(0, 0%, 61%);
+  --color51: rgb(199, 199, 199);
+  --color52: rgb(195, 195, 195);
+
+  --icon-inversion: 1;
 }

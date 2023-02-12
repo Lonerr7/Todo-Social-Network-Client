@@ -1,5 +1,6 @@
 import s from './EmojiPicker.module.scss';
-import Picker, { EmojiClickData } from 'emoji-picker-react';
+import Picker, { EmojiClickData, Theme } from 'emoji-picker-react';
+import { Themes } from '../../../types/reduxTypes/themeSliceTypes';
 
 interface Props {
   customClass: string;
@@ -15,7 +16,16 @@ const EmojiPicker: React.FC<Props> = ({
   return (
     <div className={`${s.picker} ${customClass}`}>
       {isPickerOpened && (
-        <Picker width="100%" height={400} onEmojiClick={onEmojiClick} />
+        <Picker
+          width="100%"
+          height={400}
+          onEmojiClick={onEmojiClick}
+          theme={
+            document.body.getAttribute('data-theme') === Themes.LIGHT
+              ? Theme.LIGHT
+              : Theme.DARK
+          }
+        />
       )}
     </div>
   );

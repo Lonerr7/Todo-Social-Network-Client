@@ -43,41 +43,41 @@ const LoginForm: React.FC = () => {
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      <Form className={s.loginForm}>
+      <Form className={s.form}>
         <FormControl
-          customClass={s.loginForm__formControl}
+          customClass={s.form__formControl}
           field="email"
           placeholder="Email"
-          inputClass={s.loginForm__formInput}
+          inputClass={s.form__formInput}
           type="text"
           label="Email"
-          labelClass={s.loginForm__label}
+          labelClass={s.form__label}
         />
         <FormControl
-          customClass={s.loginForm__formControl}
+          customClass={s.form__formControl}
           field="password"
           placeholder="Password"
-          inputClass={s.loginForm__formInput}
+          inputClass={s.form__formInput}
           type="password"
           label="Password"
-          labelClass={s.loginForm__label}
+          labelClass={s.form__label}
         />
         <FormControl
-          customClass={`${s.loginForm__formControl} ${s.loginForm__formControl_last}`}
+          customClass={`${s.form__formControl} ${s.form__formControl_last}`}
           field="passwordConfirm"
           placeholder="Password confirmation"
-          inputClass={s.loginForm__formInput}
+          inputClass={s.form__formInput}
           type="password"
           label="Password confirmation"
-          labelClass={s.loginForm__label}
+          labelClass={s.form__label}
         />
 
-        <Link className={s.loginForm__link} to="/forgotPassword">
+        <Link className={s.form__link} to="/forgotPassword">
           Forgot Password?
         </Link>
 
         <SubmitLoadingBtn
-          btnClass={s.loginForm__btn}
+          btnClass={s.form__btn}
           btnType="submit"
           btnText="Log In"
           btnFetchingText="Logging You In"

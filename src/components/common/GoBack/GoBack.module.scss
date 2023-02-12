@@ -2,7 +2,7 @@
 
 .go {
   transition: all 0.3s;
-  color: $color3;
+  color: var(--color3);
 
   &:hover {
     text-decoration: none;

@@ -9,7 +9,7 @@
 
   &__title {
     @extend %formpage-title;
-    color: $color1;
+    color: var(--color1);
     font-size: 40px;
   }
 }

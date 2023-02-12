@@ -17,14 +17,14 @@
   }
 
   &__errorMsg {
-    color: $color1;
+    color: var(--color1);
   }
 
   &__btn {
     @extend %form-btn;
 
     &:hover {
-      background-color: $color6;
+      background-color: var(--color6);
     }
   }
 }

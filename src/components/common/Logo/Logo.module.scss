@@ -1,7 +1,7 @@
 @import '../../../vars.scss';
 
 .logo {
-  color: $color4;
+  color: var(--color15);
   transition: all 0.3s;
 
   &:hover {

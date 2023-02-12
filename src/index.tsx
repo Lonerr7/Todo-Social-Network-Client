@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import './reset.scss';
 import './fonts.scss';
 import './index.scss';
-import store from './redux/store';
+import store, { persistor } from './redux/store';
 import AppContainer from './AppContainer';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <Router>
-      <AppContainer />
+      <PersistGate persistor={persistor}>
+        <AppContainer />
+      </PersistGate>
     </Router>
   </Provider>
 );

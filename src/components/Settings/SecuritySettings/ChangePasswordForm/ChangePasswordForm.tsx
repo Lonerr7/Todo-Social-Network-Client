@@ -4,7 +4,10 @@ import { UpdateUserPasswordInitialValues } from '../../../../types/formikTypes';
 import { Form, Formik } from 'formik';
 import FormControl from '../../../common/FormControl/FormControl';
 import FormStatus from '../../../common/FormStatus/FormStatus';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../hooks/reduxToolkitHooks';
 import { changePassword } from '../../../../redux/myselfSlice';
 import FormError from '../../../common/FormError/FormError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';

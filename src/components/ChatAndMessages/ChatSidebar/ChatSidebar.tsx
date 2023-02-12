@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import s from './ChatSidebar.module.scss';
 import { FiUsers } from 'react-icons/fi';
 import ChatSidebarUser from './ChatSidebarUser';
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../hooks/reduxToolkitHooks';
 import { setChatUsers, setChatUserSearchText } from '../../../redux/chatSlice';
 import { ChatUser } from '../../../types/chatTypes';
 import { selectMyselfFirstInChatUsers } from '../../../redux/selectors/chatSelectors';

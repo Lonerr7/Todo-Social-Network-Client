@@ -29,4 +29,4 @@ const SettingsPage: React.FC = () => {
   );
 };
 
-export default withActiveMenuNum(SettingsPage, 6);
+export default withActiveMenuNum(SettingsPage, 5);

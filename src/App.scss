@@ -30,17 +30,18 @@
     font-size: 18px;
     width: 354px !important;
     margin-bottom: 35px !important;
-    background-color: $color8 !important;
+    background-color: var(--color8) !important;
     box-shadow: none !important;
+    border-color: var(--color50) !important;
 
     // when menu is opened
     &--menu-is-open {
-      box-shadow: $color7 !important;
-      border-color: $color7 !important;
+      box-shadow: var(--color7) !important;
+      border-color: var(--color7) !important;
     }
 
     &--is-focused {
-      border-color: $color7 !important;
+      border-color: var(--color51) !important;
     }
   }
 
@@ -50,22 +51,23 @@
 
   &__single-value {
     padding: 5px 0;
+    color: var(--color52) !important;
   }
 
   // dropdown menu
   &__menu {
     width: 354px !important;
-    background-color: $color8 !important;
+    background-color: var(--color8) !important;
     overflow-y: auto;
   }
 
   &__indicator-separator {
-    background-color: $color10 !important;
+    background-color: var(--color10) !important;
   }
 
   &__indicator {
     cursor: pointer !important;
-    color: $color10 !important;
+    color: var(--color10) !important;
 
     svg:hover {
       color: #000;
@@ -75,22 +77,24 @@
   &__option {
     font-size: 18px !important;
     cursor: pointer !important;
+    color: var(--color29) !important;
 
     &__palceholder {
       font-size: 18px !important;
+      color: var(--color29) !important;
     }
 
     &--is-focused {
-      background-color: $color9 !important;
+      background-color: var(--color23) !important;
     }
 
     &--is-selected {
-      background-color: $color9 !important;
+      background-color: var(--color9) !important;
       color: #000 !important;
     }
 
     &:hover {
-      background-color: $color9 !important;
+      background-color: var(--color23) !important;
     }
   }
 }
@@ -104,13 +108,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $color8;
+    background-color: var(--color32);
     border-radius: 6px;
   }
 
   &__item_active {
     // font-weight: 700;
-    background-color: $color3;
+    background-color: var(--color34);
   }
 
   &__page,
@@ -118,7 +122,7 @@
   &__prev,
   &__break {
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid var(--color33);
     a {
       display: inline-block;
       padding: 10px 15px;
@@ -129,7 +133,7 @@
   &__page:hover,
   &__next:hover,
   &__break:hover {
-    background-color: $color3;
+    background-color: var(--color35);
   }
 
   &__prev {
@@ -150,11 +154,11 @@
 
   &__disabled {
     cursor: default;
-    background-color: $color5;
+    background-color: var(--color5);
 
     a {
       &:hover {
-        background-color: $color8;
+        background-color: var(--color8);
       }
     }
   }

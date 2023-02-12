@@ -2,6 +2,8 @@ import { OnlineStatusEnum } from '../../../../types/reduxTypes/authSliceTypes';
 import OnlineStatus from '../../../common/OnlineStatus/OnlineStatus';
 import s from './NameAndBio.module.scss';
 import tick from '../../../../assets/img/verifiedIcon.svg';
+import tickDark from '../../../../assets/img/verifiedIcon(dark).svg';
+import { Themes } from '../../../../types/reduxTypes/themeSliceTypes';
 
 interface Props {
   fName: string;
@@ -20,6 +22,9 @@ const NameAndBio: React.FC<Props> = ({
   isOnline,
   isVerified,
 }) => {
+  if (document.body.getAttribute('data-theme') === Themes.DARK) {
+  }
+
   return (
     <div className={s.nameAndBio}>
       <div className={s.nameAndBio__box}>
@@ -27,14 +32,22 @@ const NameAndBio: React.FC<Props> = ({
           <h1 className={s.nameAndBio__name}>
             {fName} {lName} ({nickname})
           </h1>
-          {isVerified && (
-            <img
-              className={s.nameAndBio__icon}
-              src={tick}
-              alt="tick"
-              title="Verified"
-            />
-          )}
+          {isVerified &&
+            (document.body.getAttribute('data-theme') === Themes.DARK ? (
+              <img
+                className={s.nameAndBio__icon}
+                src={tickDark}
+                alt="tick"
+                title="Verified"
+              />
+            ) : (
+              <img
+                className={s.nameAndBio__icon}
+                src={tick}
+                alt="tick"
+                title="Verified"
+              />
+            ))}
         </div>
         <OnlineStatus customClass={s.nameAndBio__online} isOnline={isOnline} />
       </div>

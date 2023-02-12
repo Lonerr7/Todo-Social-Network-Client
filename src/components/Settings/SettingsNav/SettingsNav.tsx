@@ -1,9 +1,13 @@
 import s from './SettingsNav.module.scss';
 import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import MenuItem from '../../common/MenuItem/MenuItem';
+import { Themes } from '../../../types/reduxTypes/themeSliceTypes';
 
 const SettingsNav: React.FC = () => {
   const activeNum = useAppSelector((state) => state.app.activeSettingsNum);
+
+  const isDarkMode =
+    document.body.getAttribute('data-theme') === Themes.DARK ? true : false;
 
   return (
     <nav className={s.settingsNav}>
@@ -14,7 +18,7 @@ const SettingsNav: React.FC = () => {
             neededNum={1}
             text="General"
             urlPath="/settings"
-            activeBgColor="rgb(195, 195, 195)"
+            activeBgColor={isDarkMode ? '#0b0d10' : 'rgb(195, 195, 195)'}
             customClass={s.item_border_first}
           />
         </li>
@@ -24,7 +28,16 @@ const SettingsNav: React.FC = () => {
             neededNum={2}
             text="Security"
             urlPath="/settings/security"
-            activeBgColor="rgb(195, 195, 195)"
+            activeBgColor={isDarkMode ? '#0b0d10' : 'rgb(195, 195, 195)'}
+          />
+        </li>
+        <li className={s.settingsNav__listItem}>
+          <MenuItem
+            activeNum={activeNum}
+            neededNum={3}
+            text="Appearance"
+            urlPath="/settings/appearance"
+            activeBgColor={isDarkMode ? '#0b0d10' : 'rgb(195, 195, 195)'}
             customClass={s.item_border_last}
           />
         </li>

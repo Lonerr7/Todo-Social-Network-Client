@@ -6,7 +6,7 @@
   margin-bottom: 15px;
   padding-bottom: 15px;
   font-size: 24px;
-  border-bottom: 1px solid $color9;
+  border-bottom: 1px solid var(--color25);
 
   &:hover {
     .comment__deleteBtn {
@@ -53,9 +53,10 @@
   &__deleteBtn {
     transition: all 0.1s;
     display: none;
+    color: var(--color16);
 
     &:hover {
-      color: $color12;
+      color: var(--color12);
     }
   }
 
@@ -69,7 +70,7 @@
   &__nickname {
     display: inline-block;
     width: auto;
-    color: $color1;
+    color: var(--color28);
     line-height: 22px;
     font-weight: 500;
     transition: all 0.2s;
@@ -82,10 +83,11 @@
   &__text {
     font-size: 22px;
     margin-bottom: 5px;
+    color: var(--color30);
   }
 
   &__date {
     font-size: 18px;
-    color: $color10;
+    color: var(--color10);
   }
 }

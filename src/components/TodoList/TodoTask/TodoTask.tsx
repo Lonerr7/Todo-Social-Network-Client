@@ -36,11 +36,7 @@ const TodoTask: React.FC<TodoTaskProps> = ({
           editMode={editMode}
           toggleEditMode={toggleEditMode}
         />
-        <TaskControls
-          id={id}
-          editMode={editMode}
-          toggleEditMode={toggleEditMode}
-        />
+        <TaskControls id={id} toggleEditMode={toggleEditMode} />
       </div>
       <div className={s.task__bottom}>
         <TaskAdditionalInfo createdAt={createdAt} difficulty={difficulty} />

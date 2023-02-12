@@ -6,11 +6,11 @@
   position: relative;
   border-radius: 8px;
   display: flex;
-  background-color: $color8;
+  background-color: var($color8);
 
   &__decor {
     width: 15px;
-    background-color: $color12;
+    background-color: var($color12);
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
@@ -36,7 +36,7 @@
     transition: color 0.2s;
 
     &:hover {
-      color: $color12;
+      color: var($color12);
     }
   }
 }

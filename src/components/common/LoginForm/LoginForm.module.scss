@@ -1,6 +1,6 @@
 @import '../../../vars';
 
-.loginForm {
+.form {
   width: 400px;
   margin-bottom: 30px;
 
@@ -14,30 +14,34 @@
 
   &__label {
     @extend %form-label;
+    color: var(--color46);
   }
 
   &__formInput {
     @extend %form-input;
+    color: var(--color16);
+    background-color: var(--color48);
   }
 
   &__link {
     display: inline-block;
-    // color: $color8;
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 25px;
+    color: var(--color16);
   }
 
   &__errorMsg {
-    color: $color1;
+    color: var(--color1);
   }
 
   &__btn {
     @extend %form-btn;
-    background-color: $color8;
+    background-color: var(--color45);
+    color: var(--color16);
 
     &:hover {
-      background-color: $color6;
+      background-color: var(--color6);
     }
   }
 }

@@ -7,7 +7,7 @@ const initialState: ErrorPopupInitialState = {
 };
 
 const errorMessagesSlice = createSlice({
-  name: 'app',
+  name: 'errors',
   initialState,
   reducers: {
     createErrorPopup: (state, action: PayloadAction<string>) => {

@@ -10,6 +10,7 @@ const AppContainer: React.FC = () => {
   const isRegisterLoginPageOpen = useAppSelector(
     (state) => state.app.isRegisterOrLoginPageOpen
   );
+  const currentTheme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
 
   const handleTabClose = (e: BeforeUnloadEvent) => {
@@ -26,6 +27,13 @@ const AppContainer: React.FC = () => {
   useEffect(() => {
     dispatch(getMe());
     // dispatch(fetchAllUsers());
+
+    // eslint-disable-next-line
+  }, []);
+
+  // setting current theme
+  useEffect(() => {
+    document.body.setAttribute('data-theme', currentTheme);
 
     // eslint-disable-next-line
   }, []);

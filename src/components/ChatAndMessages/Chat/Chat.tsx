@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../hooks/reduxToolkitHooks';
 import {
   addNewChatMessage,
   setChatMessages,
@@ -16,16 +19,16 @@ const Chat: React.FC = () => {
   const me = useAppSelector((state) => state.auth.user)!;
   const dispatch = useAppDispatch();
 
-  const setChatMessagesHandler = (messages: ChatMessage[]) => {
-    dispatch(setChatMessages(messages));
-  };
-
   useEffect(() => {
     const socket = io('http://localhost:8000/', { transports: ['websocket'] });
     dispatch(setSocketChannel(socket));
 
     // Join Chat
     socket.emit('joinChat', { userId: me.id });
+
+    const setChatMessagesHandler = (messages: ChatMessage[]) => {
+      dispatch(setChatMessages(messages));
+    };
 
     // Getting chat messages from DB
     socket.on('getChatMessages', setChatMessagesHandler);

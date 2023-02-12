@@ -20,6 +20,7 @@ interface Props {
   isUserGeneralInfoSuccessfulySent: boolean;
   selectOptions: any[];
   validationSchema: GeneralInfoValidationSchema;
+  isDarkMode: boolean;
   onSubmit: (values: GeneralInfoInitialValues) => void;
   onSelectChange: (newValue: any) => void;
 }
@@ -36,7 +37,11 @@ const UpdateMyGeneralInfoForm: React.FC<Props> = (props) => {
           customClass={s.form__control}
           field="dateOfBirth"
           placeholder="Date of birth"
-          inputClass={s.form__input}
+          inputClass={
+            !props.isDarkMode
+              ? s.form__input
+              : `${s.form__input} ${s.form__input_inverted}`
+          }
           type="date"
           label="Date of birth"
           labelClass={s.form__label}

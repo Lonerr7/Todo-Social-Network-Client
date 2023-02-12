@@ -40,20 +40,20 @@ $chat-padding: 15px;
 // $color4: #003554;
 // $color5: #051923;
 
-$color1: rgb(40, 41, 97);
-$color2: rgb(74, 76, 127);
-$color3: rgb(255, 255, 255);
-$color4: rgb(250, 250, 250);
-$color5: rgb(240, 240, 240);
-$color6: rgb(231, 231, 231);
-$color7: rgb(24, 24, 24);
-$color8: rgb(220, 220, 220);
-$color9: rgb(195, 195, 195);
-$color10: rgb(73, 73, 73);
-$color11: rgb(32, 159, 32);
-$color12: rgb(202, 0, 0);
-$color13: rgb(109, 112, 196);
-$color14: orange;
+// $color1: rgb(40, 41, 97);
+// $color2: rgb(74, 76, 127);
+// $color3: rgb(255, 255, 255);
+// $color4: rgb(250, 250, 250);
+// $color5: rgb(240, 240, 240);
+// $color6: rgb(231, 231, 231);
+// $color7: rgb(24, 24, 24);
+// $color8: rgb(220, 220, 220);
+// $color9: rgb(195, 195, 195);
+// $color10: rgb(73, 73, 73);
+// $color11: rgb(32, 159, 32);
+// $color12: rgb(202, 0, 0);
+// $color13: rgb(109, 112, 196);
+// $color14: orange;
 
 // === tempaltes ===
 
@@ -78,7 +78,7 @@ $color14: orange;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $color1;
+  background-color: var(--color1);
 }
 
 %form-control {
@@ -88,7 +88,7 @@ $color14: orange;
 
 %form-label {
   font-size: 18px;
-  color: $color8;
+  color: var(--color8);
   margin-bottom: 10px;
 }
 
@@ -98,14 +98,14 @@ $color14: orange;
   font-size: 16px;
   border-radius: 7px;
   // margin-bottom: 10px;
-  background-color: $color8;
-  color: $color7;
+  background-color: var(--color8);
+  color: var(--color7);
   font-weight: 500;
 }
 
 %form-btn {
   @extend %btn-small;
-  background-color: $color6;
+  background-color: var(--color21);
   width: 100%;
   font-size: 24px;
   height: auto;
@@ -118,7 +118,7 @@ $color14: orange;
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 30px;
-  color: $color5;
+  color: var(--color5);
 }
 
 %text-error {
@@ -140,15 +140,16 @@ $color14: orange;
   font-size: 26px;
   font-weight: 500;
   padding-bottom: 13px;
-  border-bottom: 1px solid $color8;
+  border-bottom: 1px solid var(--color45);
   margin-bottom: 20px;
+  color: var(--color16);
 }
 
 %subtitle {
   font-size: 22px;
   font-weight: 500;
-  color: $color10;
-  border-bottom: 1px solid $color8;
+  color: var(--color47);
+  border-bottom: 1px solid var(--color45);
   margin-bottom: 20px;
 }
 
@@ -167,24 +168,24 @@ $color14: orange;
 %profile-box {
   // for avatar box and info box
   padding: 20px 15px;
-  background-color: $color8;
+  background-color: var(--color8);
   border-radius: 5px;
 }
 
 %profile-info-box {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid $color2;
+  border-top: 1px solid var(--color22);
 }
 
 %send-btn {
   @extend %btn-small;
-  background-color: $color2;
+  background-color: var(--color22);
   width: 140px;
   height: 32px;
-  color: $color5;
+  color: var(--color5);
 
   &:hover {
-    background-color: $color1;
+    background-color: var(--color40);
   }
 }
