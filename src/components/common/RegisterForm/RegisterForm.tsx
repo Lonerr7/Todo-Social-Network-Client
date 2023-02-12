@@ -1,8 +1,11 @@
-import s from './RegisterForm.module.scss';
+import s from '../LoginForm/LoginForm.module.scss';
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import { RegisterFormInitialValues } from '../../../types/formikTypes';
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../hooks/reduxToolkitHooks';
 import { signUserUp } from '../../../redux/authSlice';
 import FormControl from '../FormControl/FormControl';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
@@ -48,64 +51,64 @@ const RegisterForm: React.FC = () => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      <Form className={s.registerForm}>
+      <Form className={s.form}>
         <FormControl
-          customClass={s.registerForm__formControl}
+          customClass={s.form__formControl}
           field="email"
           placeholder="Email"
-          inputClass={s.registerForm__formInput}
+          inputClass={s.form__formInput}
           type="text"
           label="Email"
-          labelClass={s.registerForm__label}
+          labelClass={s.form__label}
         />
         <FormControl
-          customClass={s.registerForm__formControl}
+          customClass={s.form__formControl}
           field="nickname"
           placeholder="Nickname"
-          inputClass={s.registerForm__formInput}
+          inputClass={s.form__formInput}
           type="text"
           label="Nickname"
-          labelClass={s.registerForm__label}
+          labelClass={s.form__label}
         />
         <FormControl
-          customClass={s.registerForm__formControl}
+          customClass={s.form__formControl}
           field="firstName"
           placeholder="First Name"
-          inputClass={s.registerForm__formInput}
+          inputClass={s.form__formInput}
           type="text"
           label="First Name"
-          labelClass={s.registerForm__label}
+          labelClass={s.form__label}
         />
         <FormControl
-          customClass={s.registerForm__formControl}
+          customClass={s.form__formControl}
           field="lastName"
           placeholder="Last Name"
-          inputClass={s.registerForm__formInput}
+          inputClass={s.form__formInput}
           type="text"
           label="Last Name"
-          labelClass={s.registerForm__label}
+          labelClass={s.form__label}
         />
         <FormControl
-          customClass={s.registerForm__formControl}
+          customClass={s.form__formControl}
           field="password"
           placeholder="Password"
-          inputClass={s.registerForm__formInput}
+          inputClass={s.form__formInput}
           type="password"
           label="Password"
-          labelClass={s.registerForm__label}
+          labelClass={s.form__label}
         />
         <FormControl
-          customClass={s.registerForm__formControl}
+          customClass={s.form__formControl}
           field="passwordConfirm"
           placeholder="Password confirmation"
-          inputClass={s.registerForm__formInput}
+          inputClass={s.form__formInput}
           type="password"
           label="Password Confirmation"
-          labelClass={s.registerForm__label}
+          labelClass={s.form__label}
         />
 
         <SubmitLoadingBtn
-          btnClass={s.registerForm__btn}
+          btnClass={s.form__btn}
           btnType="submit"
           btnText="Sign Up"
           btnFetchingText="Signing You Up"
