@@ -1,3 +1,4 @@
+import s from './MyPage.module.scss';
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
 import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/ProfileInfo';
@@ -5,7 +6,6 @@ import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarContr
 import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBio';
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import s from './MyPage.module.scss';
 // import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
 import UserGeneralInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';

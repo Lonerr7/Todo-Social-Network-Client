@@ -31,16 +31,6 @@ const SettingsNav: React.FC = () => {
             activeBgColor={isDarkMode ? '#0b0d10' : 'rgb(195, 195, 195)'}
           />
         </li>
-        <li className={s.settingsNav__listItem}>
-          <MenuItem
-            activeNum={activeNum}
-            neededNum={3}
-            text="Appearance"
-            urlPath="/settings/appearance"
-            activeBgColor={isDarkMode ? '#0b0d10' : 'rgb(195, 195, 195)'}
-            customClass={s.item_border_last}
-          />
-        </li>
       </ul>
     </nav>
   );

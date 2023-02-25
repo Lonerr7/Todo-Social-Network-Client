@@ -44,7 +44,7 @@ const ChatSidebar: React.FC = () => {
     <div className={s.sidebar}>
       <h4 className={s.sidebar__title}>
         <FiUsers className={s.sidebar__titleicon} size={22} />
-        Users:{' '}
+        Active users:{' '}
         <span className={s.sidebar__counter}>{sortedChatUsers.length}</span>
       </h4>
       <Search
