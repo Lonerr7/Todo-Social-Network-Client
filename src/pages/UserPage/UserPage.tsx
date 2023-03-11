@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import AreYouSurePopup from '../../components/common/Popups/AreYouSurePopup/AreYouSurePopup';
 import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
 import Avatar from '../../components/MyOrUserPage/common/Avatar/Avatar';
 import NameAndBio from '../../components/MyOrUserPage/common/NameAndBio/NameAndBio';
@@ -13,7 +14,10 @@ import TodoFilters from '../../components/TodoList/TodoFilters/TodoFilters';
 import { useAppDispatch } from '../../hooks/reduxToolkitHooks';
 import { setActiveUserTodoFilter } from '../../redux/appSlice';
 import { setProgress } from '../../redux/progressBarSlice';
-import { setUserActiveTodoFilterWord } from '../../redux/usersSlice';
+import {
+  deleteUser,
+  setUserActiveTodoFilterWord,
+} from '../../redux/usersSlice';
 import { User, UserRole } from '../../types/reduxTypes/authSliceTypes';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import s from './UserPage.module.scss';
@@ -25,6 +29,9 @@ interface Props {
   selectedTodos: Todo[];
   activeTodoFilterNum: number;
   myRole: UserRole;
+  isPopupOpen: boolean;
+  isUserBeingBanned: boolean;
+  isUserBeingDeleted: boolean;
   toggleAdditionalInfoVisibility: () => void;
 }
 
@@ -35,6 +42,9 @@ const UserPage: React.FC<Props> = ({
   selectedTodos,
   activeTodoFilterNum,
   myRole,
+  isPopupOpen,
+  isUserBeingBanned,
+  isUserBeingDeleted,
   toggleAdditionalInfoVisibility,
 }) => {
   const dispatch = useAppDispatch();
@@ -46,10 +56,15 @@ const UserPage: React.FC<Props> = ({
     // eslint-disable-next-line
   }, []);
 
-  debugger;
-
   return (
     <div className={s.page}>
+      {isPopupOpen ? (
+        <AreYouSurePopup
+          isFetching={isUserBeingDeleted}
+          thunk={deleteUser}
+          title="Are you sure you want to delete this user? This can not be undone!"
+        />
+      ) : null}
       <div className={s.page__inner}>
         <div className={s.page__left}>
           <div className={s.page__avatarBox}>
@@ -59,7 +74,11 @@ const UserPage: React.FC<Props> = ({
               canViewerBeOpened={true}
             />
             {(myRole === 'admin' || myRole === 'CEO') && (
-              <UserAvatarControls isBanned={user.isBanned} userId={user.id} />
+              <UserAvatarControls
+                isUserBeingBanned={isUserBeingBanned}
+                isBanned={user.isBanned}
+                userId={user.id}
+              />
             )}
           </div>
         </div>

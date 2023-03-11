@@ -1,21 +1,21 @@
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../../hooks/reduxToolkitHooks';
+import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
+import { openAreYouSurePopup } from '../../../../redux/popupSlice';
 import { banOrUnbanUser } from '../../../../redux/usersSlice';
 import { UserManipulationBanActions } from '../../../../types/apiTypes';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import s from './UserAvatarControls.module.scss';
 
 interface Props {
+  isUserBeingBanned: boolean;
   isBanned: boolean;
   userId: string;
 }
 
-const UserAvatarControls: React.FC<Props> = ({ isBanned, userId }) => {
-  const isUserBeingBanned = useAppSelector(
-    (state) => state.users.isCurrentUserBeingBanned
-  );
+const UserAvatarControls: React.FC<Props> = ({
+  isUserBeingBanned,
+  isBanned,
+  userId,
+}) => {
   const dispatch = useAppDispatch();
 
   const banUser = () => {
@@ -23,18 +23,20 @@ const UserAvatarControls: React.FC<Props> = ({ isBanned, userId }) => {
       banOrUnbanUser({ userId, action: UserManipulationBanActions.BAN })
     );
   };
+
   const unbanUser = () => {
     dispatch(
       banOrUnbanUser({ userId, action: UserManipulationBanActions.UNBAN })
     );
   };
 
+  const openDeleteUserPopup = () => {
+    dispatch(openAreYouSurePopup(userId)); // !
+  };
+
   return (
     <div className={s.controls}>
       {!isBanned ? (
-        // <button className={s.controls__btn} onClick={banUser}>
-        //   Ban
-        // </button>
         <SubmitLoadingBtn
           btnClass={s.controls__btn}
           btnFetchingText="Banning"
@@ -53,7 +55,12 @@ const UserAvatarControls: React.FC<Props> = ({ isBanned, userId }) => {
           onSubmit={unbanUser}
         />
       )}
-      <button className={s.controls__btn}>Delete</button>
+      <button
+        className={`${s.controls__btn} ${s.controls__deleteBtn}`}
+        onClick={openDeleteUserPopup}
+      >
+        Delete
+      </button>
     </div>
   );
 };

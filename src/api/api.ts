@@ -78,14 +78,19 @@ export const usersAPI = {
 
   getCurrentUser: async (userId: string) =>
     await axiosInstance.get(`users/${userId}`),
+
   chageUserRole: async (
     userId: string,
     action: { action: UserManipulationRolesActions }
   ) => await axiosInstance.patch(`users/changeUserRole/${userId}`, action),
+
   banOrUnbanUser: async (
     userId: string,
     action: { action: UserManipulationBanActions }
   ) => await axiosInstance.patch(`users/banOrUnbanUser/${userId}`, action),
+
+  deleteUser: async (userId: string) =>
+    await axiosInstance.delete(`users/${userId}`),
 };
 
 export const usersTodoAPI = {

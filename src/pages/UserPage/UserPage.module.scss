@@ -2,6 +2,7 @@
 
 .page {
   @extend %main-inner;
+  position: relative;
 
   &__inner {
     @extend %inner-page--inner;

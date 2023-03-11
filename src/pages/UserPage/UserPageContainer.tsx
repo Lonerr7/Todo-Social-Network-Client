@@ -20,6 +20,13 @@ const UserPageContainer = () => {
     (state) => state.app.activeUserTodoFilter
   );
   const myRole = useAppSelector((state) => state.auth.user?.role)!;
+  const {
+    isCurrentUserBeingBanned: isUserBeingBanned,
+    isCurrentUserBeingDeleted: isUserBeingDeleted,
+  } = useAppSelector((state) => state.users);
+  const isPopupOpen = useAppSelector(
+    (state) => state.popup.isAreYouSurePopupOpen
+  );
 
   const dispatch = useAppDispatch();
 
@@ -44,6 +51,12 @@ const UserPageContainer = () => {
     return null;
   }
 
+  if (user === undefined) {
+    return <p>Success! 
+      Go back to users
+    </p>;
+  }
+
   if (!user || errorMsg) {
     return <p>Error: {errorMsg}</p>;
   }
@@ -56,7 +69,10 @@ const UserPageContainer = () => {
       userTodos={userTodos}
       selectedTodos={selectedTodos}
       activeTodoFilterNum={activeTodoFilterNum}
+      isUserBeingBanned={isUserBeingBanned}
+      isUserBeingDeleted={isUserBeingDeleted}
       myRole={myRole}
+      isPopupOpen={isPopupOpen}
     />
   );
 };

@@ -59,13 +59,21 @@ export const banOrUnbanUser = createAsyncThunk(
       };
 
       const response = await usersAPI.banOrUnbanUser(userId, actionObj);
+      return response.data.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
 
-      console.log(response);
+export const deleteUser = createAsyncThunk(
+  'users/deleteUser',
+  async (userId: string, { rejectWithValue }) => {
+    try {
+      const response = await usersAPI.deleteUser(userId);
 
       return response.data.data;
     } catch (error: any) {
-      console.log(error);
-
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -79,6 +87,7 @@ const initialState: UsersInitialState = {
   usersSearchText: '',
   totalUsersCount: 0,
   isCurrentUserBeingBanned: false,
+  isCurrentUserBeingDeleted: false,
   activeUserTodoFilterWord: TodoFiltersEnum.ALL,
 };
 
@@ -139,6 +148,17 @@ const usersSlice = createSlice({
     [banOrUnbanUser.rejected.type]: (state, action: PayloadAction<User>) => {
       state.isCurrentUserBeingBanned = false;
       state.currentUser = action.payload;
+    },
+
+    [deleteUser.pending.type]: (state) => {
+      state.isCurrentUserBeingDeleted = true;
+    },
+    [deleteUser.fulfilled.type]: (state) => {
+      state.isCurrentUserBeingDeleted = false;
+      state.currentUser = undefined;
+    },
+    [deleteUser.rejected.type]: (state) => {
+      state.isCurrentUserBeingDeleted = false;
     },
 
     [getMe.rejected.type]: (state) => {

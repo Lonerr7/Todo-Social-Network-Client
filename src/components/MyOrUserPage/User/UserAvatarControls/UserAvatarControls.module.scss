@@ -17,4 +17,12 @@
       transform: scale(1);
     }
   }
+
+  &__deleteBtn {
+    background-color: var(--color12);
+
+    &:hover {
+      background-color: var(--color53);
+    }
+  }
 }
