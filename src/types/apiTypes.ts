@@ -28,3 +28,13 @@ export type UpdateMeFieldsToSendForApi =
   | BeliefsFieldsToSend
   | PersonalInfoFieldsToSend
   | OnlineStatusFieldToSend;
+
+export enum UserManipulationRolesActions {
+  LOWER_ROLE = 'lowerRole',
+  UPGRADE_ROLE = 'upgradeRole',
+}
+
+export enum UserManipulationBanActions {
+  BAN = 'banUser',
+  UNBAN = 'unbanUser',
+}

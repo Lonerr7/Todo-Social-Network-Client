@@ -10,7 +10,11 @@ import {
   ForgotPasswordInitialValues,
   ResetPasswordInitialValues,
 } from '../types/formikTypes';
-import { UpdateMeFieldsToSendForApi } from '../types/apiTypes';
+import {
+  UpdateMeFieldsToSendForApi,
+  UserManipulationBanActions,
+  UserManipulationRolesActions,
+} from '../types/apiTypes';
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
 import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 
@@ -74,6 +78,14 @@ export const usersAPI = {
 
   getCurrentUser: async (userId: string) =>
     await axiosInstance.get(`users/${userId}`),
+  chageUserRole: async (
+    userId: string,
+    action: { action: UserManipulationRolesActions }
+  ) => await axiosInstance.patch(`users/changeUserRole/${userId}`, action),
+  banOrUnbanUser: async (
+    userId: string,
+    action: { action: UserManipulationBanActions }
+  ) => await axiosInstance.patch(`users/banOrUnbanUser/${userId}`, action),
 };
 
 export const usersTodoAPI = {

@@ -45,6 +45,7 @@ export interface User {
   bio: string;
   todos: Array<Todo>;
   onlineStatus: OnlineStatusEnum;
+  isBanned: boolean;
 }
 
 export enum AttitudeTowardsEnum {

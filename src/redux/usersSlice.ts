@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { usersAPI } from '../api/api';
+import { UserManipulationBanActions } from '../types/apiTypes';
 import { User } from '../types/reduxTypes/authSliceTypes';
 import { TodoFiltersEnum } from '../types/reduxTypes/todoSliceTypes';
 import {
@@ -46,6 +47,30 @@ export const fetchCurrentUser = createAsyncThunk(
   }
 );
 
+export const banOrUnbanUser = createAsyncThunk(
+  'users/banUser',
+  async (
+    { userId, action }: { userId: string; action: UserManipulationBanActions },
+    { rejectWithValue }
+  ) => {
+    try {
+      const actionObj = {
+        action: action,
+      };
+
+      const response = await usersAPI.banOrUnbanUser(userId, actionObj);
+
+      console.log(response);
+
+      return response.data.data;
+    } catch (error: any) {
+      console.log(error);
+
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const initialState: UsersInitialState = {
   users: null,
   currentUser: null,
@@ -53,6 +78,7 @@ const initialState: UsersInitialState = {
   errorMsg: '',
   usersSearchText: '',
   totalUsersCount: 0,
+  isCurrentUserBeingBanned: false,
   activeUserTodoFilterWord: TodoFiltersEnum.ALL,
 };
 
@@ -100,6 +126,19 @@ const usersSlice = createSlice({
     ) => {
       state.isCurrentUserFetching = false;
       state.errorMsg = action.payload;
+    },
+
+    [banOrUnbanUser.pending.type]: (state) => {
+      state.isCurrentUserBeingBanned = true;
+    },
+    [banOrUnbanUser.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.isCurrentUserBeingBanned = false;
+      state.currentUser = action.payload;
+      console.log(action.payload);
+    },
+    [banOrUnbanUser.rejected.type]: (state, action: PayloadAction<User>) => {
+      state.isCurrentUserBeingBanned = false;
+      state.currentUser = action.payload;
     },
 
     [getMe.rejected.type]: (state) => {

@@ -9,6 +9,7 @@ type Props = {
   lastName: string;
   nickname: string;
   bio: string;
+  isBanned: boolean;
 };
 
 const UserSmall: React.FC<Props> = ({
@@ -18,6 +19,7 @@ const UserSmall: React.FC<Props> = ({
   nickname,
   img,
   bio,
+  isBanned,
 }) => {
   return (
     <li className={s.user}>
@@ -29,7 +31,11 @@ const UserSmall: React.FC<Props> = ({
       </NavLink>
       <div className={s.user__info}>
         <NavLink
-          className={`${s.user__FLName} ${s.user__link}`}
+          className={
+            !isBanned
+              ? `${s.user__FLName} ${s.user__link}`
+              : `${s.user__FLName} ${s.user__link} ${s.banned}`
+          }
           to={`/users/${id}`}
         >
           {firstName} {lastName}

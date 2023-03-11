@@ -14,7 +14,7 @@ import { useAppDispatch } from '../../hooks/reduxToolkitHooks';
 import { setActiveUserTodoFilter } from '../../redux/appSlice';
 import { setProgress } from '../../redux/progressBarSlice';
 import { setUserActiveTodoFilterWord } from '../../redux/usersSlice';
-import { User } from '../../types/reduxTypes/authSliceTypes';
+import { User, UserRole } from '../../types/reduxTypes/authSliceTypes';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import s from './UserPage.module.scss';
 
@@ -24,6 +24,7 @@ interface Props {
   userTodos: Todo[];
   selectedTodos: Todo[];
   activeTodoFilterNum: number;
+  myRole: UserRole;
   toggleAdditionalInfoVisibility: () => void;
 }
 
@@ -33,6 +34,7 @@ const UserPage: React.FC<Props> = ({
   userTodos,
   selectedTodos,
   activeTodoFilterNum,
+  myRole,
   toggleAdditionalInfoVisibility,
 }) => {
   const dispatch = useAppDispatch();
@@ -44,6 +46,8 @@ const UserPage: React.FC<Props> = ({
     // eslint-disable-next-line
   }, []);
 
+  debugger;
+
   return (
     <div className={s.page}>
       <div className={s.page__inner}>
@@ -54,7 +58,9 @@ const UserPage: React.FC<Props> = ({
               wrapperClass={s.page__avatarWrapper}
               canViewerBeOpened={true}
             />
-            <UserAvatarControls />
+            {(myRole === 'admin' || myRole === 'CEO') && (
+              <UserAvatarControls isBanned={user.isBanned} userId={user.id} />
+            )}
           </div>
         </div>
         <div className={s.page__right}>
@@ -66,6 +72,7 @@ const UserPage: React.FC<Props> = ({
               BioComponent={<UserBio bio={user.bio} />}
               isOnline={user.onlineStatus}
               isVerified={user.isVerified}
+              isBanned={user.isBanned}
             />
             <UserMainInfo user={user} />
             <ShowInfoBtn

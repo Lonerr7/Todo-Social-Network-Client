@@ -10,5 +10,6 @@ export type UsersInitialState = {
   errorMsg: string;
   usersSearchText: string;
   totalUsersCount: number;
+  isCurrentUserBeingBanned: boolean;
   activeUserTodoFilterWord: TodoFiltersEnum;
 };

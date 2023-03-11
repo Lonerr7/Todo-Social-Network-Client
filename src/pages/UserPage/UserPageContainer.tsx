@@ -19,6 +19,7 @@ const UserPageContainer = () => {
   const activeTodoFilterNum = useAppSelector(
     (state) => state.app.activeUserTodoFilter
   );
+  const myRole = useAppSelector((state) => state.auth.user?.role)!;
 
   const dispatch = useAppDispatch();
 
@@ -55,6 +56,7 @@ const UserPageContainer = () => {
       userTodos={userTodos}
       selectedTodos={selectedTodos}
       activeTodoFilterNum={activeTodoFilterNum}
+      myRole={myRole}
     />
   );
 };

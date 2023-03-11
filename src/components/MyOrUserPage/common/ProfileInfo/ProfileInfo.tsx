@@ -1,9 +1,9 @@
 import s from './ProfileInfo.module.scss';
 
-type Props = {
+interface Props {
   children: React.ReactNode;
   customClass?: string;
-};
+}
 
 const ProfileInfo: React.FC<Props> = ({ children, customClass }) => {
   return (

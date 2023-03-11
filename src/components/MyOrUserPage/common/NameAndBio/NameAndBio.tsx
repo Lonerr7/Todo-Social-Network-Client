@@ -12,6 +12,7 @@ interface Props {
   BioComponent: React.ReactNode;
   isOnline: OnlineStatusEnum;
   isVerified: boolean;
+  isBanned: boolean;
 }
 
 const NameAndBio: React.FC<Props> = ({
@@ -21,6 +22,7 @@ const NameAndBio: React.FC<Props> = ({
   BioComponent,
   isOnline,
   isVerified,
+  isBanned,
 }) => {
   if (document.body.getAttribute('data-theme') === Themes.DARK) {
   }
@@ -29,7 +31,13 @@ const NameAndBio: React.FC<Props> = ({
     <div className={s.nameAndBio}>
       <div className={s.nameAndBio__box}>
         <div className={s.nameAndBio__row}>
-          <h1 className={s.nameAndBio__name}>
+          <h1
+            className={
+              !isBanned
+                ? s.nameAndBio__name
+                : `${s.nameAndBio__name} ${s.banned}`
+            }
+          >
             {fName} {lName} ({nickname})
           </h1>
           {isVerified &&
