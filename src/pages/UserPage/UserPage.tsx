@@ -78,6 +78,7 @@ const UserPage: React.FC<Props> = ({
                 isUserBeingBanned={isUserBeingBanned}
                 isBanned={user.isBanned}
                 userId={user.id}
+                myRole={myRole}
               />
             )}
           </div>

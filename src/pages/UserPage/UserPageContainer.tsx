@@ -52,9 +52,7 @@ const UserPageContainer = () => {
   }
 
   if (user === undefined) {
-    return <p>Success! 
-      Go back to users
-    </p>;
+    return <p>Success! Go back to users</p>;
   }
 
   if (!user || errorMsg) {
