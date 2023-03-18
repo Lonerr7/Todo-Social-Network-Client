@@ -33,13 +33,17 @@ const UserAvatarControls: React.FC<Props> = ({
         banOrUnbanUser({ userId, action: UserManipulationBanActions.BAN })
       );
     } else {
-      banOrUnbanUser({ userId, action: UserManipulationBanActions.UNBAN });
+      dispatch(
+        banOrUnbanUser({ userId, action: UserManipulationBanActions.UNBAN })
+      );
     }
 
-    // resetting error msg after 5 sec.
-    setTimeout(() => {
-      dispatch(resetUsersErrorMessages());
-    }, 5000);
+    // resetting error msg after 5 sec if it exists
+    if (banOrUnbanErrorMsg) {
+      setTimeout(() => {
+        dispatch(resetUsersErrorMessages());
+      }, 5000);
+    }
   };
 
   const openDeleteUserPopup = () => {
