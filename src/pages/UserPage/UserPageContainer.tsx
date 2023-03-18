@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { resetUsersErrorMessages } from '../../redux/usersSlice';
@@ -31,6 +31,7 @@ const UserPageContainer = () => {
   );
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
 
@@ -55,7 +56,11 @@ const UserPageContainer = () => {
   }
 
   if (user === undefined) {
-    return <p>Success! Go back to users</p>;
+    setTimeout(() => {
+      navigate('/users?page=1');
+    }, 2300);
+
+    return <p>Success! Returning you back...</p>;
   }
 
   if (!user || errorMsg) {
