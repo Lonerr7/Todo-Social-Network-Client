@@ -32,6 +32,7 @@ interface Props {
   isPopupOpen: boolean;
   isUserBeingBanned: boolean;
   isUserBeingDeleted: boolean;
+  banOrUnbanErrorMsg: string;
   toggleAdditionalInfoVisibility: () => void;
 }
 
@@ -45,6 +46,7 @@ const UserPage: React.FC<Props> = ({
   isPopupOpen,
   isUserBeingBanned,
   isUserBeingDeleted,
+  banOrUnbanErrorMsg,
   toggleAdditionalInfoVisibility,
 }) => {
   const dispatch = useAppDispatch();
@@ -79,6 +81,7 @@ const UserPage: React.FC<Props> = ({
                 isBanned={user.isBanned}
                 userId={user.id}
                 myRole={myRole}
+                banOrUnbanErrorMsg={banOrUnbanErrorMsg}
               />
             )}
           </div>

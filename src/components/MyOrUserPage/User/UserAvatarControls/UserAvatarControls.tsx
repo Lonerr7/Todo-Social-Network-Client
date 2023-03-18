@@ -1,9 +1,13 @@
 import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
 import { openAreYouSurePopup } from '../../../../redux/popupSlice';
-import { banOrUnbanUser } from '../../../../redux/usersSlice';
+import {
+  banOrUnbanUser,
+  resetUsersErrorMessages,
+} from '../../../../redux/usersSlice';
 import { UserManipulationBanActions } from '../../../../types/apiTypes';
 import { UserRole } from '../../../../types/reduxTypes/authSliceTypes';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
+import TextError from '../../../common/TextError/TextError';
 import s from './UserAvatarControls.module.scss';
 
 interface Props {
@@ -11,6 +15,7 @@ interface Props {
   isUserBeingBanned: boolean;
   isBanned: boolean;
   userId: string;
+  banOrUnbanErrorMsg: string;
 }
 
 const UserAvatarControls: React.FC<Props> = ({
@@ -18,19 +23,23 @@ const UserAvatarControls: React.FC<Props> = ({
   isBanned,
   userId,
   myRole,
+  banOrUnbanErrorMsg,
 }) => {
   const dispatch = useAppDispatch();
 
-  const banUser = () => {
-    dispatch(
-      banOrUnbanUser({ userId, action: UserManipulationBanActions.BAN })
-    );
-  };
+  const banOrUnbanUserHandler = (action: 'ban' | 'unban') => {
+    if (action === 'ban') {
+      dispatch(
+        banOrUnbanUser({ userId, action: UserManipulationBanActions.BAN })
+      );
+    } else {
+      banOrUnbanUser({ userId, action: UserManipulationBanActions.UNBAN });
+    }
 
-  const unbanUser = () => {
-    dispatch(
-      banOrUnbanUser({ userId, action: UserManipulationBanActions.UNBAN })
-    );
+    // resetting error msg after 5 sec.
+    setTimeout(() => {
+      dispatch(resetUsersErrorMessages());
+    }, 5000);
   };
 
   const openDeleteUserPopup = () => {
@@ -46,7 +55,7 @@ const UserAvatarControls: React.FC<Props> = ({
           btnText="Ban"
           btnType="button"
           isFetching={isUserBeingBanned}
-          onSubmit={banUser}
+          onSubmit={() => banOrUnbanUserHandler('ban')}
         />
       ) : (
         <SubmitLoadingBtn
@@ -55,7 +64,7 @@ const UserAvatarControls: React.FC<Props> = ({
           btnText="Unban"
           btnType="button"
           isFetching={isUserBeingBanned}
-          onSubmit={unbanUser}
+          onSubmit={() => banOrUnbanUserHandler('unban')}
         />
       )}
       {myRole === 'CEO' ? (
@@ -65,6 +74,10 @@ const UserAvatarControls: React.FC<Props> = ({
         >
           Delete
         </button>
+      ) : null}
+
+      {banOrUnbanErrorMsg ? (
+        <TextError customClass={s.errorMsg}>{banOrUnbanErrorMsg}</TextError>
       ) : null}
     </div>
   );

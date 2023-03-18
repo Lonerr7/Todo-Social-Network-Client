@@ -8,6 +8,7 @@ export type UsersInitialState = {
   currentUser: null | User | undefined;
   isCurrentUserFetching: boolean;
   errorMsg: string;
+  banOrUnbanErrorMsg: string;
   usersSearchText: string;
   totalUsersCount: number;
   isCurrentUserBeingBanned: boolean;

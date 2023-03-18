@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
+import { resetUsersErrorMessages } from '../../redux/usersSlice';
 import { selectUserTodoByFilter } from '../../redux/selectors/usersSelectors';
 import { fetchCurrentUser, removeCurrentUser } from '../../redux/usersSlice';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
@@ -13,6 +14,7 @@ const UserPageContainer = () => {
     currentUser: user,
     isCurrentUserFetching: isFetching,
     errorMsg,
+    banOrUnbanErrorMsg,
   } = useAppSelector((state) => state.users!);
   const userTodos = user?.todos!;
   const selectedTodos = useAppSelector(selectUserTodoByFilter);
@@ -42,6 +44,7 @@ const UserPageContainer = () => {
 
     return () => {
       dispatch(removeCurrentUser());
+      dispatch(resetUsersErrorMessages());
     };
 
     // eslint-disable-next-line
@@ -71,6 +74,7 @@ const UserPageContainer = () => {
       isUserBeingDeleted={isUserBeingDeleted}
       myRole={myRole}
       isPopupOpen={isPopupOpen}
+      banOrUnbanErrorMsg={banOrUnbanErrorMsg}
     />
   );
 };

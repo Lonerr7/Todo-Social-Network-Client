@@ -1,16 +1,18 @@
+import { useEffect } from 'react';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import { useAppSelector } from '../../hooks/reduxToolkitHooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { usePagination } from '../../hooks/usePagination';
 import { selectUsersWithSearchWithoutMe } from '../../redux/selectors/usersSelectors';
-import { fetchAllUsers } from '../../redux/usersSlice';
+import { fetchAllUsers, resetUsersErrorMessages } from '../../redux/usersSlice';
 import { setUsersSearchText } from '../../redux/usersSlice';
 import UsersPage from './UsersPage';
 
 const UsersPageContainer: React.FC = () => {
-  const { usersSearchText, totalUsersCount } = useAppSelector(
+  const { usersSearchText, totalUsersCount, errorMsg } = useAppSelector(
     (state) => state.users
   );
   const users = useAppSelector(selectUsersWithSearchWithoutMe);
+  const dispatch = useAppDispatch();
 
   const { pageCount, page, handlePageClick } = usePagination(
     totalUsersCount,
@@ -19,6 +21,15 @@ const UsersPageContainer: React.FC = () => {
     null,
     fetchAllUsers
   );
+
+  // Deleting users error message if it exists
+  useEffect(() => {
+    return () => {
+      errorMsg && dispatch(resetUsersErrorMessages());
+    };
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <UsersPage

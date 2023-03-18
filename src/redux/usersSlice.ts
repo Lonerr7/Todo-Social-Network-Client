@@ -84,6 +84,7 @@ const initialState: UsersInitialState = {
   currentUser: null,
   isCurrentUserFetching: false,
   errorMsg: '',
+  banOrUnbanErrorMsg: '',
   usersSearchText: '',
   totalUsersCount: 0,
   isCurrentUserBeingBanned: false,
@@ -106,6 +107,10 @@ const usersSlice = createSlice({
       action: PayloadAction<TodoFiltersEnum>
     ) => {
       state.activeUserTodoFilterWord = action.payload;
+    },
+    resetUsersErrorMessages: (state) => {
+      state.errorMsg = '';
+      state.banOrUnbanErrorMsg = '';
     },
   },
   extraReducers: {
@@ -139,15 +144,15 @@ const usersSlice = createSlice({
 
     [banOrUnbanUser.pending.type]: (state) => {
       state.isCurrentUserBeingBanned = true;
+      state.banOrUnbanErrorMsg = '';
     },
     [banOrUnbanUser.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.isCurrentUserBeingBanned = false;
       state.currentUser = action.payload;
-      console.log(action.payload);
     },
-    [banOrUnbanUser.rejected.type]: (state, action: PayloadAction<User>) => {
+    [banOrUnbanUser.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isCurrentUserBeingBanned = false;
-      state.currentUser = action.payload;
+      state.banOrUnbanErrorMsg = action.payload;
     },
 
     [deleteUser.pending.type]: (state) => {
@@ -172,4 +177,5 @@ export const {
   setUsersSearchText,
   removeCurrentUser,
   setUserActiveTodoFilterWord,
+  resetUsersErrorMessages,
 } = usersSlice.actions;
