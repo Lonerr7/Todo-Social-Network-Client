@@ -38,12 +38,9 @@ const UserAvatarControls: React.FC<Props> = ({
       );
     }
 
-    // resetting error msg after 5 sec if it exists
-    if (banOrUnbanErrorMsg) {
-      setTimeout(() => {
-        dispatch(resetUsersErrorMessages());
-      }, 5000);
-    }
+    setTimeout(() => {
+      dispatch(resetUsersErrorMessages());
+    }, 5000);
   };
 
   const openDeleteUserPopup = () => {

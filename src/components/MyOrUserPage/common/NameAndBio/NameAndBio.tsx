@@ -1,9 +1,8 @@
 import { OnlineStatusEnum } from '../../../../types/reduxTypes/authSliceTypes';
 import OnlineStatus from '../../../common/OnlineStatus/OnlineStatus';
 import s from './NameAndBio.module.scss';
-import tick from '../../../../assets/img/verifiedIcon.svg';
-import tickDark from '../../../../assets/img/verifiedIcon(dark).svg';
 import { Themes } from '../../../../types/reduxTypes/themeSliceTypes';
+import IsUserVerifiedIcon from '../../../common/IsUserVerifiedIcon/IsUserVerified';
 
 interface Props {
   fName: string;
@@ -40,22 +39,9 @@ const NameAndBio: React.FC<Props> = ({
           >
             {fName} {lName} ({nickname})
           </h1>
-          {isVerified &&
-            (document.body.getAttribute('data-theme') === Themes.DARK ? (
-              <img
-                className={s.nameAndBio__icon}
-                src={tickDark}
-                alt="tick"
-                title="Verified"
-              />
-            ) : (
-              <img
-                className={s.nameAndBio__icon}
-                src={tick}
-                alt="tick"
-                title="Verified"
-              />
-            ))}
+          {isVerified && (
+            <IsUserVerifiedIcon customCalss={s.nameAndBio__icon} />
+          )}
         </div>
         <OnlineStatus customClass={s.nameAndBio__online} isOnline={isOnline} />
       </div>

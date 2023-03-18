@@ -75,7 +75,9 @@ const UserPage: React.FC<Props> = ({
               wrapperClass={s.page__avatarWrapper}
               canViewerBeOpened={true}
             />
-            {(myRole === 'admin' || myRole === 'CEO') && (
+            {((myRole === 'admin' && user.role === 'user') ||
+              (myRole === 'CEO' &&
+                (user.role === 'user' || user.role === 'admin'))) && (
               <UserAvatarControls
                 isUserBeingBanned={isUserBeingBanned}
                 isBanned={user.isBanned}
