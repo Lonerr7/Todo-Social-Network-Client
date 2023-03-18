@@ -1,0 +1,19 @@
+.userRole,
+.adminRole,
+.CEORole {
+  cursor: default;
+}
+
+.userRole {
+  color: var(--color31);
+}
+
+.adminRole {
+  color: var(--color17);
+  font-weight: 500;
+}
+
+.CEORole {
+  color: var(--color54);
+  font-weight: 500;
+}

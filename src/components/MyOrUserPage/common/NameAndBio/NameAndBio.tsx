@@ -1,8 +1,11 @@
-import { OnlineStatusEnum } from '../../../../types/reduxTypes/authSliceTypes';
+import {
+  OnlineStatusEnum,
+  UserRole,
+} from '../../../../types/reduxTypes/authSliceTypes';
 import OnlineStatus from '../../../common/OnlineStatus/OnlineStatus';
 import s from './NameAndBio.module.scss';
-import { Themes } from '../../../../types/reduxTypes/themeSliceTypes';
 import IsUserVerifiedIcon from '../../../common/IsUserVerifiedIcon/IsUserVerified';
+import Role from '../Role/Role';
 
 interface Props {
   fName: string;
@@ -12,6 +15,7 @@ interface Props {
   isOnline: OnlineStatusEnum;
   isVerified: boolean;
   isBanned: boolean;
+  role: UserRole;
 }
 
 const NameAndBio: React.FC<Props> = ({
@@ -22,10 +26,8 @@ const NameAndBio: React.FC<Props> = ({
   isOnline,
   isVerified,
   isBanned,
+  role,
 }) => {
-  if (document.body.getAttribute('data-theme') === Themes.DARK) {
-  }
-
   return (
     <div className={s.nameAndBio}>
       <div className={s.nameAndBio__box}>
@@ -42,6 +44,7 @@ const NameAndBio: React.FC<Props> = ({
           {isVerified && (
             <IsUserVerifiedIcon customCalss={s.nameAndBio__icon} />
           )}
+          <Role role={role} customClass={s.nameAndBio__role} />
         </div>
         <OnlineStatus customClass={s.nameAndBio__online} isOnline={isOnline} />
       </div>

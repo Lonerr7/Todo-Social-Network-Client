@@ -54,6 +54,7 @@ const MyPage: React.FC<Props> = ({
               isOnline={myself.onlineStatus}
               isVerified={myself.isVerified}
               isBanned={myself.isBanned}
+              role={myself.role}
             />
             <UserGeneralInfo user={myself} />
             <ShowInfoBtn

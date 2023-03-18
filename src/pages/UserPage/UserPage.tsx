@@ -98,6 +98,7 @@ const UserPage: React.FC<Props> = ({
               isOnline={user.onlineStatus}
               isVerified={user.isVerified}
               isBanned={user.isBanned}
+              role={user.role}
             />
             <UserMainInfo user={user} />
             <ShowInfoBtn
