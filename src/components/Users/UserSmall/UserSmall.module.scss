@@ -33,6 +33,11 @@
     color: var(--color28);
   }
 
+  &__role {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+
   &__nickname {
     width: fit-content;
     color: var(--color29);

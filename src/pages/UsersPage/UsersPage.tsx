@@ -34,6 +34,7 @@ const UsersPage: React.FC<Props> = ({
       nickname={u.nickname}
       bio={u.bio}
       isBanned={u.isBanned}
+      role={u.role}
     />
   ));
 

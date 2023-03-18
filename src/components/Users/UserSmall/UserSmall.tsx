@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
+import { UserRole } from '../../../types/reduxTypes/authSliceTypes';
 import Avatar from '../../MyOrUserPage/common/Avatar/Avatar';
+import Role from '../../MyOrUserPage/common/Role/Role';
 import s from './UserSmall.module.scss';
 
 type Props = {
@@ -10,6 +12,7 @@ type Props = {
   nickname: string;
   bio: string;
   isBanned: boolean;
+  role: UserRole;
 };
 
 const UserSmall: React.FC<Props> = ({
@@ -20,6 +23,7 @@ const UserSmall: React.FC<Props> = ({
   img,
   bio,
   isBanned,
+  role,
 }) => {
   return (
     <li className={s.user}>
@@ -39,6 +43,7 @@ const UserSmall: React.FC<Props> = ({
           to={`/users/${id}`}
         >
           {firstName} {lastName}
+          <Role role={role} customClass={s.user__role} />
         </NavLink>
         <NavLink
           className={`${s.user__nickname} ${s.user__link}`}
