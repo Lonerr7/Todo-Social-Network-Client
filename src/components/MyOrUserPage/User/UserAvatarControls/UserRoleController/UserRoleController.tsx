@@ -1,19 +1,23 @@
-import { useState } from 'react';
 import ChangeUserRole from './ChangeUserRole';
+import s from '../UserAvatarControls.module.scss';
 
-const UserRoleController: React.FC = () => {
-  const [editMode, setEditMode] = useState(false);
+interface Props {
+  editMode: boolean;
+  toggleEditMode: () => void;
+}
 
-  const toglleEditMode = () => {
-    setEditMode(!editMode);
-  };
-
+const UserRoleController: React.FC<Props> = ({ editMode, toggleEditMode }) => {
   return (
-    <div>
+    <div className={s.roleController}>
       {!editMode ? (
-        <button onClick={toglleEditMode}>Change role</button>
+        <button
+          className={`${s.controls__btn} ${s.controls__changeRoleBtn}`}
+          onClick={toggleEditMode}
+        >
+          Change role
+        </button>
       ) : (
-        <ChangeUserRole toggleEditMode={toglleEditMode} />
+        <ChangeUserRole toggleEditMode={toggleEditMode} />
       )}
     </div>
   );

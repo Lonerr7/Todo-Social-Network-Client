@@ -9,6 +9,8 @@ interface Props {
   isBanned: boolean;
   userId: string;
   banOrUnbanErrorMsg: string;
+  editMode: boolean;
+  toggleEditMode: () => void;
 }
 
 const UserAvatarControls: React.FC<Props> = ({
@@ -17,17 +19,31 @@ const UserAvatarControls: React.FC<Props> = ({
   userId,
   myRole,
   banOrUnbanErrorMsg,
+  editMode,
+  toggleEditMode,
 }) => {
   return (
     <div className={s.controls}>
-      <UserRoleController />
-      <UserBanUnbanControls
-        isBanned={isBanned}
-        isUserBeingBanned={isUserBeingBanned}
-        myRole={myRole}
-        userId={userId}
-        banOrUnbanErrorMsg={banOrUnbanErrorMsg}
-      />
+      {editMode ? (
+        <UserRoleController
+          editMode={editMode}
+          toggleEditMode={toggleEditMode}
+        />
+      ) : (
+        <>
+          <UserRoleController
+            editMode={editMode}
+            toggleEditMode={toggleEditMode}
+          />
+          <UserBanUnbanControls
+            isBanned={isBanned}
+            isUserBeingBanned={isUserBeingBanned}
+            myRole={myRole}
+            userId={userId}
+            banOrUnbanErrorMsg={banOrUnbanErrorMsg}
+          />
+        </>
+      )}
     </div>
   );
 };

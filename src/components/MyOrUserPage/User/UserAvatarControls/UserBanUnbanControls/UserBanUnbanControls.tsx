@@ -44,7 +44,7 @@ const UserBanUnbanControls: React.FC<Props> = ({
   };
 
   const openDeleteUserPopup = () => {
-    dispatch(openAreYouSurePopup(userId)); // !
+    dispatch(openAreYouSurePopup(userId));
   };
 
   return (

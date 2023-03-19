@@ -8,7 +8,7 @@ import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/
 import UserAdditionalInfoContainer from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfoContainer';
 import UserMainInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import UserTodos from '../../components/MyOrUserPage/common/UserTodos/UserTodos';
-import UserAvatarControls from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControls';
+import UserAvatarControlsContainer from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControlsContainer';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
 import TodoFilters from '../../components/TodoList/TodoFilters/TodoFilters';
 import { useAppDispatch } from '../../hooks/reduxToolkitHooks';
@@ -78,7 +78,7 @@ const UserPage: React.FC<Props> = ({
             {((myRole === 'admin' && user.role === 'user') ||
               (myRole === 'CEO' &&
                 (user.role === 'user' || user.role === 'admin'))) && (
-              <UserAvatarControls
+              <UserAvatarControlsContainer
                 isUserBeingBanned={isUserBeingBanned}
                 isBanned={user.isBanned}
                 userId={user.id}

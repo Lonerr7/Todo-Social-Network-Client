@@ -4,6 +4,7 @@
   &__btn {
     @extend %btn-small;
     background-color: var(--color2);
+    display: inline-block;
     width: 100%;
     margin-bottom: 12px;
     color: #fff;
@@ -23,6 +24,42 @@
 
     &:hover {
       background-color: var(--color53);
+    }
+  }
+
+  &__changeRoleBtn {
+    background-color: var(--color56);
+
+    &:hover {
+      background-color: rgb(97, 97, 97);
+    }
+  }
+}
+
+.roleController {
+  margin-bottom: 12px;
+}
+
+.changeRole {
+  &__select {
+    margin-bottom: 10px;
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    @extend %btn-small;
+    width: 48%;
+    height: 30px;
+    background-color: var(--color57);
+    color: var(--color3);
+
+    &:hover {
+      background-color: rgb(96, 96, 96);
     }
   }
 }
