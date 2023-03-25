@@ -1,6 +1,10 @@
 import { Todo } from '../reduxTypes/todoSliceTypes';
 
-export type UserRole = 'user' | 'admin' | 'CEO';
+export enum UserRoles {
+  USER = 'user',
+  ADMIN = 'admin',
+  CEO = 'CEO',
+}
 
 export interface User {
   id: string;
@@ -8,7 +12,7 @@ export interface User {
   nickname: string;
   firstName: string;
   lastName: string;
-  role: UserRole;
+  role: UserRoles;
   isVerified: boolean;
   photo: string;
   generalInfo: {

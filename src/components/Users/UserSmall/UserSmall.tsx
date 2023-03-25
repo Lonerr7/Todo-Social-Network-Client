@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { UserRole } from '../../../types/reduxTypes/authSliceTypes';
+import { UserRoles } from '../../../types/reduxTypes/authSliceTypes';
 import Avatar from '../../MyOrUserPage/common/Avatar/Avatar';
 import Role from '../../MyOrUserPage/common/Role/Role';
 import s from './UserSmall.module.scss';
@@ -12,7 +12,7 @@ type Props = {
   nickname: string;
   bio: string;
   isBanned: boolean;
-  role: UserRole;
+  role: UserRoles;
 };
 
 const UserSmall: React.FC<Props> = ({

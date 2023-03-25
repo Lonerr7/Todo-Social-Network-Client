@@ -5,7 +5,7 @@ import {
   resetUsersErrorMessages,
 } from '../../../../../redux/usersSlice';
 import { UserManipulationBanActions } from '../../../../../types/apiTypes';
-import { UserRole } from '../../../../../types/reduxTypes/authSliceTypes';
+import { UserRoles } from '../../../../../types/reduxTypes/authSliceTypes';
 import SubmitLoadingBtn from '../../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import TextError from '../../../../common/TextError/TextError';
 import s from '../UserAvatarControls.module.scss';
@@ -13,7 +13,7 @@ import s from '../UserAvatarControls.module.scss';
 interface Props {
   isBanned: boolean;
   isUserBeingBanned: boolean;
-  myRole: UserRole;
+  myRole: UserRoles;
   userId: string;
   banOrUnbanErrorMsg: string;
 }
@@ -68,7 +68,7 @@ const UserBanUnbanControls: React.FC<Props> = ({
           onSubmit={() => banOrUnbanUserHandler('unban')}
         />
       )}
-      {myRole === 'CEO' ? (
+      {myRole === UserRoles.CEO ? (
         <button
           className={`${s.controls__btn} ${s.controls__deleteBtn}`}
           onClick={openDeleteUserPopup}

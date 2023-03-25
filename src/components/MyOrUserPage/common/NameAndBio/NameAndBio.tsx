@@ -1,6 +1,6 @@
 import {
   OnlineStatusEnum,
-  UserRole,
+  UserRoles,
 } from '../../../../types/reduxTypes/authSliceTypes';
 import OnlineStatus from '../../../common/OnlineStatus/OnlineStatus';
 import s from './NameAndBio.module.scss';
@@ -15,7 +15,7 @@ interface Props {
   isOnline: OnlineStatusEnum;
   isVerified: boolean;
   isBanned: boolean;
-  role: UserRole;
+  role: UserRoles;
 }
 
 const NameAndBio: React.FC<Props> = ({

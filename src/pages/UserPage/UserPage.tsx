@@ -18,7 +18,7 @@ import {
   deleteUser,
   setUserActiveTodoFilterWord,
 } from '../../redux/usersSlice';
-import { User, UserRole } from '../../types/reduxTypes/authSliceTypes';
+import { User, UserRoles } from '../../types/reduxTypes/authSliceTypes';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import s from './UserPage.module.scss';
 
@@ -28,7 +28,7 @@ interface Props {
   userTodos: Todo[];
   selectedTodos: Todo[];
   activeTodoFilterNum: number;
-  myRole: UserRole;
+  myRole: UserRoles;
   isPopupOpen: boolean;
   isUserBeingBanned: boolean;
   isUserBeingDeleted: boolean;
@@ -75,14 +75,16 @@ const UserPage: React.FC<Props> = ({
               wrapperClass={s.page__avatarWrapper}
               canViewerBeOpened={true}
             />
-            {((myRole === 'admin' && user.role === 'user') ||
-              (myRole === 'CEO' &&
-                (user.role === 'user' || user.role === 'admin'))) && (
+            {((myRole === UserRoles.ADMIN && user.role === UserRoles.USER) ||
+              (myRole === UserRoles.CEO &&
+                (user.role === UserRoles.USER ||
+                  user.role === UserRoles.ADMIN))) && (
               <UserAvatarControlsContainer
                 isUserBeingBanned={isUserBeingBanned}
                 isBanned={user.isBanned}
                 userId={user.id}
                 myRole={myRole}
+                userRole={user.role}
                 banOrUnbanErrorMsg={banOrUnbanErrorMsg}
               />
             )}

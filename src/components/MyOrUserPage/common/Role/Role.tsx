@@ -1,13 +1,13 @@
-import { UserRole } from '../../../../types/reduxTypes/authSliceTypes';
+import { UserRoles } from '../../../../types/reduxTypes/authSliceTypes';
 import s from './Role.module.scss';
 
 interface Props {
-  role: UserRole;
+  role: UserRoles;
   customClass?: string;
 }
 
 const Role: React.FC<Props> = ({ role, customClass }) => {
-  if (role === 'user') {
+  if (role === UserRoles.USER) {
     return (
       <span className={`${s.userRole} ${customClass}`} title="Basic user">
         {role}
@@ -15,7 +15,7 @@ const Role: React.FC<Props> = ({ role, customClass }) => {
     );
   }
 
-  if (role === 'admin') {
+  if (role === UserRoles.ADMIN) {
     return (
       <span className={`${s.adminRole} ${customClass}`} title="An Admin!">
         {role}
