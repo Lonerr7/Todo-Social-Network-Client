@@ -13,10 +13,10 @@ import {
 import {
   UpdateMeFieldsToSendForApi,
   UserManipulationBanActions,
-  UserManipulationRolesActions,
 } from '../types/apiTypes';
 import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
 import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
+import { UserRoles } from '../types/reduxTypes/authSliceTypes';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:8000/api/v1/',
@@ -79,10 +79,10 @@ export const usersAPI = {
   getCurrentUser: async (userId: string) =>
     await axiosInstance.get(`users/${userId}`),
 
-  chageUserRole: async (
-    userId: string,
-    action: { action: UserManipulationRolesActions }
-  ) => await axiosInstance.patch(`users/changeUserRole/${userId}`, action),
+  changeUserRole: async (userId: string, roleToGive: UserRoles) =>
+    await axiosInstance.patch(`users/changeUserRole/${userId}`, {
+      roleToGive,
+    }),
 
   banOrUnbanUser: async (
     userId: string,

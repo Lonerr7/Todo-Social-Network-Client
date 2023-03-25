@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { usersAPI } from '../api/api';
 import { UserManipulationBanActions } from '../types/apiTypes';
-import { User } from '../types/reduxTypes/authSliceTypes';
+import { User, UserRoles } from '../types/reduxTypes/authSliceTypes';
 import { TodoFiltersEnum } from '../types/reduxTypes/todoSliceTypes';
 import {
   UsersInitialState,
@@ -41,6 +41,22 @@ export const fetchCurrentUser = createAsyncThunk(
       const response = await usersAPI.getCurrentUser(userId);
 
       return response.data.data.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const changeUserRole = createAsyncThunk(
+  'users/changeUserRole',
+  async (
+    { userId, roleToGive }: { userId: string; roleToGive: UserRoles },
+    { rejectWithValue }
+  ) => {
+    try {
+      const response = await usersAPI.changeUserRole(userId, roleToGive);
+
+      return response.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);
     }
@@ -87,6 +103,7 @@ const initialState: UsersInitialState = {
   banOrUnbanErrorMsg: '',
   usersSearchText: '',
   totalUsersCount: 0,
+  isUserRoleChanging: false,
   isCurrentUserBeingBanned: false,
   isCurrentUserBeingDeleted: false,
   activeUserTodoFilterWord: TodoFiltersEnum.ALL,
@@ -140,6 +157,17 @@ const usersSlice = createSlice({
     ) => {
       state.isCurrentUserFetching = false;
       state.errorMsg = action.payload;
+    },
+
+    [changeUserRole.pending.type]: (state) => {
+      state.isUserRoleChanging = true;
+    },
+    [changeUserRole.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.isUserRoleChanging = false;
+      state.currentUser = action.payload;
+    },
+    [changeUserRole.rejected.type]: (state) => {
+      state.isUserRoleChanging = false;
     },
 
     [banOrUnbanUser.pending.type]: (state) => {

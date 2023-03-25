@@ -11,9 +11,15 @@ export type UsersInitialState = {
   banOrUnbanErrorMsg: string;
   usersSearchText: string;
   totalUsersCount: number;
+  isUserRoleChanging: boolean;
   isCurrentUserBeingBanned: boolean;
   isCurrentUserBeingDeleted: boolean;
   activeUserTodoFilterWord: TodoFiltersEnum;
 };
 
-
+export enum UserRolesSelect {
+  USER = 'user',
+  ADMIN = 'admin',
+  CEO = 'CEO',
+  NOT_SELECTED = 'NOT_SELECTED',
+}

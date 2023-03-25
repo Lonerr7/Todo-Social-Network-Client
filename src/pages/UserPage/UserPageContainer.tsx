@@ -8,13 +8,14 @@ import { fetchCurrentUser, removeCurrentUser } from '../../redux/usersSlice';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import UserPage from './UserPage';
 
-const UserPageContainer = () => {
+const UserPageContainer: React.FC = () => {
   const { userId } = useParams();
   const {
     currentUser: user,
     isCurrentUserFetching: isFetching,
     errorMsg,
     banOrUnbanErrorMsg,
+    isUserRoleChanging,
   } = useAppSelector((state) => state.users!);
   const userTodos = user?.todos!;
   const selectedTodos = useAppSelector(selectUserTodoByFilter);
@@ -75,6 +76,7 @@ const UserPageContainer = () => {
       userTodos={userTodos}
       selectedTodos={selectedTodos}
       activeTodoFilterNum={activeTodoFilterNum}
+      isUserRoleChanging={isUserRoleChanging}
       isUserBeingBanned={isUserBeingBanned}
       isUserBeingDeleted={isUserBeingDeleted}
       myRole={myRole}

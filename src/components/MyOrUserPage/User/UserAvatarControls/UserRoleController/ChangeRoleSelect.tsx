@@ -4,11 +4,14 @@ import s from '../UserAvatarControls.module.scss';
 interface Props {
   selectOptions: any[];
   userRole: any;
+  onSelectChange: (newValue: any) => void;
 }
 
-const ChangeRoleSelect: React.FC<Props> = ({ selectOptions, userRole }) => {
-  console.log(userRole);
-
+const ChangeRoleSelect: React.FC<Props> = ({
+  selectOptions,
+  userRole,
+  onSelectChange,
+}) => {
   return (
     <div className={s.changeRole__select}>
       <Select
@@ -16,7 +19,8 @@ const ChangeRoleSelect: React.FC<Props> = ({ selectOptions, userRole }) => {
         classNamePrefix="role_select"
         options={selectOptions}
         defaultInputValue={userRole}
-        isClearable
+        onChange={onSelectChange}
+
       />
     </div>
   );

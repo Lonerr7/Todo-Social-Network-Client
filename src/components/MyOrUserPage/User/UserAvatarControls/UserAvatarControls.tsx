@@ -11,11 +11,14 @@ interface Props {
   userId: string;
   banOrUnbanErrorMsg: string;
   editMode: boolean;
+  isUserRoleChanging: boolean;
   selectOptions: {
     label: string;
     value: UserRoles;
   }[];
   toggleEditMode: () => void;
+  onSelectChange: (newValue: any) => void;
+  onSelectSubmit: () => void;
 }
 
 const UserAvatarControls: React.FC<Props> = ({
@@ -27,7 +30,10 @@ const UserAvatarControls: React.FC<Props> = ({
   banOrUnbanErrorMsg,
   editMode,
   selectOptions,
+  isUserRoleChanging,
   toggleEditMode,
+  onSelectChange,
+  onSelectSubmit,
 }) => {
   return (
     <div className={s.controls}>
@@ -36,7 +42,10 @@ const UserAvatarControls: React.FC<Props> = ({
           editMode={editMode}
           userRole={userRole}
           selectOptions={selectOptions}
+          isUserRoleChanging={isUserRoleChanging}
           toggleEditMode={toggleEditMode}
+          onSelectChange={onSelectChange}
+          onSelectSubmit={onSelectSubmit}
         />
       ) : (
         <>
@@ -44,7 +53,10 @@ const UserAvatarControls: React.FC<Props> = ({
             editMode={editMode}
             userRole={userRole}
             selectOptions={selectOptions}
+            isUserRoleChanging={isUserRoleChanging}
             toggleEditMode={toggleEditMode}
+            onSelectChange={onSelectChange}
+            onSelectSubmit={onSelectSubmit}
           />
           <UserBanUnbanControls
             isBanned={isBanned}

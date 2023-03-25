@@ -30,6 +30,7 @@ interface Props {
   activeTodoFilterNum: number;
   myRole: UserRoles;
   isPopupOpen: boolean;
+  isUserRoleChanging: boolean;
   isUserBeingBanned: boolean;
   isUserBeingDeleted: boolean;
   banOrUnbanErrorMsg: string;
@@ -44,6 +45,7 @@ const UserPage: React.FC<Props> = ({
   activeTodoFilterNum,
   myRole,
   isPopupOpen,
+  isUserRoleChanging,
   isUserBeingBanned,
   isUserBeingDeleted,
   banOrUnbanErrorMsg,
@@ -86,6 +88,7 @@ const UserPage: React.FC<Props> = ({
                 myRole={myRole}
                 userRole={user.role}
                 banOrUnbanErrorMsg={banOrUnbanErrorMsg}
+                isUserRoleChanging={isUserRoleChanging}
               />
             )}
           </div>

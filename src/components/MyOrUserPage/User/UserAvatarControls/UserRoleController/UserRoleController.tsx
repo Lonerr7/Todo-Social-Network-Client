@@ -5,18 +5,24 @@ import { UserRoles } from '../../../../../types/reduxTypes/authSliceTypes';
 interface Props {
   editMode: boolean;
   userRole: UserRoles;
+  isUserRoleChanging: boolean;
   selectOptions: {
     label: string;
     value: UserRoles;
   }[];
   toggleEditMode: () => void;
+  onSelectChange: (newValue: any) => void;
+  onSelectSubmit: () => void;
 }
 
 const UserRoleController: React.FC<Props> = ({
   editMode,
   selectOptions,
   userRole,
+  isUserRoleChanging,
   toggleEditMode,
+  onSelectChange,
+  onSelectSubmit,
 }) => {
   return (
     <div className={s.roleController}>
@@ -31,7 +37,10 @@ const UserRoleController: React.FC<Props> = ({
         <ChangeUserRole
           selectOptions={selectOptions}
           userRole={userRole}
+          isUserRoleChanging={isUserRoleChanging}
           toggleEditMode={toggleEditMode}
+          onSelectChange={onSelectChange}
+          onSelectSubmit={onSelectSubmit}
         />
       )}
     </div>
