@@ -35,7 +35,13 @@ const UserAvatarControlsContainer: React.FC<Props> = (props) => {
   };
 
   const onSelectSubmit = async () => {
-    await dispatch(changeUserRole({ userId, roleToGive: selectValue }));
+    await dispatch(
+      changeUserRole({
+        userId,
+        roleToGive: selectValue,
+        setRoleSelectEditMode: toggleEditMode,
+      })
+    );
     setEditMode(false);
   };
 

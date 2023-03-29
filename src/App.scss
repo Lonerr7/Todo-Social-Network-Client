@@ -24,7 +24,8 @@
 
 // === react-select ===
 
-.settings_select {
+.settings_select,
+.role_select {
   // the whole react-select component
   &__control {
     font-size: 18px;
@@ -47,6 +48,10 @@
 
   &__value-container {
     cursor: text !important;
+  }
+
+  &__input {
+    color: var(--color29) !important;
   }
 
   &__single-value {
@@ -89,13 +94,28 @@
     }
 
     &--is-selected {
-      background-color: var(--color9) !important;
+      background-color: var(--color43) !important;
       color: #000 !important;
     }
 
     &:hover {
       background-color: var(--color23) !important;
     }
+  }
+}
+
+.role_select {
+  &__control {
+    width: auto !important;
+  }
+
+  &__input {
+    color: var(--color29) !important;
+    background-color: #000;
+  }
+
+  &__menu {
+    width: 100% !important;
   }
 }
 

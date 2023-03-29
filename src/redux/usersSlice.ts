@@ -9,6 +9,7 @@ import {
 } from '../types/reduxTypes/usersSliceTypes';
 import { getMe } from './authSlice';
 import { setProgress } from './progressBarSlice';
+import { RootState } from './store';
 
 interface FetchUsersReturn {
   users: UsersList;
@@ -50,10 +51,26 @@ export const fetchCurrentUser = createAsyncThunk(
 export const changeUserRole = createAsyncThunk(
   'users/changeUserRole',
   async (
-    { userId, roleToGive }: { userId: string; roleToGive: UserRoles },
-    { rejectWithValue }
+    {
+      userId,
+      roleToGive,
+      setRoleSelectEditMode,
+    }: {
+      userId: string;
+      roleToGive: UserRoles;
+      setRoleSelectEditMode: () => void;
+    },
+    { rejectWithValue, getState }
   ) => {
     try {
+      const state = getState() as RootState;
+      const currentUser = state.users.currentUser as User;
+
+      // Checking if the role we gave is new (not previous) to avoid unnecessary requests and re-renders
+      if (currentUser.role === roleToGive) {
+        return setRoleSelectEditMode();
+      }
+
       const response = await usersAPI.changeUserRole(userId, roleToGive);
 
       return response.data.user;
@@ -162,9 +179,16 @@ const usersSlice = createSlice({
     [changeUserRole.pending.type]: (state) => {
       state.isUserRoleChanging = true;
     },
-    [changeUserRole.fulfilled.type]: (state, action: PayloadAction<User>) => {
+    [changeUserRole.fulfilled.type]: (
+      state,
+      action: PayloadAction<User | undefined>
+    ) => {
       state.isUserRoleChanging = false;
-      state.currentUser = action.payload;
+
+      // if role we gave is new - update user. If not - not!
+      if (action.payload) {
+        state.currentUser = action.payload;
+      }
     },
     [changeUserRole.rejected.type]: (state) => {
       state.isUserRoleChanging = false;
