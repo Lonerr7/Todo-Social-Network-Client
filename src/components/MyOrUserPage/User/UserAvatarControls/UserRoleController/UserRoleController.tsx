@@ -11,6 +11,7 @@ interface Props {
     value: UserRoles;
   }[];
   userRoleChangeErrorMsg: string;
+  isUserRoleChanged: boolean;
   openEditMode: () => void;
   closeEditMode: () => void;
   onSelectChange: (newValue: any) => void;
@@ -23,6 +24,7 @@ const UserRoleController: React.FC<Props> = ({
   userRole,
   isUserRoleChanging,
   userRoleChangeErrorMsg,
+  isUserRoleChanged,
   openEditMode,
   closeEditMode,
   onSelectChange,
@@ -43,6 +45,7 @@ const UserRoleController: React.FC<Props> = ({
           userRole={userRole}
           isUserRoleChanging={isUserRoleChanging}
           userRoleChangeErrorMsg={userRoleChangeErrorMsg}
+          isUserRoleChanged={isUserRoleChanged}
           closeEditMode={closeEditMode}
           onSelectChange={onSelectChange}
           onSelectSubmit={onSelectSubmit}

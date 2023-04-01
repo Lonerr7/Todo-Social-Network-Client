@@ -66,7 +66,7 @@ export const changeUserRole = createAsyncThunk(
 
       // Checking if the role we gave is new (not previous) to avoid unnecessary requests and re-renders
       if (currentUser.role === roleToGive) {
-        return rejectWithValue('The user has this role already!'); // !
+        return rejectWithValue('The user has this role already!');
       }
       const response = await usersAPI.changeUserRole(userId, roleToGive);
 
@@ -119,6 +119,7 @@ const initialState: UsersInitialState = {
   totalUsersCount: 0,
   roleEditMode: false,
   isUserRoleChanging: false,
+  isUserRoleChanged: false,
   userRoleChangeErrorMsg: '',
   isCurrentUserBeingBanned: false,
   isCurrentUserBeingDeleted: false,
@@ -150,6 +151,14 @@ const usersSlice = createSlice({
       if (state.userRoleChangeErrorMsg) {
         state.userRoleChangeErrorMsg = '';
       }
+
+      if (state.isUserRoleChanged) {
+        state.isUserRoleChanged = false;
+      }
+    },
+    hideUserRoleSuccessMsg: (state) => {
+      state.isUserRoleChanged = false;
+      state.roleEditMode = false;
     },
     resetUsersErrorMessages: (state) => {
       state.errorMsg = '';
@@ -192,7 +201,7 @@ const usersSlice = createSlice({
       state.isUserRoleChanging = false;
       state.currentUser = action.payload;
       state.userRoleChangeErrorMsg = '';
-      state.roleEditMode = false;
+      state.isUserRoleChanged = true;
     },
     [changeUserRole.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isUserRoleChanging = false;
@@ -237,4 +246,5 @@ export const {
   resetUsersErrorMessages,
   openUserRoleEditMode,
   closeUserRoleEditMode,
+  hideUserRoleSuccessMsg,
 } = usersSlice.actions;

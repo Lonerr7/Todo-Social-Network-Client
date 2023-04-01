@@ -70,4 +70,10 @@
     position: relative;
     font-size: 18px;
   }
+
+  &__successMsg {
+    font-size: 20px;
+    color: rgb(4, 161, 4);
+    font-weight: 500;
+  }
 }

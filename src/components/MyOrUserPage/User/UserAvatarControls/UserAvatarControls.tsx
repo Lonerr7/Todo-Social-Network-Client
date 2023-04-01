@@ -17,6 +17,7 @@ interface Props {
     value: UserRoles;
   }[];
   userRoleChangeErrorMsg: string;
+  isUserRoleChanged: boolean;
   openEditMode: () => void;
   closeEditMode: () => void;
   onSelectChange: (newValue: any) => void;
@@ -34,6 +35,7 @@ const UserAvatarControls: React.FC<Props> = ({
   selectOptions,
   isUserRoleChanging,
   userRoleChangeErrorMsg,
+  isUserRoleChanged,
   openEditMode,
   closeEditMode,
   onSelectChange,
@@ -48,6 +50,7 @@ const UserAvatarControls: React.FC<Props> = ({
           selectOptions={selectOptions}
           isUserRoleChanging={isUserRoleChanging}
           userRoleChangeErrorMsg={userRoleChangeErrorMsg}
+          isUserRoleChanged={isUserRoleChanged}
           openEditMode={openEditMode}
           closeEditMode={closeEditMode}
           onSelectChange={onSelectChange}
@@ -61,6 +64,7 @@ const UserAvatarControls: React.FC<Props> = ({
             selectOptions={selectOptions}
             isUserRoleChanging={isUserRoleChanging}
             userRoleChangeErrorMsg={userRoleChangeErrorMsg}
+            isUserRoleChanged={isUserRoleChanged}
             openEditMode={openEditMode}
             closeEditMode={closeEditMode}
             onSelectChange={onSelectChange}

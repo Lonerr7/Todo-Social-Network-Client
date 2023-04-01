@@ -7,6 +7,7 @@ import {
   openUserRoleEditMode,
   closeUserRoleEditMode,
   changeUserRole,
+  hideUserRoleSuccessMsg,
 } from '../../../../redux/usersSlice';
 import { UserRoles } from '../../../../types/reduxTypes/authSliceTypes';
 import UserAvatarControls from './UserAvatarControls';
@@ -25,6 +26,7 @@ const UserAvatarControlsContainer: React.FC<Props> = (props) => {
     isCurrentUserBeingBanned: isUserBeingBanned,
     isUserRoleChanging,
     userRoleChangeErrorMsg,
+    isUserRoleChanged,
   } = useAppSelector((state) => state.users);
   const [selectValue, setSelectValue] = useState(props.userRole);
   const { userId } = props;
@@ -55,6 +57,10 @@ const UserAvatarControlsContainer: React.FC<Props> = (props) => {
         roleToGive: selectValue,
       })
     );
+
+    setTimeout(() => {
+      dispatch(hideUserRoleSuccessMsg());
+    }, 2300);
   };
 
   return (
@@ -70,6 +76,7 @@ const UserAvatarControlsContainer: React.FC<Props> = (props) => {
       banOrUnbanErrorMsg={banOrUnbanErrorMsg}
       isUserRoleChanging={isUserRoleChanging}
       userRoleChangeErrorMsg={userRoleChangeErrorMsg}
+      isUserRoleChanged={isUserRoleChanged}
     />
   );
 };

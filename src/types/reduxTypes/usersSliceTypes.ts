@@ -13,6 +13,7 @@ export type UsersInitialState = {
   totalUsersCount: number;
   roleEditMode: boolean;
   isUserRoleChanging: boolean;
+  isUserRoleChanged: boolean;
   userRoleChangeErrorMsg: string;
   isCurrentUserBeingBanned: boolean;
   isCurrentUserBeingDeleted: boolean;
