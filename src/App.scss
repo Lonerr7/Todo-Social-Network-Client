@@ -75,7 +75,7 @@
     color: var(--color10) !important;
 
     svg:hover {
-      color: #000;
+      color: var(--color39) !important;
     }
   }
 
@@ -94,19 +94,29 @@
     }
 
     &--is-selected {
-      background-color: var(--color43) !important;
-      color: #000 !important;
+      background-color: var(--color58) !important;
+      color: var(--color39) !important;
     }
 
     &:hover {
-      background-color: var(--color23) !important;
+      background-color: var(--color25) !important;
     }
+  }
+}
+
+// Keep selected option bg color when hover on it
+
+.settings_select__option--is-focused.settings_select__option--is-selected,
+.role_select__option--is-focused.role_select__option--is-selected {
+  &:hover {
+    background-color: var(--color58) !important;
   }
 }
 
 .role_select {
   &__control {
     width: auto !important;
+    border-color: var(--color25) !important;
   }
 
   &__input {
