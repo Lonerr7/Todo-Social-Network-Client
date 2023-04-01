@@ -30,10 +30,7 @@ interface Props {
   activeTodoFilterNum: number;
   myRole: UserRoles;
   isPopupOpen: boolean;
-  isUserRoleChanging: boolean;
-  isUserBeingBanned: boolean;
   isUserBeingDeleted: boolean;
-  banOrUnbanErrorMsg: string;
   toggleAdditionalInfoVisibility: () => void;
 }
 
@@ -45,10 +42,7 @@ const UserPage: React.FC<Props> = ({
   activeTodoFilterNum,
   myRole,
   isPopupOpen,
-  isUserRoleChanging,
-  isUserBeingBanned,
   isUserBeingDeleted,
-  banOrUnbanErrorMsg,
   toggleAdditionalInfoVisibility,
 }) => {
   const dispatch = useAppDispatch();
@@ -82,13 +76,10 @@ const UserPage: React.FC<Props> = ({
                 (user.role === UserRoles.USER ||
                   user.role === UserRoles.ADMIN))) && (
               <UserAvatarControlsContainer
-                isUserBeingBanned={isUserBeingBanned}
                 isBanned={user.isBanned}
                 userId={user.id}
                 myRole={myRole}
                 userRole={user.role}
-                banOrUnbanErrorMsg={banOrUnbanErrorMsg}
-                isUserRoleChanging={isUserRoleChanging}
               />
             )}
           </div>

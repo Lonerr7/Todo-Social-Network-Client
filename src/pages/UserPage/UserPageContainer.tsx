@@ -14,8 +14,7 @@ const UserPageContainer: React.FC = () => {
     currentUser: user,
     isCurrentUserFetching: isFetching,
     errorMsg,
-    banOrUnbanErrorMsg,
-    isUserRoleChanging,
+    isCurrentUserBeingDeleted: isUserBeingDeleted,
   } = useAppSelector((state) => state.users!);
   const userTodos = user?.todos!;
   const selectedTodos = useAppSelector(selectUserTodoByFilter);
@@ -23,10 +22,6 @@ const UserPageContainer: React.FC = () => {
     (state) => state.app.activeUserTodoFilter
   );
   const myRole = useAppSelector((state) => state.auth.user?.role)!;
-  const {
-    isCurrentUserBeingBanned: isUserBeingBanned,
-    isCurrentUserBeingDeleted: isUserBeingDeleted,
-  } = useAppSelector((state) => state.users);
   const isPopupOpen = useAppSelector(
     (state) => state.popup.isAreYouSurePopupOpen
   );
@@ -76,12 +71,9 @@ const UserPageContainer: React.FC = () => {
       userTodos={userTodos}
       selectedTodos={selectedTodos}
       activeTodoFilterNum={activeTodoFilterNum}
-      isUserRoleChanging={isUserRoleChanging}
-      isUserBeingBanned={isUserBeingBanned}
       isUserBeingDeleted={isUserBeingDeleted}
       myRole={myRole}
       isPopupOpen={isPopupOpen}
-      banOrUnbanErrorMsg={banOrUnbanErrorMsg}
     />
   );
 };

@@ -20,7 +20,6 @@ const ChangeRoleSelect: React.FC<Props> = ({
         options={selectOptions}
         defaultInputValue={userRole}
         onChange={onSelectChange}
-
       />
     </div>
   );

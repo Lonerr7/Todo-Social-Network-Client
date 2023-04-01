@@ -11,7 +11,9 @@ export type UsersInitialState = {
   banOrUnbanErrorMsg: string;
   usersSearchText: string;
   totalUsersCount: number;
+  roleEditMode: boolean;
   isUserRoleChanging: boolean;
+  userRoleChangeErrorMsg: string;
   isCurrentUserBeingBanned: boolean;
   isCurrentUserBeingDeleted: boolean;
   activeUserTodoFilterWord: TodoFiltersEnum;

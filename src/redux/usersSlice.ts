@@ -54,11 +54,9 @@ export const changeUserRole = createAsyncThunk(
     {
       userId,
       roleToGive,
-      setRoleSelectEditMode,
     }: {
       userId: string;
       roleToGive: UserRoles;
-      setRoleSelectEditMode: () => void;
     },
     { rejectWithValue, getState }
   ) => {
@@ -68,9 +66,8 @@ export const changeUserRole = createAsyncThunk(
 
       // Checking if the role we gave is new (not previous) to avoid unnecessary requests and re-renders
       if (currentUser.role === roleToGive) {
-        return setRoleSelectEditMode();
+        return rejectWithValue('The user has this role already!'); // !
       }
-
       const response = await usersAPI.changeUserRole(userId, roleToGive);
 
       return response.data.user;
@@ -120,7 +117,9 @@ const initialState: UsersInitialState = {
   banOrUnbanErrorMsg: '',
   usersSearchText: '',
   totalUsersCount: 0,
+  roleEditMode: false,
   isUserRoleChanging: false,
+  userRoleChangeErrorMsg: '',
   isCurrentUserBeingBanned: false,
   isCurrentUserBeingDeleted: false,
   activeUserTodoFilterWord: TodoFiltersEnum.ALL,
@@ -141,6 +140,16 @@ const usersSlice = createSlice({
       action: PayloadAction<TodoFiltersEnum>
     ) => {
       state.activeUserTodoFilterWord = action.payload;
+    },
+    openUserRoleEditMode: (state) => {
+      state.roleEditMode = true;
+    },
+    closeUserRoleEditMode: (state) => {
+      state.roleEditMode = false;
+
+      if (state.userRoleChangeErrorMsg) {
+        state.userRoleChangeErrorMsg = '';
+      }
     },
     resetUsersErrorMessages: (state) => {
       state.errorMsg = '';
@@ -179,19 +188,15 @@ const usersSlice = createSlice({
     [changeUserRole.pending.type]: (state) => {
       state.isUserRoleChanging = true;
     },
-    [changeUserRole.fulfilled.type]: (
-      state,
-      action: PayloadAction<User | undefined>
-    ) => {
+    [changeUserRole.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.isUserRoleChanging = false;
-
-      // if role we gave is new - update user. If not - not!
-      if (action.payload) {
-        state.currentUser = action.payload;
-      }
+      state.currentUser = action.payload;
+      state.userRoleChangeErrorMsg = '';
+      state.roleEditMode = false;
     },
-    [changeUserRole.rejected.type]: (state) => {
+    [changeUserRole.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isUserRoleChanging = false;
+      state.userRoleChangeErrorMsg = action.payload;
     },
 
     [banOrUnbanUser.pending.type]: (state) => {
@@ -230,4 +235,6 @@ export const {
   removeCurrentUser,
   setUserActiveTodoFilterWord,
   resetUsersErrorMessages,
+  openUserRoleEditMode,
+  closeUserRoleEditMode,
 } = usersSlice.actions;

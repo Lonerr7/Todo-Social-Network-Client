@@ -10,7 +10,9 @@ interface Props {
     label: string;
     value: UserRoles;
   }[];
-  toggleEditMode: () => void;
+  userRoleChangeErrorMsg: string;
+  openEditMode: () => void;
+  closeEditMode: () => void;
   onSelectChange: (newValue: any) => void;
   onSelectSubmit: () => void;
 }
@@ -20,7 +22,9 @@ const UserRoleController: React.FC<Props> = ({
   selectOptions,
   userRole,
   isUserRoleChanging,
-  toggleEditMode,
+  userRoleChangeErrorMsg,
+  openEditMode,
+  closeEditMode,
   onSelectChange,
   onSelectSubmit,
 }) => {
@@ -29,7 +33,7 @@ const UserRoleController: React.FC<Props> = ({
       {!editMode ? (
         <button
           className={`${s.controls__btn} ${s.controls__changeRoleBtn}`}
-          onClick={toggleEditMode}
+          onClick={openEditMode}
         >
           Change role
         </button>
@@ -38,7 +42,8 @@ const UserRoleController: React.FC<Props> = ({
           selectOptions={selectOptions}
           userRole={userRole}
           isUserRoleChanging={isUserRoleChanging}
-          toggleEditMode={toggleEditMode}
+          userRoleChangeErrorMsg={userRoleChangeErrorMsg}
+          closeEditMode={closeEditMode}
           onSelectChange={onSelectChange}
           onSelectSubmit={onSelectSubmit}
         />

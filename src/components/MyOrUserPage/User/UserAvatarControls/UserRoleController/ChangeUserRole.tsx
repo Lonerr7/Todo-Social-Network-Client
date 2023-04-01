@@ -1,5 +1,6 @@
 import { UserRoles } from '../../../../../types/reduxTypes/authSliceTypes';
 import SubmitLoadingBtn from '../../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
+import TextError from '../../../../common/TextError/TextError';
 import s from '../UserAvatarControls.module.scss';
 import ChangeRoleSelect from './ChangeRoleSelect';
 
@@ -10,7 +11,8 @@ interface Props {
   }[];
   userRole: UserRoles;
   isUserRoleChanging: boolean;
-  toggleEditMode: () => void;
+  userRoleChangeErrorMsg: string;
+  closeEditMode: () => void;
   onSelectChange: (newValue: any) => void;
   onSelectSubmit: () => void;
 }
@@ -19,7 +21,8 @@ const ChangeUserRole: React.FC<Props> = ({
   selectOptions,
   userRole,
   isUserRoleChanging,
-  toggleEditMode,
+  userRoleChangeErrorMsg,
+  closeEditMode,
   onSelectChange,
   onSelectSubmit,
 }) => {
@@ -30,6 +33,7 @@ const ChangeUserRole: React.FC<Props> = ({
         userRole={userRole}
         onSelectChange={onSelectChange}
       />
+
       <div className={s.changeRole__btns}>
         <SubmitLoadingBtn
           btnClass={s.changeRole__btn}
@@ -39,10 +43,15 @@ const ChangeUserRole: React.FC<Props> = ({
           isFetching={isUserRoleChanging}
           onSubmit={onSelectSubmit}
         />
-        <button className={s.changeRole__btn} onClick={toggleEditMode}>
+        <button className={s.changeRole__btn} onClick={closeEditMode}>
           Close
         </button>
       </div>
+      {userRoleChangeErrorMsg ? (
+        <TextError customClass={s.changeRole__errorMsg}>
+          {userRoleChangeErrorMsg}
+        </TextError>
+      ) : null}
     </div>
   );
 };
