@@ -10,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+  position: relative;
 
   &__input {
     @extend %form-input;
@@ -19,6 +20,17 @@
     padding: 15px 15px;
     font-size: 20px;
     color: var(--color16);
+  }
+
+  &__emojiPickerBtn {
+    top: 15px;
+    right: 135px;
+  }
+
+  &__emojiPicker {
+    top: 80px;
+    right: 127px;
+    z-index: 1000;
   }
 
   &__btn {
