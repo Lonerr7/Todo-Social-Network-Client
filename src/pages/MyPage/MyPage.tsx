@@ -5,7 +5,6 @@ import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/Profil
 import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
 import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBio';
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
-import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 // import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
 import UserGeneralInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
@@ -88,4 +87,4 @@ const MyPage: React.FC<Props> = ({
   );
 };
 
-export default withActiveMenuNum(MyPage, 1);
+export default MyPage;

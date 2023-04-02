@@ -49,7 +49,9 @@ const ChangeUserRole: React.FC<Props> = ({
           Close
         </button>
       </div>
-      {isUserRoleChanged ? <p className={s.changeRole__successMsg}>Role was successfuly changed</p> : null}
+      {isUserRoleChanged ? (
+        <p className={s.changeRole__successMsg}>Role was successfuly changed</p>
+      ) : null}
       {userRoleChangeErrorMsg ? (
         <TextError customClass={s.changeRole__errorMsg}>
           {userRoleChangeErrorMsg}

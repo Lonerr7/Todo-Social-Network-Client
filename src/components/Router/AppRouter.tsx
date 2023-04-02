@@ -16,6 +16,7 @@ import ForgotPasswordForm from '../common/ForgotPasswordForm/ForgotPasswordForm'
 import ResetPasswordForm from '../common/ResetPasswordForm/ResetPasswordForm';
 import UserTodoPageWithCommentsContainer from '../../pages/UserTodoWithCommentsPage/UserTodoWithCommentsPageContainer';
 import AppearanceSettings from '../Settings/AppearanceSettings/AppearanceSettings';
+import BannedPage from '../../pages/BannedPage/BannedPage';
 
 const AppRouter: React.FC = () => {
   return (
@@ -66,6 +67,8 @@ const AppRouter: React.FC = () => {
           <Route path="appearance" element={<AppearanceSettings />} />
         </Route>
       </Route>
+
+      <Route path="/banned" element={<BannedPage />} />
 
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>

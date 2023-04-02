@@ -5,6 +5,7 @@ import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { deleteMyProfile } from '../../redux/myselfSlice';
 import s from './SettingsPage.module.scss';
+import withBanRedirect from '../../hoc/withBanRedirect';
 
 const SettingsPage: React.FC = () => {
   const isPopupOpen = useAppSelector(
@@ -29,4 +30,4 @@ const SettingsPage: React.FC = () => {
   );
 };
 
-export default withActiveMenuNum(SettingsPage, 5);
+export default withBanRedirect(withActiveMenuNum(SettingsPage, 5));

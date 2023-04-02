@@ -6,6 +6,7 @@ import { selectUsersWithSearchWithoutMe } from '../../redux/selectors/usersSelec
 import { fetchAllUsers, resetUsersErrorMessages } from '../../redux/usersSlice';
 import { setUsersSearchText } from '../../redux/usersSlice';
 import UsersPage from './UsersPage';
+import withBanRedirect from '../../hoc/withBanRedirect';
 
 const UsersPageContainer: React.FC = () => {
   const { usersSearchText, totalUsersCount, errorMsg } = useAppSelector(
@@ -43,4 +44,4 @@ const UsersPageContainer: React.FC = () => {
   );
 };
 
-export default withActiveMenuNum(UsersPageContainer, 2);
+export default withBanRedirect(withActiveMenuNum(UsersPageContainer, 2));

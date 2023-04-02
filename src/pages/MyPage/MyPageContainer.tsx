@@ -6,6 +6,7 @@ import { selectTodosByFilter } from '../../redux/selectors/todoSelectors';
 import { OnlineStatusEnum } from '../../types/reduxTypes/authSliceTypes';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import MyPage from './MyPage';
+import withBanRedirect from '../../hoc/withBanRedirect';
 
 const MyPageContainer: React.FC = () => {
   const myself = useAppSelector((state) => state.auth.user); //! Todos are not synced
@@ -55,4 +56,4 @@ const MyPageContainer: React.FC = () => {
   );
 };
 
-export default withActiveMenuNum(MyPageContainer, 1);
+export default withBanRedirect(withActiveMenuNum(MyPageContainer, 1));
