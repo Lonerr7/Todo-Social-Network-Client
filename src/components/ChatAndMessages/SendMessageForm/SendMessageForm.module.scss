@@ -33,14 +33,14 @@
       color: var(--color9);
     }
   }
-
-  &__btn {
-    @extend %send-btn;
-  }
-
+  
   &__emojiPicker {
     position: absolute;
     top: -404px;
     right: 24px;
+  }
+
+  &__btn {
+    @extend %send-btn;
   }
 }
