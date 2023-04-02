@@ -1,7 +1,6 @@
 import { EmojiClickData } from 'emoji-picker-react';
-import { VscSmiley } from 'react-icons/vsc';
-import EmojiPicker from '../../common/EmojiPicker/EmojiPicker';
 import s from './SendMessageForm.module.scss';
+import EmojiPick from '../../common/EmojiPick/EmojiPick';
 
 interface Props {
   message: string;
@@ -30,17 +29,12 @@ const SendMessageForm: React.FC<Props> = (props) => {
         onKeyDown={props.textareaSendMessageHandler}
         autoFocus
       ></textarea>
-      <button
-        className={s.sendMessage__pickerBtn}
-        onClick={props.btnClickHandler}
-        type="button"
-      >
-        <VscSmiley className={s.sendMessage__pickerIcon} size={24} />
-      </button>
-      <EmojiPicker
-        customClass={s.sendMessage__emojiPicker}
+      <EmojiPick
+        emojiClickHandler={props.emojiClickHandler}
         isPickerOpened={props.isPickerOpened}
-        onEmojiClick={props.emojiClickHandler}
+        toggleEmojiPicker={props.btnClickHandler}
+        customBtnPickerClass={s.sendMessage__pickerBtn}
+        customPickerClass={s.sendMessage__emojiPicker}
       />
       <button className={s.sendMessage__btn} type="submit">
         Send Message

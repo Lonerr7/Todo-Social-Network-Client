@@ -50,22 +50,11 @@
   }
 
   &__pickerBtn {
-    position: absolute;
     top: 12px;
     right: 14px;
   }
 
-  &__pickerIcon {
-    transition: color 0.2s;
-    color: var(--color10);
-
-    &:hover {
-      color: var(--color9);
-    }
-  }
-
   &__emojiPicker {
-    position: absolute;
     top: 100px;
     right: 24px;
   }

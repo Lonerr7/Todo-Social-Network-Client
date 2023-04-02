@@ -8,8 +8,7 @@ import SubmitLoadingBtn from '../../../../common/SubmitLoadingBtn/SubmitLoadingB
 import Avatar from '../../Avatar/Avatar';
 import s from './UserTodoCommentInput.module.scss';
 import { EmojiClickData } from 'emoji-picker-react';
-import EmojiPicker from '../../../../common/EmojiPicker/EmojiPicker';
-import { VscSmiley } from 'react-icons/vsc';
+import EmojiPick from '../../../../common/EmojiPick/EmojiPick';
 
 interface Props {
   myPhoto: string;
@@ -87,17 +86,12 @@ const UserTodoCommentInput: React.FC<Props> = ({ myPhoto, todoId }) => {
               onChange={onCommentChange}
               onKeyDown={textareaSendCommentHandler}
             />
-            <button
-              className={s.input__pickerBtn}
-              onClick={toggleEmojiPicker}
-              type="button"
-            >
-              <VscSmiley className={s.input__pickerIcon} size={24} />
-            </button>
-            <EmojiPicker
-              customClass={s.input__emojiPicker}
+            <EmojiPick
+              customBtnPickerClass={s.input__pickerBtn}
+              emojiClickHandler={emojiClickHandler}
               isPickerOpened={isPickerOpened}
-              onEmojiClick={emojiClickHandler}
+              toggleEmojiPicker={toggleEmojiPicker}
+              customPickerClass={s.input__emojiPicker}
             />
             <SubmitLoadingBtn
               btnClass={s.input__sendBtn}
