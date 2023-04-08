@@ -7,6 +7,7 @@ import { selectUserTodoByFilter } from '../../redux/selectors/usersSelectors';
 import { fetchCurrentUser, removeCurrentUser } from '../../redux/usersSlice';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import UserPage from './UserPage';
+import FinishProgressBarIfError from '../../components/MyOrUserPage/common/FinishProgressBarIfError/FinishProgressBarIfError';
 
 const UserPageContainer: React.FC = () => {
   const { userId } = useParams();
@@ -60,7 +61,7 @@ const UserPageContainer: React.FC = () => {
   }
 
   if (!user || errorMsg) {
-    return <p>Error: {errorMsg}</p>;
+    return <FinishProgressBarIfError errorMsg={errorMsg} />;
   }
 
   return (

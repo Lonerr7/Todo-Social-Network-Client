@@ -9,6 +9,7 @@ import {
   resetCurrentTodoErrorMessages,
 } from '../../redux/currentTodoSlice';
 import UserTodoWithCommentsPage from './UserTodoWithCommentsPage';
+import FinishProgressBarIfError from '../../components/MyOrUserPage/common/FinishProgressBarIfError/FinishProgressBarIfError';
 
 const UserTodoPageWithCommentsContainer: React.FC = () => {
   const {
@@ -52,7 +53,9 @@ const UserTodoPageWithCommentsContainer: React.FC = () => {
 
   if (isCurrentTodoFetching || isTodoOwnerFetching) return null;
 
-  if (errMsg) return <div>{errMsg}</div>;
+  if (errMsg) {
+    return <FinishProgressBarIfError errorMsg={errMsg} />;
+  }
 
   return (
     <div>

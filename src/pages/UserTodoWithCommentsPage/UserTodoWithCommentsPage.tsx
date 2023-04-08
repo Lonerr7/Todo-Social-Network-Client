@@ -1,9 +1,9 @@
 import s from '../TodosPage/TodosPage.module.scss';
 import UserTodoBig from '../../components/MyOrUserPage/common/UserTodos/UserTodoBig/UserTodoBig';
 import UserTodoComments from '../../components/MyOrUserPage/common/UserTodos/UserTodoComments/UserTodoComments';
-import UserTodoCommentInput from '../../components/MyOrUserPage/common/UserTodos/UserTodoCommentInput/UserTodoCommentInput';
 import { TodoSmall } from '../../types/reduxTypes/todoSliceTypes';
 import ReactPaginate from 'react-paginate';
+import UserTodoCommentInputContainer from '../../components/MyOrUserPage/common/UserTodos/UserTodoCommentInput/UserTodoCommentInputContainer';
 
 interface Props {
   ownersNickname: string | undefined;
@@ -43,7 +43,10 @@ const UserTodoWithCommentsPage: React.FC<Props> = ({
         difficulty={currentTodo.difficulty}
         isCompleted={currentTodo.isCompleted}
       />
-      <UserTodoCommentInput myPhoto={myPhoto} todoId={currentTodo._id} />
+      <UserTodoCommentInputContainer
+        myPhoto={myPhoto}
+        todoId={currentTodo._id}
+      />
       <UserTodoComments />
       <ReactPaginate
         pageCount={pageCount}
