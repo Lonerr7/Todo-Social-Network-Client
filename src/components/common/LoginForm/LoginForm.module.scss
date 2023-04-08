@@ -14,7 +14,7 @@
 
   &__label {
     @extend %form-label;
-    color: var(--color46);
+    color: var(--color59);
   }
 
   &__formInput {
@@ -28,7 +28,7 @@
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 25px;
-    color: var(--color16);
+    color: var(--color3);
   }
 
   &__errorMsg {
@@ -37,7 +37,7 @@
 
   &__btn {
     @extend %form-btn;
-    background-color: var(--color45);
+    background-color: var(--color45) !important;
     color: var(--color16);
 
     &:hover {

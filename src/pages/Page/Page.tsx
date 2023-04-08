@@ -4,21 +4,14 @@ import Logo from '../../components/common/Logo/Logo';
 import TextError from '../../components/common/TextError/TextError';
 import s from './Page.module.scss';
 
-type PageProps = {
+interface PageProps {
   errorMsg: string;
   title: string;
   subtitle?: string;
   form: React.ReactNode;
-  backBtnClass?: string;
-};
+}
 
-const Page: React.FC<PageProps> = ({
-  title,
-  form,
-  errorMsg,
-  backBtnClass,
-  subtitle,
-}) => {
+const Page: React.FC<PageProps> = ({ title, form, errorMsg, subtitle }) => {
   return (
     <div className={s.page}>
       <div className={s.page__box}>

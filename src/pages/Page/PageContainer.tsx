@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { toggleRegisterLoginPageOpening } from '../../redux/appSlice';
 import { clearErrorMsg } from '../../redux/authSlice';
 import Page from './Page';
-import s from './../../components/common/GoBack/GoBack.module.scss';
 
 type PageContainerProps = {
   title: string;
@@ -38,13 +37,7 @@ const PageContainer: React.FC<PageContainerProps> = ({
   }
 
   return (
-    <Page
-      title={title}
-      subtitle={subtitle}
-      form={form}
-      errorMsg={errorMsg}
-      backBtnClass={s.goBackPosition}
-    />
+    <Page title={title} subtitle={subtitle} form={form} errorMsg={errorMsg} />
   );
 };
 

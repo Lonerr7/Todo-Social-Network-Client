@@ -1,7 +1,10 @@
 import s from './LoginForm.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../hooks/reduxToolkitHooks';
 import { logUserIn } from '../../../redux/authSlice';
 import { LoginFormInitialValues } from '../../../types/formikTypes';
 import FormControl from '../FormControl/FormControl';
