@@ -8,6 +8,11 @@
     @extend %userpage-inner;
     display: block;
   }
+
+  &__preloader {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .active {

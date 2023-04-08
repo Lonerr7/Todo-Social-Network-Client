@@ -37,9 +37,7 @@ const TodoListTasks: React.FC = () => {
 
   return (
     <>
-      {!todosCount ? (
-        <p className={s.tasks__warning}>[empty Empty]</p>
-      ) : (
+      {!todosCount ? null : (
         <>
           {errMsg && (
             <TextError customClass={s.tasks__error}>{errMsg}</TextError>

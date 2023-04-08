@@ -53,20 +53,23 @@ const TodoInput: React.FC = () => {
   return (
     <div className={s.todoInput__outer}>
       <form className={s.todoInput}>
-        <input
-          className={s.todoInput__input}
-          type="text"
-          placeholder="Add your new task..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <EmojiPick
-          customPickerClass={s.todoInput__emojiPicker}
-          customBtnPickerClass={s.todoInput__emojiPickerBtn}
-          isPickerOpened={isPickerOpened}
-          emojiClickHandler={emojiClickHandler}
-          toggleEmojiPicker={toggleEmojiPicker}
-        />
+        <div className={s.todoInput__block}>
+          <input
+            className={s.todoInput__input}
+            type="text"
+            placeholder="Add your new task..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <EmojiPick
+            customPickerClass={s.todoInput__emojiPicker}
+            customBtnPickerClass={s.todoInput__emojiPickerBtn}
+            isPickerOpened={isPickerOpened}
+            emojiClickHandler={emojiClickHandler}
+            toggleEmojiPicker={toggleEmojiPicker}
+          />
+        </div>
+
         <SubmitLoadingBtn
           btnClass={s.todoInput__btn}
           btnType="submit"

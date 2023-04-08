@@ -3,6 +3,7 @@ import Search from '../../components/common/Search/Search';
 import UserSmall from '../../components/Users/UserSmall/UserSmall';
 import { UsersList } from '../../types/reduxTypes/usersSliceTypes';
 import s from './UsersPage.module.scss';
+import Preloader from '../../components/common/Preloader/Preloader';
 
 interface Props {
   users: UsersList | null | undefined;
@@ -68,7 +69,7 @@ const UsersPage: React.FC<Props> = ({
             />
           </>
         ) : (
-          <p>No users</p>
+          <Preloader customClass={s.page__preloader} />
         )}
       </div>
     </div>
