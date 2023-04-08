@@ -5,11 +5,12 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../../hooks/reduxToolkitHooks';
-import { logUserIn } from '../../../redux/authSlice';
+import { clearErrorMsg, logUserIn } from '../../../redux/authSlice';
 import { LoginFormInitialValues } from '../../../types/formikTypes';
 import FormControl from '../FormControl/FormControl';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const initialValues = {
   email: 'newuser@gmail.com',
@@ -39,6 +40,14 @@ const LoginForm: React.FC = () => {
   const onSubmit = (values: LoginFormInitialValues) => {
     dispatch(logUserIn(values));
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearErrorMsg());
+    };
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Formik

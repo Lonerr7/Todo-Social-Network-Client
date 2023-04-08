@@ -13,8 +13,6 @@ export const submitForgotPasswordEmail = createAsyncThunk(
 
       return response.data.message;
     } catch (error: any) {
-      console.log(error);
-
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -41,7 +39,6 @@ export const submitResetPassword = createAsyncThunk(
 // ErrorMsg is in authSlice, because we render the form inside Page component which has universal errMsg for both log in and sign up
 
 const initialState = {
-  // successMsg: '',
   isForgotPasswordFetching: false,
   isForgotPasswordSuccessfullySent: false,
   isResetPasswordFetching: false,
@@ -59,13 +56,9 @@ const forgotPasswordSlice = createSlice({
     [submitForgotPasswordEmail.pending.type]: (state) => {
       state.isForgotPasswordFetching = true;
     },
-    [submitForgotPasswordEmail.fulfilled.type]: (
-      state
-      // action: PayloadAction<string>
-    ) => {
+    [submitForgotPasswordEmail.fulfilled.type]: (state) => {
       state.isForgotPasswordFetching = false;
       state.isForgotPasswordSuccessfullySent = true;
-      // state.successMsg = action.payload;
     },
     [submitForgotPasswordEmail.rejected.type]: (state) => {
       state.isForgotPasswordFetching = false;

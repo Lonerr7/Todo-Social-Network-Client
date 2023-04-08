@@ -1,13 +1,6 @@
-import { useEffect } from 'react';
 import s from './WelcomePage.module.scss';
 
 const WelcomePage: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Welcome! | Todo Social';
-
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <div className={s.page}>
       <h1 className={s.page__title}>Welcome to Todo Social!</h1>

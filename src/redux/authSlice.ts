@@ -159,6 +159,12 @@ const authSlice = createSlice({
     ) => {
       state.user = action.payload;
     },
+    [submitResetPassword.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.errorMsg = action.payload;
+    },
 
     [getMe.pending.type]: (state) => {
       state.isGetMeFetching = true;

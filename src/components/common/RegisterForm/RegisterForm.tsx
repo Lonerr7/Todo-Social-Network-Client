@@ -6,9 +6,10 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../../hooks/reduxToolkitHooks';
-import { signUserUp } from '../../../redux/authSlice';
+import { clearErrorMsg, signUserUp } from '../../../redux/authSlice';
 import FormControl from '../FormControl/FormControl';
 import SubmitLoadingBtn from '../SubmitLoadingBtn/SubmitLoadingBtn';
+import { useEffect } from 'react';
 
 const initialValues = {
   email: 'newuser@gmail.com',
@@ -44,6 +45,15 @@ const RegisterForm: React.FC = () => {
   const onSubmit = (values: RegisterFormInitialValues) => {
     dispatch(signUserUp(values));
   };
+
+  useEffect(() => {
+    return () => {
+      debugger;
+      dispatch(clearErrorMsg());
+    };
+
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Formik

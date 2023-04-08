@@ -1,8 +1,9 @@
 @import '../../../vars';
 
 .form {
-  width: 400px;
-  margin-bottom: 30px;
+  width: 430px;
+  // margin-bottom: 30px;
+  padding: 0 15px;
 
   &__formControl {
     @extend %form-control;
@@ -43,5 +44,11 @@
     &:hover {
       background-color: var(--color6);
     }
+  }
+}
+
+@media (max-width: 440px) {
+  .form {
+    width: 100%;
   }
 }

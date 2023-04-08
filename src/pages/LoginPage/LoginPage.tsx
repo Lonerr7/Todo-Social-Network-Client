@@ -6,6 +6,7 @@ import TextError from '../../components/common/TextError/TextError';
 import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import s from './LoginPage.module.scss';
 
+
 const LoginPage: React.FC = () => {
   const { errorMsg, user } = useAppSelector((state) => state.auth);
 
