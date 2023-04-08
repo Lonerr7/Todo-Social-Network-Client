@@ -1,0 +1,16 @@
+.picker {
+  position: absolute;
+
+  &__pickerIcon {
+    transition: color 0.2s;
+    color: var(--color10);
+
+    &:hover {
+      color: var(--color9);
+    }
+  }
+
+  &__btn {
+    position: absolute;
+  }
+}

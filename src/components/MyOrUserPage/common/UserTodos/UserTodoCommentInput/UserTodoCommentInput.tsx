@@ -7,6 +7,8 @@ import { sendTodoComment } from '../../../../../redux/currentTodoSlice';
 import SubmitLoadingBtn from '../../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import Avatar from '../../Avatar/Avatar';
 import s from './UserTodoCommentInput.module.scss';
+import { EmojiClickData } from 'emoji-picker-react';
+import EmojiPick from '../../../../common/EmojiPick/EmojiPick';
 
 interface Props {
   myPhoto: string;
@@ -15,6 +17,7 @@ interface Props {
 
 const UserTodoCommentInput: React.FC<Props> = ({ myPhoto, todoId }) => {
   const [commentText, setCommentText] = useState('');
+  const [isPickerOpened, setIsPickerOpened] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { isCommentSending, sendCommentErrMsg } = useAppSelector(
     (state) => state.currentTodo
@@ -39,6 +42,7 @@ const UserTodoCommentInput: React.FC<Props> = ({ myPhoto, todoId }) => {
     if (textareaRef.current) {
       textareaRef.current.focus();
     }
+    setIsPickerOpened(false);
   };
 
   const sendCommentHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -57,6 +61,14 @@ const UserTodoCommentInput: React.FC<Props> = ({ myPhoto, todoId }) => {
     }
   };
 
+  const toggleEmojiPicker = () => {
+    setIsPickerOpened(!isPickerOpened);
+  };
+
+  const emojiClickHandler = (emojiData: EmojiClickData) => {
+    setCommentText((prevMessage) => `${prevMessage}${emojiData.emoji}`);
+  };
+
   return (
     <div className={s.input}>
       <div className={s.input__inner}>
@@ -73,6 +85,13 @@ const UserTodoCommentInput: React.FC<Props> = ({ myPhoto, todoId }) => {
               ref={textareaRef}
               onChange={onCommentChange}
               onKeyDown={textareaSendCommentHandler}
+            />
+            <EmojiPick
+              customBtnPickerClass={s.input__pickerBtn}
+              emojiClickHandler={emojiClickHandler}
+              isPickerOpened={isPickerOpened}
+              toggleEmojiPicker={toggleEmojiPicker}
+              customPickerClass={s.input__emojiPicker}
             />
             <SubmitLoadingBtn
               btnClass={s.input__sendBtn}

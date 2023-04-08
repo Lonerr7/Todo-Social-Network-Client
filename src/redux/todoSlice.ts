@@ -14,10 +14,7 @@ import { deleteMyProfile } from './myselfSlice';
 
 export const createTodo = createAsyncThunk(
   'todo/createTodo',
-  async (
-    { taskText, difficulty }: TodoParams,
-    { rejectWithValue, dispatch }
-  ) => {
+  async ({ taskText, difficulty }: TodoParams, { rejectWithValue }) => {
     try {
       const fieldsToSend = {
         taskText,
@@ -27,8 +24,6 @@ export const createTodo = createAsyncThunk(
 
       return response.data.data.data;
     } catch (error: any) {
-      console.log(error.response.data.message);
-
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -50,7 +45,6 @@ export const updateTodo = createAsyncThunk(
 
       return response.data.data.data;
     } catch (error: any) {
-      console.log(error.response.data.message);
       return rejectWithValue({ error: error.response.data.message, id });
     }
   }

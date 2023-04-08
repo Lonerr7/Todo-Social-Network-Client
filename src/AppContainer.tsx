@@ -10,6 +10,7 @@ const AppContainer: React.FC = () => {
   const isRegisterLoginPageOpen = useAppSelector(
     (state) => state.app.isRegisterOrLoginPageOpen
   );
+  const isMeBanned = useAppSelector((state) => state.auth.user?.isBanned)!;
   const currentTheme = useAppSelector((state) => state.theme.theme);
   const dispatch = useAppDispatch();
 
@@ -54,7 +55,12 @@ const AppContainer: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  return <App isRegisterLoginPageOpen={isRegisterLoginPageOpen} />;
+  return (
+    <App
+      isRegisterLoginPageOpen={isRegisterLoginPageOpen}
+      isMeBanned={isMeBanned}
+    />
+  );
 };
 
 export default AppContainer;

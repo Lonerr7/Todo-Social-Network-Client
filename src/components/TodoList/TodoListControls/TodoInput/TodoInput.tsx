@@ -8,13 +8,24 @@ import {
 import { createTodo, deleteTodosErrorMsg } from '../../../../redux/todoSlice';
 import TextError from '../../../common/TextError/TextError';
 import SubmitLoadingBtn from '../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
+import { EmojiClickData } from 'emoji-picker-react';
+import EmojiPick from '../../../common/EmojiPick/EmojiPick';
 
 const TodoInput: React.FC = () => {
   const [text, setText] = useState('');
+  const [isPickerOpened, setIsPickerOpened] = useState(false);
   const { isTodoCreating, todoInputErrMsg } = useAppSelector(
     (state) => state.todo
   );
   const dispatch = useAppDispatch();
+
+  const toggleEmojiPicker = () => {
+    setIsPickerOpened(!isPickerOpened);
+  };
+
+  const emojiClickHandler = (emojiData: EmojiClickData) => {
+    setText((prevMessage) => `${prevMessage}${emojiData.emoji}`);
+  };
 
   const onSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,6 +38,9 @@ const TodoInput: React.FC = () => {
     if (response.meta.requestStatus !== 'rejected') {
       setText('');
     }
+
+    // closing emoji picker window
+    setIsPickerOpened(false);
 
     // clearing errorMessage after 5 sec
     if (response.meta.requestStatus === 'rejected') {
@@ -45,6 +59,13 @@ const TodoInput: React.FC = () => {
           placeholder="Add your new task..."
           value={text}
           onChange={(e) => setText(e.target.value)}
+        />
+        <EmojiPick
+          customPickerClass={s.todoInput__emojiPicker}
+          customBtnPickerClass={s.todoInput__emojiPickerBtn}
+          isPickerOpened={isPickerOpened}
+          emojiClickHandler={emojiClickHandler}
+          toggleEmojiPicker={toggleEmojiPicker}
         />
         <SubmitLoadingBtn
           btnClass={s.todoInput__btn}

@@ -4,6 +4,7 @@
   &__btn {
     @extend %btn-small;
     background-color: var(--color2);
+    display: inline-block;
     width: 100%;
     margin-bottom: 12px;
     color: #fff;
@@ -14,6 +15,65 @@
 
     &:hover {
       background-color: var(--color1);
+      transform: scale(1);
     }
+  }
+
+  &__deleteBtn {
+    background-color: var(--color12);
+
+    &:hover {
+      background-color: var(--color53);
+    }
+  }
+
+  &__changeRoleBtn {
+    background-color: var(--color56);
+
+    &:hover {
+      background-color: rgb(97, 97, 97);
+    }
+  }
+}
+
+.roleController {
+  margin-bottom: 12px;
+}
+
+.changeRole {
+  position: relative;
+
+  &__select {
+    margin-bottom: 15px;
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    @extend %btn-small;
+    width: 48%;
+    height: 30px;
+    background-color: var(--color57);
+    color: var(--color3);
+
+    &:hover {
+      background-color: rgb(96, 96, 96);
+    }
+  }
+
+  &__errorMsg {
+    position: relative;
+    font-size: 18px;
+  }
+
+  &__successMsg {
+    font-size: 20px;
+    color: rgb(4, 161, 4);
+    font-weight: 500;
   }
 }

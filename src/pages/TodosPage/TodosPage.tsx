@@ -1,6 +1,7 @@
 import AreYouSurePopup from '../../components/common/Popups/AreYouSurePopup/AreYouSurePopup';
 import TodoList from '../../components/TodoList/TodoList';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
+import withBanRedirect from '../../hoc/withBanRedirect';
 import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { deleteAllUserTodos } from '../../redux/todoSlice';
 import s from './TodosPage.module.scss';
@@ -25,4 +26,4 @@ const TodosPage: React.FC = () => {
   );
 };
 
-export default withActiveMenuNum(TodosPage, 4);
+export default withBanRedirect(withActiveMenuNum(TodosPage, 4));
