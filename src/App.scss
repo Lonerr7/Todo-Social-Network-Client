@@ -217,3 +217,9 @@
     border-bottom-right-radius: 6px;
   }
 }
+
+@media (max-width: 450px) {
+  .paginator__container {
+    margin: 30px auto 0 auto;
+  }
+}

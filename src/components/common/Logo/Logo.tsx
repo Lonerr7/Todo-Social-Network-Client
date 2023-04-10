@@ -1,7 +1,7 @@
 import s from './Logo.module.scss';
 import { NavLink } from 'react-router-dom';
 
-type LogoProps = {
+interface LogoProps {
   styleClass?: string;
   overallClass?: string;
 };

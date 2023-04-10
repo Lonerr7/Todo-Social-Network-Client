@@ -18,3 +18,9 @@
 .active {
   font-weight: 700;
 }
+
+@media (max-width: 800px) {
+  .page__inner {
+    margin-left: 0;
+  }
+}
