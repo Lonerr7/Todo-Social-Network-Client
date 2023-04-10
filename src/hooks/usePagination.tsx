@@ -14,7 +14,7 @@ export const usePagination = (
   const navigate = useNavigate();
   const location = useLocation();
   const searchURLArr = location.search.split('');
-  const page = +searchURLArr[searchURLArr.length - 1];
+  const page = +searchURLArr.slice(6).reduce((prev, next) => prev + next);
 
   const dispatch = useAppDispatch();
 

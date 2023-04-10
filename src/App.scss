@@ -153,7 +153,6 @@
   }
 
   &__item_active {
-    // font-weight: 700;
     background-color: var(--color34);
   }
 
@@ -230,8 +229,6 @@
     &__next,
     &__prev,
     &__break {
-      
-
       a {
         display: inline-block;
         padding: 5px 10px;
