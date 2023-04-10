@@ -39,3 +39,15 @@
 .activeLine {
   background-color: var(--color17);
 }
+
+@media (max-width: 800px) {
+  .menuItem {
+    position: relative;
+
+    &__counter {
+      position: absolute;
+      top: 0;
+      left: 30px;
+    }
+  }
+}

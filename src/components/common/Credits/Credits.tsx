@@ -1,8 +1,8 @@
 import s from './Credits.module.scss';
 
-type Props = {
+interface Props {
   customClass?: string;
-};
+}
 
 const Credits: React.FC<Props> = ({ customClass }) => {
   return (

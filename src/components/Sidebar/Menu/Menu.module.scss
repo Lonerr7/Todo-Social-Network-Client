@@ -18,12 +18,13 @@
     width: 4px;
     height: 102%; //!
     border-radius: 1px; //!
-    transition: all 0.2s;
     transition: all 0.3s;
   }
 
   &__icon {
     margin-right: 5px;
+    width: 24px;
+    height: 24px;
   }
 
   &__link {
@@ -50,4 +51,30 @@
 
 .activeLine {
   background-color: var(--color1);
+}
+
+@media (max-width: 800px) {
+  .menu {
+    margin-bottom: 0;
+
+    &__icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+    &__listItem:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &__menuItemText {
+      display: none;
+    }
+  }
 }

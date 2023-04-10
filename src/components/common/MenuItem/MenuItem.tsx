@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import ItemsCounter from '../ItemsCounter/ItemsCounter';
 import s from './MenuItem.module.scss';
 
-type MenuItemProps = {
+interface MenuItemProps {
   activeNum: number;
   neededNum: number;
   icon?: React.ReactNode;
@@ -11,7 +11,8 @@ type MenuItemProps = {
   itemsCount?: number;
   activeBgColor?: string;
   customClass?: string;
-};
+  customTextClass?: string;
+}
 
 const MenuItem: React.FC<MenuItemProps> = ({
   activeNum,
@@ -22,6 +23,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   itemsCount,
   activeBgColor,
   customClass,
+  customTextClass,
 }) => {
   return (
     <div
@@ -52,8 +54,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
           }
         ></span>
         {icon}
-        {text}
-        {itemsCount ? <ItemsCounter quantity={itemsCount} /> : null}
+        <span className={customTextClass}>{text}</span>
+        {itemsCount ? <ItemsCounter customClass={s.menuItem__counter} quantity={itemsCount} /> : null}
       </Link>
     </div>
   );

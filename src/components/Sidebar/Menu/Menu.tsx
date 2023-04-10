@@ -26,8 +26,10 @@ const Menu: React.FC = () => {
             activeNum={activeNum}
             text="My Page"
             neededNum={1}
-            icon={<MdOutlineContactPage className={s.menu__icon} size={24} />}
+            icon={<MdOutlineContactPage className={s.menu__icon} />}
             urlPath="/"
+            customClass={s.menu__menuItem}
+            customTextClass={s.menu__menuItemText}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -35,9 +37,11 @@ const Menu: React.FC = () => {
             activeNum={activeNum}
             text="Users"
             neededNum={2}
-            icon={<FaUserFriends className={s.menu__icon} size={24} />}
+            icon={<FaUserFriends className={s.menu__icon} />}
             urlPath="/users?page=1"
             itemsCount={usersCount}
+            customClass={s.menu__menuItem}
+            customTextClass={s.menu__menuItemText}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -45,9 +49,11 @@ const Menu: React.FC = () => {
             activeNum={activeNum}
             text="Chat"
             neededNum={3}
-            icon={<BsFillChatLeftDotsFill className={s.menu__icon} size={24} />}
+            icon={<BsFillChatLeftDotsFill className={s.menu__icon} />}
             urlPath="/chat"
             itemsCount={chatMessagesCount}
+            customClass={s.menu__menuItem}
+            customTextClass={s.menu__menuItemText}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -55,9 +61,11 @@ const Menu: React.FC = () => {
             activeNum={activeNum}
             text="Todos"
             neededNum={4}
-            icon={<RiTodoLine className={s.menu__icon} size={24} />}
+            icon={<RiTodoLine className={s.menu__icon} />}
             urlPath="/todos"
             itemsCount={uncompletedTodosCount}
+            customClass={s.menu__menuItem}
+            customTextClass={s.menu__menuItemText}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -65,8 +73,10 @@ const Menu: React.FC = () => {
             activeNum={activeNum}
             text="Settings"
             neededNum={5}
-            icon={<IoSettingsSharp className={s.menu__icon} size={24} />}
+            icon={<IoSettingsSharp className={s.menu__icon} />}
             urlPath="/settings"
+            customClass={s.menu__menuItem}
+            customTextClass={s.menu__menuItemText}
           />
         </li>
       </ul>

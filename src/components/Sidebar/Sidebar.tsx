@@ -9,8 +9,14 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className={s.sidebar}>
-      {!user ? <QuckLogin customClass={s.sidebar__quickLogin} /> : <Menu />}
-      <Credits />
+      {!user ? (
+        <>
+          <QuckLogin customClass={s.sidebar__quickLogin} />
+          <Credits />
+        </>
+      ) : (
+        <Menu />
+      )}
     </div>
   );
 };
