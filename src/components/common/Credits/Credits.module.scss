@@ -7,3 +7,10 @@
     color: var(--color16);
   }
 }
+
+@media (max-width: 800px) {
+  .credits {
+    padding-left: 0;
+    text-align: center;
+  }
+}

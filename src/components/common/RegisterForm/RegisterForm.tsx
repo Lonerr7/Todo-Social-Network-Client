@@ -48,7 +48,6 @@ const RegisterForm: React.FC = () => {
 
   useEffect(() => {
     return () => {
-      debugger;
       dispatch(clearErrorMsg());
     };
 

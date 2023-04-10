@@ -5,9 +5,9 @@ import { setActiveMenuNum } from '../../redux/appSlice';
 import { User } from '../../types/reduxTypes/authSliceTypes';
 import HeaderNav from './HeaderNav/HeaderNav';
 
-type HeaderControlsProps = {
+interface HeaderControlsProps {
   user: User;
-};
+}
 
 const HeaderControls: React.FC<HeaderControlsProps> = ({ user }) => {
   const dispatch = useAppDispatch();

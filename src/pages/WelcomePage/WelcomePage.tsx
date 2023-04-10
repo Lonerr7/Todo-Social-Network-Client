@@ -1,3 +1,4 @@
+import QuckLogin from '../../components/Sidebar/QuckLogin/QuckLogin';
 import s from './WelcomePage.module.scss';
 
 const WelcomePage: React.FC = () => {
@@ -18,6 +19,10 @@ const WelcomePage: React.FC = () => {
       <p className={s.page__text}>
         To try it out please log in or create an account!
       </p>
+      <QuckLogin
+        customClass={s.page__quickLogin}
+        customLinkClass={s.page__quickLoginLink}
+      />
     </div>
   );
 };

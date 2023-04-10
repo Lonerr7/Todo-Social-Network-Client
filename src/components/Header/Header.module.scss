@@ -69,3 +69,14 @@
     }
   }
 }
+
+@media (max-width: 350px) {
+  .header__register {
+    display: none;
+  }
+
+  .header__box {
+    justify-content: center;
+    width: 100%;
+  }
+}
