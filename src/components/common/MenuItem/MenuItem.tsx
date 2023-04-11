@@ -12,6 +12,7 @@ interface MenuItemProps {
   activeBgColor?: string;
   customClass?: string;
   customTextClass?: string;
+  customActiveLineClass?: string;
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({
@@ -24,6 +25,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   activeBgColor,
   customClass,
   customTextClass,
+  customActiveLineClass,
 }) => {
   return (
     <div
@@ -49,13 +51,18 @@ const MenuItem: React.FC<MenuItemProps> = ({
         <span
           className={
             activeNum === neededNum
-              ? `${s.menuItem__itemline} ${s.activeLine}`
+              ? `${s.menuItem__itemline} ${s.activeLine} ${customActiveLineClass}`
               : s.menuItem__itemline
           }
         ></span>
         {icon}
         <span className={customTextClass}>{text}</span>
-        {itemsCount ? <ItemsCounter customClass={s.menuItem__counter} quantity={itemsCount} /> : null}
+        {itemsCount ? (
+          <ItemsCounter
+            customClass={s.menuItem__counter}
+            quantity={itemsCount}
+          />
+        ) : null}
       </Link>
     </div>
   );

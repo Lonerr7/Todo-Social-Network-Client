@@ -30,6 +30,7 @@ const Menu: React.FC = () => {
             urlPath="/"
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
+            customActiveLineClass={s.menu__menuItemActiveLine}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -42,6 +43,7 @@ const Menu: React.FC = () => {
             itemsCount={usersCount}
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
+            customActiveLineClass={s.menu__menuItemActiveLine}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -54,6 +56,7 @@ const Menu: React.FC = () => {
             itemsCount={chatMessagesCount}
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
+            customActiveLineClass={s.menu__menuItemActiveLine}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -66,6 +69,7 @@ const Menu: React.FC = () => {
             itemsCount={uncompletedTodosCount}
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
+            customActiveLineClass={s.menu__menuItemActiveLine}
           />
         </li>
         <li className={s.menu__listItem}>
@@ -77,6 +81,7 @@ const Menu: React.FC = () => {
             urlPath="/settings"
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
+            customActiveLineClass={s.menu__menuItemActiveLine}
           />
         </li>
       </ul>
