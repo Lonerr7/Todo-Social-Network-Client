@@ -113,8 +113,8 @@ const UpdateMyPersonalInfoForm: React.FC<Props> = (props) => {
           <SubmitLoadingBtn
             btnClass={s.form__btn}
             btnType="submit"
-            btnText="Update contact information"
-            btnFetchingText="Updating contact information"
+            btnText="Update personal information"
+            btnFetchingText="Updating personal information"
             isFetching={props.isMyPersonalInfoFetching}
             onSubmit={() => {}}
           />

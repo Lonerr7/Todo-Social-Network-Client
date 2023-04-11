@@ -50,11 +50,9 @@
   .settingsNav {
     position: fixed;
     top: 60px;
-    left: 50%;
     height: auto;
-    width: 300px;
-    display: inline-block;
-    margin-left: -150px;
+    width: 100%;
+    left: 0;
 
     &__list {
       display: flex;
@@ -63,14 +61,5 @@
     &__listItem {
       width: 50%;
     }
-  }
-}
-
-@media (max-width: 340px) {
-  .settingsNav {
-    width: 100%;
-    left: 0;
-    margin-left: 0;
-    // transform: translateX(4%);
   }
 }
