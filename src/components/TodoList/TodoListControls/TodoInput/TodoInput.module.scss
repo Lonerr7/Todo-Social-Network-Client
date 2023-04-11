@@ -15,6 +15,7 @@
     width: 84%;
     height: 100%;
     position: relative;
+    margin-right: 15px;
   }
 
   &__input {
@@ -57,5 +58,21 @@
 
   &__error {
     font-size: 18px;
+  }
+}
+
+@media (max-width: 450px) {
+  .todoInput {
+    flex-wrap: wrap;
+
+    &__block {
+      margin-right: 0;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    &__btn {
+      width: 100%;
+    }
   }
 }

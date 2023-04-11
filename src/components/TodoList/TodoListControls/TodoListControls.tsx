@@ -3,7 +3,7 @@ import { setActiveTodoFilter } from '../../../redux/appSlice';
 import { changeActiveTodoFilterWord } from '../../../redux/todoSlice';
 import { Todo } from '../../../types/reduxTypes/todoSliceTypes';
 import TodoFilters from '../TodoFilters/TodoFilters';
-import TodoInput from './TodoInput/TodoInput';
+import TodoInputContainer from './TodoInput/TodoInputContainer';
 import s from './TodoListControls.module.scss';
 
 interface Props {
@@ -17,12 +17,13 @@ const TodoListControls: React.FC<Props> = ({ todos }) => {
 
   return (
     <div className={s.controls}>
-      <TodoInput />
+      <TodoInputContainer />
       <TodoFilters
         todos={todos}
         activeTodoFilter={activeTodoFilter}
         changeActiveTodoFilterWord={changeActiveTodoFilterWord}
         setActiveTodoFilter={setActiveTodoFilter}
+        displayDeleteBtn
       />
     </div>
   );
