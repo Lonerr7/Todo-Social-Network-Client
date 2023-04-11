@@ -137,6 +137,11 @@ $chat-padding: 15px;
   padding-right: 30px;
 }
 
+@mixin settings-inner-small {
+  width: 100%;
+  padding-right: 0;
+}
+
 %title {
   font-size: 26px;
   font-weight: 500;

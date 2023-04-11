@@ -2,7 +2,10 @@ import s from '../../../../styles/formStyle.module.scss';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { UpdateMyRegisterlInfoFormInitialValues } from '../../../../types/formikTypes';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxToolkitHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../hooks/reduxToolkitHooks';
 import FormControl from '../../../common/FormControl/FormControl';
 import { updateMyRegisterInfo } from '../../../../redux/myselfSlice';
 import FormStatus from '../../../common/FormStatus/FormStatus';

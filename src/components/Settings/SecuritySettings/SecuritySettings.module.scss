@@ -16,3 +16,9 @@
     @extend %subtitle;
   }
 }
+
+@media (max-width: 700px) {
+  .security {
+    @include settings-inner-small;
+  }
+}
