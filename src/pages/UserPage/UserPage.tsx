@@ -45,6 +45,7 @@ const UserPage: React.FC<Props> = ({
   isUserBeingDeleted,
   toggleAdditionalInfoVisibility,
 }) => {
+  const userTasksCount = userTodos.length;
   const dispatch = useAppDispatch();
 
   // setting progress loader bar to 100%, then it automatically disappears
@@ -107,11 +108,11 @@ const UserPage: React.FC<Props> = ({
             />
             <ProfileTopInfo todos={user.todos} />
           </ProfileInfo>
-          {userTodos.length ? (
+          {userTasksCount ? (
             <ProfileInfo customClass={s.profileInfo__todos}>
               <TodoFilters
                 wrapperClass={s.page__todoFilters}
-                todos={userTodos}
+                tasksCount={userTasksCount}
                 activeTodoFilter={activeTodoFilterNum}
                 changeActiveTodoFilterWord={setUserActiveTodoFilterWord}
                 setActiveTodoFilter={setActiveUserTodoFilter}

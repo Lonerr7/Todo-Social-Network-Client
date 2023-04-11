@@ -8,12 +8,12 @@ import {
 } from '../../../../types/reduxTypes/todoSliceTypes';
 import s from './ProfileTopInfo.module.scss';
 
-type Props = {
+interface Props {
   todos: Array<Todo>;
-};
+}
 
 const ProfileTopInfo: React.FC<Props> = ({ todos }) => {
-  const allTodosCount = todos?.length;
+  const allTodosCount = todos.length;
   const completedTodosCount = todos.filter((t) => t.isCompleted).length;
   const dispatch = useAppDispatch();
 

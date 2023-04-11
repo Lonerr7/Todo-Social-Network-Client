@@ -16,14 +16,14 @@ import TodoFilters from '../../components/TodoList/TodoFilters/TodoFilters';
 import { changeActiveTodoFilterWord } from '../../redux/todoSlice';
 import { setActiveTodoFilter } from '../../redux/appSlice';
 
-type Props = {
+interface Props {
   myself: User;
   isAdditionalInfoVisible: boolean;
   todos: Array<Todo>;
   toggleAdditionalInfoVisibility: () => void;
   selectedTodos: Todo[];
   activeTodoFilter: number;
-};
+}
 
 const MyPage: React.FC<Props> = ({
   myself,
@@ -33,6 +33,8 @@ const MyPage: React.FC<Props> = ({
   selectedTodos,
   activeTodoFilter,
 }) => {
+  const tasksCount = todos.length;
+
   return (
     <div className={s.myPage}>
       <div className={s.myPage__inner}>
@@ -41,7 +43,6 @@ const MyPage: React.FC<Props> = ({
             <Avatar avatar={myself.photo} canViewerBeOpened={true} />
             <MyAvatarControls />
           </div>
-          {/* <FriendsBlock /> */}
         </div>
         <div className={s.myPage__right}>
           <ProfileInfo>
@@ -68,11 +69,11 @@ const MyPage: React.FC<Props> = ({
           </ProfileInfo>
 
           <ProfileInfo customClass={s.profileInfo__todos}>
-            {todos.length ? (
+            {tasksCount ? (
               <>
                 <TodoFilters
                   wrapperClass={s.myPage__todoFilters}
-                  todos={todos}
+                  tasksCount={tasksCount}
                   activeTodoFilter={activeTodoFilter}
                   changeActiveTodoFilterWord={changeActiveTodoFilterWord}
                   setActiveTodoFilter={setActiveTodoFilter}

@@ -2,14 +2,11 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import React from 'react';
 import { useAppDispatch } from '../../../hooks/reduxToolkitHooks';
 import { openAreYouSurePopup } from '../../../redux/popupSlice';
-import {
-  Todo,
-  TodoFiltersEnum,
-} from '../../../types/reduxTypes/todoSliceTypes';
+import { TodoFiltersEnum } from '../../../types/reduxTypes/todoSliceTypes';
 import s from './TodoFilters.module.scss';
 
 interface Props {
-  todos: Todo[];
+  tasksCount: number;
   activeTodoFilter: number;
   displayDeleteBtn?: boolean;
   wrapperClass?: string;
@@ -20,12 +17,11 @@ interface Props {
 const TodoFilters: React.FC<Props> = ({
   displayDeleteBtn,
   wrapperClass,
-  todos,
+  tasksCount,
   activeTodoFilter,
   changeActiveTodoFilterWord,
   setActiveTodoFilter,
 }) => {
-  const tasksCount = todos.length;
   const dispatch = useAppDispatch();
 
   const onDeleteAllTasks = displayDeleteBtn

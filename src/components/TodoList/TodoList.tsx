@@ -9,12 +9,13 @@ import { setTodoSearchText } from '../../redux/todoSlice';
 
 const TodoList: React.FC = () => {
   const { todoSearchText, todos } = useAppSelector((state) => state.todo);
+  const tasksCount = todos.length;
 
   return (
     <div className={s.todoList}>
       <TodoListTitle />
       <TodosCounter />
-      <TodoListControls todos={todos} />
+      <TodoListControls tasksCount={tasksCount} />
       <Search
         text={todoSearchText}
         actionCreator={setTodoSearchText}
