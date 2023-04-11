@@ -4,10 +4,10 @@ import { MdDeleteForever } from 'react-icons/md';
 import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
 import { deleteTodo } from '../../../../redux/todoSlice';
 
-type TaskControlsProps = {
+interface TaskControlsProps {
   id: string;
   toggleEditMode: () => void;
-};
+}
 
 const TaskControls: React.FC<TaskControlsProps> = ({ id, toggleEditMode }) => {
   const dispatch = useAppDispatch();

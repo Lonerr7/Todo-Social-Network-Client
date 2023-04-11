@@ -10,3 +10,13 @@
     color: var(--color41);
   }
 }
+
+@media (max-width: 350px) {
+  .todoTitle {
+    margin-bottom: 20px;
+  }
+
+  .todoTitle__title {
+    font-size: 33px;
+  }
+}

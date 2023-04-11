@@ -2,12 +2,12 @@ import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
 import { deleteTodosErrorMsg, updateTodo } from '../../../../redux/todoSlice';
 import s from './TaskEditForm.module.scss';
 
-type TaskEditFormProps = {
+interface TaskEditFormProps {
   id: string;
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
   toggleEditMode: () => void;
-};
+}
 
 const TaskEditForm: React.FC<TaskEditFormProps> = ({
   text,

@@ -19,3 +19,9 @@
   //   margin: 0 auto;
   // }
 }
+
+@media (max-width: 500px) {
+  .todos {
+    padding: 20px 0 30px 0;
+  }
+}

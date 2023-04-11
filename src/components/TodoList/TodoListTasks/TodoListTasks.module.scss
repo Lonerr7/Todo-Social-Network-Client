@@ -1,5 +1,6 @@
 .tasks {
   padding-top: 45px;
+
   &__warning {
     display: flex;
     align-content: center;
@@ -10,7 +11,12 @@
 
   &__error {
     position: absolute;
-
     // margin-top: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .tasks {
+    padding-top: 20px;
   }
 }

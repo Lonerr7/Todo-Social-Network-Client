@@ -8,3 +8,9 @@
     font-weight: 500;
   }
 }
+
+@media (max-width: 350px) {
+  .counter {
+    margin-bottom: 20px;
+  }
+}

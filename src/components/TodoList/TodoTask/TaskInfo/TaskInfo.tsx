@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../../../hooks/reduxToolkitHooks';
 import { updateTodo } from '../../../../redux/todoSlice';
 import TaskEditForm from '../TaskEditForm/TaskEditForm';
 
-type TaskInfoProps = {
+interface TaskInfoProps {
   taskText: string;
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
@@ -13,7 +13,7 @@ type TaskInfoProps = {
   id: string;
   editMode: boolean;
   toggleEditMode: () => void;
-};
+}
 
 const TaskInfo: React.FC<TaskInfoProps> = ({
   taskText,

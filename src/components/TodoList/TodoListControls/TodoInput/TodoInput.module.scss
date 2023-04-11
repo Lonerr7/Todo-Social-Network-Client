@@ -61,6 +61,19 @@
   }
 }
 
+@media (max-width: 800px) {
+  .todoInput {
+    &__input {
+      padding: 15px;
+    }
+
+    &__emojiPicker,
+    &__emojiPickerBtn {
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 450px) {
   .todoInput {
     flex-wrap: wrap;

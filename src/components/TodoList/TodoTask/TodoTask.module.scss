@@ -23,3 +23,10 @@
     margin-top: 10px;
   }
 }
+
+@media (max-width: 460px) {
+  .task__top {
+    flex-wrap: wrap;
+    // justify-content: center;
+  }
+}
