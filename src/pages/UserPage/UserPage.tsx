@@ -92,7 +92,6 @@ const UserPage: React.FC<Props> = ({
               lName={user.lastName}
               nickname={user.nickname}
               BioComponent={<UserBio bio={user.bio} />}
-              isOnline={user.onlineStatus}
               isVerified={user.isVerified}
               isBanned={user.isBanned}
               role={user.role}

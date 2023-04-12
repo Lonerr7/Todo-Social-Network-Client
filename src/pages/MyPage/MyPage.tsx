@@ -51,7 +51,6 @@ const MyPage: React.FC<Props> = ({
               lName={myself.lastName}
               nickname={myself.nickname}
               BioComponent={<MyBio bio={myself.bio} />}
-              isOnline={myself.onlineStatus}
               isVerified={myself.isVerified}
               isBanned={myself.isBanned}
               role={myself.role}

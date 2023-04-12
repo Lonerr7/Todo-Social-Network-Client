@@ -2,7 +2,6 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
 import {
   AuthState,
-  OnlineStatusEnum,
   User,
 } from '../types/reduxTypes/authSliceTypes';
 import {
@@ -20,7 +19,6 @@ import {
   updateMyBeliefsInfo,
   updateMyPersonalInfo,
   changeMyAvatar,
-  updateMyOnlineStatus,
 } from './myselfSlice';
 import {
   submitForgotPasswordEmail,
@@ -78,13 +76,6 @@ export const logUserIn = createAsyncThunk(
 export const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { dispatch }) => {
-    // updating online status to offline
-    await dispatch(
-      updateMyOnlineStatus({
-        onlineStatus: OnlineStatusEnum.OFFLINE,
-      })
-    );
-
     // deleting JWT from LS
     localStorage.removeItem('token');
 
@@ -223,13 +214,6 @@ const authSlice = createSlice({
       action: PayloadAction<User>
     ) => {
       state.afterSignUp = false;
-      state.user = action.payload;
-    },
-
-    [updateMyOnlineStatus.fulfilled.type]: (
-      state,
-      action: PayloadAction<User>
-    ) => {
       state.user = action.payload;
     },
 

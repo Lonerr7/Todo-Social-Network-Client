@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxToolkitHooks';
-import { updateMyOnlineStatus } from '../../redux/myselfSlice';
+import { useAppSelector } from '../../hooks/reduxToolkitHooks';
 import { selectTodosByFilter } from '../../redux/selectors/todoSelectors';
-import { OnlineStatusEnum } from '../../types/reduxTypes/authSliceTypes';
 import { toggleAdditionalInfoVisibilityHelp } from '../../utils/appHelpers';
 import MyPage from './MyPage';
 import withBanRedirect from '../../hoc/withBanRedirect';
@@ -15,7 +13,6 @@ const MyPageContainer: React.FC = () => {
   const activeTodoFilter = useAppSelector(
     (state) => state.app.activeTodoFilter
   );
-  const dispatch = useAppDispatch();
 
   const [isAdditionalInfoVisible, setIsAdditionalInfoVisible] = useState(false);
 
@@ -23,16 +20,6 @@ const MyPageContainer: React.FC = () => {
     isAdditionalInfoVisible,
     setIsAdditionalInfoVisible
   );
-
-  useEffect(() => {
-    dispatch(
-      updateMyOnlineStatus({
-        onlineStatus: OnlineStatusEnum.ONLINE,
-      })
-    );
-
-    // eslint-disable-next-line
-  }, []);
 
   useEffect(() => {
     if (document.title !== 'Todo Social Network') {
