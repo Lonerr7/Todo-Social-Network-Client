@@ -27,6 +27,9 @@ const ChangeAvatar: React.FC = () => {
         <AiOutlineCloudUpload className={s.change__icon} size={20} />
         Change avatar
       </span>
+      <span className={s.change__upload_small}>
+        <AiOutlineCloudUpload className={s.change__icon} size={20} />
+      </span>
     </label>
   );
 };

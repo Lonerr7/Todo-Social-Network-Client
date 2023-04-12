@@ -9,10 +9,10 @@ import FormControl from '../../../../../common/FormControl/FormControl';
 import SubmitLoadingBtn from '../../../../../common/SubmitLoadingBtn/SubmitLoadingBtn';
 import s from './MyBioEditForm.module.scss';
 
-type Props = {
+interface Props {
   bio: string;
   toggleEditMode: () => void;
-};
+}
 
 const validationSchema = yup.object({
   bio: yup

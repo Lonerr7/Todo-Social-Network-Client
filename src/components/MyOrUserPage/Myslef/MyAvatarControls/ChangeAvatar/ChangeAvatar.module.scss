@@ -24,7 +24,37 @@
     }
   }
 
+  &__upload_small {
+    @extend %btn-small;
+    height: 30px !important;
+    display: none;
+    width: 100%;
+    background-color: var(--color24);
+    cursor: pointer;
+    align-items: center;
+  }
+
   &__icon {
     margin-right: 5px;
+  }
+}
+
+@media (max-width: 736px) {
+  .change {
+    &__label {
+      margin: 10px auto;
+    }
+
+    &__upload {
+      display: none;
+    }
+
+    &__upload_small {
+      display: flex;
+    }
+
+    &__icon {
+      margin-right: 0;
+    }
   }
 }

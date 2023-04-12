@@ -9,3 +9,12 @@
     margin-bottom: 0;
   }
 }
+
+@media (max-width: 1020px) {
+  .profileInfo {
+    max-width: unset;
+    width: 100%;
+  }
+}
+
+

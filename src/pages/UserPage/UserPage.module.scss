@@ -39,3 +39,15 @@
   background-color: transparent;
   padding: 0;
 }
+
+@media (max-width: 1020px) {
+  .page {
+    &__inner {
+      margin-left: 0;
+    }
+
+    &__left {
+      margin-right: 30px;
+    }
+  }
+}

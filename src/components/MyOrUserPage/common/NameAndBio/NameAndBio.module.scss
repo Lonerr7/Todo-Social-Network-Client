@@ -37,3 +37,15 @@
 .banned {
   text-decoration: line-through;
 }
+
+@media (max-width: 736px) {
+  .nameAndBio {
+    padding-left: 120px;
+  }
+}
+
+@media (max-width: 500px) {
+  .nameAndBio {
+    font-size: 22px;
+  }
+}

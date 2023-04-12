@@ -3,9 +3,9 @@ import { createKeysOrValsArr } from '../../../../utils/myPageHelpers';
 import UserInfoBlock from '../UserInfoBlock/UserInfoBlock';
 import s from './UserGeneralInfo.module.scss';
 
-type Props = {
+interface Props {
   user: User;
-};
+}
 
 const UserGeneralInfo: React.FC<Props> = ({ user }) => {
   const correctFieldTitles = createKeysOrValsArr(user, 'generalInfo', 'keys');

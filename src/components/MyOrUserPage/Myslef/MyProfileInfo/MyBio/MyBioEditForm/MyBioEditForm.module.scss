@@ -42,3 +42,29 @@
     }
   }
 }
+
+@media (max-width: 736px) {
+  .form__btn {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .form {
+    &__input {
+      margin-bottom: 10px;
+    }
+
+    &__btn {
+      width: 100px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .form {
+    &__btn {
+      width: 45%;
+    }
+  }
+}

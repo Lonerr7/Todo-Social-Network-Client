@@ -30,3 +30,36 @@
   background-color: transparent;
   padding: 0;
 }
+
+@media (max-width: 1020px) {
+  .myPage {
+    &__inner {
+      margin-left: 0;
+    }
+
+    &__left {
+      margin-right: 30px;
+    }
+  }
+}
+
+@media (max-width: 736px) {
+  .myPage {
+    position: relative;
+
+    &__left {
+      position: absolute;
+      top: 40px;
+      left: 0;
+    }
+
+    &__avatarBox {
+      background-color: transparent;
+    }
+
+    &__avatar {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

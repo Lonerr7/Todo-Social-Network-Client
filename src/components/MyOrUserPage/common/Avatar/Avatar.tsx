@@ -3,12 +3,12 @@ import s from './Avatar.module.scss';
 import defaultAvatar from '../../../../assets/img/default.jpg';
 import { useState } from 'react';
 
-type Props = {
+interface Props {
   avatar?: string;
   customImgClass?: string;
   wrapperClass?: string;
   canViewerBeOpened?: boolean;
-};
+}
 
 const Avatar: React.FC<Props> = ({
   avatar,

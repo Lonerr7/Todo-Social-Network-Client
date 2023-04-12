@@ -3,9 +3,9 @@ import { useState } from 'react';
 import MyBioEditForm from './MyBioEditForm/MyBioEditForm';
 import { BiPencil } from 'react-icons/bi';
 
-type Props = {
+interface Props {
   bio: string;
-};
+}
 
 const MyBio: React.FC<Props> = ({ bio }) => {
   const [editMode, setEditMode] = useState(false);

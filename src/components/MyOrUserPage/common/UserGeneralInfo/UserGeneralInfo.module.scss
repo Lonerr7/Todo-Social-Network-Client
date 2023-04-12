@@ -3,3 +3,9 @@
 .info {
   @extend %profile-info-box;
 }
+
+@media (max-width: 736px) {
+  .info {
+    margin-top: 100px;
+  }
+}

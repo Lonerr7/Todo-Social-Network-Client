@@ -1,6 +1,4 @@
-import {
-  UserRoles,
-} from '../../../../types/reduxTypes/authSliceTypes';
+import { UserRoles } from '../../../../types/reduxTypes/authSliceTypes';
 import s from './NameAndBio.module.scss';
 import IsUserVerifiedIcon from '../../../common/IsUserVerifiedIcon/IsUserVerified';
 import Role from '../Role/Role';
