@@ -33,3 +33,16 @@
     @extend %send-btn;
   }
 }
+
+@media (max-width: 900px) {
+  .sendMessage {
+    &__pickerBtn,
+    &__emojiPicker {
+      display: none;
+    }
+
+    &__input {
+      padding: 10px;
+    }
+  }
+}

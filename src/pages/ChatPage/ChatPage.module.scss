@@ -4,3 +4,11 @@
   @extend %main-inner;
   height: 90vh;
 }
+
+@media (max-width: 900px) {
+  .chat {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 83vh;
+  }
+}
