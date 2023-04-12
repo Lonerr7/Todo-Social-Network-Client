@@ -4,7 +4,7 @@ import { ImCross } from 'react-icons/im';
 import { useAppDispatch } from '../../../hooks/reduxToolkitHooks';
 import s from './Search.module.scss';
 
-type Props = {
+interface Props {
   text: string;
   actionCreator: (payload: string) => {
     payload: string;
@@ -19,7 +19,7 @@ type Props = {
     customClearBtnClass?: string;
     clearIconSize?: number;
   };
-};
+}
 
 const Search: React.FC<Props> = ({
   text,

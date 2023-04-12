@@ -62,3 +62,11 @@
 .banned {
   text-decoration: line-through;
 }
+
+@media (max-width: 500px) {
+  .user {
+    &__bio {
+      display: none;
+    }
+  }
+}

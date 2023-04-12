@@ -20,6 +20,7 @@
 
   &__icon {
     color: var(--color10);
+    display: inline-block;
   }
 
   &__searchIcon {
@@ -34,6 +35,29 @@
 
     &:hover {
       color: var(--color12);
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .search {
+    &__input {
+      padding: 10px 30px 10px 40px;
+    }
+
+    &__searchIcon {
+      width: 20px;
+      height: 20px;
+      top: 10px;
+    }
+
+    &__clear {
+      top: 13px;
+    }
+
+    &__clearIcon {
+      width: 13px;
+      height: 13px;
     }
   }
 }

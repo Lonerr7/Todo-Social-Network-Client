@@ -48,6 +48,9 @@ const UsersPage: React.FC<Props> = ({
               text={usersSearchText}
               actionCreator={searchActionCreator}
               placeholder="Search by user's nickname"
+              styling={{
+                customBoxClass: s.page__search,
+              }}
             />
             <ul>{usersElements}</ul>
             <ReactPaginate

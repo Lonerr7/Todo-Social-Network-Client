@@ -74,7 +74,7 @@ export const todoAPI = {
 
 export const usersAPI = {
   getAllUsers: async (page: number) =>
-    await axiosInstance.get(`users?limit=5&page=${page}`),
+    await axiosInstance.get(`users?limit=40&page=${page}`),
 
   getCurrentUser: async (userId: string) =>
     await axiosInstance.get(`users/${userId}`),

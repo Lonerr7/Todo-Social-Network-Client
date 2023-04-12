@@ -18,7 +18,7 @@ const UsersPageContainer: React.FC = () => {
   const { pageCount, page, handlePageClick } = usePagination(
     totalUsersCount,
     '/users?page=',
-    5,
+    40,
     null,
     fetchAllUsers
   );

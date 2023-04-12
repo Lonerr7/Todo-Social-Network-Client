@@ -4,7 +4,7 @@ import Avatar from '../../MyOrUserPage/common/Avatar/Avatar';
 import Role from '../../MyOrUserPage/common/Role/Role';
 import s from './UserSmall.module.scss';
 
-type Props = {
+interface Props {
   img?: string;
   id: string;
   firstName: string;
@@ -13,7 +13,7 @@ type Props = {
   bio: string;
   isBanned: boolean;
   role: UserRoles;
-};
+}
 
 const UserSmall: React.FC<Props> = ({
   firstName,
