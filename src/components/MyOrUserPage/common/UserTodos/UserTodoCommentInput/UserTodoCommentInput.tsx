@@ -3,6 +3,7 @@ import Avatar from '../../Avatar/Avatar';
 import s from './UserTodoCommentInput.module.scss';
 import EmojiPick from '../../../../common/EmojiPick/EmojiPick';
 import { EmojiClickData } from 'emoji-picker-react';
+import TextError from '../../../../common/TextError/TextError';
 
 interface Props {
   myPhoto: string;
@@ -69,7 +70,8 @@ const UserTodoCommentInput: React.FC<Props> = ({
         </div>
       </div>
       {sendCommentErrMsg ? (
-        <p className={s.input__err}>{sendCommentErrMsg}</p>
+        // <p className={s.input__err}>{sendCommentErrMsg}</p>
+        <TextError customClass={s.input__err}>{sendCommentErrMsg}</TextError>
       ) : null}
     </div>
   );

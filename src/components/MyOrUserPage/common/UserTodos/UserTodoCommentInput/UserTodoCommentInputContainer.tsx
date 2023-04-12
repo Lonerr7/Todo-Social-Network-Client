@@ -3,7 +3,10 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../../../../hooks/reduxToolkitHooks';
-import { sendTodoComment } from '../../../../../redux/currentTodoSlice';
+import {
+  resetCurrentTodoErrorMessages,
+  sendTodoComment,
+} from '../../../../../redux/currentTodoSlice';
 import { EmojiClickData } from 'emoji-picker-react';
 import UserTodoCommentInput from './UserTodoCommentInput';
 
@@ -36,6 +39,10 @@ const UserTodoCommentInputContainer: React.FC<Props> = ({
 
       if (res.meta.requestStatus === 'fulfilled') {
         setCommentText('');
+      } else {
+        setTimeout(() => {
+          dispatch(resetCurrentTodoErrorMessages());
+        }, 5000);
       }
     })();
 

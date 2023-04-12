@@ -31,7 +31,7 @@
     height: 100px;
     resize: none;
     border-radius: 8px;
-    padding: 10px;
+    padding: 10px 46px 10px 10px;
     font-size: 16px;
     margin-bottom: 10px;
     background-color: var(--color44);
@@ -57,5 +57,34 @@
   &__emojiPicker {
     top: 100px;
     right: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .input {
+    &__textarea {
+      padding: 10px;
+    }
+
+    &__pickerBtn,
+    &__emojiPicker {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .input {
+    margin-bottom: 0;
+  }
+
+  .input__err {
+    margin-bottom: 20px;
   }
 }

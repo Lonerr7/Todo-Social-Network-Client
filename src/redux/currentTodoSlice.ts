@@ -87,7 +87,7 @@ export const sendTodoComment = createAsyncThunk(
   'currentTodo/sendTodoComment',
   async (
     { todoId, commentText }: { commentText: string; todoId: string },
-    { rejectWithValue }
+    { rejectWithValue, dispatch }
   ) => {
     try {
       const commentData: CommentData = {

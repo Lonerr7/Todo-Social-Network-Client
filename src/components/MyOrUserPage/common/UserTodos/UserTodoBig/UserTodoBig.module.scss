@@ -40,3 +40,30 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .todo {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .todo {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+
+    &__top {
+      font-size: 21px;
+
+      p {
+        font-size: 22px;
+      }
+    }
+
+    &__bottom {
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}

@@ -25,7 +25,7 @@ const UserTodoBig: React.FC<Props> = ({
   return (
     <div className={st.todo}>
       <div className={`${s.task} ${st.todo__inner}`}>
-        <div className={s.task__top}>
+        <div className={`${s.task__top} ${st.todo__top}`}>
           <p
             className={
               isCompleted
