@@ -35,10 +35,13 @@ const NameAndBio: React.FC<Props> = ({
           >
             {fName} {lName} ({nickname})
           </h1>
-          {isVerified && (
-            <IsUserVerifiedIcon customCalss={s.nameAndBio__icon} />
-          )}
-          <Role role={role} customClass={s.nameAndBio__role} />
+
+          <div className={s.nameAndBio__roleInfoBox}>
+            {isVerified && (
+              <IsUserVerifiedIcon customCalss={s.nameAndBio__icon} />
+            )}
+            <Role role={role} customClass={s.nameAndBio__role} />
+          </div>
         </div>
       </div>
       <div className={s.nameAndBio__bioBox}>{BioComponent}</div>

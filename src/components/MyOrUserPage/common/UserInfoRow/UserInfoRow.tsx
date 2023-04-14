@@ -1,10 +1,10 @@
 import s from './UserInfoRow.module.scss';
 
-type Props = {
+interface Props {
   title: string;
   value?: string;
   fieldType?: string;
-};
+}
 
 const UserInfoRow: React.FC<Props> = ({ title, value, fieldType }) => {
   if (!value) return null;

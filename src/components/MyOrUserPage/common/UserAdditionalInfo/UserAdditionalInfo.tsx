@@ -2,12 +2,12 @@ import s from './UserAdditionalInfo.module.scss';
 import UserInfoBlock from '../UserInfoBlock/UserInfoBlock';
 import { UserInfoFields } from '../../../../types/appTypes';
 
-type Props = {
+interface Props {
   mainInfoFields: UserInfoFields;
   contactInfoFields: UserInfoFields;
   beliefsInfoFields: UserInfoFields;
   personalInfoFields: UserInfoFields;
-};
+}
 
 const UserAdditionalInfo: React.FC<Props> = ({
   mainInfoFields,

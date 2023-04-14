@@ -3,10 +3,10 @@ import { User } from '../../../../types/reduxTypes/authSliceTypes';
 import { createKeysOrValsArr } from '../../../../utils/myPageHelpers';
 import UserAdditionalInfo from './UserAdditionalInfo';
 
-type Props = {
+interface Props {
   user: User;
   isVisible: boolean;
-};
+}
 
 const UserAdditionalInfoContainer: React.FC<Props> = ({ user, isVisible }) => {
   if (!isVisible) return null;

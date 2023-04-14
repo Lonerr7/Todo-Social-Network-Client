@@ -43,7 +43,16 @@
   }
 }
 
+.editForm_small {
+  display: none;
+}
+
 @media (max-width: 736px) {
+  .form {
+    position: absolute;
+    top: 2px;
+  }
+
   .form__btn {
     font-size: 20px;
   }

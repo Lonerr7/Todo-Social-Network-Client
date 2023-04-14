@@ -22,3 +22,14 @@
     color: var(--color10);
   }
 }
+
+@media (max-width: 350px) {
+  .row {
+    justify-content: space-between;
+
+    &__title {
+      min-width: auto;
+      max-width: 200px;
+    }
+  }
+}

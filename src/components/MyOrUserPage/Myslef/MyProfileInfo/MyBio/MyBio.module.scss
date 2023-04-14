@@ -29,3 +29,13 @@
     align-items: center;
   }
 }
+
+@media (max-width: 500px) {
+  .bio {
+    &__editIcon,
+    &__changeText,
+    &__editFormBox {
+      display: none;
+    }
+  }
+}

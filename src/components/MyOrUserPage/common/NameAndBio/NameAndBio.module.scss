@@ -6,11 +6,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     color: var(--color16);
   }
 
   &__name {
     margin-right: 2px;
+    position: relative;
   }
 
   &__icon {
@@ -23,6 +25,11 @@
     margin-bottom: 10px;
   }
 
+  &__roleInfoBox {
+    display: flex;
+    align-items: center;
+  }
+
   &__role {
     margin-left: 8px;
     font-size: 16px;
@@ -31,6 +38,10 @@
   &__online {
     font-size: 18px;
     color: var(--color10);
+  }
+
+  &__bioBox {
+    position: relative;
   }
 }
 
@@ -41,11 +52,22 @@
 @media (max-width: 736px) {
   .nameAndBio {
     padding-left: 120px;
+
+    &__bioBox {
+      padding-bottom: 100px;
+      position: relative;
+    }
   }
 }
 
 @media (max-width: 500px) {
   .nameAndBio {
     font-size: 22px;
+  }
+}
+
+@media (max-width: 468px) {
+  .nameAndBio__name {
+    margin-bottom: 5px;
   }
 }

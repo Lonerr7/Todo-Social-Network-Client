@@ -16,6 +16,10 @@
     margin-right: 5px;
     transition: all 0.2s;
 
+    &:last-child {
+      margin-right: 0;
+    }
+
     &:hover {
       transform: scale(1.1);
     }
@@ -32,5 +36,21 @@
     text-transform: lowercase;
     font-size: 21px;
     color: var(--color29);
+  }
+}
+
+@media (max-width: 350px) {
+  .info {
+    &__box {
+      flex-wrap: wrap;
+    }
+
+    &__number {
+      font-size: 24px;
+    }
+
+    &__text {
+      font-size: 19px;
+    }
   }
 }
