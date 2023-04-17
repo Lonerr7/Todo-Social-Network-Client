@@ -150,9 +150,14 @@
 @media (max-width: 736px) {
   .role_select {
     &__control {
-      margin-bottom: 15px !important;
-      max-width: 105px !important;
+      width: 100% !important;
     }
+  }
+}
+
+@media (max-width: 570px) {
+  .role_select__control {
+    margin-bottom: 20px !important;
   }
 }
 

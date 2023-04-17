@@ -49,17 +49,6 @@
   text-decoration: line-through;
 }
 
-@media (max-width: 736px) {
-  .nameAndBio {
-    padding-left: 120px;
-
-    &__bioBox {
-      padding-bottom: 100px; //!
-      position: relative;
-    }
-  }
-}
-
 @media (max-width: 500px) {
   .nameAndBio {
     font-size: 22px;
@@ -71,3 +60,9 @@
     margin-bottom: 5px;
   }
 }
+
+// @media (max-width: 355px) {
+//   .nameAndBio__name {
+//     font-size: 20px;
+//   }
+// }

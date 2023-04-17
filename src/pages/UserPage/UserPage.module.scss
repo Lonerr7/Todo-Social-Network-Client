@@ -13,6 +13,14 @@
     @extend %profile-box;
   }
 
+  &__avatarBox_smallScreen {
+    display: none;
+  }
+
+  &__avatarControlsBox_smallScreen {
+    display: none;
+  }
+
   &__avatarWrapper {
     margin-bottom: 20px;
   }
@@ -23,6 +31,10 @@
 
   &__right {
     width: 100%;
+  }
+
+  &__rightBox {
+    display: flex;
   }
 
   &__preloader {
@@ -52,9 +64,10 @@
   }
 }
 
-@media (max-width: 736px) {
+@media (max-width: 750px) {
   .page {
     position: relative;
+    padding: 20px 0;
 
     &__left {
       position: absolute;
@@ -62,17 +75,56 @@
       left: 0;
     }
 
-    &__avatarWrapper {
-      background-color: transparent;
+    &__avatarBox {
+      display: none;
     }
 
+    &__avatarBox_smallScreen {
+      display: block;
+      padding: 0;
+      margin-right: 20px;
+    }
+
+    &__avatarControlsBox_smallScreen {
+      display: block;
+    }
+
+    // &__avatarWrapper {
+    //   background-color: transparent;
+    // }
+
+    // &__avatarImg {
+    //   width: 105px;
+    //   height: 105px;
+    // }
+
+    // &__bioBox {
+    //   padding-bottom: 216px;
+    // }
+  }
+}
+
+@media (max-width: 700px) {
+  .page {
     &__avatarImg {
-      width: 105px;
-      height: 105px;
+      width: 200px;
+      height: 200px;
     }
+  }
+}
 
-    &__bioBox {
-      padding-bottom: 216px;
+@media (max-width: 570px) {
+  .page {
+    &__avatarImg {
+      width: 120px;
+      height: 120px;
     }
+  }
+}
+
+@media (max-width: 355px) {
+  .page__avatarImg {
+    width: 100px;
+    height: 100px;
   }
 }

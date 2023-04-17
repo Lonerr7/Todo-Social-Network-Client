@@ -88,16 +88,43 @@ const UserPage: React.FC<Props> = ({
         </div>
         <div className={s.page__right}>
           <ProfileInfo>
-            <NameAndBio
-              fName={user.firstName}
-              lName={user.lastName}
-              nickname={user.nickname}
-              BioComponent={<UserBio bio={user.bio} />}
-              isVerified={user.isVerified}
-              isBanned={user.isBanned}
-              role={user.role}
-              customBioBoxClass={s.page__bioBox}
-            />
+            <div className={s.page__rightBox}>
+              <div
+                className={`${s.page__avatarBox} ${s.page__avatarBox_smallScreen}`}
+              >
+                <Avatar
+                  avatar={user.photo}
+                  wrapperClass={s.page__avatarWrapper}
+                  canViewerBeOpened={true}
+                  customImgClass={s.page__avatarImg}
+                />
+              </div>
+              <NameAndBio
+                fName={user.firstName}
+                lName={user.lastName}
+                nickname={user.nickname}
+                BioComponent={<UserBio bio={user.bio} />}
+                isVerified={user.isVerified}
+                isBanned={user.isBanned}
+                role={user.role}
+                customBioBoxClass={s.page__bioBox}
+              />
+            </div>
+
+            <div className={s.page__avatarControlsBox_smallScreen}>
+              {((myRole === UserRoles.ADMIN && user.role === UserRoles.USER) ||
+                (myRole === UserRoles.CEO &&
+                  (user.role === UserRoles.USER ||
+                    user.role === UserRoles.ADMIN))) && (
+                <UserAvatarControlsContainer
+                  isBanned={user.isBanned}
+                  userId={user.id}
+                  myRole={myRole}
+                  userRole={user.role}
+                />
+              )}
+            </div>
+
             <UserMainInfo user={user} />
             <ShowInfoBtn
               toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
