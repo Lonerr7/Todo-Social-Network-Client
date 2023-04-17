@@ -8,7 +8,6 @@ import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/
 import UserAdditionalInfoContainer from '../../components/MyOrUserPage/common/UserAdditionalInfo/UserAdditionalInfoContainer';
 import UserMainInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import UserTodos from '../../components/MyOrUserPage/common/UserTodos/UserTodos';
-import UserAvatarControlsContainer from '../../components/MyOrUserPage/User/UserAvatarControls/UserAvatarControlsContainer';
 import UserBio from '../../components/MyOrUserPage/User/UserBio/UserBio';
 import TodoFilters from '../../components/TodoList/TodoFilters/TodoFilters';
 import { useAppDispatch } from '../../hooks/reduxToolkitHooks';
@@ -21,6 +20,7 @@ import {
 import { User, UserRoles } from '../../types/reduxTypes/authSliceTypes';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
 import s from './UserPage.module.scss';
+import UserAvatarControlsLogic from '../../components/common/UserAvatarControlsLogic/UserAvatarControlsLogic';
 
 interface Props {
   user: User;
@@ -73,17 +73,8 @@ const UserPage: React.FC<Props> = ({
               canViewerBeOpened={true}
               customImgClass={s.page__avatarImg}
             />
-            {((myRole === UserRoles.ADMIN && user.role === UserRoles.USER) ||
-              (myRole === UserRoles.CEO &&
-                (user.role === UserRoles.USER ||
-                  user.role === UserRoles.ADMIN))) && (
-              <UserAvatarControlsContainer
-                isBanned={user.isBanned}
-                userId={user.id}
-                myRole={myRole}
-                userRole={user.role}
-              />
-            )}
+
+            <UserAvatarControlsLogic myRole={myRole} user={user} />
           </div>
         </div>
         <div className={s.page__right}>
@@ -112,17 +103,7 @@ const UserPage: React.FC<Props> = ({
             </div>
 
             <div className={s.page__avatarControlsBox_smallScreen}>
-              {((myRole === UserRoles.ADMIN && user.role === UserRoles.USER) ||
-                (myRole === UserRoles.CEO &&
-                  (user.role === UserRoles.USER ||
-                    user.role === UserRoles.ADMIN))) && (
-                <UserAvatarControlsContainer
-                  isBanned={user.isBanned}
-                  userId={user.id}
-                  myRole={myRole}
-                  userRole={user.role}
-                />
-              )}
+              <UserAvatarControlsLogic myRole={myRole} user={user} />
             </div>
 
             <UserMainInfo user={user} />
