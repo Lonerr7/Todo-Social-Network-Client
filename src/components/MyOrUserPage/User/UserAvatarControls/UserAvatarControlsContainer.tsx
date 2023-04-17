@@ -51,16 +51,18 @@ const UserAvatarControlsContainer: React.FC<Props> = (props) => {
   };
 
   const onSelectSubmit = async () => {
-    await dispatch(
+    const response = await dispatch(
       changeUserRole({
         userId,
         roleToGive: selectValue,
       })
     );
 
-    setTimeout(() => {
-      dispatch(hideUserRoleSuccessMsg());
-    }, 2300);
+    if (response.meta.requestStatus === 'fulfilled') {
+      setTimeout(() => {
+        dispatch(hideUserRoleSuccessMsg());
+      }, 2300);
+    }
   };
 
   return (

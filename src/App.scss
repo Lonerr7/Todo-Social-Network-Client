@@ -147,6 +147,15 @@
   }
 }
 
+@media (max-width: 736px) {
+  .role_select {
+    &__control {
+      margin-bottom: 15px !important;
+      max-width: 105px !important;
+    }
+  }
+}
+
 // === Pagination ===
 
 .paginator {

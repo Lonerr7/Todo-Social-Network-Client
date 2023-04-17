@@ -67,7 +67,7 @@
   }
 
   &__errorMsg {
-    position: relative;
+    position: absolute;
     font-size: 18px;
   }
 
@@ -82,6 +82,24 @@
   .controls {
     &__btn {
       height: 30px;
+    }
+  }
+
+  .changeRole {
+    max-width: 105px;
+
+    &__errorMsg,
+    &__successMsg {
+      width: 247px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .changeRole {
+    &__errorMsg,
+    &__successMsg {
+      width: 100%;
     }
   }
 }
