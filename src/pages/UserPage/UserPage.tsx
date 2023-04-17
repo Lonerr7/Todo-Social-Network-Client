@@ -71,6 +71,7 @@ const UserPage: React.FC<Props> = ({
               avatar={user.photo}
               wrapperClass={s.page__avatarWrapper}
               canViewerBeOpened={true}
+              customImgClass={s.page__avatarImg}
             />
             {((myRole === UserRoles.ADMIN && user.role === UserRoles.USER) ||
               (myRole === UserRoles.CEO &&
@@ -95,6 +96,7 @@ const UserPage: React.FC<Props> = ({
               isVerified={user.isVerified}
               isBanned={user.isBanned}
               role={user.role}
+              customBioBoxClass={s.page__bioBox}
             />
             <UserMainInfo user={user} />
             <ShowInfoBtn

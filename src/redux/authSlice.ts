@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { authAPI } from '../api/api';
-import {
-  AuthState,
-  User,
-} from '../types/reduxTypes/authSliceTypes';
+import { AuthState, User } from '../types/reduxTypes/authSliceTypes';
 import {
   LoginFormInitialValues,
   RegisterFormInitialValues,
@@ -19,6 +16,7 @@ import {
   updateMyBeliefsInfo,
   updateMyPersonalInfo,
   changeMyAvatar,
+  updateMyGeneralInfo,
 } from './myselfSlice';
 import {
   submitForgotPasswordEmail,
@@ -185,6 +183,13 @@ const authSlice = createSlice({
     },
 
     [updateMyMainInfo.fulfilled.type]: (state, action: PayloadAction<User>) => {
+      state.user = action.payload;
+    },
+
+    [updateMyGeneralInfo.fulfilled.type]: (
+      state,
+      action: PayloadAction<User>
+    ) => {
       state.user = action.payload;
     },
 

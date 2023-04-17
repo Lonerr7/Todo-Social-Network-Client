@@ -13,3 +13,24 @@
     margin-right: 10px;
   }
 }
+
+@media (max-width: 736px) {
+  .page {
+    position: relative;
+
+    &__left {
+      position: absolute;
+      top: 40px;
+      left: 0;
+    }
+
+    &__avatarWrapper {
+      background-color: transparent;
+    }
+
+    &__avatarImg {
+      width: 105px;
+      height: 105px;
+    }
+  }
+}

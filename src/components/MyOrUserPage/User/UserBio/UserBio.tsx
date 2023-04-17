@@ -1,8 +1,8 @@
 import s from './UserBio.module.scss';
 
-type Props = {
+interface Props {
   bio?: string;
-};
+}
 
 const UserBio: React.FC<Props> = ({ bio }) => {
   return (

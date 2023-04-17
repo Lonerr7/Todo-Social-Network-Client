@@ -11,6 +11,7 @@ interface Props {
   isVerified: boolean;
   isBanned: boolean;
   role: UserRoles;
+  customBioBoxClass?: string;
 }
 
 const NameAndBio: React.FC<Props> = ({
@@ -21,6 +22,7 @@ const NameAndBio: React.FC<Props> = ({
   isVerified,
   isBanned,
   role,
+  customBioBoxClass,
 }) => {
   return (
     <div className={s.nameAndBio}>
@@ -44,7 +46,9 @@ const NameAndBio: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      <div className={s.nameAndBio__bioBox}>{BioComponent}</div>
+      <div className={`${s.nameAndBio__bioBox} ${customBioBoxClass}`}>
+        {BioComponent}
+      </div>
     </div>
   );
 };

@@ -88,6 +88,9 @@ export const updateMyGeneralInfo = createAsyncThunk(
         dispatch
       );
 
+      console.log(response);
+      
+
       return response.data.data.user;
     } catch (error: any) {
       return rejectWithValue(error.response.data.message);

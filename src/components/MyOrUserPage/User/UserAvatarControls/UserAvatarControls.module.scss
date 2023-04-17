@@ -4,7 +4,7 @@
   &__btn {
     @extend %btn-small;
     background-color: var(--color2);
-    display: inline-block;
+    display: flex;
     width: 100%;
     margin-bottom: 12px;
     color: #fff;
@@ -75,5 +75,13 @@
     font-size: 20px;
     color: rgb(4, 161, 4);
     font-weight: 500;
+  }
+}
+
+@media (max-width: 736px) {
+  .controls {
+    &__btn {
+      height: 30px;
+    }
   }
 }
