@@ -1,6 +1,8 @@
 @import '../../../../vars';
 
 .nameAndBio {
+  flex: 1;
+
   &__box,
   &__row {
     display: flex;

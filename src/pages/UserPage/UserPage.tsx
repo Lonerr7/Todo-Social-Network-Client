@@ -61,7 +61,7 @@ const UserPage: React.FC<Props> = ({
         <AreYouSurePopup
           isFetching={isUserBeingDeleted}
           thunk={deleteUser}
-          title="Are you sure you want to delete this user? This can not be undone!"
+          title="Are you sure you want to delete this user? This action can not be undone!"
         />
       ) : null}
       <div className={s.page__inner}>

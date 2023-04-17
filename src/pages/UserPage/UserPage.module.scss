@@ -70,9 +70,7 @@
     padding: 20px 0;
 
     &__left {
-      position: absolute;
-      top: 40px;
-      left: 0;
+      display: none;
     }
 
     &__avatarBox {
@@ -88,19 +86,6 @@
     &__avatarControlsBox_smallScreen {
       display: block;
     }
-
-    // &__avatarWrapper {
-    //   background-color: transparent;
-    // }
-
-    // &__avatarImg {
-    //   width: 105px;
-    //   height: 105px;
-    // }
-
-    // &__bioBox {
-    //   padding-bottom: 216px;
-    // }
   }
 }
 

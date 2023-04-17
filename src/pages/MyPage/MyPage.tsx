@@ -5,7 +5,6 @@ import ProfileInfo from '../../components/MyOrUserPage/common/ProfileInfo/Profil
 import MyAvatarControls from '../../components/MyOrUserPage/Myslef/MyAvatarControls/MyAvatarControls';
 import MyBio from '../../components/MyOrUserPage/Myslef/MyProfileInfo/MyBio/MyBio';
 import ProfileTopInfo from '../../components/MyOrUserPage/common/ProfileTopInfo/ProfileTopInfo';
-// import FriendsBlock from '../../components/MyOrUserPage/common/FriendsBlock/FriendsBlock';
 import UserGeneralInfo from '../../components/MyOrUserPage/common/UserGeneralInfo/UserGeneralInfo';
 import ShowInfoBtn from '../../components/common/ShowInfoBtn/ShowInfoBtn';
 import { Todo } from '../../types/reduxTypes/todoSliceTypes';
@@ -50,15 +49,29 @@ const MyPage: React.FC<Props> = ({
         </div>
         <div className={s.myPage__right}>
           <ProfileInfo>
-            <NameAndBio
-              fName={myself.firstName}
-              lName={myself.lastName}
-              nickname={myself.nickname}
-              BioComponent={<MyBio bio={myself.bio} />}
-              isVerified={myself.isVerified}
-              isBanned={myself.isBanned}
-              role={myself.role}
-            />
+            <div className={s.myPage__rightBox}>
+              <div
+                className={`${s.myPage__avatarBox} ${s.myPage__avatarBox_smallScreen}`}
+              >
+                <Avatar
+                  avatar={myself.photo}
+                  wrapperClass={s.page__avatarWrapper}
+                  canViewerBeOpened={true}
+                  customImgClass={s.myPage__avatarImg}
+                />
+                <MyAvatarControls />
+              </div>
+              <NameAndBio
+                fName={myself.firstName}
+                lName={myself.lastName}
+                nickname={myself.nickname}
+                BioComponent={<MyBio bio={myself.bio} />}
+                isVerified={myself.isVerified}
+                isBanned={myself.isBanned}
+                role={myself.role}
+              />
+            </div>
+
             <UserGeneralInfo user={myself} />
             <ShowInfoBtn
               toggleAdditionalInfoVisibility={toggleAdditionalInfoVisibility}
