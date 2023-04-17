@@ -77,3 +77,26 @@
     height: 50px;
   }
 }
+
+@media (max-width: 500px) {
+  .popup {
+    &__title {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    &__closeIcon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .popup {
+    &__title {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+  }
+}
