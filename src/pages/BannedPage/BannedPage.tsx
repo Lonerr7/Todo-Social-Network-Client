@@ -16,11 +16,13 @@ const BannedPage: React.FC = () => {
 
   return (
     <div className={s.banned}>
-      <p className={s.banned__alert}>ALERT!</p>
-      <p className={s.banned__message}>You are banned :(</p>
-      <button className={s.banned__btn} onClick={() => dispatch(logOut())}>
-        Confirm
-      </button>
+      <div className={s.banned__inner}>
+        <p className={s.banned__alert}>ALERT!</p>
+        <p className={s.banned__message}>You are banned :(</p>
+        <button className={s.banned__btn} onClick={() => dispatch(logOut())}>
+          Confirm
+        </button>
+      </div>
     </div>
   );
 };
