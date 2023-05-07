@@ -1,3 +1,4 @@
+import defaultAvatar from '../../../../../assets/img/default.jpg';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import {
@@ -30,7 +31,11 @@ const UserTodoComment: React.FC<Props> = ({
   const { isCommentDeleting, currentCommentOnDeletion } = useAppSelector(
     (state) => state.currentTodo
   );
-  const isMe = myself?.id === user._id;
+
+  const commentOwnerId = user?._id;
+  const isUserMissing = user?._id ? false : true;
+
+  const isMe = myself?.id === commentOwnerId;
 
   const dispatch = useAppDispatch();
 
@@ -40,9 +45,23 @@ const UserTodoComment: React.FC<Props> = ({
 
   return (
     <li className={s.comment}>
-      <Link className={s.comment__link} to={isMe ? '/' : `/users/${user._id}`}>
-        <Avatar avatar={user.photo} customImgClass={s.comment__photo} />
-      </Link>
+      {!isUserMissing ? (
+        <Link
+          className={s.comment__link}
+          to={isMe ? '/' : `/users/${user._id}`}
+        >
+          <div className={s.comment__avatarBox}>
+            <Avatar avatar={defaultAvatar} customImgClass={s.comment__photo} />
+          </div>
+        </Link>
+      ) : (
+        <div
+          className={`${s.comment__avatarBox} ${s.comment__deletedAvatarBox}`}
+        >
+          <span className={s.comment__deletedCross}></span>
+          <Avatar avatar={defaultAvatar} customImgClass={s.comment__photo} />
+        </div>
+      )}
 
       <div className={s.comment__box}>
         {isMe ? (
@@ -65,9 +84,13 @@ const UserTodoComment: React.FC<Props> = ({
           </div>
         ) : (
           <div className={s.comment__linkContainer}>
-            <Link className={s.comment__link} to={`/users/${user._id}`}>
-              <span className={s.comment__nickname}>{user.nickname}</span>
-            </Link>
+            {!isUserMissing ? (
+              <Link className={s.comment__link} to={`/users/${user._id}`}>
+                <span className={s.comment__nickname}>{user.nickname}</span>
+              </Link>
+            ) : (
+              <span>[deleted]</span>
+            )}
           </div>
         )}
 

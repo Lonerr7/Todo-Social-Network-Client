@@ -11,7 +11,7 @@ export interface Comment {
   createdAt: string;
   todo: string;
   user: {
-    _id: string;
+    _id?: string;
     id: string;
     nickname: string;
     photo: string;
