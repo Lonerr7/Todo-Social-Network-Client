@@ -2,16 +2,19 @@ import s from './ChangeAvatar.module.scss';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { useAppDispatch } from '../../../../../hooks/reduxToolkitHooks';
 import { changeMyAvatar } from '../../../../../redux/myselfSlice';
+import { convertBase64 } from '../../../../../utils/appHelpers';
 
 const ChangeAvatar: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const fileSelectedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const fd = new FormData();
-      fd.append('photo', e.target.files[0], e.target.files[0].name);
+      (async () => {
+        const file = e.target.files && e.target.files[0];
+        const base64 = await convertBase64(file);
 
-      dispatch(changeMyAvatar(fd));
+        dispatch(changeMyAvatar(base64));
+      })();
     }
   };
 

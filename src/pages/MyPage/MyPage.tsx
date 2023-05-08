@@ -33,7 +33,7 @@ const MyPage: React.FC<Props> = ({
   activeTodoFilter,
 }) => {
   const tasksCount = todos.length;
-
+  
   return (
     <div className={s.myPage}>
       <div className={s.myPage__inner}>

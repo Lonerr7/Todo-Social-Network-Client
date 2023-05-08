@@ -89,7 +89,6 @@ export const updateMyGeneralInfo = createAsyncThunk(
       );
 
       console.log(response);
-      
 
       return response.data.data.user;
     } catch (error: any) {
@@ -182,7 +181,6 @@ export const changeMyAvatar = createAsyncThunk(
   async (data: any, { rejectWithValue }) => {
     try {
       const response = await myselfAPI.changeMyAvatar(data);
-      console.log(response);
 
       return response.data.data.photo;
     } catch (error: any) {

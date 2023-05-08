@@ -29,6 +29,21 @@ export const checkIfEpmty = (arr: (string | undefined)[]) => {
 
 export const replaceCamelCase = (str: string) => {
   const result = str.replace(/([A-Z])/g, ' $1');
-  
+
   return result.charAt(0).toUpperCase() + result.slice(1);
+};
+
+export const convertBase64 = (file: any) => {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    fileReader.onload = () => {
+      resolve(fileReader.result);
+    };
+
+    fileReader.onerror = (err) => {
+      reject(err);
+    };
+  });
 };

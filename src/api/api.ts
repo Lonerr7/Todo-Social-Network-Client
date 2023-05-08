@@ -49,7 +49,7 @@ export const myselfAPI = {
     await axiosInstance.patch('users/updateMe', data),
 
   changeMyAvatar: async (data: any) =>
-    await axiosInstance.patch('users/updateMyAvatar', data),
+    await axiosInstance.patch('users/updateMyAvatar', { img: data }),
 
   changeMyPassword: async (passwords: UpdateUserPasswordInitialValues) =>
     await axiosInstance.patch('users/updateMyPassword', passwords),
