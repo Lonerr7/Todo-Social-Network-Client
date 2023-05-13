@@ -178,8 +178,14 @@ export const updateMyPersonalInfo = createAsyncThunk(
 
 export const changeMyAvatar = createAsyncThunk(
   'myself/changeMyAvatar',
-  async (data: any, { rejectWithValue }) => {
+  async (data: string | undefined, { rejectWithValue }) => {
     try {
+      if (!data) {
+        return rejectWithValue(
+          'Incorrect photo format. Please, choose valid photo!'
+        );
+      }
+
       const response = await myselfAPI.changeMyAvatar(data);
 
       return response.data.data.photo;
@@ -411,13 +417,13 @@ const myselfSlice = createSlice({
 
     [changeMyAvatar.pending.type]: (state) => {
       state.isMyAvatarChanging = true;
-      state.changeMyAvatarErrorMsg = '';
     },
     [changeMyAvatar.fulfilled.type]: (state) => {
+      state.changeMyAvatarErrorMsg = '';
       state.isMyAvatarChanging = false;
     },
     [changeMyAvatar.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.isMyAvatarChanging = true;
+      state.isMyAvatarChanging = false;
       state.changeMyAvatarErrorMsg = action.payload;
     },
 

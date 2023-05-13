@@ -19,9 +19,9 @@ interface Props {
   myself: User;
   isAdditionalInfoVisible: boolean;
   todos: Array<Todo>;
-  toggleAdditionalInfoVisibility: () => void;
   selectedTodos: Todo[];
   activeTodoFilter: number;
+  toggleAdditionalInfoVisibility: () => void;
 }
 
 const MyPage: React.FC<Props> = ({
@@ -33,7 +33,7 @@ const MyPage: React.FC<Props> = ({
   activeTodoFilter,
 }) => {
   const tasksCount = todos.length;
-  
+
   return (
     <div className={s.myPage}>
       <div className={s.myPage__inner}>

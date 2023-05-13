@@ -1,12 +1,11 @@
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
 import { showHideUserInfoSuccessMsg } from '../redux/formsSlice';
 import { MyselfApi } from '../types/apiTypes';
-import { UpdateMeFieldsToSendForApi } from '../types/apiTypes';
 import { ShowHideFor } from '../types/reduxTypes/formsSliceTypes';
 
 export const updateInfoWithSuccessMsg = async (
   api: MyselfApi,
-  data: UpdateMeFieldsToSendForApi,
+  data: any,
   showFor: ShowHideFor,
   dispatch?: ThunkDispatch<unknown, unknown, AnyAction>
 ) => {

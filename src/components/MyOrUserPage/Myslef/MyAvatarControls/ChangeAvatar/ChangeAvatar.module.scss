@@ -2,6 +2,7 @@
 
 .change {
   &__label {
+    position: relative;
     display: inline-block;
     margin: 20px auto;
     width: 100%;
@@ -36,6 +37,15 @@
 
   &__icon {
     margin-right: 5px;
+  }
+
+  &__spinner {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 6px;
+    left: 220px;
+    z-index: 100;
   }
 }
 
