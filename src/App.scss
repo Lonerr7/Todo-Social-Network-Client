@@ -1,0 +1,260 @@
+@import './vars.scss';
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas:
+    'h h'
+    'gc gc';
+  grid-template-rows: 60px 1fr;
+}
+
+.App__container {
+  grid-area: gc;
+  display: grid;
+  grid-template-areas: 's m';
+  grid-template-columns: 2fr 10fr;
+}
+
+@media (max-width: 1250px) {
+  .App__container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1020px) {
+  .App__container {
+    grid-template-areas:
+      'm m'
+      's s';
+    grid-template-rows: 1fr 46px;
+    grid-template-columns: auto auto;
+  }
+}
+
+// === react-select ===
+
+.settings_select,
+.role_select {
+  // the whole react-select component
+  &__control {
+    font-size: 18px;
+    width: 354px !important;
+    margin-bottom: 35px !important;
+    background-color: var(--color8) !important;
+    box-shadow: none !important;
+    border-color: var(--color50) !important;
+
+    // when menu is opened
+    &--menu-is-open {
+      box-shadow: var(--color7) !important;
+      border-color: var(--color7) !important;
+    }
+
+    &--is-focused {
+      border-color: var(--color51) !important;
+    }
+  }
+
+  &__value-container {
+    cursor: text !important;
+  }
+
+  &__input {
+    color: var(--color29) !important;
+  }
+
+  &__single-value {
+    padding: 5px 0;
+    color: var(--color52) !important;
+  }
+
+  // dropdown menu
+  &__menu {
+    width: 354px !important;
+    background-color: var(--color8) !important;
+    overflow-y: auto;
+  }
+
+  &__indicator-separator {
+    background-color: var(--color10) !important;
+  }
+
+  &__indicator {
+    cursor: pointer !important;
+    color: var(--color10) !important;
+
+    svg:hover {
+      color: var(--color39) !important;
+    }
+  }
+
+  &__option {
+    font-size: 18px !important;
+    cursor: pointer !important;
+    color: var(--color29) !important;
+
+    &__palceholder {
+      font-size: 18px !important;
+      color: var(--color29) !important;
+    }
+
+    &--is-focused {
+      background-color: var(--color23) !important;
+    }
+
+    &--is-selected {
+      background-color: var(--color58) !important;
+      color: var(--color39) !important;
+    }
+
+    &:hover {
+      background-color: var(--color25) !important;
+    }
+  }
+}
+
+// Keep selected option bg color when hover on it
+
+.settings_select__option--is-focused.settings_select__option--is-selected,
+.role_select__option--is-focused.role_select__option--is-selected {
+  &:hover {
+    background-color: var(--color58) !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .settings_select {
+    &__control {
+      width: 100% !important;
+    }
+  }
+}
+
+.role_select {
+  &__control {
+    width: auto !important;
+    border-color: var(--color25) !important;
+  }
+
+  &__input {
+    color: var(--color29) !important;
+    background-color: #000;
+  }
+
+  &__menu {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 736px) {
+  .role_select {
+    &__control {
+      width: 100% !important;
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .role_select__control {
+    margin-bottom: 20px !important;
+  }
+}
+
+// === Pagination ===
+
+.paginator {
+  &__container {
+    margin-top: 30px;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color32);
+    border-radius: 6px;
+  }
+
+  &__item_active {
+    background-color: var(--color34);
+  }
+
+  &__page,
+  &__next,
+  &__prev,
+  &__break {
+    cursor: pointer;
+    border: 1px solid var(--color33);
+    a {
+      display: inline-block;
+      padding: 10px 15px;
+    }
+  }
+
+  &__prev:hover,
+  &__page:hover,
+  &__next:hover,
+  &__break:hover {
+    background-color: var(--color35);
+  }
+
+  &__prev {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  &__next {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  &__break {
+    a {
+      padding: 10px 15px;
+    }
+  }
+
+  &__disabled {
+    cursor: default;
+    background-color: var(--color5);
+
+    a {
+      &:hover {
+        background-color: var(--color8);
+      }
+    }
+  }
+}
+
+.disabled.paginator__prev {
+  a {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+}
+
+.disabled.paginator__next {
+  a {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}
+
+@media (max-width: 450px) {
+  .paginator__container {
+    margin: 30px auto 0 auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .paginator {
+    &__page,
+    &__next,
+    &__prev,
+    &__break {
+      a {
+        display: inline-block;
+        padding: 5px 10px;
+      }
+    }
+  }
+}

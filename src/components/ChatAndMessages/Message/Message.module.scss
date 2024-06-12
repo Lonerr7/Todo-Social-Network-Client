@@ -1,0 +1,112 @@
+@import '../../../vars';
+
+.message {
+  margin-bottom: 10px;
+  width: fit-content;
+
+  &__inner {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &:hover {
+    .message__deleteBtn {
+      opacity: 1;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    margin-right: 10px;
+  }
+
+  &__box {
+    background-color: var(--color38);
+    border-radius: 20px;
+    border-bottom-left-radius: 0px;
+    padding: 10px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-right: 8px solid var(--color38);
+      bottom: 0;
+      left: -7px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__usernameLink {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+  &__username {
+    color: var(--color17);
+    font-weight: 500;
+    margin-right: 5px;
+    font-size: 20px;
+  }
+
+  &__deleteBtn {
+    margin-top: 3px;
+    opacity: 0;
+    transition: all 0.1s;
+  }
+
+  &__deleteIcon {
+    transition: color 0.2s;
+    color: var(--color16);
+
+    &:hover {
+      color: var(--color12);
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    color: var(--color29);
+  }
+}
+
+.botMessage {
+  width: 100%;
+  background-color: var(--color9);
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 7px;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 500;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__message {
+    color: var(--color10);
+  }
+
+  &__link {
+    font-weight: 500;
+    transition: all 0.2s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

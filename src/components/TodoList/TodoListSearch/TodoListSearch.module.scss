@@ -1,0 +1,30 @@
+@import '../../../vars';
+
+.search {
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+
+  &__input {
+    @extend %form-input;
+    padding: 15px 30px 15px 45px;
+    background-color: var(--color9);
+  }
+
+  &__clear {
+    position: absolute;
+    right: 8px;
+    top: 17px;
+  }
+
+  &__icon {
+    color: var(--color10);
+  }
+
+  &__searchIcon {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    color: var(--color10);
+  }
+}

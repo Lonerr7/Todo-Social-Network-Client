@@ -1,0 +1,49 @@
+@import '../../../vars';
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__box {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    font-size: 20px;
+    transition: all 0.2s;
+    color: var(--color16);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.close {
+  transition: all 0.1s;
+  color: var(--color12);
+  font-weight: 500;
+
+  &:hover {
+    color: var(--color12);
+  }
+}
+
+.active {
+  font-weight: 700;
+}
+
+@media (max-width: 400px) {
+  .filters {
+    flex-direction: column;
+
+    &__box {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+}

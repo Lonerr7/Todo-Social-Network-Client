@@ -1,0 +1,21 @@
+.preloader__page {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animated {
+  animation: app-loading 300ms;
+}
+
+@keyframes app-loading {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,84 @@
+@import '../../../vars';
+
+.menu {
+  width: 100%;
+  margin-bottom: 20px;
+
+  &__listItem {
+    &:hover {
+      background-color: var(--color4);
+    }
+  }
+
+  &__itemline {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    width: 4px;
+    height: 102%; //!
+    border-radius: 1px; //!
+    transition: all 0.3s;
+  }
+
+  &__icon {
+    margin-right: 5px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 10px;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--color1);
+    }
+  }
+}
+
+.active {
+  background-color: var(--color4);
+}
+
+.active_link {
+  color: var(--color1);
+}
+
+.activeLine {
+  background-color: var(--color1);
+}
+
+@media (max-width: 1020px) {
+  .menu {
+    margin-bottom: 0;
+
+    &__icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+    &__listItem:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &__menuItemText {
+      display: none;
+    }
+
+    &__menuItemActiveLine {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import '../../../vars';
+
+.settingsNav {
+  width: 228px; //!
+  height: 83px; //!
+  margin-left: auto;
+  background-color: var(--color44);
+  border-radius: 5px;
+  position: sticky;
+  top: 100px;
+
+  &__listItem {
+    &:first-child {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:hover {
+      background-color: var(--color8);
+    }
+  }
+}
+
+.item_border_first {
+  border-top-right-radius: 5px;
+}
+
+.item_border_last {
+  border-bottom-right-radius: 5px;
+}
+
+@media (max-width: 950px) {
+  .settingsNav {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .settingsNav {
+    width: 228px;
+  }
+}
+
+@media (max-width: 700px) {
+  .settingsNav {
+    position: fixed;
+    top: 60px;
+    height: auto;
+    width: 100%;
+    left: 0;
+
+    &__list {
+      display: flex;
+    }
+
+    &__listItem {
+      width: 50%;
+    }
+  }
+}

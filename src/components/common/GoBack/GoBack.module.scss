@@ -1,0 +1,11 @@
+@import '../../../vars';
+
+.go {
+  transition: all 0.3s;
+  color: var(--color3);
+
+  &:hover {
+    text-decoration: none;
+    transform: scale(1.1);
+  }
+}

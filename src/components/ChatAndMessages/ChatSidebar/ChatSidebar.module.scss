@@ -1,0 +1,75 @@
+@import '../../../vars';
+
+.sidebar {
+  min-width: 250px;
+  height: 100%;
+  overflow-y: auto;
+  background-color: var(--color36);
+  padding: $chat-padding;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  color: var(--color16);
+
+  &__title {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color22);
+    margin-bottom: 24px;
+  }
+
+  &__titleicon {
+    margin-right: 10px;
+  }
+
+  &__counter {
+    margin-left: 10px;
+  }
+
+  &__searchBox {
+    margin-bottom: 20px;
+  }
+
+  &__searchInput {
+    padding: 10px 30px 10px 34px;
+    margin-bottom: 0;
+    background-color: var(--color37);
+    color: var(--color30);
+  }
+
+  &__clearBtn {
+    top: 13px;
+  }
+
+  &__searchIcon {
+    top: 10px;
+  }
+
+  &__listItem {
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__userLink {
+    font-size: 20px;
+    color: var(--color16);
+    transition: color 0.1s;
+
+    &:hover {
+      color: var(--color10);
+    }
+  }
+
+  &__me {
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 650px) {
+  .sidebar {
+    display: none;
+  }
+}

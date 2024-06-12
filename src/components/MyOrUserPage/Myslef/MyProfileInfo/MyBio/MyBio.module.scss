@@ -1,0 +1,42 @@
+@import '../../../../../vars';
+
+.bio {
+  font-size: 18px;
+
+  &__textBox {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 10px;
+    color: var(--color18);
+    overflow-wrap: anywhere;
+  }
+
+  &__editIcon {
+    color: var(--color18);
+  }
+
+  &__changeText {
+    font-size: 16px;
+    color: var(--color18);
+    cursor: pointer;
+  }
+
+  &__editFormBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .bio {
+    &__editIcon,
+    &__changeText,
+    &__editFormBox {
+      display: none;
+    }
+  }
+}

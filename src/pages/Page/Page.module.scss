@@ -1,0 +1,77 @@
+@import '../../vars';
+
+.page {
+  @extend %page;
+  padding: 60px 0;
+
+  &__goBack {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  &__goHome {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+  }
+
+  &__title,
+  &__subtitle {
+    @extend %formpage-title;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: 22px;
+    color: var(--color8);
+  }
+}
+
+.logo {
+  margin-bottom: 30px;
+
+  &__text {
+    color: var(--color3);
+    font-size: 34px;
+  }
+}
+
+.preloader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 33px;
+  margin: 0 auto;
+}
+
+.textError {
+  position: relative;
+  // bottom: 5%;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 30px 0;
+
+    &__box {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+      margin-bottom: 30px;
+      margin-top: -5px;
+    }
+
+    &__goBack,
+    &__goHome {
+      position: relative;
+      top: unset;
+      left: unset;
+    }
+  }
+}

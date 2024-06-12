@@ -1,0 +1,31 @@
+@import '../../../vars';
+
+.form {
+  width: 400px;
+  margin-bottom: 30px;
+
+  &__control {
+    @extend %form-control;
+  }
+
+  &__label {
+    @extend %form-label;
+    color: var(--color1);
+  }
+
+  &__input {
+    @extend %form-input;
+  }
+
+  &__errorMsg {
+    color: var(--color1);
+  }
+
+  &__btn {
+    @extend %form-btn;
+
+    &:hover {
+      background-color: var(--color6);
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../../vars';
+
+.menuItem {
+  &__itemline {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    width: 4px;
+    height: 102%; //!
+    border-radius: 1px; //!
+    transition: all 0.2s;
+    transition: all 0.3s;
+  }
+
+  &__icon {
+    margin-right: 5px;
+  }
+
+  &__link {
+    color: var(--color16);
+    position: relative;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 10px;
+    font-weight: 500;
+  }
+}
+
+.active {
+  background-color: var(--color4);
+}
+
+.active_link {
+  color: var(--color16);
+}
+
+.activeLine {
+  background-color: var(--color17);
+}
+
+@media (max-width: 900px) {
+  .menuItem {
+    position: relative;
+
+    &__counter {
+      position: absolute;
+      top: 0;
+      left: 30px;
+    }
+  }
+}

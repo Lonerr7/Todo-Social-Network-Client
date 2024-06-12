@@ -1,0 +1,115 @@
+@import '../../vars';
+
+.page {
+  @extend %main-inner;
+  position: relative;
+
+  &__inner {
+    @extend %inner-page--inner;
+    @extend %userpage-inner;
+  }
+
+  &__avatarBox {
+    @extend %profile-box;
+  }
+
+  &__avatarBox_smallScreen {
+    display: none;
+  }
+
+  &__avatarControlsBox_smallScreen {
+    display: none;
+  }
+
+  &__avatarWrapper {
+    margin-bottom: 20px;
+  }
+
+  &__left {
+    margin-right: 60px;
+  }
+
+  &__right {
+    width: 100%;
+  }
+
+  &__rightBox {
+    display: flex;
+  }
+
+  &__preloader {
+    justify-self: center;
+    align-self: center;
+  }
+
+  &__todoFilters {
+    margin-bottom: 15px;
+  }
+}
+
+.profileInfo__todos {
+  background-color: transparent;
+  padding: 0;
+}
+
+@media (max-width: 1020px) {
+  .page {
+    &__inner {
+      margin-left: 0;
+    }
+
+    &__left {
+      margin-right: 30px;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .page {
+    position: relative;
+    padding: 20px 0;
+
+    &__left {
+      display: none;
+    }
+
+    &__avatarBox {
+      display: none;
+    }
+
+    &__avatarBox_smallScreen {
+      display: block;
+      padding: 0;
+      margin-right: 20px;
+    }
+
+    &__avatarControlsBox_smallScreen {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .page {
+    &__avatarImg {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .page {
+    &__avatarImg {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
+@media (max-width: 355px) {
+  .page__avatarImg {
+    width: 100px;
+    height: 100px;
+  }
+}

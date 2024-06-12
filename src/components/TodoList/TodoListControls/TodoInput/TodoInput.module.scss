@@ -1,0 +1,96 @@
+@import '../../../../vars';
+
+.todoInput__outer {
+  padding-bottom: 50px;
+}
+
+.todoInput {
+  min-height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+
+  &__block {
+    width: 84%;
+    height: 100%;
+    position: relative;
+    margin-right: 15px;
+  }
+
+  &__input {
+    @extend %form-input;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 15px 40px 15px 15px;
+    font-size: 20px;
+    color: var(--color16);
+  }
+
+  &__emojiPickerBtn {
+    top: 15px;
+    right: 10px;
+  }
+
+  &__emojiPicker {
+    top: 80px;
+    right: 127px;
+    z-index: 1000;
+  }
+
+  &__btn {
+    @extend %btn-small;
+    width: 90px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: var(--color42);
+    color: var(--color29);
+
+    &:hover {
+      background-color: var(--color8);
+    }
+  }
+
+  &__btn_disabled {
+    cursor: default;
+  }
+
+  &__error {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 800px) {
+  .todoInput {
+    &__input {
+      padding: 15px;
+    }
+
+    &__emojiPicker,
+    &__emojiPickerBtn {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .todoInput {
+    flex-wrap: wrap;
+
+    &__block {
+      margin-right: 0;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    &__input {
+      padding: 10px 15px;
+    }
+
+    &__btn {
+      width: 100%;
+      height: 44px;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import '../../../vars.scss';
+
+.registerForm {
+  width: 400px;
+  margin-bottom: 30px;
+
+  &__formControl {
+    @extend %form-control;
+  }
+
+  &__label {
+    @extend %form-label;
+  }
+
+  &__formInput {
+    @extend %form-input;
+  }
+
+  &__errorMsg {
+    color: var(--color1);
+  }
+
+  &__btn {
+    @extend %form-btn;
+
+    &:hover {
+      background-color: var(--color6);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.comments {
+  width: 70%;
+}
+
+@media (max-width: 900px) {
+  .comments {
+    width: 100%;
+  }
+}

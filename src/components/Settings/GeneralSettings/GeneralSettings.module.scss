@@ -1,0 +1,19 @@
+@import '../../../vars';
+
+.general {
+  @extend %settings-inner;
+
+  &__title {
+    @extend %title;
+  }
+
+  &__inner {
+    @extend %inner-page--inner;
+  }
+}
+
+@media (max-width: 700px) {
+  .general {
+    @include settings-inner-small;
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../../vars';
+
+.task {
+  padding: 13px;
+  border-radius: 8px;
+  background-color: var(--color8);
+  margin-bottom: 14px;
+  color: var(--color30);
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__error {
+    position: relative;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 460px) {
+  .task__top {
+    flex-wrap: wrap;
+    // justify-content: center;
+  }
+}

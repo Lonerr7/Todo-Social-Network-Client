@@ -1,0 +1,102 @@
+@import '../../vars';
+
+.myPage {
+  @extend %main-inner;
+
+  &__inner {
+    @extend %inner-page--inner;
+    @extend %userpage-inner;
+  }
+
+  &__avatarBox {
+    @extend %profile-box;
+    margin-bottom: 20px;
+  }
+
+  &__avatarBox_smallScreen {
+    display: none;
+  }
+
+  &__left {
+    margin-right: 60px;
+  }
+
+  &__right {
+    width: 100%;
+  }
+
+  &__rightBox {
+    display: flex;
+  }
+
+  &__todoFilters {
+    margin-bottom: 15px;
+  }
+}
+
+.profileInfo__todos {
+  background-color: transparent;
+  padding: 0;
+}
+
+@media (max-width: 1020px) {
+  .myPage {
+    &__inner {
+      margin-left: 0;
+    }
+
+    &__left {
+      margin-right: 30px;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .myPage {
+    padding: 20px 0;
+    position: relative;
+
+    &__left {
+      display: none;
+    }
+
+    &__avatarBox {
+      background-color: transparent;
+    }
+
+    &__avatarBox {
+      display: none;
+    }
+
+    &__avatarBox_smallScreen {
+      display: block;
+      padding: 0;
+      margin-right: 20px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .myPage {
+    &__avatarImg {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .myPage {
+    &__avatarImg {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
+@media (max-width: 355px) {
+  .myPage__avatarImg {
+    width: 100px;
+    height: 100px;
+  }
+}

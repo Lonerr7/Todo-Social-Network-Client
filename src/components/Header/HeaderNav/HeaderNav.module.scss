@@ -1,0 +1,13 @@
+@import '../../../vars';
+
+.nav {
+  &__icon {
+    color: var(--color15);
+    transition: all 0.3s;
+    margin-top: 4px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

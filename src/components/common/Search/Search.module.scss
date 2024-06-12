@@ -1,0 +1,63 @@
+@import '../../../vars';
+
+.search {
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+
+  &__input {
+    @extend %form-input;
+    padding: 15px 30px 15px 45px;
+    background-color: var(--color8);
+    color: var(--color29);
+  }
+
+  &__clear {
+    position: absolute;
+    right: 8px;
+    top: 17px;
+  }
+
+  &__icon {
+    color: var(--color10);
+    display: inline-block;
+  }
+
+  &__searchIcon {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    color: var(--color10);
+  }
+
+  &__clearIcon {
+    transition: all 0.1s;
+
+    &:hover {
+      color: var(--color12);
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .search {
+    &__input {
+      padding: 10px 30px 10px 40px;
+    }
+
+    &__searchIcon {
+      width: 20px;
+      height: 20px;
+      top: 10px;
+    }
+
+    &__clear {
+      top: 13px;
+    }
+
+    &__clearIcon {
+      width: 13px;
+      height: 13px;
+    }
+  }
+}

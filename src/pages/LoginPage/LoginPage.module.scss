@@ -1,0 +1,33 @@
+@import '../../vars';
+
+.loginPage {
+  @extend %page;
+  position: relative;
+
+  &__title {
+    @extend %formpage-title;
+  }
+}
+
+.logoLogin {
+  margin-bottom: 30px;
+
+  &__text {
+    color: var(--color3);
+    font-size: 34px;
+  }
+}
+
+.preloader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 33px;
+  margin: 0 auto;
+}
+
+.textError {
+  font-weight: 700;
+  font-size: 18px;
+  // position: relative;
+}

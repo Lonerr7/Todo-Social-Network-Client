@@ -1,0 +1,22 @@
+.credits {
+  padding-left: 60px;
+  color: var(--color16);
+
+  &__creditLink {
+    font-weight: 500;
+    color: var(--color16);
+  }
+}
+
+@media (max-width: 1020px) {
+  .credits {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .credits {
+    text-align: center;
+    padding: 15px 0;
+  }
+}

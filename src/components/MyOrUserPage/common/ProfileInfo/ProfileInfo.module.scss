@@ -1,0 +1,20 @@
+@import '../../../../vars';
+
+.profileInfo {
+  @extend %profile-box;
+  max-width: 600px;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1020px) {
+  .profileInfo {
+    max-width: unset;
+    width: 100%;
+  }
+}
+
+

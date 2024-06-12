@@ -1,0 +1,16 @@
+.counter {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 24px;
+  color: var(--color30);
+
+  &__number {
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 350px) {
+  .counter {
+    margin-bottom: 20px;
+  }
+}

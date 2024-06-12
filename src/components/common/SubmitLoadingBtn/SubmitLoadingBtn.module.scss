@@ -1,0 +1,16 @@
+@import '../../../vars';
+
+.btn {
+  @extend %form-btn;
+  background-color: var(--color9);
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.btn__disabled {
+  cursor: default;
+}

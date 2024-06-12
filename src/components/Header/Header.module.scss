@@ -1,0 +1,93 @@
+@import '../../vars.scss';
+
+.header {
+  grid-area: h;
+  background-color: var(--color1);
+  color: var(--color15);
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  z-index: 40;
+
+  &__loadingBar {
+    margin-top: 60px;
+  }
+
+  &__inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__container {
+    height: 100%;
+    max-width: 1430px;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-right: 20px;
+  }
+
+  &__register {
+    color: var(--color15);
+    font-size: 21px;
+    font-family: $ff2;
+    transition: all 0.3s;
+
+    &:hover {
+      text-decoration: none;
+      transform: scale(1.1);
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 168px;
+  }
+
+  &__user {
+    font-size: 18px;
+  }
+
+  &__userLink {
+    color: var(--color15);
+    display: inline-block;
+    font-weight: 500;
+    transition: all 0.3s;
+    margin-right: 8px;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .header__user {
+    display: none;
+  }
+
+  .header__controls {
+    justify-content: flex-end;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 350px) {
+  .header__register {
+    display: none;
+  }
+
+  .header__box {
+    justify-content: center;
+    width: 100%;
+  }
+}

@@ -1,0 +1,70 @@
+@import '../../../../vars';
+
+.nameAndBio {
+  flex: 1;
+
+  &__box,
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: var(--color16);
+  }
+
+  &__name {
+    margin-right: 2px;
+    position: relative;
+  }
+
+  &__icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  &__box {
+    margin-bottom: 10px;
+  }
+
+  &__roleInfoBox {
+    display: flex;
+    align-items: center;
+  }
+
+  &__role {
+    font-size: 16px;
+  }
+
+  &__online {
+    font-size: 18px;
+    color: var(--color10);
+  }
+
+  &__bioBox {
+    position: relative;
+  }
+}
+
+.banned {
+  text-decoration: line-through;
+}
+
+@media (max-width: 500px) {
+  .nameAndBio {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 468px) {
+  .nameAndBio__name {
+    margin-bottom: 5px;
+  }
+}
+
+// @media (max-width: 355px) {
+//   .nameAndBio__name {
+//     font-size: 20px;
+//   }
+// }

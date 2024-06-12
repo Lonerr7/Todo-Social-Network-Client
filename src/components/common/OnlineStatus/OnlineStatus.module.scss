@@ -1,0 +1,51 @@
+@import '../../../vars';
+
+.status {
+  font-size: 16px;
+
+  &__indicator {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: -16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 20px;
+    }
+  }
+
+  &__online {
+    position: relative;
+
+    &::before {
+      background-color: var(--color11);
+    }
+  }
+
+  &__offline {
+    position: relative;
+
+    &::before {
+      background-color: var(--color9);
+    }
+  }
+
+  &__away {
+    position: relative;
+
+    &::before {
+      background-color: var(--color14);
+    }
+  }
+
+  &__dontBother {
+    position: relative;
+
+    &::before {
+      background-color: var(--color12);
+    }
+  }
+}

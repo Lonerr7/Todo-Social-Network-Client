@@ -1,0 +1,24 @@
+@import '../../../vars';
+
+.security {
+  @extend %settings-inner;
+  padding-bottom: 0;
+
+  &__title {
+    @extend %title;
+  }
+
+  &__inner {
+    @extend %inner-page--inner;
+  }
+
+  &__subtitle {
+    @extend %subtitle;
+  }
+}
+
+@media (max-width: 700px) {
+  .security {
+    @include settings-inner-small;
+  }
+}

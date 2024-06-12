@@ -1,0 +1,21 @@
+@import '../../../../../vars';
+
+.nameAndBio {
+  @extend %profile-info-box;
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__name {
+    margin-right: 20px;
+  }
+
+  &__online {
+    font-size: 18px;
+    color: var(--color10);
+  }
+}
