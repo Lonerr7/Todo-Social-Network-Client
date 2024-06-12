@@ -11,9 +11,10 @@ import { TodoParams } from '../types/reduxTypes/todoSliceTypes';
 import { CommentData } from '../types/reduxTypes/currentCommentSliceTypes';
 import { UserRoles } from '../types/reduxTypes/authSliceTypes';
 import { ForgotPasswordInitialValues, LoginFormInitialValues, RegisterFormInitialValues, ResetPasswordInitialValues, UpdateUserPasswordInitialValues } from '../types/formikTypes';
+import { serverUrl } from '../configs/connectionConfig';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api/v1/',
+  baseURL: serverUrl,
 });
 
 axiosInstance.interceptors.request.use((config: any) => {

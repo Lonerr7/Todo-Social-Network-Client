@@ -14,13 +14,14 @@ import ChatSidebar from '../ChatSidebar/ChatSidebar';
 import Messages from '../Messages/Messages';
 import SendMessageFormContainer from '../SendMessageForm/SendMessageFormContainer';
 import s from './Chat.module.scss';
+import { socketIOUrl } from '../../../configs/connectionConfig';
 
 const Chat: React.FC = () => {
   const me = useAppSelector((state) => state.auth.user)!;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const socket = io('http://localhost:5000/', { transports: ['websocket'] });
+    const socket = io(socketIOUrl, { transports: ['websocket'] });
     dispatch(setSocketChannel(socket));
 
     // Join Chat
