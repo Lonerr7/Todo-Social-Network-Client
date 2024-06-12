@@ -1,4 +1,3 @@
-import defaultAvatar from '../../../../../assets/img/default.jpg';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import {

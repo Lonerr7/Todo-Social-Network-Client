@@ -6,6 +6,7 @@ import {
 } from '../../../../hooks/reduxToolkitHooks';
 import { closeAreYouSurePopup } from '../../../../redux/popupSlice';
 import Preloader from '../../Preloader/Preloader';
+import { useEffect } from 'react';
 
 interface Props {
   title: string;
@@ -34,10 +35,36 @@ const AreYouSurePopup: React.FC<Props> = ({ title, thunk, isFetching }) => {
     dispatch(closeAreYouSurePopup());
   };
 
+  const handleEscKey = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      dispatch(closeAreYouSurePopup());
+    }
+  };
+
+  useEffect(() => {
+    document.body.style.overflowY = 'hidden';
+
+    return () => {
+      document.body.style.overflowY = 'scroll';
+    };
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('keyup', handleEscKey);
+
+    return () => {
+      document.removeEventListener('keyup', handleEscKey);
+    };
+
+    // eslint-disable-next-line
+  }, [])
+
   return (
-    <div className={s.popup}>
+    <div className={s.popup} onMouseDown={noClickHandler}>
       <div className={s.popup__body}>
-        <div className={s.popup__content}>
+        <div className={s.popup__content} onMouseDown={(e) => {
+        e.stopPropagation();
+      }}>
           <button className={s.popup__close} onClick={noClickHandler}>
             <ImCross className={s.popup__closeIcon} size={18} />
           </button>
