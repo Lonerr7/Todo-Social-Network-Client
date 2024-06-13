@@ -33,7 +33,7 @@ const PageContainer: React.FC<PageContainerProps> = ({
   }, []);
 
   if (user) {
-    return <Navigate to="/" />;
+    return <Navigate to="/Todo-Social-Network-Client/" />;
   }
 
   return (

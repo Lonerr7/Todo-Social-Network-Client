@@ -84,7 +84,7 @@ const LoginForm: React.FC = () => {
           labelClass={s.form__label}
         />
 
-        <Link className={s.form__link} to="/forgotPassword">
+        <Link className={s.form__link} to="/Todo-Social-Network-Client/forgotPassword">
           Forgot Password?
         </Link>
 

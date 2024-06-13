@@ -6,7 +6,7 @@ const withBanRedirect = (Component: any) => {
     const isMeBanned = useAppSelector((state) => state.auth.user?.isBanned);
 
     if (isMeBanned) {
-      return <Navigate to="/banned" />;
+      return <Navigate to="/Todo-Social-Network-Client/banned" />;
     }
 
     return <Component {...props} />;
