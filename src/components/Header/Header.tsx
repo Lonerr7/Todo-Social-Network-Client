@@ -26,7 +26,7 @@ const Header: React.FC<Props> = ({ customClass }) => {
             <ThemeSwitcher />
           </div>
           {!user ? (
-            <Link to="/register" className={s.header__register}>
+            <Link to="/Todo-Social-Network-Client/register" className={s.header__register}>
               Sign up
             </Link>
           ) : (

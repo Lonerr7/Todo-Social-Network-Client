@@ -30,14 +30,14 @@ const Message: React.FC<Props> = ({
   return (
     <li className={s.message}>
       <div className={s.message__inner}>
-        <Link to={isMe ? '/' : `/users/${userId}`}>
+        <Link to={isMe ? '/Todo-Social-Network-Client/' : `/Todo-Social-Network-Client/users/${userId}`}>
           <Avatar customImgClass={s.message__avatar} avatar={photo} />
         </Link>
         <div className={s.message__box}>
           <div className={s.message__row}>
             <Link
               className={s.message__usernameLink}
-              to={isMe ? '/' : `/users/${userId}`}
+              to={isMe ? '/Todo-Social-Network-Client/' : `/Todo-Social-Network-Client/users/${userId}`}
             >
               <span className={s.message__username}>
                 {username} {isMe && '(you)'}

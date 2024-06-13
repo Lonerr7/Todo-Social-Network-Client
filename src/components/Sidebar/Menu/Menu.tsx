@@ -27,7 +27,7 @@ const Menu: React.FC = () => {
             text="My Page"
             neededNum={1}
             icon={<MdOutlineContactPage className={s.menu__icon} />}
-            urlPath="/"
+            urlPath="/Todo-Social-Network-Client/"
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
             customActiveLineClass={s.menu__menuItemActiveLine}
@@ -39,7 +39,7 @@ const Menu: React.FC = () => {
             text="Users"
             neededNum={2}
             icon={<FaUserFriends className={s.menu__icon} />}
-            urlPath="/users?page=1"
+            urlPath="/Todo-Social-Network-Client/users?page=1"
             itemsCount={usersCount}
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
@@ -52,7 +52,7 @@ const Menu: React.FC = () => {
             text="Chat"
             neededNum={3}
             icon={<BsFillChatLeftDotsFill className={s.menu__icon} />}
-            urlPath="/chat"
+            urlPath="/Todo-Social-Network-Client/chat"
             itemsCount={chatMessagesCount}
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
@@ -65,7 +65,7 @@ const Menu: React.FC = () => {
             text="Todos"
             neededNum={4}
             icon={<RiTodoLine className={s.menu__icon} />}
-            urlPath="/todos"
+            urlPath="/Todo-Social-Network-Client/todos"
             itemsCount={uncompletedTodosCount}
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
@@ -78,7 +78,7 @@ const Menu: React.FC = () => {
             text="Settings"
             neededNum={5}
             icon={<IoSettingsSharp className={s.menu__icon} />}
-            urlPath="/settings"
+            urlPath="/Todo-Social-Network-Client/settings"
             customClass={s.menu__menuItem}
             customTextClass={s.menu__menuItemText}
             customActiveLineClass={s.menu__menuItemActiveLine}

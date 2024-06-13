@@ -47,7 +47,7 @@ const UserTodoComment: React.FC<Props> = ({
       {!isUserMissing ? (
         <Link
           className={s.comment__link}
-          to={isMe ? '/' : `/users/${user._id}`}
+          to={isMe ? '/Todo-Social-Network-Client/' : `/Todo-Social-Network-Client/users/${user._id}`}
         >
           <div className={s.comment__avatarBox}>
             <Avatar avatar={user.photo} customImgClass={s.comment__photo} />
@@ -65,7 +65,7 @@ const UserTodoComment: React.FC<Props> = ({
       <div className={s.comment__box}>
         {isMe ? (
           <div className={s.comment__container}>
-            <Link className={s.comment__link} to="/">
+            <Link className={s.comment__link} to="/Todo-Social-Network-Client/">
               <span className={s.comment__nickname}>{user.nickname} (you)</span>
             </Link>
 
@@ -84,7 +84,7 @@ const UserTodoComment: React.FC<Props> = ({
         ) : (
           <div className={s.comment__linkContainer}>
             {!isUserMissing ? (
-              <Link className={s.comment__link} to={`/users/${user._id}`}>
+              <Link className={s.comment__link} to={`/Todo-Social-Network-Client/users/${user._id}`}>
                 <span className={s.comment__nickname}>{user.nickname}</span>
               </Link>
             ) : (

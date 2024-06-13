@@ -12,7 +12,7 @@ const QuckLogin: React.FC<Props> = ({ customClass, customLinkClass }) => {
       <ul className={s.quickLogin__list}>
         <li className={s.quickLogin__listItem}>
           <NavLink
-            to="/login"
+            to="/Todo-Social-Network-Client/login"
             className={`${s.quickLogin__link} ${customLinkClass}`}
           >
             Log In
@@ -20,7 +20,7 @@ const QuckLogin: React.FC<Props> = ({ customClass, customLinkClass }) => {
         </li>
         <li className={s.quickLogin__listItem}>
           <NavLink
-            to="/register"
+            to="/Todo-Social-Network-Client/register"
             className={`${s.quickLogin__link} ${customLinkClass}`}
           >
             Sign Up

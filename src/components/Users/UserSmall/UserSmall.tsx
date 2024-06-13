@@ -29,7 +29,7 @@ const UserSmall: React.FC<Props> = ({
     <li className={s.user}>
       <NavLink
         className={`${s.user__avatarLink} ${s.user__link}`}
-        to={`/users/${id}`}
+        to={`/Todo-Social-Network-Client/users/${id}`}
       >
         <Avatar customImgClass={s.user__avatar} avatar={img} />
       </NavLink>
@@ -40,14 +40,14 @@ const UserSmall: React.FC<Props> = ({
               ? `${s.user__FLName} ${s.user__link}`
               : `${s.user__FLName} ${s.user__link} ${s.banned}`
           }
-          to={`/users/${id}`}
+          to={`/Todo-Social-Network-Client/users/${id}`}
         >
           {firstName} {lastName}
           <Role role={role} customClass={s.user__role} />
         </NavLink>
         <NavLink
           className={`${s.user__nickname} ${s.user__link}`}
-          to={`/users/${id}`}
+          to={`/Todo-Social-Network-Client/users/${id}`}
         >
           [{nickname}]
         </NavLink>

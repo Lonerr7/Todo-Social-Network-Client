@@ -17,7 +17,7 @@ const SettingsNav: React.FC = () => {
             activeNum={activeNum}
             neededNum={1}
             text="General"
-            urlPath="/settings"
+            urlPath="/Todo-Social-Network-Client/settings"
             activeBgColor={isDarkMode ? '#0b0d10' : 'rgb(195, 195, 195)'}
             customClass={s.item_border_first}
           />
@@ -27,7 +27,7 @@ const SettingsNav: React.FC = () => {
             activeNum={activeNum}
             neededNum={2}
             text="Security"
-            urlPath="/settings/security"
+            urlPath="/Todo-Social-Network-Client/settings/security"
             activeBgColor={isDarkMode ? '#0b0d10' : 'rgb(195, 195, 195)'}
           />
         </li>

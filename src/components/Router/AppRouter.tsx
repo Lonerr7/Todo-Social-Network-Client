@@ -21,15 +21,15 @@ const AppRouter: React.FC = () => {
   return (
     <Routes>
       <Route
-        path="/register"
+        path="/Todo-Social-Network-Client/register"
         element={<PageContainer form={<RegisterForm />} title="Sign Up" />}
       />
       <Route
-        path="/login"
+        path="/Todo-Social-Network-Client/login"
         element={<PageContainer form={<LoginForm />} title="Log in" />}
       />
       <Route
-        path="/forgotPassword"
+        path="/Todo-Social-Network-Client/forgotPassword"
         element={
           <PageContainer
             form={<ForgotPasswordForm />}
@@ -39,7 +39,7 @@ const AppRouter: React.FC = () => {
         }
       />
       <Route
-        path="/resetPassword"
+        path="/Todo-Social-Network-Client/resetPassword"
         element={
           <PageContainer
             form={<ResetPasswordForm />}
@@ -49,7 +49,7 @@ const AppRouter: React.FC = () => {
         }
       />
 
-      <Route path="/" element={<Layout />}>
+      <Route path="/Todo-Social-Network-Client/" element={<Layout />}>
         <Route index element={<MyPageContainer />} />
         <Route path="users" element={<UsersPageContainer />} />
         <Route path="users/:userId" element={<UserPageContainer />} />
@@ -66,7 +66,7 @@ const AppRouter: React.FC = () => {
         </Route>
       </Route>
 
-      <Route path="/banned" element={<BannedPage />} />
+      <Route path="/Todo-Social-Network-Client/banned" element={<BannedPage />} />
 
       <Route path="*" element={<div>Not Found</div>} />
     </Routes>
