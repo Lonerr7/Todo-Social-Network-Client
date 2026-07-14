@@ -35,7 +35,7 @@ const EmojiPick: React.FC<Props> = ({
             height={400}
             onEmojiClick={emojiClickHandler}
             theme={
-              document.body.getAttribute('data-theme') === Themes.LIGHT
+              document.body.getAttribute('data-theme') === 'light'
                 ? Theme.LIGHT
                 : Theme.DARK
             }

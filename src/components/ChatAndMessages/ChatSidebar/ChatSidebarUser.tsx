@@ -21,7 +21,7 @@ const ChatSidebarUser: React.FC<Props> = ({ nickname, id }) => {
         className={
           isMe ? `${s.sidebar__userLink} ${s.sidebar__me}` : s.sidebar__userLink
         }
-        to={isMe ? '/Todo-Social-Network-Client/' : `/Todo-Social-Network-Client/users/${id}`}
+        to={isMe ? '/' : `/users/${id}`}
       >
         {nickname} {isMe && '(you)'}
       </Link>

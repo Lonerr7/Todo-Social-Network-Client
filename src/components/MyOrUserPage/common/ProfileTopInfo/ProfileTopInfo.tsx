@@ -30,17 +30,17 @@ const ProfileTopInfo: React.FC<Props> = ({ todos }) => {
   return (
     <div className={s.info}>
       <div className={s.info__box}>
-        <NavLink className={s.info__link} to="/Todo-Social-Network-Client/users">
+        <NavLink className={s.info__link} to="/users">
           <span className={s.info__number}>0</span>
           <span className={s.info__text}>Friends</span>
         </NavLink>
-        <NavLink className={s.info__link} to="/Todo-Social-Network-Client/todos" onClick={onAllTodosClick}>
+        <NavLink className={s.info__link} to="/todos" onClick={onAllTodosClick}>
           <span className={s.info__number}>{allTodosCount}</span>
           <span className={s.info__text}>All Todos</span>
         </NavLink>
         <NavLink
           className={s.info__link}
-          to="/Todo-Social-Network-Client/todos"
+          to="/todos"
           onClick={onCompletedTodosClick}
         >
           <span className={s.info__number}>{completedTodosCount}</span>

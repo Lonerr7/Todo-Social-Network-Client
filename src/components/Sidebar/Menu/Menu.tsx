@@ -7,6 +7,9 @@ import { BsFillChatLeftDotsFill } from 'react-icons/bs';
 import MenuItem from '../../common/MenuItem/MenuItem';
 import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 import { selectUsersWithoutMe } from '../../../redux/selectors/usersSelectors';
+import {MenuItemsConfig, ItemsCountMapperType} from './config/MenuConfig';
+
+
 
 const Menu: React.FC = () => {
   const activeNum = useAppSelector((state) => state.app.activeMenuNum);
@@ -18,72 +21,40 @@ const Menu: React.FC = () => {
   ).length;
   const usersCount = useAppSelector(selectUsersWithoutMe)?.length;
 
+  const getMappedItemsCount = (mappedKeyToSelector: ItemsCountMapperType | undefined) => {
+    switch (mappedKeyToSelector) {
+      case "uncompletedTodos":
+        return uncompletedTodosCount;
+      case 'chatMessages':
+        return chatMessagesCount;
+      case 'users':
+        return usersCount;
+      default:
+        return 0;
+    }
+  };
+
   return (
     <nav className={s.menu}>
       <ul className={s.menu__list}>
-        <li className={s.menu__listItem}>
-          <MenuItem
-            activeNum={activeNum}
-            text="My Page"
-            neededNum={1}
-            icon={<MdOutlineContactPage className={s.menu__icon} />}
-            urlPath="/Todo-Social-Network-Client/"
-            customClass={s.menu__menuItem}
-            customTextClass={s.menu__menuItemText}
-            customActiveLineClass={s.menu__menuItemActiveLine}
-          />
-        </li>
-        <li className={s.menu__listItem}>
-          <MenuItem
-            activeNum={activeNum}
-            text="Users"
-            neededNum={2}
-            icon={<FaUserFriends className={s.menu__icon} />}
-            urlPath="/Todo-Social-Network-Client/users?page=1"
-            itemsCount={usersCount}
-            customClass={s.menu__menuItem}
-            customTextClass={s.menu__menuItemText}
-            customActiveLineClass={s.menu__menuItemActiveLine}
-          />
-        </li>
-        <li className={s.menu__listItem}>
-          <MenuItem
-            activeNum={activeNum}
-            text="Chat"
-            neededNum={3}
-            icon={<BsFillChatLeftDotsFill className={s.menu__icon} />}
-            urlPath="/Todo-Social-Network-Client/chat"
-            itemsCount={chatMessagesCount}
-            customClass={s.menu__menuItem}
-            customTextClass={s.menu__menuItemText}
-            customActiveLineClass={s.menu__menuItemActiveLine}
-          />
-        </li>
-        <li className={s.menu__listItem}>
-          <MenuItem
-            activeNum={activeNum}
-            text="Todos"
-            neededNum={4}
-            icon={<RiTodoLine className={s.menu__icon} />}
-            urlPath="/Todo-Social-Network-Client/todos"
-            itemsCount={uncompletedTodosCount}
-            customClass={s.menu__menuItem}
-            customTextClass={s.menu__menuItemText}
-            customActiveLineClass={s.menu__menuItemActiveLine}
-          />
-        </li>
-        <li className={s.menu__listItem}>
-          <MenuItem
-            activeNum={activeNum}
-            text="Settings"
-            neededNum={5}
-            icon={<IoSettingsSharp className={s.menu__icon} />}
-            urlPath="/Todo-Social-Network-Client/settings"
-            customClass={s.menu__menuItem}
-            customTextClass={s.menu__menuItemText}
-            customActiveLineClass={s.menu__menuItemActiveLine}
-          />
-        </li>
+        {MenuItemsConfig.map((itemObj, i) => {
+          const IconComponent = itemObj.Icon;
+
+          return (
+            <MenuItem
+              key={itemObj.id}
+              customClass={s.menu__menuItem}
+              customTextClass={s.menu__menuItemText}
+              customActiveLineClass={s.menu__menuItemActiveLine}
+              activeNum={activeNum}
+              neededNum={i + 1}
+              text={itemObj.text}
+              urlPath={itemObj.urlPath}
+              icon={<IconComponent className={s.menu__icon} />}
+              itemsCount={getMappedItemsCount(itemObj.itemsCountMapper)}
+            />
+          )
+        })}
       </ul>
     </nav>
   );

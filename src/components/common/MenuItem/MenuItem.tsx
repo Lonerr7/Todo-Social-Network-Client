@@ -1,3 +1,4 @@
+import {ReactNode, FC} from 'react';
 import { Link } from 'react-router-dom';
 import ItemsCounter from '../ItemsCounter/ItemsCounter';
 import s from './MenuItem.module.scss';
@@ -5,7 +6,7 @@ import s from './MenuItem.module.scss';
 interface MenuItemProps {
   activeNum: number;
   neededNum: number;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   text: string;
   urlPath: string;
   itemsCount?: number;
@@ -15,7 +16,7 @@ interface MenuItemProps {
   customActiveLineClass?: string;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({
+const MenuItem: FC<MenuItemProps> = ({
   activeNum,
   icon,
   neededNum,

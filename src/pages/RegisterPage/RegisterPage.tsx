@@ -10,7 +10,7 @@ import s from './RegisterPage.module.scss';
 const RegisterPage: React.FC = () => {
   const { isFetching, user, errorMsg } = useAppSelector((state) => state.auth);
 
-  if (user) return <Navigate to="/Todo-Social-Network-Client/" />;
+  if (user) return <Navigate to="/" />;
 
   return (
     <div className={s.register}>

@@ -10,7 +10,7 @@ import s from './LoginPage.module.scss';
 const LoginPage: React.FC = () => {
   const { errorMsg, user } = useAppSelector((state) => state.auth);
 
-  if (user) return <Navigate to="/Todo-Social-Network-Client/" />;
+  if (user) return <Navigate to="/" />;
 
   return (
     <div className={s.loginPage}>

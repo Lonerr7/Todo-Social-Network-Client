@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lonerr7.github.io/Todo-Social-Network-Client",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -60,7 +59,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.1",
-    "node-sass": "9.0.0",
-    "resolve-url-loader": "^5.0.0"
+    "sass": "^1.62.0"
   }
 }

@@ -4,7 +4,6 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../../hooks/reduxToolkitHooks';
-import { Themes } from '../../../types/reduxTypes/themeSliceTypes';
 import { changeTheme } from '../../../redux/themeSlice';
 
 const ThemeSwitcher: React.FC = () => {
@@ -13,13 +12,13 @@ const ThemeSwitcher: React.FC = () => {
 
   const themeChangeHandler = () => {
     dispatch(
-      changeTheme(currentTheme === Themes.LIGHT ? Themes.DARK : Themes.LIGHT)
+      changeTheme(currentTheme === 'dark' ? 'light' : 'dark')
     );
   };
 
   return (
     <button className={s.themeSwitcher} onClick={themeChangeHandler}>
-      {currentTheme === Themes.LIGHT ? (
+      {currentTheme === 'light' ? (
         <BiSun className={s.themeSwitcher__icon} size={20} />
       ) : (
         <BiMoon className={s.themeSwitcher__icon} size={20} />

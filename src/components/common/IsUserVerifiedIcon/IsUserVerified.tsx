@@ -9,7 +9,7 @@ interface Props {
 const IsUserVerifiedIcon: React.FC<Props> = ({ customCalss }) => {
   return (
     <>
-      {document.body.getAttribute('data-theme') === Themes.DARK ? (
+      {document.body.getAttribute('data-theme') === 'dark' ? (
         <img
           className={customCalss}
           src={tickDark}

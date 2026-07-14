@@ -22,7 +22,7 @@ const HeaderControls: React.FC<HeaderControlsProps> = ({ user }) => {
         Hello,{' '}
         <NavLink
           className={s.header__userLink}
-          to="/Todo-Social-Network-Client/"
+          to="/"
           onClick={() => setActiveNum(1)}
         >
           {user.nickname}

@@ -32,8 +32,6 @@ const Avatar: React.FC<Props> = ({
     />
   ));
 
-  console.log(imgElements);
-
   return (
     <div className={`${s.avatar} ${wrapperClass}`}>
       {imgElements}

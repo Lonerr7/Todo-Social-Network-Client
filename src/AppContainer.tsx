@@ -9,6 +9,7 @@ const AppContainer: React.FC = () => {
   );
   const isMeBanned = useAppSelector((state) => state.auth.user?.isBanned)!;
   const currentTheme = useAppSelector((state) => state.theme.theme);
+  console.log(currentTheme);
   const dispatch = useAppDispatch();
 
   // Checking if we are logged in or not to then automatically show the content if we are

@@ -1,7 +1,4 @@
-export enum Themes {
-  LIGHT = 'light',
-  DARK = 'dark',
-}
+export type Themes = 'light' | 'dark';
 
 export interface ThemeState {
   theme: Themes;

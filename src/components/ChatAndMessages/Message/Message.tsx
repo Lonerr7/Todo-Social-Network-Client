@@ -33,8 +33,8 @@ const Message: React.FC<Props> = ({
         <Link
           to={
             isMe
-              ? '/Todo-Social-Network-Client/'
-              : `/Todo-Social-Network-Client/users/${userId}`
+              ? '/'
+              : `/users/${userId}`
           }
         >
           <Avatar customImgClass={s.message__avatar} avatar={photo} />
@@ -45,8 +45,8 @@ const Message: React.FC<Props> = ({
               className={s.message__usernameLink}
               to={
                 isMe
-                  ? '/Todo-Social-Network-Client/'
-                  : `/Todo-Social-Network-Client/users/${userId}`
+                  ? '/'
+                  : `/users/${userId}`
               }
             >
               <span className={s.message__username}>

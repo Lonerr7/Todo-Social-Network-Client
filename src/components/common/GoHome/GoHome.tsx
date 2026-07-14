@@ -8,7 +8,7 @@ interface Props {
 
 const GoHome: React.FC<Props> = ({ customClass }) => {
   const navigate = useNavigate();
-  const goHome = () => navigate('/Todo-Social-Network-Client/');
+  const goHome = () => navigate('/');
 
   return (
     <button className={`${s.go} ${customClass}`} onClick={goHome}>

@@ -9,7 +9,6 @@ import { updateMyGeneralInfo } from '../../../../redux/myselfSlice';
 import { RelationshipEnum } from '../../../../types/reduxTypes/authSliceTypes';
 import { GeneralInfoFieldsToSend } from '../../../../types/reduxTypes/myselfSliceTypes';
 import UpdateMyGeneralInfoForm from './UpdateMyGeneralInfoForm';
-import { Themes } from '../../../../types/reduxTypes/themeSliceTypes';
 
 const validationSchema = yup.object({
   currentCity: yup.string().max(20, 'City name is too long'),
@@ -29,7 +28,7 @@ const UpdateMyGeneralInfoFormContainer = () => {
   );
 
   const isDarkMode =
-    useAppSelector((state) => state.theme.theme) === Themes.DARK ? true : false;
+    useAppSelector((state) => state.theme.theme) === 'dark';
 
   const selectOptions = [
     { label: 'Single', value: RelationshipEnum.SINGLE },

@@ -37,7 +37,7 @@ const FormSelectControl: React.FC<Props> = ({
             return {
               ...defaultStyles,
               color:
-                document.body.getAttribute('data-theme') === Themes.DARK
+                document.body.getAttribute('data-theme') === 'dark'
                   ? 'rgb(195, 195, 195)'
                   : 'rgb(73, 73, 73)',
             };
