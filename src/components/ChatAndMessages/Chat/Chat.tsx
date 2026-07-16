@@ -1,31 +1,25 @@
-import { useEffect } from 'react';
-import { io } from 'socket.io-client';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../hooks/reduxToolkitHooks';
-import {
-  addNewChatMessage,
-  setChatMessages,
-  setSocketChannel,
-} from '../../../redux/chatSlice';
-import { ChatMessage } from '../../../types/chatTypes';
+import {useEffect, FC} from 'react';
+import {io} from 'socket.io-client';
+import {useAppDispatch, useAppSelector} from '../../../hooks/reduxToolkitHooks';
+import {addNewChatMessage, setChatMessages, setSocketChannel} from '../../../redux/chatSlice';
+import {ChatMessage} from '../../../types/chatTypes';
 import ChatSidebar from '../ChatSidebar/ChatSidebar';
 import Messages from '../Messages/Messages';
 import SendMessageFormContainer from '../SendMessageForm/SendMessageFormContainer';
 import s from './Chat.module.scss';
-import { socketIOUrl } from '../../../configs/connectionConfig';
+import {socketIOUrl} from '../../../configs/connectionConfig';
 
-const Chat: React.FC = () => {
+const Chat: FC = () => {
   const me = useAppSelector((state) => state.auth.user)!;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const socket = io(socketIOUrl, { transports: ['websocket'] });
+    const socket = io(socketIOUrl, {transports: ['websocket']});
+    console.log(socket);
     dispatch(setSocketChannel(socket));
 
     // Join Chat
-    socket.emit('joinChat', { userId: me.id });
+    socket.emit('joinChat', {userId: me.id});
 
     const setChatMessagesHandler = (messages: ChatMessage[]) => {
       dispatch(setChatMessages(messages));

@@ -10,16 +10,17 @@ export const selectMyselfFirstInChatUsers = createSelector(
   [selectMe, selectAllChatUsers, selectChatUserSearchText],
   (myself, allChatUsers, chatUserSearchText) => {
     const meChatUser = allChatUsers.find((u) => u.id === myself?.id);
-    const filteredChatUsers = allChatUsers.filter(
-      (u) => u.id !== meChatUser?.id
-    );
 
     // If this is not present we get undefined and then an error with react keys
     if (!meChatUser) {
       return [];
     }
 
-    let result = [meChatUser, ...filteredChatUsers];
+    const filteredChatUsers = allChatUsers.filter(
+      (u) => u.id !== meChatUser?.id
+    );
+
+    const result = [meChatUser, ...filteredChatUsers];
 
     if (chatUserSearchText) {
       return result.filter((u) =>

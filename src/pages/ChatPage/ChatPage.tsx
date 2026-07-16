@@ -1,9 +1,10 @@
+import {FC} from 'react';
+import s from './ChatPage.module.scss';
 import Chat from '../../components/ChatAndMessages/Chat/Chat';
 import withActiveMenuNum from '../../hoc/withActiveMenuNum';
 import withBanRedirect from '../../hoc/withBanRedirect';
-import s from './ChatPage.module.scss';
 
-const ChatPage: React.FC = () => {
+const ChatPage: FC = () => {
   return (
     <div className={s.chat}>
       <Chat />
