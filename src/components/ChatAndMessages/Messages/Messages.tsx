@@ -7,6 +7,8 @@ const Messages: React.FC = () => {
   const messages = useAppSelector((state) => state.chat.messages);
   const messagesRef = useRef<HTMLDivElement>(null);
 
+  console.log(messages);
+
   // Auto scroll bottom when a new message appears
   useEffect(() => {
     if (messagesRef.current) {

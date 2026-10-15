@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <Router>
+    <Router basename="Todo-Social-Network-Client">
       <PersistGate persistor={persistor}>
         <AppContainer />
       </PersistGate>

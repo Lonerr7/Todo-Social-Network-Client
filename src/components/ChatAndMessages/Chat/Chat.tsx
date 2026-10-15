@@ -14,8 +14,10 @@ const Chat: FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const socket = io(socketIOUrl, {transports: ['websocket']});
-    console.log(socket);
+    const socket = io(socketIOUrl, {
+      transports: ['websocket'],
+      auth: {token: localStorage.getItem('token')},
+    });
     dispatch(setSocketChannel(socket));
 
     // Join Chat
