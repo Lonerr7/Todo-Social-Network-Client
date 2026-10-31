@@ -30,7 +30,7 @@ const Chat: FC = () => {
     // Getting chat messages from DB
     socket.on('getChatMessages', setChatMessagesHandler);
 
-    // Universal new message hanlder
+    // Universal new message handler
     const newMessageHandler = (message: ChatMessage) => {
       dispatch(addNewChatMessage(message));
     };

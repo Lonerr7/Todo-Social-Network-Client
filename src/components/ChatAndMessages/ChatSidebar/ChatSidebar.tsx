@@ -1,40 +1,43 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import s from './ChatSidebar.module.scss';
-import { FiUsers } from 'react-icons/fi';
+import {FiUsers} from 'react-icons/fi';
 import ChatSidebarUser from './ChatSidebarUser';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../hooks/reduxToolkitHooks';
-import { setChatUsers, setChatUserSearchText } from '../../../redux/chatSlice';
-import { ChatUser } from '../../../types/chatTypes';
-import { selectMyselfFirstInChatUsers } from '../../../redux/selectors/chatSelectors';
+import {useAppDispatch, useAppSelector} from '../../../hooks/reduxToolkitHooks';
+import {setChatUsers, setChatUserSearchText} from '../../../redux/chatSlice';
+import {ChatUser} from '../../../types/chatTypes';
+import {selectMyselfFirstInChatUsers} from '../../../redux/selectors/chatSelectors';
 import Search from '../../common/Search/Search';
 
 const ChatSidebar: React.FC = () => {
   const socketChannel = useAppSelector((state) => state.chat.socketChannel);
-  const chatUserSearchText = useAppSelector(
-    (state) => state.chat.chatUserSearchText
-  );
+  const chatUserSearchText = useAppSelector((state) => state.chat.chatUserSearchText);
 
   // Making myself always appear first in a list of connected users
+  const myself = useAppSelector((state) => state.auth.user);
   const sortedChatUsers = useAppSelector(selectMyselfFirstInChatUsers);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    let intervalId: NodeJS.Timer;
+
     if (socketChannel) {
       // Get joined users
-      socketChannel.on('userJoined', (users: ChatUser[]) => {
+      socketChannel.on('onlineUsers', (users: ChatUser[]) => {
         dispatch(setChatUsers(users));
       });
 
       socketChannel.on('userDisconnected', (users: ChatUser[]) => {
         dispatch(setChatUsers(users));
       });
+
+      intervalId = setInterval(() => {
+        socketChannel.emit('getOnlineUsers', myself?.id);
+      }, 15000);
     }
 
     return () => {
       dispatch(setChatUsers([]));
+      clearInterval(intervalId);
     };
 
     // eslint-disable-next-line
@@ -44,8 +47,7 @@ const ChatSidebar: React.FC = () => {
     <div className={s.sidebar}>
       <h4 className={s.sidebar__title}>
         <FiUsers className={s.sidebar__titleicon} size={22} />
-        Active users:{' '}
-        <span className={s.sidebar__counter}>{sortedChatUsers.length}</span>
+        Active users: <span className={s.sidebar__counter}>{sortedChatUsers.length}</span>
       </h4>
       <Search
         actionCreator={setChatUserSearchText}
@@ -62,7 +64,12 @@ const ChatSidebar: React.FC = () => {
       />
       <ul className={s.sidebar__userslist}>
         {sortedChatUsers.map((u) => (
-          <ChatSidebarUser key={u?.id} nickname={u?.nickname} id={u?.id} />
+          <ChatSidebarUser
+            key={u?.id}
+            nickname={u?.nickname}
+            id={u?.id}
+            isMe={myself?.id === u?.id}
+          />
         ))}
       </ul>
     </div>

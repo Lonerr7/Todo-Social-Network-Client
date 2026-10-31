@@ -1,8 +1,6 @@
 export interface ChatMessage {
   text: string;
-  nickname: string;
-  avatar: string;
-  userId: string;
+  user: Omit<ChatUser, 'socketId'>;
   _id: string;
 }
 

@@ -1,16 +1,13 @@
 import s from './ChatSidebar.module.scss';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../hooks/reduxToolkitHooks';
 
 interface Props {
-  nickname: string | undefined;
   id: string | undefined;
+  nickname: string | undefined;
+  isMe: boolean;
 }
 
-const ChatSidebarUser: React.FC<Props> = ({ nickname, id }) => {
-  const myself = useAppSelector((state) => state.auth.user);
-  const isMe = myself?.id === id;
-
+const ChatSidebarUser: React.FC<Props> = ({ nickname, id, isMe }) => {
   if (!nickname || !id) {
     return null;
   }
