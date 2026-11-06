@@ -5,7 +5,7 @@ import ChatSidebarUser from './ChatSidebarUser';
 import {useAppDispatch, useAppSelector} from '../../../hooks/reduxToolkitHooks';
 import {setChatUsers, setChatUserSearchText} from '../../../redux/chatSlice';
 import {ChatUser} from '../../../types/chatTypes';
-import {selectMyselfFirstInChatUsers} from '../../../redux/selectors/chatSelectors';
+import {selectAllChatUsers, selectMyselfFirstInChatUsers} from '../../../redux/selectors/chatSelectors';
 import Search from '../../common/Search/Search';
 
 const ChatSidebar: React.FC = () => {
@@ -14,6 +14,7 @@ const ChatSidebar: React.FC = () => {
 
   // Making myself always appear first in a list of connected users
   const myself = useAppSelector((state) => state.auth.user);
+  const allChatUsers = useAppSelector(selectAllChatUsers);
   const sortedChatUsers = useAppSelector(selectMyselfFirstInChatUsers);
   const dispatch = useAppDispatch();
 
@@ -47,7 +48,7 @@ const ChatSidebar: React.FC = () => {
     <div className={s.sidebar}>
       <h4 className={s.sidebar__title}>
         <FiUsers className={s.sidebar__titleicon} size={22} />
-        Active users: <span className={s.sidebar__counter}>{sortedChatUsers.length}</span>
+        Active users: <span className={s.sidebar__counter}>{allChatUsers.length}</span>
       </h4>
       <Search
         actionCreator={setChatUserSearchText}

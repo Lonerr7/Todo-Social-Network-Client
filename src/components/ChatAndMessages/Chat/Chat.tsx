@@ -8,6 +8,7 @@ import Messages from '../Messages/Messages';
 import SendMessageFormContainer from '../SendMessageForm/SendMessageFormContainer';
 import s from './Chat.module.scss';
 import {socketIOUrl} from '../../../configs/connectionConfig';
+import {toast} from 'sonner';
 
 const Chat: FC = () => {
   const me = useAppSelector((state) => state.auth.user)!;
@@ -38,8 +39,10 @@ const Chat: FC = () => {
     // Process bot and users messages
     socket.on('message', newMessageHandler);
 
-    // Process user's message deletion
-    socket.on('messageDeleted', setChatMessagesHandler);
+    // handle errors
+    socket.on('appError', (error: any) => {
+      toast.error(error.message);
+    });
 
     return () => {
       socket.disconnect();

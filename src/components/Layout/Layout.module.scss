@@ -10,6 +10,13 @@
   animation: app-loading 300ms;
 }
 
+.toast {
+  &__closeButton {
+    right: -10px !important;
+    left: auto !important;
+  }
+}
+
 @keyframes app-loading {
   0% {
     opacity: 0;
