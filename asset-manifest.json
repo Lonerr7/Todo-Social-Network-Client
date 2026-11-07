@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Todo-Social-Network-Client/static/css/main.c91c2c32.css",
-    "main.js": "/Todo-Social-Network-Client/static/js/main.3b282013.js",
+    "main.js": "/Todo-Social-Network-Client/static/js/main.0e40b5f0.js",
     "static/media/preloader.gif": "/Todo-Social-Network-Client/static/media/preloader.757857ce13a4e4e598e4.gif",
     "static/media/default.jpg": "/Todo-Social-Network-Client/static/media/default.53872d02818c035bd245.jpg",
     "index.html": "/Todo-Social-Network-Client/index.html",
     "static/media/verifiedIcon(dark).svg": "/Todo-Social-Network-Client/static/media/verifiedIcon(dark).61a8e747d9c4c3ce70f0c5785a8b8785.svg",
     "static/media/verifiedIcon.svg": "/Todo-Social-Network-Client/static/media/verifiedIcon.353a5cf9a019a0fd0e09ac7a6b571ef8.svg",
     "main.c91c2c32.css.map": "/Todo-Social-Network-Client/static/css/main.c91c2c32.css.map",
-    "main.3b282013.js.map": "/Todo-Social-Network-Client/static/js/main.3b282013.js.map"
+    "main.0e40b5f0.js.map": "/Todo-Social-Network-Client/static/js/main.0e40b5f0.js.map"
   },
   "entrypoints": [
     "static/css/main.c91c2c32.css",
-    "static/js/main.3b282013.js"
+    "static/js/main.0e40b5f0.js"
   ]
 }
