@@ -1,4 +1,4 @@
-import {useEffect, FC} from 'react';
+import {useEffect, FC, useState} from 'react';
 import {io} from 'socket.io-client';
 import {useAppDispatch, useAppSelector} from '../../../hooks/reduxToolkitHooks';
 import {addNewChatMessage, setChatMessages, setSocketChannel} from '../../../redux/chatSlice';
@@ -12,7 +12,7 @@ import {toast} from 'sonner';
 import {ChatPreloader} from '../ChatPreloader/ChatPreloader';
 
 const Chat: FC = () => {
-  const socketChannel = useAppSelector((state) => state.chat.socketChannel);
+  const [isSocketConnected, setIsSocketConnected] = useState(false);
   const me = useAppSelector((state) => state.auth.user)!;
   const dispatch = useAppDispatch();
 
@@ -21,6 +21,7 @@ const Chat: FC = () => {
       transports: ['websocket'],
       auth: {token: localStorage.getItem('token')},
     });
+
     dispatch(setSocketChannel(socket));
 
     // Join Chat
@@ -46,6 +47,13 @@ const Chat: FC = () => {
       toast.error(error.message);
     });
 
+    const onConnect = () => {
+      setIsSocketConnected(true);
+    }
+
+    // show ui on successful connect
+    socket.on('connect', onConnect);
+
     return () => {
       socket.disconnect();
     };
@@ -55,7 +63,7 @@ const Chat: FC = () => {
 
   return (
     <div className={s.chat}>
-      {!socketChannel ? (
+      {!isSocketConnected ? (
         <ChatPreloader className={s.chat__preloader} />
       ) : (
         <>
