@@ -3,6 +3,7 @@ import { ChatMessage, ChatState, ChatUser } from '../types/chatTypes';
 
 const initialState: ChatState = {
   socketChannel: null,
+  isConnected: false,
   messages: [],
   chatUsers: [],
   chatUserSearchText: '',
@@ -14,6 +15,9 @@ const chatSlice = createSlice({
   reducers: {
     setSocketChannel: (state, action: PayloadAction<any>) => {
       state.socketChannel = action.payload;
+    },
+    setIsConnected: (state, action: PayloadAction<boolean>) => {
+      state.isConnected = action.payload;
     },
     setChatUsers: (state, action: PayloadAction<ChatUser[]>) => {
       state.chatUsers = action.payload;
@@ -37,4 +41,5 @@ export const {
   setChatUsers,
   setChatMessages,
   setChatUserSearchText,
+  setIsConnected,
 } = chatSlice.actions;

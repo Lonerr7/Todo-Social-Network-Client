@@ -13,6 +13,7 @@ export interface ChatUser {
 
 export interface ChatState {
   socketChannel: any; //!
+  isConnected: boolean;
   messages: ChatMessage[];
   chatUsers: ChatUser[];
   chatUserSearchText: string;
