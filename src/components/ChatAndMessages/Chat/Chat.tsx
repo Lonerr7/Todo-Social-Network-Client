@@ -9,8 +9,10 @@ import SendMessageFormContainer from '../SendMessageForm/SendMessageFormContaine
 import s from './Chat.module.scss';
 import {socketIOUrl} from '../../../configs/connectionConfig';
 import {toast} from 'sonner';
+import {ChatPreloader} from '../ChatPreloader/ChatPreloader';
 
 const Chat: FC = () => {
+  const socketChannel = useAppSelector((state) => state.chat.socketChannel);
   const me = useAppSelector((state) => state.auth.user)!;
   const dispatch = useAppDispatch();
 
@@ -53,11 +55,17 @@ const Chat: FC = () => {
 
   return (
     <div className={s.chat}>
-      <ChatSidebar />
-      <div className={s.chat__box}>
-        <Messages />
-        <SendMessageFormContainer />
-      </div>
+      {!socketChannel ? (
+        <ChatPreloader className={s.chat__preloader} />
+      ) : (
+        <>
+          <ChatSidebar />
+          <div className={s.chat__box}>
+            <Messages />
+            <SendMessageFormContainer />
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -21,7 +21,7 @@ const Messages: React.FC = () => {
         {messages.map((msg) => (
           <Message
             key={msg._id}
-            isMe={myself?.id === msg.user.id}
+            isMe={myself?.id === msg?.user.id}
             myId={myself?.id}
             message={msg}
           />

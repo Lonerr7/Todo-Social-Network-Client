@@ -1,0 +1,27 @@
+.preloader {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    color: var(--color5);
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .preloader {
+    &__title {
+      font-size: 24px;
+    }
+
+    &__spinner {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
